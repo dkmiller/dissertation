@@ -72,17 +72,34 @@ Another good source is \cite{neukirch-schmidt-winberg-2008}.
 
 \section{Basic definitions}
 
-Let $\kk$ be a finite field, $W(\kk)$ its ring of Witt vectors. Let 
-$\mathcal{C}$ be the category of artinian $W(\kk)$-algebras with residue field 
-$\kk$. Following Wiles, a \emph{deformation theory} $\boldsymbol d$ will be a 
-tuple $(S [resp.v],T,k)$
+Let $\kk$ be a finite field, $W(\kk)$ its ring of Witt vectors. 
+Let $\artinian$ be the category of artinian $W(\kk)$-algebras with residue field $\kk$. 
+Let $\hat\artinian$ be the category of local \emph{pseudocompact} $W(\kk)$-algebras, that is topological $W(\kk)$-algebras that are filtered inverse limits of rings in $\artinian$. 
+We will define various functors $\hat\artinian\to \sets$; such a functor $X$ is called \emph{representable} if there is $R\in \hat\artinian$ such that $X\simeq \hom(R,-)$. 
+Write $\formalspectrum(R)=\hom(R,-)$. 
+
+Fix a number field $F$. 
+For $S$ a finite set of places of $F$, write $G_{F,S}$ for the Galois group of the maximal extension of $F$ unramified outside $S$. 
+When $F=\dQ$, we will just write $G_S$. For simplicity, we write 
+$\h^\bullet(S,M)$ instead of $\h^\bullet(G_{F,S},M)$ and 
+$\h^\bullet(v,M)$ instead of $\h^\bullet(G_{F,v},M)$. 
+
+Fix a continuous representation $\rho_0:G_F\to \GL_2(\kk)$. A \emph{deformation theory} is a tuple $\deformationtheory=(S,T,\cL,\ast)$, where 
 \begin{itemize}
-  \item look at representations $G_S\to \GL_2(A)$ (resp. $G_v\to \GL_2$)
-  \item that are $T$-new
-  \item and weight $k$
-  \item and lift $\rho_0$. 
+  \item $S$ is a finite set of places of $F$, containing all places at which $\rho_0$ is ramified, 
+  \item $T$ is a finite set of places of $F$, containing $S$, 
+  \item $\cL=(\cL_v)_{v\in S}$, where $\cL_v\subset \h^1(v,\adjoint^?\rho_0)$, where $?$ is $0$ if $\ast$ is defined, 
+  \item $\ast$ is an optional integer $w$. 
 \end{itemize}
-Define carefully: $T$-new deformations, weight-$k$ deformations. The source for 
+
+\begin{definition}
+Let $\deformationtheory=(S,T,\cL,\ast)$ be a deformation theory. 
+The associated deformation functor $\deformationfunctor_\deformationtheory$ is defined on $\hat\artinian$ by: $\deformationfunctor_\deformationtheory(A)=$ all deformations of $\rho_0$ to $A$ that are unramified outside $S$, $T\smallsetminus S$-new, satisfy the local conditions $\cL$, and have weight $w$ if $\ast=w$. 
+\end{definition}
+
+For $S=\{\text{ramified places of }\rho_0\}$, we put $\deformationfunctor=\deformationfunctor_{(S,S,0)}$. 
+
+Define carefully: $T$-new deformations, weight-$w$ deformations. The source for 
 all of this is \cite{mazur-1995}. 
 
 
