@@ -3,6 +3,7 @@
 \usepackage{
   amsmath,
   amssymb,
+  amsthm,
   thesis-style          % custom math commands
 }
 \usepackage[
@@ -69,6 +70,49 @@ Another good source is \cite{neukirch-schmidt-winberg-2008}.
 
 
 \chapter{Deformation theory}
+
+\section{General deformation theory}
+
+Let $\cO$ be a complete discrete valuation ring with residue field $k$. Write 
+$\artinian$ for the category of artinian $\cO$-algebras, and write 
+$\hat\artinian$ be the category of \emph{pseudocompact} $\cO$-algebras, that is, 
+topological $\cO$-algebras that are filtered inverse limits of rings in 
+$\artinian$. Given $A\in \hat\artinian$, write $\formalspectrum(A)$ for the 
+functor $\hom(A,-):\hat\artinian\to \sets$. By 
+\cite[$\mathrm{VII_B}$ \S 0.4]{sga3-i}, a functor $X:\hat\artinian\to \sets$ is 
+\emph{representable} (of the form $\formalspectrum(A)$ for some $A$) if and 
+only if it is left-exact. 
+
+Let $G$ be a representable group functor on $\hat\artinian$. 
+Let $\Gamma$ be a profinite group. 
+Define a functor $[\Gamma,G]:\hat\artinian\to \sets$ by 
+\[
+  [\Gamma,G](A) = \hom_\mathsf{TopGp}(\Gamma,G(A)) .
+\]
+\begin{proposition}
+The functor $[\Gamma,G]$ is representable. 
+\end{proposition}
+\begin{proof}
+First consider the case when $\Gamma$ is finite. In this case, 
+$[\Gamma,G]$ is the subscheme of $\prod_\Gamma G$ cut out by 
+$g_{\gamma\delta} = g_\gamma g_\delta$. In general, we note that for 
+$A\in \artinian$, 
+\begin{align*}
+  [\Gamma,G](A) 
+    &= \varinjlim_{\Delta\subset \Gamma} \hom_\mathsf{Gp}(\Gamma/\Delta,G(A)) \\
+    &= \varinjlim_{\Delta\subset \Gamma} [\Gamma/\Delta,G](A) \\
+    &= \left(\varinjlim_{\Delta\subset \Gamma} [\Gamma/\Delta,G]\right)(A) .
+\end{align*}
+By \cite[$\mathrm{VII_B}$ 1.2.B]{sga3-i}, the category $\hat\artinian$ is 
+closed under filtered inductive limits, so we can set 
+\[
+  [\Gamma,G] = \varinjlim_{\Delta\subset \Gamma} [\Gamma/\Delta,G] .
+\]
+\end{proof}
+
+
+
+
 
 \section{Basic definitions}
 
