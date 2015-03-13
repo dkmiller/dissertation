@@ -4,6 +4,7 @@
   amsmath,
   amssymb,
   amsthm,
+  fixltx2e,               % textsubscript
   thesis-style          % custom math commands
 }
 \usepackage[
@@ -73,6 +74,21 @@ Another good source is \cite{neukirch-schmidt-winberg-2008}.
 
 \section{General deformation theory}
 
+The material in this section is a summary of the results in 
+\cite[7\textsubscript{b} \S0--2]{sga3-i}. Recall that a \emph{pseudocompact} 
+ring $A$ is a (commutative, unital) topological ring admitting a basis of 
+open neighborhoods of $0$ consisting of ideals with finite colength. For 
+example, any complete local noetherian ring is pseudocompact. If 
+$\cO$ is a pseudocompact ring, write $\mathsf{C}_\cO$ for the opposite category 
+of the category of artinian (=finite length) $\cO$-algebras. We are interested 
+in 
+\[
+  \mathrm{Sh}_\mathrm{fl}(\mathsf{C}_\cO) = \widetilde{\mathsf{C}_\cO} = \mathsf{C}_\cO
+\]
+By \cite[IV 4.3.5]{sga3-i} (see \cite[VII\textsubscript{B} 1.5]{sga3-i}, a 
+functor $\mathsf{C}_\cO^\circ\to\sets$ is a sheaf for the flat topology if and 
+only if $F$ sends disjoint unions to direct products and if 
+
 Let $\cO$ be a complete discrete valuation ring with residue field $k$. Write 
 $\artinian$ for the category of artinian $\cO$-algebras, and write 
 $\hat\artinian$ be the category of \emph{pseudocompact} $\cO$-algebras, that is, 
@@ -135,6 +151,62 @@ be a torsor under some kind of Ext-group.
 
 As above, let $\mathtt{Vaf}_{/\cO}$ be the opposite category of pseudocompact 
 $\cO$-algebras. 
+
+--------------------------------------------------
+
+Recall from \cite[V.2.b]{sga3-i} that a monomorphism $R\to X\times X$ is an 
+\emph{equivalence relation} if for each $T$, the image of 
+$R(T)\to X(T)\times X(T)$ is an equivalence relation on $X(T)$. Let 
+$d_0,d_1\colon R\to X$ be the components of $R\to X\times X$. The 
+\emph{(categorical) quotient} of $X$ by $R$ is by definition:
+\[
+  X/R = \varinjlim\left(R\to_{d_0}^{d_1} X\right) .
+\]
+We want $X/R$ to be the ``honest quotient'' of $X$ by $R$, i.e.~for each $T$, 
+$(X/R)(T) = X(T)/R(T)$. Note that 
+\[
+  R\xrightarrow\sim X\times_{X/R} X
+\]
+if and only if $R(T)=\{(x,y)\in X\times X\colon x=y\text{ in }X/R\}$. If this 
+holds, then $X(T)\to (X/R)(T)$ is not necessarily surjective. But the induced 
+map $X(T)/R(T)\to (X/R)(T)$ is injective. 
+
+We're interested in the special case 
+\[
+  R = G\times X\to X\times X\qquad (g,x)\mapsto (g x,x) .
+\]
+
+From \cite[VII\textsubscript{B}.1.5]{sga3-i}, the quotient $X/R$ is actually 
+the quotient in the category of flat sheaves. 
+
+Let $R\to X\times X$ be an equivalence relation in an arbitrary category. Suppose 
+the quotient $X/R$ exists. It admits an morphism $\pi\colon X\to X/R$ such that 
+$\pi d_1 = \pi d_0$, that is universal with initial with respect to these 
+properties. One can show that $\pi$ is epic. 
+
+In the category of presheaves, colimits are computed pointwise, so 
+$(X/R)(T) = X(T)/R(T)$. 
+
+------------------------------------------------
+
+[also see Tilouine]
+
+Following [B\"ockle], the basic idea is as follows. Let $\Gamma$ be a profinite 
+group, $\cG_{/\cO}$ a smooth formal group. We have already proved that 
+$[\Gamma,\cG]$ is representable (though it may have several points). Let 
+$\cZ=\zentrum(\cG)$; we assume $\cZ$ is also smooth. First question: is 
+$\cG\to \cG/\cZ$ a ``pointwise surjection''?
+\[
+  \cG\times \cZ\to \cG\times \cG \qquad (g,z)\mapsto (g z,g) .
+\]
+We'd also look at 
+\[
+  (\cG/\cZ)\times [\Gamma,\cG]\to [\Gamma,\cG]\times [\Gamma,\cG]\qquad (g,\rho) \mapsto (g \rho g^{-1}, \rho) .
+\]
+For this to be an injection, we need $g\rho g^{-1} = \rho$ to imply 
+$g=1$. 
+
+------------------------------------------------
 
 
 
