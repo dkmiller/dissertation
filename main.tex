@@ -12,6 +12,8 @@
   sorting  = nyt,       % sort by (name, year, title)
   style    = alphabetic % citations look like [Har77]
 ]{biblatex}
+\DeclareFieldFormat{postnote}{#1}
+\DeclareFieldFormat{multipostnote}{#1}
 \addbibresource{thesis-sources.bib}
 
 \title{Modularity lifting theorems for 2-dimensional Galois representations}
@@ -71,6 +73,55 @@ Another good source is \cite{neukirch-schmidt-winberg-2008}.
 
 
 \chapter{Deformation theory}
+
+\section{General deformation theory}
+
+Let $A$ be a pseudocompact ring. Let $\artinian_A$ be the opposite to the 
+category of finite-length $A$-algebras. Our category of ``formal schemes'' will 
+be $\indization(\artinian_A)$, the category of ind-objects of $\artinian_A$. 
+
+\begin{theorem}
+Let $\mathcal C$ be a category closed under finite colimits. Then the category 
+$\indization(\mathcal C)$ is a cartesian closed subcategory of 
+$\widehat{\mathcal C}$. 
+\end{theorem}
+\begin{proof}
+Roughly, this is a computation. By \cite[6.1.7]{kashiwara-schapira-2006}, the 
+category $\indization(\mathcal C)$ is the full subcategory of $\widehat{\mathcal C}$ 
+consisting of left-exact functors. So, if $S=\varinjlim S_\alpha$ is a filtered 
+colimit in $\mathcal C$, we compute:
+\begin{align*}
+	P^Q(S)
+		&= \hom_{\widehat{\mathcal C}}(Q\times S,P) \\
+		&= \hom_{\widehat{\mathcal C}}\left(Q\times \varinjlim S_\alpha,P\right) \\
+		&= \hom_{\widehat{\mathcal C}}\left(\varinjlim Q\times S_\alpha,P\right) \\
+		&= \varprojlim\hom_{\widehat{\mathcal C}}(Q\times S_\alpha,P) \\
+		&= \varprojlim P^Q(S_\alpha) .
+\end{align*}
+\end{proof}
+
+It follows that if $G,H\in \indization(\mathcal C)$, then 
+\[
+  [G,H](S) = \hom_{S\textnormal{-}\mathsf{gp}}(G_S,H_S) 
+\]
+is an object in $\indization(\mathcal C)$. 
+
+By \cite[C 4.2.3]{johnstone-2002}, if $\mathcal C$ is cocartesian (closed under finite 
+colimits) and has pullbacks, such that finite colimits are stable under pullbacks, 
+then $\indization(\mathcal C)$ is locally cartesian closed, i.e.~each 
+$\indization(\mathcal C)_{/P}$ is closed. In particular, 
+$\indization(\artinian_A)$ is cartesian closed. Even better, Johnstone proves that 
+if $P\in \indization(\mathcal C)$ (not over any presheaf) and $Q\in \widehat{\mathcal C}$,
+then $P^Q\in\indization(\mathcal C)$, i.e.~$\indization(\mathcal C)$ is an exponential 
+ideal in $\widehat{\mathcal C}$. 
+
+Now compare $\indization(\artinian_A)$ with $\operatorname{Sh}_\mathrm{fl}(\artinian_A)$. 
+We should have $\indization(\artinian_A)\subset \operatorname{Sh}_\mathrm{fl}(\artinian_A)$. 
+Coverings look like $\formalspectrum(B)\to \formalspectrum(A)$, where $A\to B$ is flat and 
+$\operatorname{mSpec}(B)\to \operatorname{mSpec}(A)$ is surjective. In particular, if 
+$A$ is local, then all flat non-zero $A\to B$ are flat covers. 
+
+
 
 \section{General deformation theory}
 
