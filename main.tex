@@ -5,6 +5,7 @@
   amssymb,
   amsthm,
   fixltx2e,               % textsubscript
+  mathrsfs,
   thesis-style          % custom math commands
 }
 \usepackage[
@@ -120,6 +121,65 @@ We should have $\indization(\artinian_A)\subset \operatorname{Sh}_\mathrm{fl}(\a
 Coverings look like $\formalspectrum(B)\to \formalspectrum(A)$, where $A\to B$ is flat and 
 $\operatorname{mSpec}(B)\to \operatorname{mSpec}(A)$ is surjective. In particular, if 
 $A$ is local, then all flat non-zero $A\to B$ are flat covers. 
+
+
+\begin{theorem}
+$\indization(\artinian_A)\subset \operatorname{Sh}_\mathrm{fl}(\artinian_A)$. 
+\end{theorem}
+\begin{proof}
+Let $\cX\in \indization(\artinian_A)$. If $U\to X$ is a flat 
+cover in $\artinian_A$, then by \cite[IV 6.3.1(iii)]{sga3-i}, $U\to X$ is a 
+cover for the canonical topology, i.e.~it is a universal effective epimorphism. 
+It follows that $U\times_X U\rightrightarrows U \to X$ is a coequalizer in 
+$\artinian_A$, so because $\cX$ sends colimits to limits, the diagram  
+\[
+  \cX(X) \to \cX(U) \rightrightarrows \cX(U\times_X U) ,
+\]
+is an equalizer. 
+\end{proof}
+
+We would like to be able to talk about tangent spaces of flat sheaves. Given 
+$X\in \artinian_A$ and $\mathscr F\in \operatorname{Sh}_\mathrm{fl}(\artinian_A)$, 
+the set $\sF(X[\varepsilon])$ should be an abelian group object over 
+$\sF(X)$. For, this we would want 
+\[
+  \sF(A[\varepsilon]\times_A A[\varepsilon]) = \sF(A[\varepsilon])\times_{\sF(A)} \sF(A[\varepsilon])
+\]
+
+Let's stick with ind-schemes. Let $\Lambda$ be a pseudocompact ring. For 
+$\cX\in \indization(\artinian_\Lambda)$, the \emph{tangent space} of $\cX$, 
+written $\tangent\cX$, is defined by 
+\[
+  (\tangent\cX)(S) = \cX(S[\varepsilon]), 
+\]
+i.e.~$(\tangent\cX)(\formalspectrum A) = \cX(A[\varepsilon])$. 
+
+\begin{theorem}
+If $\cX\in \indization(\artinian_\Lambda)$, then 
+$\tangent\cX\in \indization(\artinian_\Lambda)$. 
+\end{theorem}
+\begin{proof}
+For $\tangent\cX$ 
+to be an ind-object, we need it to send colimits to limits. In fact, the 
+functor $A\mapsto A[\varepsilon]$ on finite-length $\Lambda$-algebras preserves 
+limits.
+\end{proof}
+
+Write $\sO\in \indization(\artinian_\Lambda)$ for the ring functor 
+$\sO(\formalspectrum A) = A$. If $\cX\in \widehat{\artinian_\Lambda}$, write 
+$\sO_\cX = \sO\times \cX$; this is a (commutative) ring object in 
+$\indization(\artinian_\Lambda)_{/\cX}$. 
+
+\begin{theorem}
+If $\cX\in \indization(\artinian_\Lambda)$, then $\tangent\cX$ is an 
+$\sO_\cX$-object in $\indization(\artinian_\Lambda)_{/\cX}$. 
+\end{theorem}
+
+We can recover the ``classical'' theory of tangent spaces by taking fiber 
+products. Let $S=\formalspectrum(A)$. An element $x\in \cX(S)$ is the same as 
+a morphism $x\colon 1\to \cX_S$. The tangent space $\tangent_x \cX$ is the fiber 
+product $\tangent_x \cX = \tangent \cX_S\times_{\cX_S,x} 1$. In general, this 
+will be an $\sO_S$-module. 
 
 
 
