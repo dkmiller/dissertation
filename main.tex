@@ -319,6 +319,32 @@ $g=1$.
 
 ------------------------------------------------
 
+The basic ideas is as follows. Let $\mathcal X\in \indization(\artinian_\Lambda)$, 
+and suppose $\mathcal G$ is an ind-group acting faithfully on $\mathcal X$. Then 
+the map $\mathcal X\to \mathcal X/\mathcal G$ is a $\mathcal G$-torsor over 
+$\mathcal X/\mathcal G$ (this is true in general). If $\mathcal X/\mathcal G$ has a single 
+point (topologically), then $\formalspectrum(k) \to \mathcal X/\mathcal G$ is a 
+flat cover, so we should have\ldots 
+
+Things should come down to: if $k$ is a finite field and $G_{/k}$ is a smooth 
+connected algebraic group, then $\h^1(k_\textnormal{\'et},G)=1$. So $G$-torsors 
+are trivial. 
+
+\begin{theorem}
+Let $(d_0,d_1)\colon R\rightrightarrows X$ be an equivalence relation in 
+$\indization(\artinian_\Lambda)$ such that $d_1$ is (topologically) flat and 
+one of the $d_i$ is smooth. Then $X/R$ is the quotient presheaf. [We need 
+$X\to X/R$ to be of finite presentation. 
+\end{theorem}
+\begin{proof}
+We need $X\to X/R$ to be pointwise surjective. This will follow from the formal 
+smoothness of $X\to X/R$. Now, $X\to X/R$ is an fppf cover and by 
+\cite[17.7.3(ii)]{ega4-4}, smoothness is an fppf-local condition. So it is 
+sufficient to check whether $X\times_{X/R} X\to X$ is smooth. This is the same 
+as $R\to X$ (we need one $d_i$ to be flat, the other smooth), \ldots we get the 
+result. 
+\end{proof}
+
 
 
 
