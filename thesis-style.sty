@@ -2,27 +2,38 @@
 
 % ---------- operators ----------
 \DeclareMathOperator{\adjoint}{ad}
-\DeclareMathOperator{\formalspectrum}{Spf}
 \DeclareMathOperator{\GL}{GL}
 \DeclareMathOperator{\h}{H}
-\DeclareMathOperator{\indization}{Ind}
+\DeclareMathOperator{\spf}{Spf}
 \newcommand{\tangent}{\mathrm{T}}
+\DeclareMathOperator{\witt}{W}
 \DeclareMathOperator{\zentrum}{Z} % center
 
 % ---------- symbols ----------
+\newcommand{\balpha}{{\bm\alpha}}
+\newcommand{\bmu}{{\bm\mu}}
+\newcommand{\cC}{\mathcal{C}}
 \newcommand{\cG}{\mathcal{G}}
 \newcommand{\cL}{\mathcal{L}}
 \newcommand{\cO}{\mathcal{O}}
+\newcommand{\cR}{\mathcal{R}}
 \newcommand{\cX}{\mathcal{X}}
+\newcommand{\cY}{\mathcal{Y}}
 \newcommand{\cZ}{\mathcal{Z}}
 \newcommand{\dQ}{\mathbf{Q}}
 \newcommand{\fa}{\mathfrak{a}}
 \newcommand{\fm}{\mathfrak{m}}
 \newcommand{\sF}{\mathscr{F}}
 \newcommand{\sO}{\mathscr{O}}
-\newcommand{\deformationfunctor}{\mathfrak{X}}
-\newcommand{\deformationtheory}{\mathcal{D}}
 \newcommand{\kk}{k} % finite field
+\newcommand{\cts}{\mathrm{cts}}
+\newcommand{\fl}{\mathrm{fl}}
+\newcommand{\Ga}{\mathbf{G}_\mathrm{a}}
+\newcommand{\Gm}{\mathbf{G}_\mathrm{m}}
+\newcommand{\iso}{\xrightarrow\sim}
+\newcommand{\monic}{\hookrightarrow}
+\newcommand{\pow}[1]{\llbracket #1 \rrbracket}
+
 \DeclareFontFamily{U}{wncy}{}
 \DeclareFontShape{U}{wncy}{m}{n}{<->wncyr10}{}
 \DeclareSymbolFont{mcy}{U}{wncy}{m}{n}
@@ -30,9 +41,16 @@
 
 % ---------- categories ----------
 \newcommand{\artinian}{\mathsf{C}}
-\newcommand{\sets}{\mathsf{set}}
+\DeclareMathOperator{\groups}{\mathsf{Gp}}
+\DeclareMathOperator{\indization}{Ind}
+\newcommand{\sets}{\mathsf{Set}}
+\DeclareMathOperator{\sheaves}{Sh}
 
 % ---------- environments ----------
+\newtheorem{corollary}[subsection]{Corollary}
 \newtheorem{definition}[subsection]{Definition}
+\newtheorem{lemma}[subsection]{Lemma}
 \newtheorem{proposition}[subsection]{Proposition}
 \newtheorem{theorem}[subsection]{Theorem}
+\theoremstyle{definition}
+\newtheorem{example}[subsection]{Example}

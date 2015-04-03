@@ -5,9 +5,12 @@
   amssymb,
   amsthm,
   bm,
-  fixltx2e,               % textsubscript
+  fixltx2e, % textsubscript
+  hyperref,
   mathrsfs,
-  thesis-style          % custom math commands
+  stmaryrd, % llbracket
+  thesis-style, % custom math commands
+  tikz-cd
 }
 \usepackage[
   backend  = bibtex,    % use bibtex instead of biber
@@ -61,317 +64,298 @@ Some acknowledgements.
 
 \chapter{Foundations}
 
-\section{General deformation theory}
 
-Let $A$ be a pseudocompact ring. Let $\artinian_A$ be the opposite to the 
-category of finite-length $A$-algebras. Our category of ``formal schemes'' will 
-be $\indization(\artinian_A)$, the category of ind-objects of $\artinian_A$. 
 
-\begin{theorem}
-Let $\mathcal C$ be a category closed under finite colimits. Then the category 
-$\indization(\mathcal C)$ is a cartesian closed subcategory of 
-$\widehat{\mathcal C}$. 
-\end{theorem}
+
+
+\section{Category of test objects}
+
+The following is an exposition and explication of the theory outlined in 
+\cite[VII\textsubscript{B}, \S 0--1]{sga3-1}. In particular, we will heavily 
+use the notions of a pseudocompact ring, pseudocompact modules, etc. Let 
+$\Lambda$ be a pseudocompact ring. Write $\artinian_\Lambda$ for the opposite 
+of the category of $\Lambda$-algebras which have finite length as 
+$\Lambda$-modules. Given such a $\Lambda$-algebra $A$, write $X=\spf(A)$ for 
+the corresponding object of $\artinian_\Lambda$, and we put $A=\sO(X)$. 
+
+\begin{lemma}
+Let $\Lambda$ be a pseudocompact ring, $\artinian_\Lambda$ as above. Then 
+$\artinian_\Lambda$ is closed under finite limits and colimits. 
+\end{lemma}
+
+Following Grothendieck, if $\cC$ is an arbitrary category, we write 
+$\widehat\cC=\hom(\cC^\circ,\sets)$ for the category of contravariant functors 
+$\cC\to \sets$. We regard $\cC$ as a full subcategory of $\widehat\cC$ via the 
+Yoneda embedding, so for $X,Y\in \cC$, we write $X(Y) = \hom_\cC(Y,X)$. With 
+this notation, the Yoneda Lemma states that $\hom_{\widehat\cC}(X,P) = P(X)$ 
+for all $X\in \cC$. 
+
+\begin{lemma}\label{thm:ind-object-def}
+Let $\cX\in\widehat{\artinian_\Lambda}$. Then $\cX$ is left exact if and only 
+if there exists a filtered system $\{X_i\}_{i\in I}$ in $\cC_\Lambda$ together 
+with a natural isomorphism $\cX(\cdot)\simeq \varinjlim X_i(\cdot)$. Write 
+$\indization(\artinian_\Lambda)$ for the category of such functors. Then 
+$\indization(\artinian_\Lambda)$ is closed under colimits, and the 
+Yoneda embedding $\artinian_\Lambda\monic\indization(\artinian_\Lambda)$ 
+preserves filtered colimits.
+\end{lemma}
 \begin{proof}
-Roughly, this is a computation. By \cite[6.1.7]{kashiwara-schapira-2006}, the 
-category $\indization(\mathcal C)$ is the full subcategory of $\widehat{\mathcal C}$ 
-consisting of left-exact functors. So, if $S=\varinjlim S_\alpha$ is a filtered 
-colimit in $\mathcal C$, we compute:
-\begin{align*}
-	P^Q(S)
-		&= \hom_{\widehat{\mathcal C}}(Q\times S,P) \\
-		&= \hom_{\widehat{\mathcal C}}\left(Q\times \varinjlim S_\alpha,P\right) \\
-		&= \hom_{\widehat{\mathcal C}}\left(\varinjlim Q\times S_\alpha,P\right) \\
-		&= \varprojlim\hom_{\widehat{\mathcal C}}(Q\times S_\alpha,P) \\
-		&= \varprojlim P^Q(S_\alpha) .
-\end{align*}
+This follows from the results of \cite[6.1]{kashiwara-schapira-2006}. 
 \end{proof}
 
-It follows that if $G,H\in \indization(\mathcal C)$, then 
-\[
-  [G,H](S) = \hom_{S\textnormal{-}\mathsf{gp}}(G_S,H_S) 
-\]
-is an object in $\indization(\mathcal C)$. 
+If $R$ is a pseudocompact $\Lambda$-algebra, write $\spf(R)$ for the object of 
+$\widehat{\artinian_\Lambda}$ defined by $\spf(R)(A)=\hom_{\cts/\Lambda}(R,A)$, 
+the set of continuous $\Lambda$-algebra homomorphisms. 
 
-By \cite[C 4.2.3]{johnstone-2002}, if $\mathcal C$ is cocartesian (closed under finite 
-colimits) and has pullbacks, such that finite colimits are stable under pullbacks, 
-then $\indization(\mathcal C)$ is locally cartesian closed, i.e.~each 
-$\indization(\mathcal C)_{/P}$ is closed. In particular, 
-$\indization(\artinian_A)$ is cartesian closed. Even better, Johnstone proves that 
-if $P\in \indization(\mathcal C)$ (not over any presheaf) and $Q\in \widehat{\mathcal C}$,
-then $P^Q\in\indization(\mathcal C)$, i.e.~$\indization(\mathcal C)$ is an exponential 
-ideal in $\widehat{\mathcal C}$. 
-
-Now compare $\indization(\artinian_A)$ with $\operatorname{Sh}_\mathrm{fl}(\artinian_A)$. 
-We should have $\indization(\artinian_A)\subset \operatorname{Sh}_\mathrm{fl}(\artinian_A)$. 
-Coverings look like $\formalspectrum(B)\to \formalspectrum(A)$, where $A\to B$ is flat and 
-$\operatorname{mSpec}(B)\to \operatorname{mSpec}(A)$ is surjective. In particular, if 
-$A$ is local, then all flat non-zero $A\to B$ are flat covers. 
-
-
-\begin{theorem}
-$\indization(\artinian_A)\subset \operatorname{Sh}_\mathrm{fl}(\artinian_A)$. 
-\end{theorem}
+\begin{lemma}
+The funtor $\spf$ induces an (anti-)equivalence between the category of 
+pseudocompact $\Lambda$-algebras and $\indization(\artinian_\Lambda)$. 
+\end{lemma}
 \begin{proof}
-Let $\cX\in \indization(\artinian_A)$. If $U\to X$ is a flat 
-cover in $\artinian_A$, then by \cite[IV 6.3.1(iii)]{sga3-i}, $U\to X$ is a 
-cover for the canonical topology, i.e.~it is a universal effective epimorphism. 
-It follows that $U\times_X U\rightrightarrows U \to X$ is a coequalizer in 
-$\artinian_A$, so because $\cX$ sends colimits to limits, the diagram  
-\[
-  \cX(X) \to \cX(U) \rightrightarrows \cX(U\times_X U) ,
-\]
-is an equalizer. 
+This is \cite[VII\textsubscript{B} 0.4.2 Prop.]{sga3-1}. 
 \end{proof}
 
-We would like to be able to talk about tangent spaces of flat sheaves. Given 
-$X\in \artinian_A$ and $\mathscr F\in \operatorname{Sh}_\mathrm{fl}(\artinian_A)$, 
-the set $\sF(X[\varepsilon])$ should be an abelian group object over 
-$\sF(X)$. For, this we would want 
-\[
-  \sF(A[\varepsilon]\times_A A[\varepsilon]) = \sF(A[\varepsilon])\times_{\sF(A)} \sF(A[\varepsilon])
-\]
+So $\indization(\artinian_\Lambda)$ is the category of pro-representable 
+functors on finite length $\Lambda$-algebras. \emph{Warning}: in many papers, 
+for example the foundational \cite{mazur-1995}, one reserves the term 
+\emph{pro-representable} for functors of the form $\spf(R)$, where $R$ is 
+\emph{noetherian}. We do not make this restriction. 
 
-Let's stick with ind-schemes. Let $\Lambda$ be a pseudocompact ring. For 
-$\cX\in \indization(\artinian_\Lambda)$, the \emph{tangent space} of $\cX$, 
-written $\tangent\cX$, is defined by 
-\[
-  (\tangent\cX)(S) = \cX(S[\varepsilon]), 
-\]
-i.e.~$(\tangent\cX)(\formalspectrum A) = \cX(A[\varepsilon])$. 
-
-\begin{theorem}
-If $\cX\in \indization(\artinian_\Lambda)$, then 
-$\tangent\cX\in \indization(\artinian_\Lambda)$. 
-\end{theorem}
+\begin{lemma}\label{thm:exponential-ideal}
+The category $\indization(\artinian_\Lambda)$ is an exponential ideal in 
+$\widehat{\artinian_\Lambda}$. 
+\end{lemma}
 \begin{proof}
-For $\tangent\cX$ 
-to be an ind-object, we need it to send colimits to limits. In fact, the 
-functor $A\mapsto A[\varepsilon]$ on finite-length $\Lambda$-algebras preserves 
-limits.
+By this we mean the following. Let $\cX\in \indization(\artinian_\Lambda)$, 
+$P\in \widehat{\artinian_\Lambda}$. Then the functor $\cX^P$ defined by 
+\[
+	\cX^P(S) = \hom_{\widehat{\artinian_\Lambda}_{/S}}(P_{/S},\cX_{/S}) 
+\]
+is also in $\indization(\artinian_\Lambda)$. Given the characterization of 
+$\indization(\artinian_\Lambda)$ as left exact functors, this is easy to 
+prove, see e.g.~\cite[4.2.3]{johnstone-2002}. 
 \end{proof}
 
-Write $\sO\in \indization(\artinian_\Lambda)$ for the ring functor 
-$\sO(\formalspectrum A) = A$. If $\cX\in \widehat{\artinian_\Lambda}$, write 
-$\sO_\cX = \sO\times \cX$; this is a (commutative) ring object in 
-$\indization(\artinian_\Lambda)_{/\cX}$. 
+If $\cC$ is a category, we write $\groups(\cC)$ for the category of group 
+objects in $\cC$. 
 
-\begin{theorem}
-If $\cX\in \indization(\artinian_\Lambda)$, then $\tangent\cX$ is an 
-$\sO_\cX$-object in $\indization(\artinian_\Lambda)_{/\cX}$. 
-\end{theorem}
-
-We can recover the ``classical'' theory of tangent spaces by taking fiber 
-products. Let $S=\formalspectrum(A)$. An element $x\in \cX(S)$ is the same as 
-a morphism $x\colon 1\to \cX_S$. The tangent space $\tangent_x \cX$ is the fiber 
-product $\tangent_x \cX = \tangent \cX_S\times_{\cX_S,x} 1$. In general, this 
-will be an $\sO_S$-module. 
-
-
-
-\section{General deformation theory}
-
-The material in this section is a summary of the results in 
-\cite[7\textsubscript{b} \S0--2]{sga3-i}. Recall that a \emph{pseudocompact} 
-ring $A$ is a (commutative, unital) topological ring admitting a basis of 
-open neighborhoods of $0$ consisting of ideals with finite colength. For 
-example, any complete local noetherian ring is pseudocompact. If 
-$\cO$ is a pseudocompact ring, write $\mathsf{C}_\cO$ for the opposite category 
-of the category of artinian (=finite length) $\cO$-algebras. We are interested 
-in 
+\begin{corollary}
+Let $\Gamma\in \groups(\widehat{\artinian_\Lambda})$ and 
+$\cG\in \groups(\indization(\artinian_\Lambda))$, then the functor 
+$[\Gamma,\cG]$ defined by 
 \[
-  \mathrm{Sh}_\mathrm{fl}(\mathsf{C}_\cO) = \widetilde{\mathsf{C}_\cO} = \mathsf{C}_\cO
+	[\Gamma,\cG](S) = \hom_{\groups/S}(\Gamma_{/S},\cG_{/S}) 
 \]
-By \cite[IV 4.3.5]{sga3-i} (see \cite[VII\textsubscript{B} 1.5]{sga3-i}, a 
-functor $\mathsf{C}_\cO^\circ\to\sets$ is a sheaf for the flat topology if and 
-only if $F$ sends disjoint unions to direct products and if 
-
-Let $\cO$ be a complete discrete valuation ring with residue field $k$. Write 
-$\artinian$ for the category of artinian $\cO$-algebras, and write 
-$\hat\artinian$ be the category of \emph{pseudocompact} $\cO$-algebras, that is, 
-topological $\cO$-algebras that are filtered inverse limits of rings in 
-$\artinian$. Given $A\in \hat\artinian$, write $\formalspectrum(A)$ for the 
-functor $\hom(A,-):\hat\artinian\to \sets$. By 
-\cite[$\mathrm{VII_B}$ \S 0.4]{sga3-i}, a functor $X:\hat\artinian\to \sets$ is 
-\emph{representable} (of the form $\formalspectrum(A)$ for some $A$) if and 
-only if it is left-exact. 
-
-Let $G$ be a representable group functor on $\hat\artinian$. 
-Let $\Gamma$ be a profinite group. 
-Define a functor $[\Gamma,G]:\hat\artinian\to \sets$ by 
+is in $\indization(\artinian_\Lambda)$. In particular, if $\Gamma$ is a 
+profinite group, then the functor 
 \[
-  [\Gamma,G](A) = \hom_\mathsf{TopGp}(\Gamma,G(A)) .
+	[\Gamma,\cG](S) = \hom_{\cts/\groups}(\Gamma,\cG(S))
 \]
-\begin{proposition}
-The functor $[\Gamma,G]$ is representable. 
-\end{proposition}
+is in $\indization(\artinian_\Lambda)$. 
+\end{corollary}
 \begin{proof}
-First consider the case when $\Gamma$ is finite. In this case, 
-$[\Gamma,G]$ is the subscheme of $\prod_\Gamma G$ cut out by 
-$g_{\gamma\delta} = g_\gamma g_\delta$. In general, we note that for 
-$A\in \artinian$, 
-\begin{align*}
-  [\Gamma,G](A) 
-    &= \varinjlim_{\Delta\subset \Gamma} \hom_\mathsf{Gp}(\Gamma/\Delta,G(A)) \\
-    &= \varinjlim_{\Delta\subset \Gamma} [\Gamma/\Delta,G](A) \\
-    &= \left(\varinjlim_{\Delta\subset \Gamma} [\Gamma/\Delta,G]\right)(A) .
-\end{align*}
-By \cite[$\mathrm{VII_B}$ 1.2.B]{sga3-i}, the category $\hat\artinian$ is 
-closed under filtered inductive limits, so we can set 
+The first claim follows easily from \ref{thm:exponential-ideal}. Just note 
+that $[\Gamma,\cG]$ is the equalizer:
 \[
-  [\Gamma,G] = \varinjlim_{\Delta\subset \Gamma} [\Gamma/\Delta,G] .
+\begin{tikzcd}
+	{[\Gamma,\cG]} \ar[r]
+		& \cG^\Gamma \ar[r, "m_\Gamma^\ast", shift left=.5ex] \ar[r, "m_{\cG\ast}"', shift right=.5ex]
+		& \cG^{\Gamma\times \Gamma} ,
+\end{tikzcd}
 \]
+that is, those $f\colon \Gamma\to \cG$ such that 
+$f\circ m_\Gamma = m_\cG\circ(f\times f)$. The latter claim is just 
+a special case. 
 \end{proof}
 
 
 
 
 
-\section{Following SGA 3}
+\section{Quotients in the flat topology}
 
-Let $\cO$ be a pseudocompact ring. Let $\mathsf{Vaf}_\cO$ be the opposite 
-category of pseudocompact $\cO$-algebras. This is naturally identified with the 
-category of left-exact functors $\mathsf{Alf}_\cO\to \sets$, where 
-$\mathsf{Alf}_\cO$ is the category of finite-length $\cO$-algebras. By 
-definition, objects in $\mathsf{Vaf}_\cO$ are of the form 
-$\formalspectrum(A)$ for $A$ a pseudocompact $\cO$-algebra. Since limits 
-commute with limits, $\mathsf{Vaf}_\cO$ has all limits, and since 
-filtered colimits commute with finite limits, $\mathsf{Vaf}_\cO$ has all 
-filtered colimits. 
+If $\Lambda$ is a pseudocompact ring, the category 
+$\indization(\artinian_\Lambda)$ has nice ``geometric'' properties. However, 
+for operations like taking quotients, we will embed it into the larger category 
+$\sheaves_\fl(\artinian_\Lambda)$ of flat sheaves. We call a collection 
+$\{U_i\to X\}$ of morphisms in $\artinian_\Lambda$ a \emph{flat cover} if each 
+ring map $\sO(X)\to \sO(U_i)$ is flat, and moreover 
+$\sO(X)\to \prod \sO(U_i)$ is faithfully flat. By \cite[IV 6.3.1]{sga3-1}, this 
+is a subcanonical Grothendieck topology on $\artinian_\Lambda$. We call it the 
+\emph{flat topology}, even though finite presentation comes for free because 
+all the rings are finite length. 
 
-We'd like a good obstruction theory for objects in $\mathsf{Vaf}_\cO$. That 
-is, let $X\in \mathsf{Vaf}_\cO$. If $0 \to \fa\to A_1\to A_2\to 0$ is a 
-square-zero extension in $\mathsf{Alf}_\cO$ and $x\in X(A_2)$, we would like 
-some kind of ``obstruction class'' $o(x)$ that vanishes precisely when 
-$x$ lifts to $X(A_1)$. If $o(x)=0$, then lifts of $x$ to $X(A_1)$ should 
-be a torsor under some kind of Ext-group. 
-
-As above, let $\mathtt{Vaf}_{/\cO}$ be the opposite category of pseudocompact 
-$\cO$-algebras. 
-
---------------------------------------------------
-
-Recall from \cite[V.2.b]{sga3-i} that a monomorphism $R\to X\times X$ is an 
-\emph{equivalence relation} if for each $T$, the image of 
-$R(T)\to X(T)\times X(T)$ is an equivalence relation on $X(T)$. Let 
-$d_0,d_1\colon R\to X$ be the components of $R\to X\times X$. The 
-\emph{(categorical) quotient} of $X$ by $R$ is by definition:
+\begin{lemma}
+Let $\sheaves_\fl(\artinian_\Lambda)$ be the category of sheaves (of sets) on 
+$\artinian_\Lambda$ with respect to the flat topology. Then a presheaf 
+$P\in \widehat{\artinian_\Lambda}$ lies in $\sheaves_\fl(\artinian_\Lambda)$ if 
+and only if $P(\coprod U_i) = \prod P(U_i)$ and moreover, whenever 
+$U \to X$ is a flat cover where $\sO(U)$ and $\sO(X)$ are local rings, the 
+sequence 
 \[
-  X/R = \varinjlim\left(R\to_{d_0}^{d_1} X\right) .
+\begin{tikzcd}
+	P(X) \ar[r]
+		& P(U) \ar[r, shift left=.5ex] \ar[r, shift right=.5ex]
+		& P(U\times_X U) .
+\end{tikzcd}
 \]
-We want $X/R$ to be the ``honest quotient'' of $X$ by $R$, i.e.~for each $T$, 
-$(X/R)(T) = X(T)/R(T)$. Note that 
-\[
-  R\xrightarrow\sim X\times_{X/R} X
-\]
-if and only if $R(T)=\{(x,y)\in X\times X\colon x=y\text{ in }X/R\}$. If this 
-holds, then $X(T)\to (X/R)(T)$ is not necessarily surjective. But the induced 
-map $X(T)/R(T)\to (X/R)(T)$ is injective. 
-
-We're interested in the special case 
-\[
-  R = G\times X\to X\times X\qquad (g,x)\mapsto (g x,x) .
-\]
-
-From \cite[VII\textsubscript{B}.1.5]{sga3-i}, the quotient $X/R$ is actually 
-the quotient in the category of flat sheaves. 
-
-Let $R\to X\times X$ be an equivalence relation in an arbitrary category. Suppose 
-the quotient $X/R$ exists. It admits an morphism $\pi\colon X\to X/R$ such that 
-$\pi d_1 = \pi d_0$, that is universal with initial with respect to these 
-properties. One can show that $\pi$ is epic. 
-
-In the category of presheaves, colimits are computed pointwise, so 
-$(X/R)(T) = X(T)/R(T)$. 
-
-------------------------------------------------
-
-[also see Tilouine]
-
-Following [B\"ockle], the basic idea is as follows. Let $\Gamma$ be a profinite 
-group, $\cG_{/\cO}$ a smooth formal group. We have already proved that 
-$[\Gamma,\cG]$ is representable (though it may have several points). Let 
-$\cZ=\zentrum(\cG)$; we assume $\cZ$ is also smooth. First question: is 
-$\cG\to \cG/\cZ$ a ``pointwise surjection''?
-\[
-  \cG\times \cZ\to \cG\times \cG \qquad (g,z)\mapsto (g z,g) .
-\]
-We'd also look at 
-\[
-  (\cG/\cZ)\times [\Gamma,\cG]\to [\Gamma,\cG]\times [\Gamma,\cG]\qquad (g,\rho) \mapsto (g \rho g^{-1}, \rho) .
-\]
-For this to be an injection, we need $g\rho g^{-1} = \rho$ to imply 
-$g=1$. 
-
-------------------------------------------------
-
-The basic ideas is as follows. Let $\mathcal X\in \indization(\artinian_\Lambda)$, 
-and suppose $\mathcal G$ is an ind-group acting faithfully on $\mathcal X$. Then 
-the map $\mathcal X\to \mathcal X/\mathcal G$ is a $\mathcal G$-torsor over 
-$\mathcal X/\mathcal G$ (this is true in general). If $\mathcal X/\mathcal G$ has a single 
-point (topologically), then $\formalspectrum(k) \to \mathcal X/\mathcal G$ is a 
-flat cover, so we should have\ldots 
-
-Things should come down to: if $k$ is a finite field and $G_{/k}$ is a smooth 
-connected algebraic group, then $\h^1(k_\textnormal{\'et},G)=1$. So $G$-torsors 
-are trivial. 
-
-\begin{theorem}
-Let $(d_0,d_1)\colon R\rightrightarrows X$ be an equivalence relation in 
-$\indization(\artinian_\Lambda)$ such that $d_1$ is (topologically) flat and 
-one of the $d_i$ is smooth. Then $X/R$ is the quotient presheaf. [We need 
-$X\to X/R$ to be of finite presentation. 
-\end{theorem}
+is exact. Moreover, 
+$\indization(\artinian_\Lambda)\subset \sheaves_\fl(\artinian_\Lambda)$. 
+\end{lemma}
 \begin{proof}
-We need $X\to X/R$ to be pointwise surjective. This will follow from the formal 
-smoothness of $X\to X/R$. Now, $X\to X/R$ is an fppf cover and by 
-\cite[17.7.3(ii)]{ega4-4}, smoothness is an fppf-local condition. So it is 
-sufficient to check whether $X\times_{X/R} X\to X$ is smooth. This is the same 
-as $R\to X$ (we need one $d_i$ to be flat, the other smooth), \ldots we get the 
-result. 
-
-For smooth $A\to B$ to have section, need $A$ and $B$ to have the same residue 
-field. Also, B\"ockle's result needs smoothness of the relation. To see why, 
-consider $\hat{\mathbf{G}}_\mathrm{a}/\bm\alpha_p$. This is the type of quotient 
-B\"ockle claims should be the presheaf quotient, but $(\cdot)^p\colon A\to A$ 
-need not be surjective. 
+The first claim is the content of \cite[IV 6.3.1(ii)]{sga3-1}. For the second, 
+note that any $\cX\in \indization(\artinian_\Lambda)$ will, by 
+\ref{thm:ind-object-def}, convert (arbitrary) colimits into limits. Thus 
+$\cX(\coprod U_i) = \prod \cX(U_i)$. If $U\to X$ is a flat cover, then by (loc.~cit.), $U\times_X U\rightrightarrows U\to X$ is a coequalizer diagram in 
+$\artinian_\Lambda$, hence 
+$\cX(X)\to \cX(U)\rightrightarrows \cX(U\times_X U)$ is an equalizer. 
 \end{proof}
 
+Our main reason for introducing the category $\sheaves_\fl(\artinian_\Lambda)$ 
+is that, as a (Grothendieck) topos, it is closed under arbitrary colimits. 
+Recall that in an \emph{equivalence relation} in $\widehat{\artinian_\Lambda}$ 
+is a morphism $R\to X\times X$ such that, for all $S$, the map 
+$R(S)\to X(S)\times X(S)$ is an injection whose image is an equivalence 
+relation on $X(S)$. We define the quotient $X/R$ to be the coequalizer 
+\[
+\begin{tikzcd}
+	R \ar[r, shift left=.5ex] \ar[r, shift right=.5ex]
+		& X \ar[r]
+		& X/R .
+\end{tikzcd}
+\]
+By Giraud's Theorem \cite[App.]{maclane-moerdijk-1994}, for any 
+$S\in \artinian_\Lambda$, the natural map $X(S)/R(S)\to (X/R)(S)$ is injective. 
+It will not be surjective in general. 
 
+We let $\sheaves_\fl(\artinian_\Lambda)$ inherit definitions from 
+$\artinian_\Lambda$ as follows. If $P$ is a property of maps in 
+$\artinian_\Lambda$ (for example, ``flat,'' or ``smooth,'') and 
+$f\colon X\to Y$ is a morphism in $\sheaves_\fl(\artinian_\Lambda)$, we say 
+that $f$ has $P$ if for all $S\in \artinian_\Lambda$ and $y\in Y(S)$, the 
+pullback $X_S=X\times_Y S$ lies in $\artinian_\Lambda$, and the pullback map 
+$X_S\to S$ has property $P$. For example, if $X=\spf(R')$ and $Y=\spf(R)$, then 
+$X\to Y$ has property $P$ if and only if for all finite length $A$ and 
+continuous $\Lambda$-algebra maps $R\to A$, the induced map 
+$A\to R'\otimes_R A$ has $P$.
 
+\begin{theorem}\label{thm:quotients-ind}
+Let $\cR\to \cX\times \cX$ be an equivalence relation in 
+$\indization(\artinian_\Lambda)$ such that one of the maps $\cR\to \cX$ is 
+flat. Then the quotient $\cX/\cR$ lies in $\indization(\artinian_\Lambda)$, and 
+$\cX\to \cX/\cR$ is a flat cover. 
+\end{theorem}
+\begin{proof}
+This is \cite[VII\textsubscript{B} 1.4]{sga3-1}. 
+\end{proof}
 
-
-\section{Basic definitions}
-
-Let $\kk$ be a finite field, $W(\kk)$ its ring of Witt vectors. 
-Let $\artinian$ be the category of artinian $W(\kk)$-algebras with residue field $\kk$. 
-Let $\hat\artinian$ be the category of local \emph{pseudocompact} $W(\kk)$-algebras, that is topological $W(\kk)$-algebras that are filtered inverse limits of rings in $\artinian$. 
-We will define various functors $\hat\artinian\to \sets$; such a functor $X$ is called \emph{representable} if there is $R\in \hat\artinian$ such that $X\simeq \hom(R,-)$. 
-Write $\formalspectrum(R)=\hom(R,-)$. 
-
-Fix a number field $F$. 
-For $S$ a finite set of places of $F$, write $G_{F,S}$ for the Galois group of the maximal extension of $F$ unramified outside $S$. 
-When $F=\dQ$, we will just write $G_S$. For simplicity, we write 
-$\h^\bullet(S,M)$ instead of $\h^\bullet(G_{F,S},M)$ and 
-$\h^\bullet(v,M)$ instead of $\h^\bullet(G_{F,v},M)$. 
-
-Fix a continuous representation $\rho_0:G_F\to \GL_2(\kk)$. A \emph{deformation theory} is a tuple $\deformationtheory=(S,T,\cL,\ast)$, where 
-\begin{itemize}
-  \item $S$ is a finite set of places of $F$, containing all places at which $\rho_0$ is ramified, 
-  \item $T$ is a finite set of places of $F$, containing $S$, 
-  \item $\cL=(\cL_v)_{v\in S}$, where $\cL_v\subset \h^1(v,\adjoint^?\rho_0)$, where $?$ is $0$ if $\ast$ is defined, 
-  \item $\ast$ is an optional integer $w$. 
-\end{itemize}
+By \cite[29.7]{matsumura-1989}, if $k$ is a field and $R$ is a complete regular 
+local $k$-algebra, then $R\simeq k\pow{t_1,\dots,t_n}$. In particular, $R$ 
+admits an augmentation $\epsilon\colon R\to k$. There is a general analogue of 
+this result, but first we need a definition. 
 
 \begin{definition}
-Let $\deformationtheory=(S,T,\cL,\ast)$ be a deformation theory. 
-The associated deformation functor $\deformationfunctor_\deformationtheory$ is defined on $\hat\artinian$ by: $\deformationfunctor_\deformationtheory(A)=$ all deformations of $\rho_0$ to $A$ that are unramified outside $S$, $T\smallsetminus S$-new, satisfy the local conditions $\cL$, and have weight $w$ if $\ast=w$. 
+A map $f\colon \cX\to \cY$ in $\indization(\artinian_\Lambda)$ is a 
+\emph{residual isomorphism} if for all $S=\spf(k)\in \artinian_\Lambda$ where 
+$k$ is a field, the map $f\colon \cX(S)\to \cY(S)$ is a bijection. 
 \end{definition}
 
-For $S=\{\text{ramified places of }\rho_0\}$, we put $\deformationfunctor=\deformationfunctor_{(S,S,0)}$. 
+\begin{lemma}\label{thm:smooth-section}
+Let $f\colon \cX\to \cY$ be a smooth map in $\indization(\artinian_\Lambda)$ 
+that is a residual isomorphism. Then $f$ admits a section. 
+\end{lemma}
+\begin{proof}
+By \cite[VII\textsubscript{B} 0.1.1]{sga3-1}, it suffices to prove the result 
+when $\cX=\spf(R')$, $\cY=\spf(R)$, for local $\Lambda$-algebras $R\to R'$ 
+with the same residue field. Let $k=R/\fm_R \iso R'/\fm_{R'}$ be their common 
+residue field. From the diagram 
+\[
+\begin{tikzcd}
+	R' \ar[r, dotted] \ar[dr, two heads]
+		& R \ar[d, two heads] \\
+	R \ar[u] \ar[ur, equal] \ar[r, two heads]
+		& k ,
+\end{tikzcd}
+\]
+the definition of (formal) smoothness, and a limiting argument involving the 
+finite length quotients $R/\fa$, we obtain the result. 
+\end{proof}
 
-Define carefully: $T$-new deformations, weight-$w$ deformations. The source for 
-all of this is \cite{mazur-1995}. 
+\begin{corollary}\label{thm:quotients-good}
+Let $\cR\to \cX\times \cX$ be an equivalence relation satisfying the hypotheses 
+of \ref{thm:quotients-ind}. Suppose further that 
+\begin{enumerate}
+\item
+One of the maps $\cR\to \cX$ is smooth, and 
+
+\item
+The projection $\cX\to \cX/\cR$ is a residual isomorphism. 
+\end{enumerate}
+Then $\cX\to \cX/\cR$ admits a section, so $\cX(S)/\cR(S)\iso (\cX/\cR)(S)$ 
+for all $S\in \artinian_\Lambda$. 
+\end{corollary}
+\begin{proof}
+By \ref{thm:smooth-section}, it suffices to prove that $\cX\to \cX/\cR$ is 
+smooth. By \cite[17.7.3(ii)]{ega4-4}, smoothness can be detected after flat 
+descent. So base-change with respect to the projection $\cX\to \cX/\cR$. In the 
+following commutative diagram 
+\[
+\begin{tikzcd}[column sep=small, row sep=small]
+	\cR \ar[dr, equal] \ar[drr, bend left] \ar[ddr, bend right] \\
+	& \cX\times_{\cX/\cR}\cX \ar[r] \ar[d]
+		& \cX \ar[d] \\
+	& \cX \ar[r]
+		& \cX/\cR
+\end{tikzcd}
+\]
+we can ensure the smoothness of $\cR\to \cX$ by our hypotheses. Since  
+$\cX\to \cX/\cR$ is smooth after flat base-change, the original map is smooth. 
+\end{proof}
+
+\begin{example}
+The hypothesis on residue fields in \ref{thm:quotients-good} is necessary. To 
+see this, let $\Lambda=k$ be a field, $k\monic K$ a finite Galois extension 
+with Galois group $G$. Then $G\times \spf(K)\rightrightarrows \spf(K)$ has 
+quotient $\spf(k)$, but the map $\spf(K)(S)\to \spf(k)(S)$ is \emph{not} 
+surjective for all $S\in \artinian_k$, e.g.~it is not for $S=\spf(k)$. 
+\end{example}
+
+\begin{example}
+The hypothesis of smoothness in \ref{thm:quotients-good} is necessary. To see 
+this, let $k$ be a field of characteristic $p>0$. Then the formal additive 
+group $\widehat\Ga=\spf(k\pow{t})$ has a subgroup $\balpha_p$ defined by 
+\[
+  \balpha_p(S) = \{s\in \sO(S)\colon s^p=0\} .
+\]
+The quotient $\widehat\Ga/\balpha_p$ has as affine coordinate ring 
+$k\pow{t^p}$. In particular, the following sequence is exact in the flat 
+topology:
+\[
+\begin{tikzcd}
+	0 \ar[r]
+		& \balpha_p \ar[r]
+		& \widehat\Ga \ar[r, "(\cdot)^p"]
+		& \widehat\Ga \ar[r]
+		& 0 .
+\end{tikzcd}
+\]
+It follows that 
+$\balpha_p\times \widehat\Ga\rightrightarrows\widehat\Ga\xrightarrow{(\cdot)^p} \widehat\Ga$
+is a coequalizer in $\sheaves_\fl(\artinian_k)$ satisfying all the hypothese 
+of \ref{thm:quotients-good} except smoothness. And indeed, as one sees by 
+letting $S=\spf(A)$ for any non-perfect $k$-algebra $A$, the map 
+$(\cdot)^p\colon \widehat\Ga(S)\to \widehat\Ga(S)$ is \emph{not} surjective for 
+all $S$. 
+\end{example}
+
+
+
+
+
+\section{Deformations of group representations}
+
+\section{Tangent spaces and obstruction theory}
+
 
 
 
