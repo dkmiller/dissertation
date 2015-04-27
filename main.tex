@@ -373,9 +373,86 @@ will be badly behaved. We loosely follow \cite{tilouine-1996}.
 
 \section{Tangent spaces and obstruction theory}
 
-For $S\in \Art_\Lambda$, let $\Exal_S$ be the category of square-zero 
-thickenings of $S$. An object of $\Exal_S$ is a closed embedding 
-$S\hookrightarrow T$ whose ideal of definition has square zero. 
+For $S_0\in \Art_\Lambda$, let $\Exal_{S_0}$ be the category of square-zero 
+thickenings of $S_0$. An object of $\Exal_{S_0}$ is a closed embedding 
+$S\hookrightarrow S$ whose ideal of definition has square zero. Should be 
+``exponential exact sequence''
+\[
+\begin{tikzcd}
+	0 \ar[r]
+		& \fg(I) \ar[r]
+		& \cG(S) \ar[r]
+		& \cG(S_0) \ar[r]
+		& 1
+\end{tikzcd}
+\]
+This gives us a class $\exp\in \h^2(\cG(S_0),\fg(I))$. For 
+$\rho_0\colon \Gamma\to \cG(S_0)$, the obstruction class is 
+$o(\rho_0,I) = \rho_0^\ast(\exp)\in \h^2(\Gamma,\fg(I))$. It's easy to check 
+that $o(\rho_0,I)=0$ if and only if $\rho_0$ lifts to $\rho$. So obstruction 
+theory naturally for $\Rep^\square(\Gamma,\cG)$. 
+
+[Use \cite[6.6.4]{weibel-1994}. Given setting as above, $\rho_0^\ast(\exp)$ is 
+the pullback by $\rho_0$:
+\[
+\begin{tikzcd}
+	0 \ar[r] 
+		& \fg(I) \ar[r] \ar[d, equals]
+		& ? \ar[r] \ar[d] 
+		& \Gamma \ar[d, "\rho_0"] \ar[r]
+		& 1 \\
+	0 \ar[r] 
+		& \fg(I) \ar[r]
+		& \cG(S_1) \ar[r] 
+		& \cG(S_0) \ar[r] 
+		& 1
+\end{tikzcd}
+\]
+Computing explicitly, we see the result. 
+]
+
+
+---------------------------------------------
+
+Let $\cX\in \Ind(\Art_{/\Lambda})$ be smooth, and 
+$\LL_{\cX/\Lambda}\simeq \Omega_{\cX/\Lambda}^1[0]$ be its cotangent complex. 
+Fix $x_0\in \cX(S_0)$. From the chain 
+$S_0\xrightarrow{x_0} \cX \to \spf(\Lambda)$, we get a distinguished triangle 
+\cite[II 2.1.5.6]{illusie-1971}
+\[
+\begin{tikzcd}
+	x_0^\ast \LL_{\cX/\Lambda} \ar[r]
+		& \LL_{S_0/\Lambda} \ar[r]
+		& \LL_{S_0/\cX} \ar[r] 
+		& {} .
+\end{tikzcd}
+\]
+If $I$ is a coherent sheaf on $S_0$, we get a long exact sequence:
+\[
+\begin{tikzcd}[column sep=small]
+	\ext^0(\LL_{S_0/\Lambda},M) \ar[r]
+		& \ext^0(x_0^\ast \LL_{\cX/\Lambda},M) \ar[r]
+		& \ext^1(\LL_{S_0/\cX},M) \ar[r]
+		& \ext^1(\LL_{S_0/\Lambda},M) \ar[r]
+		& \ext^1(x_0^\ast \LL_{\cX/\Lambda},M)
+\end{tikzcd}
+\]
+If $\cX_{/\Lambda}$ is smooth, then $\ext^1(x_0^\ast\LL_{\cX/\Lambda},M)=0$ and 
+$\LL_{\cX/\Lambda} = \Omega_{\cX/\Lambda}^1$. This gives us an exact sequence 
+\[
+\begin{tikzcd}[column sep=small]
+	\ext^0(\LL_{S_0/\Lambda},M) \ar[r]
+		& \hom(\Omega_{\cX/\Lambda}^1,M) \ar[r]
+		& \ext^1(\LL_{S_0/\cX},M) \ar[r]
+		& \ext^1(\LL_{S_0/\Lambda},M) \ar[r]
+		& 0 .
+\end{tikzcd}
+\]
+The result \cite[III 2.1.7]{illusie-1971} tells us that the choice of 
+$S\in \Exal_{S_0}(M)$ gives us an element of $\ext^1(\LL_{S_0/\Lambda},M)$. 
+Its fiber admits an action of $\hom(\Omega_{\cX/\Lambda}^1,M)$. The only thing 
+remaining is: we need $\ext^0(\LL_{S_0/\Lambda},M)=0$, which doesn't hold in 
+complete generality. 
 
 
 
