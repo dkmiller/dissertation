@@ -363,9 +363,54 @@ Let $\Gamma\in \Gp(\widehat{\Art_\Lambda})$ and $\cG\in \Ind(\Art_\Lambda)$. By
 \]
 is in $\Ind(\Art_\Lambda)$. We would like to define an ind-scheme 
 $\Rep(\Gamma,\cG)$ as ``$\Rep^\square(\Gamma,\cG)$ modulo conjugation,'' but 
-this requires some care. If $\zentrum(\cG)\ne 1$, then the conjugation action 
-of $\cG$ on $\Rep^\square(\Gamma,\cG)$ will not be faithful, so the quotient 
-will be badly behaved. We loosely follow \cite{tilouine-1996}. 
+this requires some care. The conjugation action of $\cG$ on 
+$\Rep^\square(\Gamma,\cG)$ will have fixed points, so the quotient will be 
+badly behaved. We loosely follow \cite{tilouine-1996}. 
+
+For $\cX,\cS\in \Ind(\Art_\Lambda)$, the base-change $\cX_\cS$ is by definition 
+the fiber-product: 
+\[
+\begin{tikzcd}
+	\cX_\cS \ar[r] \ar[d]
+		& \cX \ar[d] \\
+	\cS \ar[r]
+		& \spf(\Lambda) .
+\end{tikzcd}
+\]
+The rough idea is: for some $\cS$ such that $\cG^\mathrm{ad}_\cS$ acts freely 
+on $\Rep^\square(\Gamma,\cG)$, put 
+\[
+  \Rep(\Gamma,\cG)_\cS = \Rep^\square(\Gamma,\cG)_\cS / \cG^\mathrm{ad}_\cS .
+\]
+
+\begin{theorem}
+Suppose $(\Lambda,\fm,\kk)$ is henselian local. If 
+$\cX,\cY\in \Ind(\Art_\Lambda)$ are connected and $\cX(\kk)\ne\varnothing$, 
+then $\cX\times_\Lambda \cY$ is connected. 
+\end{theorem}
+\begin{proof}
+We are reduced to proving the following result from commutative algebra: if 
+$R,S$ are local pro-artinian $\Lambda$-algebras and $R$ has residue field 
+$\kk$, then $R\widehat\otimes_\Lambda S$ is local. Clearly, 
+$\fm_R\otimes S$ is contained in the radical of $R\widehat\otimes_\Lambda S$, 
+so it suffices to prove that $\kk\otimes_\Lambda S$ is local. By 
+\cite[18.5.?]{ega4-4}\ldots henselian... only works for finite-type $\Lambda$-algebras...
+okay because all qts are finite.
+
+That is, $\kk\widehat\otimes_\Lambda S = \varprojlim \kk\otimes_\Lambda (S/\mathfrak s)$, 
+use hensel for each quotient. 
+
+Generally, $\pi_0(\cX\times \cY)=\pi_0(\cX)\times \pi_0(\cY)$, if $\pi_0(-)$ 
+means ``restrict to spectra of fields,'' and product is taken in that category. 
+\end{proof}
+
+
+
+
+
+\section{Groupoids and local conditions}
+
+d
 
 
 
@@ -375,7 +420,7 @@ will be badly behaved. We loosely follow \cite{tilouine-1996}.
 
 For $S_0\in \Art_\Lambda$, let $\Exal_{S_0}$ be the category of square-zero 
 thickenings of $S_0$. An object of $\Exal_{S_0}$ is a closed embedding 
-$S\hookrightarrow S$ whose ideal of definition has square zero. Should be 
+$S_0\hookrightarrow S$ whose ideal of definition has square zero. Should be 
 ``exponential exact sequence''
 \[
 \begin{tikzcd}
@@ -398,18 +443,41 @@ the pullback by $\rho_0$:
 \begin{tikzcd}
 	0 \ar[r] 
 		& \fg(I) \ar[r] \ar[d, equals]
-		& ? \ar[r] \ar[d] 
+		& \cG(S)\times_{\cG(S_0)} \Gamma \ar[r] \ar[d] 
 		& \Gamma \ar[d, "\rho_0"] \ar[r]
 		& 1 \\
 	0 \ar[r] 
 		& \fg(I) \ar[r]
-		& \cG(S_1) \ar[r] 
+		& \cG(S) \ar[r] 
 		& \cG(S_0) \ar[r] 
 		& 1
 \end{tikzcd}
 \]
 Computing explicitly, we see the result. 
 ]
+
+\begin{proposition}
+Let $f\colon G\to H$ be a morphism of profinite groups. Suppose 
+$c\in \h^2(H,M)$ corresponds to the extension 
+\[
+\begin{tikzcd}
+	0 \ar[r]
+		& M \ar[r]
+		& \widetilde H \ar[r]
+		& H \ar[r] 
+		& 1 .
+\end{tikzcd}
+\]
+Then $f^\ast c=0$ if and only if there is a map 
+$\widetilde f\colon G\to \widetilde H$ making the following diagram commute: 
+\[
+\begin{tikzcd}[row sep=small]
+	& \widetilde H \ar[dd] \\
+	G \ar[ur, "\widetilde f"] \ar[dr, "f"] \\
+	& H .
+\end{tikzcd}
+\]
+\end{proposition}
 
 
 ---------------------------------------------
