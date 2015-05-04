@@ -85,6 +85,18 @@ Let $\Lambda$ be a pseudocompact ring, $\Art_\Lambda$ as above. Then
 $\Art_\Lambda$ is closed under finite limits and colimits. 
 \end{lemma}
 
+\begin{lemma}
+Let $\Lambda$ be a pseudocompact local ring. Then $\Lambda$ is henselian, in 
+any of the following senses:
+\begin{enumerate}
+\item
+d
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+\cite[18.5.?]{ega4-4}
+\end{proof}
+
 Following Grothendieck, if $\cC$ is an arbitrary category, we write 
 $\widehat\cC=\hom(\cC^\circ,\sets)$ for the category of contravariant functors 
 $\cC\to \sets$. We regard $\cC$ as a full subcategory of $\widehat\cC$ via the 
@@ -354,6 +366,31 @@ all $S$.
 
 
 
+\section{Groupoids and quotient stacks}
+
+\begin{lemma}
+Let $\cG\in \Ind(\Art_\Lambda)$ be a smooth connected group. Then every 
+$\cG$-torsor is trivial. 
+\end{lemma}
+\begin{proof}
+Let $\cP\to \cB$ be a $\cG$-torsor in $\Ind(\Art_\Lambda)$. That is, $\cP$ has 
+an action of $\cG_\cS$ for which $\cP\times_\cB\cP\simeq \cG\times \cP$ as 
+$\cG$-spaces. [\ldots not done\ldots]
+\end{proof}
+
+\begin{theorem}
+Let $\cG$ be a smooth connected group in $\Ind(\Art_\Lambda)$, and 
+$\cX\in \Ind(\Art_\Lambda)$ a $\cG$-object. Then the quotient stack 
+$[\cX/\cG](S)$ has as objects $\cX(S)/\cG(S)$, but with extra automorphisms? 
+\end{theorem}
+\begin{proof}
+Use triviality of torsors. 
+\end{proof}
+
+
+
+
+
 \section{Deformations of group representations}
 
 Let $\Gamma\in \Gp(\widehat{\Art_\Lambda})$ and $\cG\in \Ind(\Art_\Lambda)$. By 
@@ -367,50 +404,51 @@ this requires some care. The conjugation action of $\cG$ on
 $\Rep^\square(\Gamma,\cG)$ will have fixed points, so the quotient will be 
 badly behaved. We loosely follow \cite{tilouine-1996}. 
 
-For $\cX,\cS\in \Ind(\Art_\Lambda)$, the base-change $\cX_\cS$ is by definition 
-the fiber-product: 
-\[
-\begin{tikzcd}
-	\cX_\cS \ar[r] \ar[d]
-		& \cX \ar[d] \\
-	\cS \ar[r]
-		& \spf(\Lambda) .
-\end{tikzcd}
-\]
-The rough idea is: for some $\cS$ such that $\cG^\mathrm{ad}_\cS$ acts freely 
-on $\Rep^\square(\Gamma,\cG)$, put 
-\[
-  \Rep(\Gamma,\cG)_\cS = \Rep^\square(\Gamma,\cG)_\cS / \cG^\mathrm{ad}_\cS .
-\]
+Assume $\Lambda$ is local, with maximal ideal $\fm$ and residue field $\kk$. 
+Fix $\bar\rho\in \Rep^\square(\Gamma,\cG)(\kk)$, i.e.~a residual representation 
+$\bar\rho\colon \Gamma\to \cG(\kk)$. Let $\Rep^\square(\Gamma,\cG)_{\bar\rho}$ 
+be the connected component of $\bar\rho$ in $\Rep^\square(\Gamma,\cG)$. Assume 
+that $\cG$ and $\zentrum(\cG)$ are smooth; then the quotient 
+$\cG^\ad=\cG/\zentrum(\cG)$ is also smooth. Let $\cG^{\ad,\circ}$ be the 
+connected component of $1$ in $\cG^\ad$. 
 
 \begin{theorem}
-Suppose $(\Lambda,\fm,\kk)$ is henselian local. If 
-$\cX,\cY\in \Ind(\Art_\Lambda)$ are connected and $\cX(\kk)\ne\varnothing$, 
-then $\cX\times_\Lambda \cY$ is connected. 
+Suppose $(\Lambda,\fm,\kk)$ is local. If $\cX,\cY\in \Ind(\Art_\Lambda)$ are 
+connected and $\cX(\kk)\ne\varnothing$, then $\cX\times_\Lambda \cY$ is 
+connected. 
 \end{theorem}
 \begin{proof}
 We are reduced to proving the following result from commutative algebra: if 
 $R,S$ are local pro-artinian $\Lambda$-algebras and $R$ has residue field 
-$\kk$, then $R\widehat\otimes_\Lambda S$ is local. Clearly, 
-$\fm_R\otimes S$ is contained in the radical of $R\widehat\otimes_\Lambda S$, 
-so it suffices to prove that $\kk\otimes_\Lambda S$ is local. By 
-\cite[18.5.?]{ega4-4}\ldots henselian... only works for finite-type $\Lambda$-algebras...
-okay because all qts are finite.
-
-That is, $\kk\widehat\otimes_\Lambda S = \varprojlim \kk\otimes_\Lambda (S/\mathfrak s)$, 
-use hensel for each quotient. 
-
-Generally, $\pi_0(\cX\times \cY)=\pi_0(\cX)\times \pi_0(\cY)$, if $\pi_0(-)$ 
-means ``restrict to spectra of fields,'' and product is taken in that category. 
+$\kk$, then $R\widehat\otimes_\Lambda S$ is local. Since 
+$R\widehat\otimes_\Lambda S = \varprojlim (R/\fr)\otimes_\Lambda (S/\fs)$, 
+$\fr$ (resp.~$\fs$) ranges over all open ideals in $R$ (resp.~$S$), we may 
+assume that both $R$ and $S$ are artinian. The rings $R$ and $S$ are 
+henselian, so $R\otimes S$ is local if and only if 
+$(R/\fm_R)\otimes (S/\fm_S) = S/\fm_S$ is local, which it is. 
 \end{proof}
 
+We conclude that the action of $\cG^{\ad,\circ}$ on $\Rep^\square(\Gamma,\cG)$ 
+preserves $\Rep^\square(\Gamma,\cG)_{\bar\rho}$. Thus we may put 
+\[
+	\Rep(\Gamma,\cG)_{\bar\rho} = [\Rep^\square(\Gamma,\cG)_{\bar\rho} / \cG^{\ad,\circ}] .
+\]
+If $\cG^{\ad,\circ}$ acts faithfully on $\Rep^\square(\Gamma,\cG)_{\bar\rho}$, 
+then we recover the classical notion of the deformation functor. 
 
+\begin{theorem}
+Let $\Gamma$ be a profinite group, $\bar\rho\colon \Gamma\to \cG(\kk)$ a 
+representation with $\h^0(\Gamma,\Ad\bar\rho)=0$. Then 
+$\Rep(\Gamma,\cG)_{\bar\rho}$ exists and is what you expect. 
+\end{theorem}
+\begin{proof}
+Need assumptions on $\zentrum(\cG)$, $\cG$ should be smooth. 
 
+Need $\zentrum(\cG)=\ker(\cG\to \GL(\fg))$ in connected case. This should use 
+$\fg=\lie(\aut \cG)$, via deviations in \cite{sga3-1}. 
+\end{proof}
 
-
-\section{Groupoids and local conditions}
-
-d
+[\ldots local conditions]
 
 
 
@@ -457,8 +495,8 @@ Computing explicitly, we see the result.
 ]
 
 \begin{proposition}
-Let $f\colon G\to H$ be a morphism of profinite groups. Suppose 
-$c\in \h^2(H,M)$ corresponds to the extension 
+Let $f\colon G\to H$ be a morphism of profinite groups. Suppose $M$ is a 
+discrete $H$-module and $c\in \h^2(H,M)$ corresponds to the extension 
 \[
 \begin{tikzcd}
 	0 \ar[r]
@@ -468,7 +506,7 @@ $c\in \h^2(H,M)$ corresponds to the extension
 		& 1 .
 \end{tikzcd}
 \]
-Then $f^\ast c=0$ if and only if there is a map 
+Then $f^\ast c=0$ in $\h^2(G,M)$ if and only if there is a map 
 $\widetilde f\colon G\to \widetilde H$ making the following diagram commute: 
 \[
 \begin{tikzcd}[row sep=small]
@@ -478,6 +516,26 @@ $\widetilde f\colon G\to \widetilde H$ making the following diagram commute:
 \end{tikzcd}
 \]
 \end{proposition}
+\begin{proof}
+By \cite[6.6.4]{weibel-1994}, the class $f^\ast c$ corresponds to the pullback 
+diagram: 
+\[
+\begin{tikzcd}
+	0 \ar[r]
+		& M \ar[r] \ar[d, equals]
+		& G\times_H \widetilde{H} \ar[r] \ar[d] 
+		& G \ar[r] \ar[d, "f"]
+		& 1 \\
+	0 \ar[r]
+		& M \ar[r]
+		& \widetilde H \ar[r]
+		& H \ar[r] 
+		& 1 .
+\end{tikzcd}
+\]
+Writing explicitly what it means for $G\times_H \widetilde H \to G$ to split 
+yields the result. 
+\end{proof}
 
 
 ---------------------------------------------
