@@ -1,3 +1,45 @@
 % !TEX root = main.tex
 
 \chapter{Introduction}
+
+
+
+
+
+Let's start with something basic, an elliptic curve $E_{/\bQ}$. For any 
+prime $l$, we have the Tate module of $E$, written $\tate_l E$. This is a 
+rank-$2$ $\bZ_l$-module with continuous $G_\bQ$-action, so it induces a 
+continuous representation 
+\[
+	\rho_{E,l} \colon G_\bQ \to \GL_2(\bZ_l) .
+\]
+It is known (citation?) that the quantities $a_p(E) = \tr \rho_l(\frob_p)$ lie 
+in $\bZ$ and satisfy the Hasse bound 
+\[
+	|a_p(E)| < 2\sqrt p .
+\]
+Thus we can define, for each prime $p$, the corresponding Satake parameter for 
+$E$. 
+\[
+	\theta_p(E) = \cos^{-1}\left(\frac{a_p(E)}{2\sqrt p}\right) \in [0,\pi) .
+\]
+The Satake parameters are packaged into an $L$-function as follows:
+\[
+	L(E,s) = \prod_p \frac{1}{(1 - e^{i \theta_p(E)} p^{-s})(1- e^{-i \theta_p(E)} p^{-s})} .
+\]
+
+Theorem: analytic continuation of $L(E,s)$ past $\Re s=1$ is equivalent to the 
+Sato--Tate conjecture, namely that the $\theta_p(E)$ are equidistributed. 
+
+Rephrase equidistribution. 
+
+So S--T is equivalent to discrepancy being $o(N)$. 
+
+Riemann Hypothesis is implied by A--T. 
+
+Does converse hold?
+
+No! We'll construct two classes of counterexamples. 
+
+And also provide computational evidence for the A--T conjecture (for elliptic 
+curves and also generic abelian $2$-folds). 
