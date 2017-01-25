@@ -16,7 +16,7 @@ continuous representation
 It is known (citation?) that the quantities $a_p(E) = \tr \rho_l(\frob_p)$ lie 
 in $\bZ$ and satisfy the Hasse bound 
 \[
-	|a_p(E)| < 2\sqrt p .
+	|a_p(E)| \leqslant 2\sqrt p .
 \]
 Thus we can define, for each prime $p$, the corresponding Satake parameter for 
 $E$. 
@@ -25,21 +25,93 @@ $E$.
 \]
 The Satake parameters are packaged into an $L$-function as follows:
 \[
-	L(E,s) = \prod_p \frac{1}{(1 - e^{i \theta_p(E)} p^{-s})(1- e^{-i \theta_p(E)} p^{-s})} .
+	L^\an(E,s) = \prod_p \frac{1}{(1 - e^{i \theta_p(E)} p^{-s})(1- e^{-i \theta_p(E)} p^{-s})} .
+\]
+More generally we have, for each $k\geqslant 1$, the $k$-th symmetric power 
+$L$-function 
+\[
+	L^\an(\sym^k E, s) = \prod_p \prod_{j=0}^k \frac{1}{1 - e^{i (k - 2j) \theta_p(E)} p^{-s}} .
 \]
 
-Theorem: analytic continuation of $L(E,s)$ past $\Re s=1$ is equivalent to the 
-Sato--Tate conjecture, namely that the $\theta_p(E)$ are equidistributed. 
+Numerical experiments suggest that the Satake parameters are distributed with 
+respect to the Sato--Tate distribution 
+$\ST = \frac{2}{\pi} \sin^2\theta\, \dd\theta$. The ``goodness of fit'' of the 
+Satake parameters to the Sato--Tate distribution is quantified by the 
+\emph{discrepancy}:
+\[
+	\disc^\star(\{\theta_p(E)\}_{p\leqslant X}, \ST) = \sup_{x\in [0,\pi]} \left| \frac{\#\{p\leqslant X : \theta_p(E)\in [0,x)\}}{\pi(X)} - \int_0^x \, \dd \ST\right| .
+\]
+The decay of the discrepancy is closely related to the analytic properties of 
+the $L(\sym^k E,s)$. First, here is the famous Sato--Tate conjecture (now a 
+theorem) in the language we have defined. 
 
-Rephrase equidistribution. (Chebotarev, strong RH). 
+\begin{theorem}[Sato--Tate conjecture]
+$\disc^\star(\{\theta_p(E)\}_{p\leqslant X}, \ST) \to 0$.  
+\end{theorem}
 
-So S--T is equivalent to discrepancy being $o(N)$. 
+\begin{theorem}
+The Sato--Tate conjecture for $E$ holds if and only if each of the functions 
+$L(\sym^k E,s)$ have analytic continuation past $\Re s=1$. 
+\end{theorem}
 
-Riemann Hypothesis is implied by A--T. 
+The stunning recent proof of the Sato--Tate conjecture (citation) in fact 
+showed that the functions $L(\sym^k E,s)$ were potentially automorphic, which 
+gives analytic continuation. 
 
-Does converse hold?
+There is an analogy between the above equivalence and classical analytic number 
+theory. Let $K/\bQ$ be a finite Galois extension, and 
+$\rho\colon \Gal(K/\bQ) \to \GL_n(\bC)$ an irreducible representation. Recall 
+the Artin $L$-function is 
+\[
+	L(\rho,s) = \prod_p \frac{1}{1-\tr \rho(\frob_p) p^{-s}} .
+\]
+Let $\Gal(K/\bQ)^\natural$ be the set of conjugacy classes in $\Gal(K/\bQ)$. 
+The analogue of discrepancy here is: 
+\[
+	\disc(\{\frob_p\}_{p\leqslant X}) = \sup_{c\in \Gal(K/\bQ)^\natural} \left| \frac{\# \{p\leqslant X : \rho(\frob_p) \in c\}}{\pi(X)} - \frac{1}{\# \Gal(K/\bQ)^\natural}\right| .
+\]
 
-No! We'll construct two classes of counterexamples. 
+\begin{theorem}
+The ``discrepancy'' $\disc(\{\frob_p\}_{p\leqslant X})\to 0$ if and only 
+if $L(\rho,s)$ has analytic continuation past $\Re s=1$ for all non-trivial 
+irreducible representations $\rho$ of $\Gal(K/\bQ)$. 
+\end{theorem}
 
-And also provide computational evidence for the A--T conjecture (for elliptic 
-curves and also generic abelian $2$-folds). 
+In the case of Artin $L$-functions, we know moreover that 
+
+\begin{theorem}
+The ``discrepancy'' satisfies the bound 
+$\disc(\{\frob_p\}_{p\leqslant X}) \ll X^{-1/2+\epsilon}$ if and only if 
+$L(\rho,s)$ satisfies the Riemann Hypothesis for all non-trivial irreducible 
+representation $\rho$ of $\Gal(K/\bQ)$. 
+\end{theorem}
+
+In this context, the ``Riemann Hypothesis'' for $L(\rho,s)$ means exactly that 
+$\log L(\rho,s)$ has analytic continuation to $\Re s=1/2$. 
+
+The connection between the Riemann Hypothesis and ``strong Sato--Tate'' 
+generalizes to elliptic curves and more general motives. For the moment, we 
+stick to elliptic curves. In this case, ``strong Sato--Tate'' was conjectured 
+by Akiyama--Tanigawa. More precisely, 
+
+Conjecture:
+
+Let $E_{/\bQ}$ be a non-CM elliptic curve. Then 
+$\disc^\star(\{\theta_p(E)\}_{p\leqslant X}, \ST) \ll X^{-1/2+\epsilon}$. 
+
+
+Moreover, one side of the equivalence ``Riemann Hypothesis $\Leftrightarrow$ 
+strong Sato--Tate'' is known. 
+
+\begin{theorem}
+Let $E_{/\bQ}$ be an elliptic curve. If the Akiyama--Tanigawa conjecture for 
+$E$ holds, then all $L(\sym^k E, s)$ satisfy the Riemann Hypothesis. 
+\end{theorem}
+
+It is natural to assume that the converse to this theorem holds. However (and 
+that is the main point of this thesis) it does not! In this thesis, I construct 
+a range of counterexamples to the implication ``strong Sato--Tate implies 
+Riemann,'' and explore why the two are equivalent for Artin $L$-functions. 
+
+I also provide computational evidence for the Akiyama--Tanigawa conjecture 
+(for elliptic curves and also generic abelian $2$-folds). 
