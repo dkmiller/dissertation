@@ -6,17 +6,13 @@
 
 
 
+\section{Definitions and first results}
+
 The discrepancy (also known as the Kolmogorov--Smirnov statistic) is a way of 
 measuring how closely sample data fits a predicted distribution. It has many 
 applications in computer science and statistics, but here we will focus on only 
 the basic known properties, as well as how discrepancy changes when sequences 
 are tweaked and/or combined. 
-
-
-
-
-
-\section{Definitions and first results}
 
 Discrepancy will be defined for measures on the $d$-dimensional half-open box 
 $[0,\infty)^d$. For vectors $x,y\in [0,\infty)^d$, we say $x<y$ if 
@@ -41,31 +37,55 @@ where $y$ ranges over $[0,\infty)^d$.
 \begin{lemma}
 Let $\mu,\nu$ be Borel measures on $\bR^d$. Then 
 \[
-	\disc^\star(\mu,\nu) \leqslant \disc(\mu,\nu) \leqslant ? \disc^\star(\mu,\nu) .
+	\disc^\star(\mu,\nu) \leqslant \disc(\mu,\nu) \leqslant 2^d \disc^\star(\mu,\nu) .
 \]
 \end{lemma}
 \begin{proof}
 The first inequality holds because the supremum defining the discrepancy is 
 taken over a larger set than that defining star discrepancy. To prove the 
-second inequality, let $x<y$ be in $[0,\infty)^d$. 
+second inequality, let $x<y$ be in $[0,\infty)^d$. For 
+$S\subset \{1,\dots,d\}$, let 
+\[
+	I_S = \{ t \in [0,y) : t_i < x_i \text{ for all }i\in S\} .
+\]
+The inclusion-exclusion principle for measures tells us that: 
+\[
+	\mu[x,y) = \sum_{S\subset \{1,\dots,d\}} (-1)^{\# S} \mu(I_S) ,
+\]
+and similarly for $\nu$. Since each of the $I_S$ are ``half-open boxes'' 
+we know that $|\mu(I_S) - \nu(I_S)| \leqslant \disc^\star(\mu,\nu)$. It 
+follows that 
+\[
+	|\mu[x,y) - \nu[x,y)| \leqslant \sum_{S\subset \{1,\dots,d\}} |\mu(I_S) - \nu(I_S)| \leqslant 2^d \disc^\star(\mu,\nu) .
+\]
 \end{proof}
 
-Let $\bx = \{x_p\}$ be a sequence in 
-$\bR^d$ indexed by the prime numbers, and $\mu$ a Borel measure on $\bR^d$. For 
+We are usually interested in comparing empirical measures and their conjectured 
+distribution. Namely, let $\bx = \{x_p\}$ be a sequence in $[0,\infty)^d$ 
+indexed by the prime numbers, and $\mu$ a Borel measure on $[0\infty)^d$. For 
 any real number $N\geqslant 2$, we write $\bx^N$ for the empirical measure 
 given by 
 \[
 	\bx^N(S) = \frac{1}{\pi(N)} \sum_{p\leqslant N} \delta_{x_p}(S) = \frac{\# \{p\leqslant N : x_p\in S\}}{\pi(N)} .
 \]
 Also, we write $\bx_{\geqslant N}$ for the truncated sequence 
-$(x_p)_{p\geqslant N}$, and similarly for $\bx_{\leqslant N}$, etc. 
+$(x_p)_{p\geqslant N}$, and similarly for $\bx_{\leqslant N}$, etc. In this 
+context, 
+\[
+	\disc^\star(\bx^N,\nu) = \sup_{y\in [0,\infty)^d} \left| \frac{\# \{p\leqslant N : x_p \in [0,y)\}}{\pi(N)} - \int_{[0,y)} \, \dd\nu\right| .
+\]
 
-Then $\disc(\bx^N, \mu)$. Also 
+If the measure $\nu$ is only defined on a subset of $[0,\infty)^d$, we will 
+tacitly extend it by zero. Moreover, if the sequence $\bx$ actually lies in a 
+torus $(\bR/a \bZ)^d$, we identify that torus with the 
+$[0,a)^d\subset [0,\infty)^d$. If $\nu$ is the Lebesgue measure (on 
+$[0,\infty)^d$) or the normalized Haar measure on the torus, we write 
+$\disc^\star(\bx^N)$ in place of $\disc^\star(\bx^N, \nu)$. 
 
-Euclidean space vs.~torus
-
-When $\nu$ is the appropriate Lebesgue measure (for whole space or a torus) 
-write $\disc(\bx^N)$. 
+Sometimes the sequence $\bx$ will not be indexed by the prime numbers, but 
+rather by some other discrete subset of $\bR^+$. In that case we will still 
+use the notations $\bx^N$, $\bx_{\geqslant N}$, etc., keeping in mind that 
+$\pi(N)$ is replaced by $\#\{\textnormal{indices }\leqslant N\}$. 
 
 
 
@@ -73,7 +93,8 @@ write $\disc(\bx^N)$.
 
 \section{The Koksma--Hlawka inequality}
 
-d
+% TODO
+Basically just summarize the paper \cite{okten-1999}. 
 
 
 
@@ -81,9 +102,53 @@ d
 
 \section{Comparing sequences}
 
+\begin{lemma}
+Let $\bx$ and $\by$ be sequences in $[0,\infty)$. Suppose 
+$\nu = f\cdot \lambda$ for $f$ a bounded continuous function and $\lambda$ the 
+Lebesgue measure. Then 
+\[
+	\left|\disc^\star(\bx^N, \nu) - \disc^\star(\by^N,\nu)\right| \leqslant \|f\|_\infty \epsilon + \disc^\star(\bx^N,\nu) + \frac{\#\{ p\leqslant N : \|x_p - y_p\|_\infty \geqslant \epsilon\}}{\pi(N)} .
+\]
+\end{lemma}
+\begin{proof}
+Let $\epsilon>0$ and $t\in [0,\infty)$ be arbitrary. For all $p\leqslant N$ 
+such that $y_p<t$, either $x_p < t+\epsilon$ or 
+$\|x_p - y_p\|_\infty \geqslant \epsilon$. It follows that 
+\[
+	\by^N[0,t) \leqslant \bx^N[0,t+\epsilon) + \frac{\#\{ p\leqslant N : \|x_p - y_p\|_\infty \geqslant \epsilon\}}{\pi(N)} .
+\]
+Moreover, we trivially have 
+\[
+	\left| \bx^N[0,t+\epsilon) - \nu[0,t+\epsilon)\right| \leqslant \disc^\star(\bx^N,\nu) .
+\]
+Putting these together, we get: 
+\begin{align*}
+	\by^N[0,t) - \nu[0,t) 
+		&\leqslant \bx^N[0,t+\epsilon) - \nu[0,t) + \frac{\#\{ p\leqslant N : \|x_p - y_p\|_\infty \geqslant \epsilon\}}{\pi(N)} \\
+		&\leqslant \nu[t,t+\epsilon) + \disc^\star(\bx^N,\nu) + \frac{\#\{ p\leqslant N : \|x_p - y_p\|_\infty \geqslant \epsilon\}}{\pi(N)} \\
+		&\leqslant \|f\|_\infty \epsilon + \disc^\star(\bx^N,\nu) + \frac{\#\{ p\leqslant N : \|x_p - y_p\|_\infty \geqslant \epsilon\}}{\pi(N)} 
+\end{align*}
+as desired. 
+\end{proof}
+
+\begin{lemma}
+Let $\sigma$ be an isometry of $\bR$, and $\bx$ a sequence in $[0,\infty)$ 
+such that $\sigma(\bx)$ is also in $[0,\infty)$. Let $\nu$ be an absolutely 
+continuous measure on $[0,\infty)$ such that $\sigma_\ast \nu$ is also 
+supported on $[0,\infty)$. Then 
+\[
+	\left|\disc^\star(\bx^N, \nu) - \disc^\star(\sigma_\ast \bx^N, \sigma_\ast \nu)\right| \ll N^{-1} ? .
+\]
+\end{lemma}
+\begin{proof}
+Every isometry of $\bR$ is a combination of translations and reflections. 
+The statement is clear with translations (the two discrepancies are equal). So, 
+suppose $\sigma(t) = a - t$ for some $a>0$. 
+
 If $\{x_n\}\subset [0,\pi/2)$ has some discrepancy with respect to some 
 measure, then the ``flipped'' sequence $\{\pi/2-x_n\}$ has the same discrepancy 
 with respect to the ``flipped'' measure. 
+\end{proof}
 
 
 
