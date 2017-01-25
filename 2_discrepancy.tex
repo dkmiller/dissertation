@@ -6,13 +6,66 @@
 
 
 
+The discrepancy (also known as the Kolmogorov--Smirnov statistic) is a way of 
+measuring how closely sample data fits a predicted distribution. It has many 
+applications in computer science and statistics, but here we will focus on only 
+the basic known properties, as well as how discrepancy changes when sequences 
+are tweaked and/or combined. 
+
+
+
+
+
 \section{Definitions and first results}
 
-regular discrepancy
+Discrepancy will be defined for measures on the $d$-dimensional half-open box 
+$[0,\infty)^d$. For vectors $x,y\in [0,\infty)^d$, we say $x<y$ if 
+$x_1<y_1$,\dots,$x_d<y_d$, and in that case write $[x,y)$ for the half-open 
+box $[x_1,y_1)\times \cdots \times [x_d,y_d)$. 
 
-star discrepancy
+\begin{definition}
+Let $\mu, \nu$ be probability measures on $[0,\infty)^d$. The 
+\emph{discrepancy} of $\mu$ with respect to $\nu$ is 
+\[
+	\disc(\mu,\nu) = \sup_{x < y} \left| \mu[x,y) - \nu[x,y)\right| ,
+\]
+where $x<y$ range over $[0,\infty)^d$.
+
+The \emph{star discrepancy} of $\mu$ with respect to $\nu$ is 
+\[
+	\disc^\star(\mu,\nu) = \sup_{0<y} \left| \mu[0,y) - \nu[0,y)\right| ,
+\]
+where $y$ ranges over $[0,\infty)^d$. 
+\end{definition}
+
+\begin{lemma}
+Let $\mu,\nu$ be Borel measures on $\bR^d$. Then 
+\[
+	\disc^\star(\mu,\nu) \leqslant \disc(\mu,\nu) \leqslant ? \disc^\star(\mu,\nu) .
+\]
+\end{lemma}
+\begin{proof}
+The first inequality holds because the supremum defining the discrepancy is 
+taken over a larger set than that defining star discrepancy. To prove the 
+second inequality, let $x<y$ be in $[0,\infty)^d$. 
+\end{proof}
+
+Let $\bx = \{x_p\}$ be a sequence in 
+$\bR^d$ indexed by the prime numbers, and $\mu$ a Borel measure on $\bR^d$. For 
+any real number $N\geqslant 2$, we write $\bx^N$ for the empirical measure 
+given by 
+\[
+	\bx^N(S) = \frac{1}{\pi(N)} \sum_{p\leqslant N} \delta_{x_p}(S) = \frac{\# \{p\leqslant N : x_p\in S\}}{\pi(N)} .
+\]
+Also, we write $\bx_{\geqslant N}$ for the truncated sequence 
+$(x_p)_{p\geqslant N}$, and similarly for $\bx_{\leqslant N}$, etc. 
+
+Then $\disc(\bx^N, \mu)$. Also 
 
 Euclidean space vs.~torus
+
+When $\nu$ is the appropriate Lebesgue measure (for whole space or a torus) 
+write $\disc(\bx^N)$. 
 
 
 
