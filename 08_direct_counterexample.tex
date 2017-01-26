@@ -1,3 +1,91 @@
 % !TEX root = main.tex
 
 \chapter{Direct counterexample}
+
+
+
+
+
+\section{Main ideas}
+
+The goal for this chapter is to construct a Galois representation 
+$\rho_l\colon G_\bQ \to \GL_2(\bZ_l)$, ramified at a density-zero set of 
+primes, such that 
+\begin{enumerate}
+\item
+We have $a_p = \tr \rho(\frob_p)\in \bZ$ whenever $\rho_l$ is unramified at 
+$p$. 
+
+\item
+$|a_p|\leqslant 2\sqrt p$. ($\rho_l$ satisfies the Hasse bound.)
+
+\item
+For $\theta_p=\cos^{-1}a_p / 2\sqrt p)$, the discrepancy 
+$\disc^\star(\btheta^N,\ST)\to 0$, but slower than any $N^{-\epsilon}$. 
+
+\item
+For any smooth $f\in C^\infty(\bR/2\pi\bZ)$ such that 
+$f(\pi-\theta) = -f(\theta)$, the associated $L$-function 
+$L_f(\btheta,s)$ satisfies the Riemann Hypothesis. 
+\end{enumerate}
+
+These points together imply that $\rho_l$ satisfies the Sato--Tate conjecture, 
+and $L(\sym^k \rho_l,s)$ satisfy the Riemann Hypothesis for odd $k$, but that 
+$\rho_l$ does not satisfy the strong Sato--Tate conjecture. 
+
+
+
+
+
+\section{Construction}
+
+Fix, for the remainder of this section, a continuous representation 
+\[
+	\bar\rho_l \colon G_\bQ \to \GL_2(\bF_l) .
+\]
+For each $p$ at which $\bar\rho_l$ is unramified, we write 
+\[
+	\Theta_p(\bar\rho_l) = \left\{\cos^{-1}\left(\frac{a}{2\sqrt p}\right) : a\in \bZ\text{, }|a|\leqslant 2\sqrt p\text{, and }a\equiv \tr\bar\rho_l(\frob_p)\pmod l\right\} .
+\]
+For the finitely many primes $p$ for which $\Theta_p(\bar\rho_l)$ is empty, 
+redefine $\Theta_p(\bar\rho_l)$ to include some elements for which 
+$|a|>2\sqrt p$. We have a sequence of $\Theta_p(\bar\rho_l)$ for which at most 
+finitely many do not satisfy the Hasse bound. 
+
+\begin{theorem}
+There exists a choice of $\theta_p\in \Theta_p(\bar\rho_l)$ for odd-indexed 
+primes $\{2,5,11,\dots\}$ such that 
+\begin{enumerate}
+\item
+$\theta_p\in [0,\pi/2)$ for all but finitely many $p$. 
+
+\item
+$\disc\left(\btheta_\odd^N, \left.\ST\right|_{[0,\pi/2)}\right) \to 0$, 
+but is not $\ll N^{-\epsilon}$ for any $\epsilon>0$. 
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+This is intuitively obvious, but a bit tricky to prove rigorously. 
+
+Two key ideas: 
+
+1. If we're given a ``bad'' finite distribution $\nu$, we can choose ``good'' 
+$\theta_p$'s to make the combined distribution close enough (discrepancy-wise) 
+to $\ST$. 
+
+2. If we're given a ``good'' finite distribution $\nu$, we can choose ``bad'' 
+$\theta_p\sim \pi/2$ to make the combined distribution far away 
+(discrepancy-wise) from $\ST$. 
+\end{proof}
+
+Claim: let $\mu,\nu$ be two absolutely continuous distributions. Suppose there 
+is a sequence $\{T_p\}$ of $\mu$-distributed sets, such that 
+$\disc(T_p,\mu) \ll p^{-1/2}$. Suppose moreover that $\mu/\nu$ is bounded away 
+from zero (at the pdf side). Then we can choose $t_p\in T_p$ so that 
+$\{t_p\}$ is $\nu$-equidistributed with good discrepancy. 
+
+
+
+
+
+\section{Associated Galois representation}
