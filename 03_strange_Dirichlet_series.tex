@@ -8,7 +8,92 @@
 
 \section{Definitions}
 
-strange Dirichlet series for a series of complex numbers
+We start by considering a very general class of Dirichlet series. In fact, they 
+are all Dirichlet series that admit a product formula with degree-1 factors, 
+but in this thesis they will be called strange Dirichlet series. 
+
+\begin{definition}
+Let $\bz=(z_2,z_3,z_5,\dots)$ be a sequence of complex numbers indexed by the 
+primes. The associated \emph{strange Dirichlet series} is 
+\[
+	L(\bz,s) = \prod_p \frac{1}{1- z_p p^{-s}} .
+\]
+\end{definition}
+
+If $z_p$ is only defined for all but finitely many primes, then we tacitly set 
+$\bz_p = 0$ for all primes for which $z_p$ is not defined. 
+
+\begin{lemma}
+Let $\bz$ be a sequence with $\|\bz\|_\infty \leqslant 1$. Then $L(\bz,s)$ 
+defines a holomorphic function on the region $\{\Re s>1\}$. Moreover, on that 
+region, 
+\[
+	\log L(\bz,s) = \sum_{p^r} \frac{z_p^n}{n p^{n s}} .
+\]
+\end{lemma}
+\begin{proof}
+Expanding the product for $L(\bz,s)$ formally, we have 
+\[
+	L(\bz,s) = \sum_{n\geqslant 1} \frac{\prod_p z_p^{v_p(n)}}{n^s} .
+\]
+An easy comparison with the Riemann zeta function tells us that this sum 
+is holomorphic on $\{\Re s>1\}$. By \cite[Th.~11.7]{apostol-1976}, the 
+product formula holds in the same region. The formula for $\log L(\bz,s)$ 
+comes from \cite[11.9 Ex.2]{apostol-1976}. 
+\end{proof}
+
+\begin{lemma}[Abel summation]\label{lem:abel-sum}
+Let $\bz=(z_2,z_3,z_5,\dots)$ be a sequence of complex numbers, $f$ a smooth 
+complex-valued function on $\bR$. Then 
+\[
+	\sum_{p\leqslant N} f(p) z_p = f(N) \sum_{p\leqslant N} z_p - \int_2^N f'(x) \sum_{p\leqslant x} z_p\, \dd x .
+\]
+\end{lemma}
+\begin{proof}
+Simply note that if $p_1,\dots,p_n$ is an enumeration of the primes 
+$\leqslant N$, we have 
+\begin{align*}
+	\int_2^N f'(x) \sum_{p\leqslant x} z_p\, \dd x 
+		&= \sum_{p\leqslant N} z_p \int_{p_n}^N f' + \sum_{i=1}^{n-1} \sum_{p\leqslant p_{i+1}} z_p \int_{p_i}^{p_{i+1}} f' \\
+		&= (f(N) - f(p_n)) \sum_{p\leqslant N} z_p + \sum_{i=1}^{n-1} (f(p_{i+1}) - f(p_i)) \sum_{p\leqslant p_{i+1}} z_p \\
+		&= f(N) \sum_{p\leqslant N} z_p - \sum_{p\leqslant N} f(p) z_p ,
+\end{align*}
+as desired. 
+\end{proof}
+
+\begin{theorem}
+Assume $|\sum_{p\leqslant x} z_p| \ll x^{\alpha+\epsilon}$ for some 
+$\alpha\in [\frac 1 2,1]$. Then the series for $\log L(\bz,s)$ converges to a 
+holomorphic function on the region $\{\Re s>\alpha\}$. 
+\end{theorem}
+\begin{proof}
+Formally split the sum for $\log L(\bz,s)$ into two pieces: 
+\[
+	\log L(\bz,s) = \sum_p \frac{z_p}{p^s} + \sum_p \sum_{r\geqslant 2} \frac{z_p^r}{r p^{r s}} .
+\]
+For each $p$, we have 
+\[
+	\left| \sum_{r\geqslant 2} \frac{z_p^r}{r p^{r s}}\right| \leqslant \sum_{r\geqslant 2} p^{- r \Re s} = p^{-2 \Re s} \frac{1}{1-p^{-\Re s}} .
+\]
+Elementary analysis gives 
+\[
+	1 \leqslant \frac{1}{1-p^{-\Re s}} \leqslant 2 + 2\sqrt 2 ,
+\]
+so the second piece of $\log L(\bz,s)$ converges absolutely when 
+$\Re s>\frac 1 2$. We could simply cite \cite[II.1 Th.~10]{tenenbaum-1995}; 
+instead we prove directly that $\sum_p \frac{z_p}{p^s}$ converges absolutely 
+to a holomorphic function on the region $\{\Re s>\alpha\}$. 
+
+By Lemma \ref{lem:abel-sum} with $f(x) = x^{-s}$, we have 
+\begin{align*}
+	\sum_{p\leqslant N} \frac{z_p}{p^s}
+		&= N^{-s} \sum_{p\leqslant N} z_p + s \int_2^N \sum_{p\leqslant x} z_p\, \frac{\dd x}{x^{s+1}} \\
+		&\ll N^{-\Re s + \alpha + \epsilon} + s \int_2^N x^{\alpha+\epsilon} \frac{\dd x}{x^{s+1}} .
+\end{align*}
+Since $\alpha-\Re s < 0$, the first term is bounded. Since $s+1-\alpha > 1$ and 
+$\epsilon$ is arbitrary, the integral converges absolutely, and the proof is 
+complete. 
+\end{proof}
 
 \ldots for a function and a sequence in the domain space
 
@@ -29,3 +114,9 @@ strange Dirichlet series for a series of complex numbers
 
 
 \section{Discrepancy of sequences and the Riemann Hypothesis}
+
+
+
+
+
+\section{An aside: strange Dirichlet series over function fields}
