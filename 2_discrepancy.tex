@@ -137,17 +137,24 @@ such that $\sigma(\bx)$ is also in $[0,\infty)$. Let $\nu$ be an absolutely
 continuous measure on $[0,\infty)$ such that $\sigma_\ast \nu$ is also 
 supported on $[0,\infty)$. Then 
 \[
-	\left|\disc^\star(\bx^N, \nu) - \disc^\star(\sigma_\ast \bx^N, \sigma_\ast \nu)\right| \ll N^{-1} ? .
+	\left|\disc(\bx^N, \nu) - \disc(\sigma_\ast \bx^N, \sigma_\ast \nu)\right| \leqslant \frac{2}{\pi(N)} .
 \]
 \end{lemma}
 \begin{proof}
 Every isometry of $\bR$ is a combination of translations and reflections. 
 The statement is clear with translations (the two discrepancies are equal). So, 
-suppose $\sigma(t) = a - t$ for some $a>0$. 
-
-If $\{x_n\}\subset [0,\pi/2)$ has some discrepancy with respect to some 
-measure, then the ``flipped'' sequence $\{\pi/2-x_n\}$ has the same discrepancy 
-with respect to the ``flipped'' measure. 
+suppose $\sigma(t) = a - t$ for some $a>0$. Since $\nu$ is absolutely 
+continuous, $\nu\{t\}=0$ for all $t\geqslant 0$. In particular, 
+$\nu[s,t) = \nu(s,t]$. In contrast, $\bx^N\{t\}\leqslant \pi(N)^{-1}$. For any 
+interval $[s,t)$ in $[0,\infty)$, we know that 
+\[
+	\left| \bx^N[s,t) - \bx^N(s,t]\right| \leqslant \frac{2}{\pi(N)}  ,
+\]
+hence 
+\[
+	\left| \bx^N[s,t) - \nu[s,t) - (\sigma_\ast \bx^N)[a-t,a-s) - (\sigma_\ast \nu)[a-t,a-s)\right| \leqslant \frac{2}{\pi(N)} .
+\]
+This proves the result. 
 \end{proof}
 
 
@@ -156,9 +163,46 @@ with respect to the ``flipped'' measure.
 
 \section{Combining sequences}
 
-If $\{x_n\}$ and $\{y_n\}$ are sequences supported on $[0,\pi/2)$ and 
-$[\pi/2,\pi)$ respectively, and both are equidistributed with respect to 
-measures supported on their respective intervals, then the ``interleaved'' 
-sequence $(x_1,y_1,x_2,y_2,\dots)$ also has equidistribution (with respect to 
-the combined measure) and discrepancy which decays no faster than the slower of 
-the two. 
+\begin{definition}
+Let $\bx$ and $\by$ be sequences in $[0,\infty)^d$. We write $\bx\wr\by$ for 
+the interleaved sequence 
+\[
+	(x_2,y_2,x_3,y_3,x_5,y_5,\dots,x_p,y_p,\dots) .
+\]
+\end{definition}
+
+For the interleaved sequence $\bx\wr\by$, we write $(\bx\wr\by)^N$ for the 
+empirical measure 
+\[
+	(\bx\wr\by)^N = \frac{1}{2\pi(N)} \sum_{p\leqslant N} \delta_{x_p} + \delta_{y_p} .
+\]
+
+\begin{theorem}
+Let $I$ and $J$ be disjoint open boxes in $[0,\infty)^d$, and let $\mu$, 
+$\nu$ be absolutely continuous probability measures on $I$ and $J$, 
+respectively. Let $\bx$ be a sequence in $I$ and $\by$ be a sequence in $J$. 
+Then 
+\[
+	\max\{\disc(\bx^N,\mu),\disc(\by^N,\nu)\} \leqslant \disc((\bx\wr\by)^N, \mu+\nu) \leqslant \disc(\bx^N,\mu) + \disc(\by^N,\nu)
+\]
+\end{theorem}
+\begin{proof}
+Any half-open box in $[0,\infty)^d$ can be split by a coordinate 
+hyperplane into two disjoint half-open boxes $[a,b)\sqcup [s,t)$, each of which 
+intersects at most one of $I$ and $J$. We may assume that 
+$[a,b)\cap J=\varnothing$ and $[s,t)\cap I = \varnothing$. Then 
+\begin{align*}
+	\left| (\bx\wr\by)^N([a,b)\sqcup [s,t)) - (\mu+\nu)([a,b)\sqcup[s,t))\right| 
+		&\leqslant |\bx^N[a,b) - \mu[a,b)| + |\by^N[s,t) - \nu[s,t)| \\
+		&\leqslant \disc(\bx^N,\mu) + \disc(\by^N,\nu) .
+\end{align*}
+This yields the second inequality in the statement of the theorem. To see the 
+first, assume that the maximum discrepancy is $\disc(\bx^N,\mu)$, and let 
+$[s,t)$ be a half-open box such that $|\bx^N[s,t) - \mu[s,t)|$ is within an 
+arbitrary $\epsilon$ of $\disc(\bx^N,\mu)$. We can assume that $[s,t)$ does not 
+intersect $J$, and thus 
+\[
+	\left|(\bx\wr\by)^N[s,t) - (\mu+\nu)[s,t)\right| = |\bx^N[s,t) - \mu[s,t)| ,
+\]
+which yields the result. 
+\end{proof}
