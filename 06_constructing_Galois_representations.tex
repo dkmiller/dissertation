@@ -1,3 +1,26 @@
 % !TEX root = main.tex
 
 \chapter{Constructing Galois representations}
+
+
+
+
+
+\section{Main idea}
+
+Basic ideas is as follows. Start with $\rho_1\colon G_\bQ \to \GL_2(\bF_l)$. At 
+each stage, we have $\rho_n\colon G_\bQ \to \GL_2(\bZ/l^n)$. At that stage, 
+we're allowed to choose the (integral) characteristic polynomial for Frobenius 
+at an arbitrarily large set of primes $R_n$. Then some (but density zero) extra 
+primes ramify, and then we get $\rho_{n+1}$ that agrees with our choices for 
+$R_1\cup \cdots \cup R_n$. Then we have to choose characteristic polynomials for 
+$R_{n+1}$, but these are already determined modulo $l^{n+1}$. 
+
+Basic idea is, we can choose the $R_n$ to be so huge that the primes involved are 
+way way bigger than $l^n$. For example, we could have 
+$R_n=\{p\leqslant l^{l^n}\}$. Thus the set of possible $a_p$'s is very big (big 
+enough) so that we can get discrepancy to behave as we like (both decaying 
+slowly and decaying quickly) to any measure $\mu$ such that $\ST/\mu$ is 
+bounded away from zero. (By this, we mean: if $\ST=f\cdot\lambda$ and 
+$\mu = g\cdot\lambda$, where $\lambda$ is Lebesgue, then $f/g$ is bounded away 
+from zero.)
