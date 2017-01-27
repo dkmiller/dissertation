@@ -95,6 +95,78 @@ $\epsilon$ is arbitrary, the integral converges absolutely, and the proof is
 complete. 
 \end{proof}
 
+\begin{theorem}
+Let $\bz=(z_2,z_3,\dots)$ be a sequence with $\|\bz\|_\infty\leqslant 1$, and 
+assume $\log L(\bz,s)$ has analytic continuation to $\{\Re s>\alpha\}$ for some 
+$\alpha\in \frac 1 2,1]$, and that for $\sigma>\alpha$, we have 
+$|\log L(\bz,\sigma+i t)| \ll |t|^{1-\epsilon}$ (implied constant independent 
+of $\sigma$.) Then $|\sum_{p\leqslant N} z_p| \ll N^{\alpha+\epsilon}$. 
+\end{theorem}
+\begin{proof}
+Recall that we can write 
+\[
+	\log L(\bz,s) = \sum_p \frac{z_p}{p^s} + \sum_p \sum_{r\geqslant 2} \frac{z_p^r}{r p^{r s}} = \sum_p \frac{z_p}{p^s} + O(\zeta(2 \Re s)) .
+\]
+Thus, for any $\epsilon>0$, analytic continuation and the bound on 
+$|\log L(\bz,\sigma+i t)|$ implies the same analytic continuation and bound for 
+$\sum \frac{z_p}{p^s}$ on $\{\Re s>\alpha+\epsilon\}$. 
+
+For any $T>0$, let 
+$\gamma_T = \gamma_{1,T} + \gamma_{2,T} + \gamma_{3,T} + \gamma_{4,T}$ be the 
+following contour: 
+\begin{align*}
+	\gamma_{1,T}(t) &= (\alpha+\epsilon)+i t\qquad t\in [-T,T] \\
+	\gamma_{2,T}(t) &= t+i T \qquad t\in [\alpha+\epsilon,1+\epsilon] \\
+	\gamma_{3,T}(t) &= (1+\epsilon) + i t \qquad t\in [T,-T] \\
+	\gamma_{4,T}(t) &= t - i T \qquad t\in [1+\epsilon,\alpha+\epsilon] .
+\end{align*}
+Graphically, the contour looks like this: 
+\begin{center}
+\begin{tikzpicture}[
+	decoration={%
+		markings,
+		mark=at position 2cm with {\arrow[line width=1pt]{>}},
+		}]
+	\draw [help lines,->] (-1,0) -- (4,0) coordinate (xaxis);
+	\draw [help lines,->] (0,-4) -- (0,4) coordinate (yaxis);
+	\node [below] at (xaxis) {$\bR$};
+	\node [left] at (yaxis) {$i\bR$};
+	\node at (0.6,1) {$\gamma_{1,T}$};
+	\node at (2, 2.5) {$\gamma_{2,T}$};
+	\node at (3.6, 1) {$\gamma_{3,T}$};
+	\node at (-2.5, 2) {$\gamma_{4,T}$};
+	\path[draw,postaction=decorate] 
+		(1,-3) node[below] {$\alpha+\epsilon - i T$} -- 
+		(1,3) node[above] {$\alpha+\epsilon + i T$} -- 
+		(3,3) node[above] {$1+\epsilon + i T$} -- 
+		(3,-3) node[below] {$1+\epsilon - i T$} --
+		(1,-3);
+\end{tikzpicture}
+\end{center}
+By Perron's formula \cite[Th.~11.18]{apostol-1976}, 
+\[
+	\lim_{T\to \infty} \frac{1}{2\pi i} \int_{-\gamma_{3,T}} \sum_p \frac{z_p}{p^s} N^z\, \frac{\dd z}{z} = \frac 1 2 \sum_{p\leqslant N} z_p .
+\]
+for $N\in \bZ$, and the same without the $\frac 1 2$ on the right-hand side 
+when $N\notin \bZ$. 
+
+Let $h(s)$ be the analytic continuation of $\sum z_p p^{-s}$ to 
+$\{\Re s>\alpha\}$. Since $\int_{\gamma_T} h(s)\, \frac{\dd s}{s}=0$, we obtain 
+\[
+	\left|\sum_{p\leqslant N} z_p\right| 
+		\ll \lim_{T\to \infty} \left(\left| \int_{\gamma_{1,T}} h(s) N^s\frac{\dd s}{s}\right| + \left|\int_{\gamma_{2,T}} h(s) N^s \frac{\dd s}{s}\right| + \left|\int_{\gamma_{4,T}} h(s) N^s \frac{\dd s}{s}\right| \right).
+\]
+We know that $|h(\sigma+i t)| \ll |t|^{1-\epsilon}$, so we can bound 
+\[
+	\left| \int_{\gamma_{2,T}} h(s)N^s \frac{\dd s}{s}\right| = \left| \int_{\alpha+\epsilon}^{1+\epsilon} \frac{h(t+i T) N^{t+i T}}{t+i T}\, \dd t\right| \ll \frac{N^{1+\alpha}}{T^\epsilon} ,
+\]
+and similarly for $\gamma_{4,T}$. Finally, note that 
+\[
+	\left| \int_{\gamma_{1,T}} h(s) N^s\, \frac{\dd s}{s}\right| \ll \int_{-T}^T |t|^{1-\epsilon} \frac{N^{\alpha+\epsilon}}{(\alpha+\epsilon)^2 + t^2} \, \dd t \ll N^{\alpha+\epsilon} .
+\]
+Letting $T\to \infty$ we obtain the desired result. 
+\end{proof}
+
 \ldots for a function and a sequence in the domain space
 
 
@@ -119,4 +191,4 @@ complete.
 
 
 
-\section{An aside: strange Dirichlet series over function fields}
+\section{Strange Dirichlet series over function fields}

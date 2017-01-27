@@ -10,11 +10,14 @@
 	thesis-style, % custom math commands
 	tikz-cd
 }
+\usetikzlibrary{decorations.markings}
+
 \usepackage[
 	backend  = bibtex,    % use bibtex instead of biber
 	sorting  = nyt,       % sort by (name, year, title)
 	style    = alphabetic % citations look like [Har77]
 ]{biblatex}
+
 \DeclareFieldFormat{postnote}{#1}
 \DeclareFieldFormat{multipostnote}{#1}
 \addbibresource{thesis-sources.bib}
