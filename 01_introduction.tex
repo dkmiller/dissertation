@@ -117,3 +117,19 @@ I also provide computational evidence for the Akiyama--Tanigawa conjecture
 (for elliptic curves and also generic abelian $2$-folds). 
 
 Similar work: \cite{pande-2011}. 
+
+% TODO
+
+Claim: the Riemann Hypothesis is equivalent to the following description of the 
+distribution of prime numbers. For a real number $x$, let 
+\[
+	P_x = \frac{1}{\pi(x)} \sum_{p\leqslant x} \delta_{p/x} .
+\]
+This is a discrete probability measure supported on $[0,1]$. Moreover, let 
+$L_x$ be the continuous probability measure with cdf 
+\[
+	L_x[0,t] = \frac{\Li(tx)}{\Li(x)} .
+\]
+Then $\disc(P_x,L_x) \ll x^{-\frac 1 2+\epsilon}$. I'm pretty sure that this 
+statement is equivalent to $|\pi(x)-\Li(x)| \ll x^{\frac 1 2+\epsilon}$, which 
+is already known to be equivalent to RH. 
