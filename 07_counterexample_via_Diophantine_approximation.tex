@@ -1,3 +1,73 @@
 % !TEX root = main.tex
 
 \chapter{Counterexample via Diophantine Approximation}
+
+\section{Supporting results}
+
+Give $(\bR/\bZ)^d$ the natural Haar measure normalized to have total mass one. 
+Recall that for any $f\in L^1((\bR/\bZ)^d)$, the Fourier coefficients of $f$ 
+are, for $m\in \bZ^d$ 
+\[
+	\widehat f(m) = \int_{(\bR/\bZ)^d} e^{2\pi i \langle m,x\rangle} \, \dd x ,
+\]
+where $\langle m,x\rangle = m_1 x_1 + \cdots + m_d x_d$ is the usual inner 
+product. 
+
+\begin{theorem}
+Fix $x\in (\bR/\bZ)^d$ with $\omega_{d-1}(x)$ finite. Then 
+\[
+	\left| \sum_{n\leqslant N} e^{2\pi i \langle m, n x\rangle}\right| \ll |m|^{\omega_{d-1}(x) + \epsilon} 
+\]
+as $m$ ranges over $\bZ^r\smallsetminus 0$. 
+\end{theorem}
+\begin{proof}
+From Lemma \ref{lem:bound-exp-sum} we know that 
+\[
+	\left| \sum_{n\leqslant N} e^{2\pi i \langle m, n x\rangle}\right| \ll \frac{1}{d(\langle m, x\rangle,\bZ)} ,
+\]
+and from Lemma \ref{lem:bound-distance}, we know that 
+$d(\langle m,x\rangle, \bZ)^{-1} \ll |m|^{\omega_{d-1}(x)+\epsilon}$. The 
+result follows. 
+\end{proof}
+
+\begin{theorem}
+Let $x\in \bR^d$ with $\omega_{d-1}(x)$ finite. Then let 
+$f\in L^1((\bR/\bZ)^d)$ with $\widehat f(0)=0$ and suppose the Fourier 
+coefficients of $f$ satisfy the bound 
+$|\widehat f(m)| \ll |m|^{-\frac{1}{d-1} - \omega_{d-1}(x)-\epsilon}$. Then 
+\[
+	\left| \sum_{n\leqslant N} f(n x)\right| \ll 1. 
+\]
+\end{theorem}
+\begin{proof}
+Write $f$ as a Fourier series:
+\[
+	f(x) = \sum_{m\in \bZ^r} \widehat f(m) e^{2\pi pi \langle m,x\rangle} .
+\]
+Since $\widehat f(0)=0$, we can compute:
+\begin{align*}
+	\left| \sum_{n\leqslant N} f(n x)\right| 
+		&= \left| \sum_{n\leqslant N} \sum_{m\in \bZ^d\smallsetminus 0} \widehat f(m) e^{2\pi i \langle m,x\rangle}\right| \\
+		&\leqslant \sum_{m\in \bZ^d\smallsetminus 0} |\widehat f(m)| \left| \sum_{n\leqslant N} e^{2\pi i n \langle m,x\rangle}\right| \\
+		&\ll \sum_{m\in \bZ^d\smallsetminus 0} |m|^{-\frac{1}{d-1} - \omega_{d-1}(x) - \epsilon} |m|^{\omega_{d-1}(x) + \epsilon/2} \\
+		&\ll \sum_{m\in \bZ^d\smallsetminus 0} |m|^{-\frac{1}{d-1} - \epsilon/2} .
+\end{align*}
+The sum converges since the exponent is less than $-\frac{1}{d-1}$, and it 
+doesn't depend on $N$, hence the result. 
+\end{proof}
+
+
+
+
+
+\section{Pathological Satake parameters}
+
+d
+
+
+
+
+
+\section{Some remarks on isotropic discrepancy}
+
+d
