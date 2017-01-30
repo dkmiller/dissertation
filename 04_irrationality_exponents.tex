@@ -54,7 +54,7 @@ Now given $x\in \bR^d$, we write $d(x,\bZ^d)=\min_{m\in \bZ^d} |x-m|$, where
 $|\cdot|$ is any fixed norm on $\bR^d$. Note that $d(x,\bZ^d)=0$ if and only if 
 $x\in \bZ^d$. 
 
-\begin{lemma}
+\begin{lemma}\label{lem:bound-distance}
 Let $x\in \bR^d$ with $\|x\|_\infty\leqslant 1$ and $\omega_0(x)$ 
 (resp.~$\omega_{d-1}(x)$) finite. Then 
 \begin{align*}
@@ -120,14 +120,126 @@ Let $x\in \bR^d$ with $x_1,\dots,x_d$ linearly independent over $\bQ$. We wish
 to control the discrepancy of the sequence $\{x,2x,3x,\dots\}$ in 
 $(\bR/\bZ)^d$. 
 
+\begin{theorem}[Erd\"os--Tur\'an--Koksma]
+Let $\bx$ be a sequence in $\bR^d$ and $h$ an arbitrary integer. Then 
+\[
+	\disc(\bx^N) \ll \frac 1 h + \sum_{0\leqslant \|m\|_\infty \leqslant h} \frac{1}{r(m)} \left| \frac 1 N \sum_{n\leqslant N} e^{2\pi i \langle m,x_n\rangle}\right| ,
+\]
+where the first sum ranges over $m\in \bZ^d$, 
+$r(m) = \prod \max\{1,|m_i|\}$, and the implied constant depends only on $d$. 
+\end{theorem}
+\begin{proof}
+This is \cite[Th.~1.21]{drmota-tichy-1997}. 
+\end{proof}
+
+\begin{lemma}\label{lem:bound-exp-sum}
+Let $x\in \bR$. Then 
+\[
+	\left| \sum_{n\leqslant N} e^{2\pi i n x}\right| \ll \frac{1}{d(x, \bZ)} .
+\]
+\end{lemma}
+\begin{proof}
+We begin with an easy bound: 
+\[
+	\left| \sum_{n\leqslant N} e^{2\pi i n x}\right| = \frac{|e^{2\pi i (N+1) x} - 1|}{|e^{2\pi i x} - 1|} \leqslant \frac{2}{|e^{2\pi i x} - 1|} .
+\]
+Since $|e^{2\pi i m x} - 1| = \sqrt{2-2\cos(2\pi x)}$ and 
+$\cos(2\theta) = 1-2\sin^2\theta$, we obtain 
+\[
+	\left|\sum_{n\leqslant N} e^{2\pi i n x}\right| \leqslant \frac{1}{|\sin(\pi x)|} .
+\]
+It is easy to check that $|\sin(\pi x)| \geqslant d(x,\bZ)$, whence the result.  
+\end{proof}
+
+\begin{corollary}\label{cor:bound-disc-distance}
+Let $x\in (\bR/\bZ)^d$ with $(x_1,\dots,x_d)$ linearly independent over $\bQ$. 
+Then for $\bx=(x,2x,3x,\dots)$, we have 
+\[
+	\disc(\bx^N) \ll \frac 1 h + \frac 1 N \sum_{0<\|m\|_\infty \leqslant h} \frac{1}{r(m) d(\langle m,x\rangle,\bZ)} 
+\]
+for any integer $h$, with the implied constant depending only on $d$. 
+\end{corollary}
+\begin{proof}
+Apply the Erd\"os--Tur\'an--Koksma inequality and bound the exponential sums 
+using Lemma \ref{lem:bound-exp-sum}. 
+\end{proof}
+
 \begin{theorem}
 Let $\bx=(x,2x,3x,\dots)$ in $(\bR/\bZ)^d$. Then 
 \[
-	\disc(\bx^N) \ll \frac{\log N}{N^{\frac{1}{d ? + 1}} ?}
+	\disc(\bx^N) \ll N^{-\frac{1}{\omega_{d-1}(x)+1}+\epsilon} .
 \]
 \end{theorem}
 \begin{proof}
-We follow \cite[Ch.~2, Ex.~3.15, 16, 17]{kuipers-niederreiter-1974}. 
+Choose $\delta>0$ such that 
+$\frac{1}{\omega_{d-1}(x)+1+\delta} = \frac{1}{\omega_{d-1}(x)+1} - \epsilon$. 
+
+By Corollary \ref{cor:bound-disc-distance}, we know that 
+\[
+	\disc(\bx^N) \ll \frac 1 h + \frac 1 N \sum_{0<\|m\|_\infty \leqslant h} \frac{1}{r(m) d(\langle m,x\rangle,\bZ)} ,
+\]
+and by Lemma \ref{lem:bound-distance}, we know that 
+$d(\langle m,x\rangle,\bZ)^{-1} \ll |m|^{\omega_{d-1}(x)+\delta}$. 
+It follows that 
+\[
+	\disc(\bx^N) \ll \frac 1 h + \frac 1 N \sum_{0 < \|m\|_\infty \leqslant h} \frac{|m|^{\omega_{d-1}(x)+\delta}}{r(m)} .
+\]
+The only tricky part is bounding the sum. 
+\begin{align*}
+	\sum_{0< \|m\|_\infty \leqslant h} \frac{|m|_\infty^{\omega_{d-1}(x)+\delta}}{r(m)} 
+		&\ll \int_1^h \int_1^{t_d} \dots \int_1^{t_2} \frac{t_d^{\omega_{d-1}(x)+\delta}}{t_1 \dots t_d}\, \dd t_1 \dots \dd t_d \\
+		&\ll \int_1^h t^{\omega_{d-1}(x)+\delta-1}\, \dd t \prod_{j=1}^{d-1} \int_1^h \frac{\dd t}{t} \\
+		&\ll (\log h)^{d-1} h^{\omega_{d-1}(x)+\delta} .
+\end{align*}
+It follows that 
+\[
+	\disc(\bx^N) \ll \frac 1 h + \frac 1 N (\log h)^{d-1} h^{\omega_{d-1}(x)+\delta} .
+\]
+Setting $h\approx N^{\frac{1}{1+\omega_{d-1}(x)+\delta}}$, we see that 
+\[
+	D(\bx^N) \ll N^{-\frac{1}{\omega_{d-1}(x)+1+\delta}} = N^{-\frac{1}{\omega_{d-1}(x)+1} + \epsilon} .
+\]
+
+For a slightly different proof of a similar result (given as a sequence of 
+exercises), see  \cite[Ch.~2, Ex.~3.15, 16, 17]{kuipers-niederreiter-1974}. 
+\end{proof}
+
+\begin{theorem}
+Let $x\in \bR$ be such that $x_1,\dots,x_d$ are linearly independent over 
+$\bQ$, and let $\bx=(x,2x,3x,\dots)$ in $(\bR/\bZ)^d$. Then 
+\[
+	\disc(\bx^N) = \Omega\left(N^{-\frac{d}{\omega_0(x)}-\epsilon} \right).
+\]
+\end{theorem}
+\begin{proof}
+Here $f=\Omega(g)$ in the sense of Hardy, namely that $\limsup \frac f g>0$. We 
+follow the proof of \cite[Ch.~2, Th.~3.3]{kuipers-niederreiter-1974}. Given 
+$\epsilon>0$, there exists $\delta>0$ such that 
+$\frac{d}{\omega_0(x)-\delta} = \frac{d}{\omega_0(x)} + \epsilon$. 
+
+By the definition of $\omega_0(x)$, there exist infinitely many 
+$(q,m_1,\dots,m_d)$ with $q>0$ such that 
+\[
+	\|q x - m\|_\infty \leqslant \|(q,m_1,\dots,m_d)\|_\infty^{-\omega_0(x)+\delta/2} .
+\]
+Since $\|(q,m_1,\dots,m_d)\|_\infty \geqslant q$, we derive the stronger 
+statement that for infinitely many $q\to \infty$, there exists 
+$m=(m_1,\dots,m_d)\in \bZ^d$ such that 
+$\|q x-m\|_\infty \leqslant q^{-\omega_0(x)+\delta/2}$ or, equivalently, 
+$|x-\frac m q| \leqslant q^{-1-\omega_0(x)+\delta/2}$. Pick such a $q$, and let 
+$N=\lfloor q^{\omega_0(x)-\delta}\rfloor$. Then for each $n\leqslant N$, we 
+have $\|n x - \frac n q m\|_\infty \leqslant q^{-1-\delta/2}$. Thus, for each 
+$n\leqslant N$, each $n x$ is within $q^{-1-\delta/2}$ of the grid 
+$\frac 1 q \bZ^d\subset (\bR/\bZ)^d$. Thus, they miss a box with side lengths 
+$q^{-1} - 2 q^{-1-\delta/2}$. For $q$ sufficiently large, 
+$q^{-1} - 2 q^{-1-\delta/2} \geqslant 1/2q$, so the discrepancy of $\bx^N$ is 
+bounded below by $2^{-d} q^{-d}$. Since $q^{\omega_0(x)-\delta} \leqslant 2 N$, 
+the discrepancy at $N$ is bounded below by 
+\[
+	2^{-d} \left( (2 N)^{-\frac{1}{\omega_0(x)+\delta}}\right)^{-d} 
+		= 2^{-d-\frac{d}{\omega_0(x)+\delta}} N^{-\frac{d}{\omega_0(x)+\delta}}
+		= 2^{-d\left(1+\frac{1}{\omega_0(x)}\right)-\epsilon} N^{-\frac{d}{\omega_0(x)}-\epsilon} .
+\]
 \end{proof}
 
 
@@ -136,4 +248,13 @@ We follow \cite[Ch.~2, Ex.~3.15, 16, 17]{kuipers-niederreiter-1974}.
 
 \section{Irrationality exponents and bounding sums}
 
-d
+In the previous section, we've seen that there is a precise connection between 
+the irrationality exponents of a vector $\bx\in \bR^d$ and the discrepancy of 
+the sequence $\bx=(x,2x,3x,\dots)$ in $(\bR/\bZ)^d$. Now we will explore first 
+the general connection between the discrepancy of a sequence 
+$\bx=(x_1,x_2,\dots)$ and bounding sums of the form 
+$\sum_{n\leqslant N} f(x_n)$. 
+
+\begin{theorem}[Koksma--Hlawka]
+Todo.
+\end{theorem}
