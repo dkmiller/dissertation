@@ -1,3 +1,139 @@
 % !TEX root = main.tex
 
 \chapter{Irrationality exponents}
+
+
+
+
+
+\section{Definitions and first results}
+
+We follow the notation of \cite{laurent-2009}. Let 
+$x=(x_1,\dots,x_d)\in \bR^d$ be such that the $x_i$ are $\bQ$-linearly 
+independent. 
+
+\begin{definition}\label{def:approx-exp}
+Let $\omega_0(x)$ (resp.~$\omega_{d-1}(x)$) be the supremum of the set of real 
+numbers $\omega$ for which there exist infinitely many 
+$m=(m_0,\dots,m_d)\in \bZ^{r+1}$ such that 
+\begin{align*}
+	\max\{|m_0 x_i - m_i|\} 
+		&\leqslant \|m\|_\infty^{-\omega}  \qquad\text{(resp.} \\
+	|m_0 + m_1 x_1 + \dots + m_r x_r| 
+		&\leqslant \|m\|_\infty^{-\omega} \text{).}
+\end{align*}
+\end{definition}
+
+These two quantities are related by Khintchine's Transference Principle, namely 
+\[
+	\frac{\omega_{d-1}(x)}{(d-1) \omega_{d-1}(x)+d} \leqslant \omega_(x) \leqslant \frac{\omega_{d-1}(x)-d+1}{d} .
+\]
+Moreover, these inequalities are sharp in a very strong sense. 
+
+\begin{theorem}[Jarn\'ik]
+Let $w\geqslant 1/d$. Then there exists $x\in \bR^d$ such that $\omega_0(x)=w$ 
+and $\omega_{d-1}(x) = d x+d-1$. 
+\end{theorem}
+
+% TODO
+\begin{theorem}
+When $d=1$, relate $\omega_0(x)$ to the irrationality measure. 
+\end{theorem}
+\begin{proof}
+Recall that the irrationality measure $\mu(x)$ is the infimum of the set of 
+positive reals $\mu$ such that 
+\[
+	0 < \left| x - \frac p q\right| < q^{-\mu} 
+\]
+has only finitely many solutions $p/q$ with $p,q$ integers. 
+\end{proof}
+
+Mention Roth's theorem\ldots generalize to higher dimension?
+
+Now given $x\in \bR^d$, we write $d(x,\bZ^d)=\min_{m\in \bZ^d} |x-m|$, where 
+$|\cdot|$ is any fixed norm on $\bR^d$. Note that $d(x,\bZ^d)=0$ if and only if 
+$x\in \bZ^d$. 
+
+\begin{lemma}
+Let $x\in \bR^d$ with $\|x\|_\infty\leqslant 1$ and $\omega_0(x)$ 
+(resp.~$\omega_{d-1}(x)$) finite. Then 
+\begin{align*}
+	\frac{1}{d(n x,\bZ^d)} 
+		&\ll |n|^{\omega_0(x)+\epsilon}\qquad \text{ (resp.} \\
+	\frac{1}{d(\langle m,x\rangle, \bZ)} 
+		&\ll |m|^{\omega_{d-1}(x)+\epsilon} \qquad\text{ for $m\in \bZ^d$).}
+\end{align*}
+\end{lemma}
+\begin{proof}
+Let $\epsilon>0$. Then there are only finitely many $n\in \bZ$ 
+(resp.~$m\in \bZ^d$) such that the inequalities in Definition 
+\ref{def:approx-exp} hold with $\omega_0(x)+\epsilon$ 
+(resp.~$\omega_{d-1}(x)+\epsilon$). In other words, there exist constants 
+$C_0, C_{d-1}>0$ such that 
+\begin{align*}
+	\max\{|m_0 x_i - m_i|\} 
+		&\geqslant C_0 \|m\|_\infty^{-\omega_0(x)-\epsilon} ,\\
+	|m_0 + m_1 x_1 + \cdots + m_d x_d| 
+		&\geqslant C_{d-1} \|m\|_\infty^{-\omega_{d-1}(x)-\epsilon} 
+\end{align*}
+for all $m\ne 0$. 
+
+Start with the first inequality in the statement of the result, where up to 
+constant, we may assume that $|\cdot| = \|\cdot\|_\infty$ in the definition of 
+$d(n x,\bZ^d)$. Let $m=(m_1,\dots,m_d)$ be the lattice point achieving the 
+minimum $|n x - m|$. Then we know that 
+\[
+	d(n x,\bZ^d) \geqslant C_0 \|(m_1,\dots,m_d)\|_\infty^{-\omega_0(x)-\epsilon} .
+\]
+Moreover, since $|n x-m|<1$, there exists a constant $C_0'$ such that 
+\[
+	d(n x,\bZ^d) \geqslant C_0' |n|^{-\omega_0(x)-\epsilon} .
+\]
+It follows that 
+\[
+	\frac{1}{d(n x,\bZ^d)} \ll |n|^{\omega_0(x)+\epsilon} ,
+\]
+the implied constant depending on $x$, $\epsilon$, and the choice of norm 
+$|\cdot|$. 
+
+Now let's consider the second inequality in the statement of the result. Note 
+that $d(m_1 x_1 + \dots + m_d x_d,\bZ) = |m_0 + m_1x_1 + \cdots + m_d x_d$ for 
+some $m_0$ with $|m_0| \leqslant \|(m_1,\dots,m_d)\|_2 \|x\|_2 + 1$. Thus 
+$\|(m_1,\dots,m_d)\|_\infty \ll \|x\|_2 \|(m_1,\dots,m_d)\|_2$, which gives us 
+\[
+	d(m_1 x_1 + \cdots + m_d x_d,\bZ) \geqslant C_{d-1} \|(m_1,\dots,m_d)\|_2^{-\omega_{d-1}(x)-\epsilon} .
+\]
+This implies 
+\[
+	\frac{1}{d(\langle m,x\rangle,\bZ)} \ll |m|^{\omega_{r-1}(x)+\epsilon} ,
+\]
+the implied constant depending on $x$, $\epsilon$, and the choice of $|\cdot|$. 
+\end{proof}
+
+
+
+
+
+\section{Irrationality exponents and discrepancy}
+
+Let $x\in \bR^d$ with $x_1,\dots,x_d$ linearly independent over $\bQ$. We wish 
+to control the discrepancy of the sequence $\{x,2x,3x,\dots\}$ in 
+$(\bR/\bZ)^d$. 
+
+\begin{theorem}
+Let $\bx=(x,2x,3x,\dots)$ in $(\bR/\bZ)^d$. Then 
+\[
+	\disc(\bx^N) \ll \frac{\log N}{N^{\frac{1}{d ? + 1}} ?}
+\]
+\end{theorem}
+\begin{proof}
+We follow \cite[Ch.~2, Ex.~3.15, 16, 17]{kuipers-niederreiter-1974}. 
+\end{proof}
+
+
+
+
+
+\section{Irrationality exponents and bounding sums}
+
+d
