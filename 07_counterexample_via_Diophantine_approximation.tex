@@ -62,7 +62,28 @@ doesn't depend on $N$, hence the result.
 
 \section{Pathological Satake parameters}
 
-d
+Let $p_1 = 2, p_2 = 3, p_3 = 5, \dots$ be an enumeration of the prime numbers. 
+Let $y\in \bR^d$ with $y_1,\dots,y_d$ linearly independent over $\bQ$. The 
+associated sequence of ``fake Satake parameters'' is 
+\[
+	\bx = (y, 2y, 3 y, 4 y, \dots) ,
+\]
+where we put $x_{p_n} = n y\mod \bZ^d$. By Theorem \ref{thm:jarnik}, we can 
+arrange for $\omega_0(y) = w$ and $\omega_{d-1}(y) = d w + d - 1$. 
+
+\begin{theorem}
+The sequence $\bx$ is equidistributed in $(\bR/\bZ)^d$, with discrepancy 
+decaying as 
+\[
+	\disc(\bx^N) \ll N^{-\frac{1}{d w+d} + \epsilon} 
+\]
+and for which 
+\[
+	\disc(\bx^N) = \Omega\left(N^{-\frac{d}{w} - \epsilon}\right) .
+\]
+However, for any $f\in C^\infty((\bR/\bZ)^d)$ with $\widehat f(0)=0$, the 
+strange Dirichlet series  $L_f(\bx,s)$ satisfies the Riemann Hypothesis. 
+\end{theorem}
 
 
 

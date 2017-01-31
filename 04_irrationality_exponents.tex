@@ -30,10 +30,14 @@ These two quantities are related by Khintchine's Transference Principle, namely
 \]
 Moreover, these inequalities are sharp in a very strong sense. 
 
-\begin{theorem}[Jarn\'ik]
+\begin{theorem}[Jarn\'ik]\label{thm:jarnik}
 Let $w\geqslant 1/d$. Then there exists $x\in \bR^d$ such that $\omega_0(x)=w$ 
-and $\omega_{d-1}(x) = d x+d-1$. 
+and $\omega_{d-1}(x) = d w+d-1$. 
 \end{theorem}
+\begin{proof}
+% TODO
+Do this. 
+\end{proof}
 
 % TODO
 \begin{theorem}
@@ -241,13 +245,3 @@ the discrepancy at $N$ is bounded below by
 		= 2^{-d\left(1+\frac{1}{\omega_0(x)}\right)-\epsilon} N^{-\frac{d}{\omega_0(x)}-\epsilon} .
 \]
 \end{proof}
-
-
-
-
-
-\section{Irrationality exponents and bounding sums}
-
-In the previous section, we've seen that there is a precise connection between 
-the irrationality exponents of a vector $\bx\in \bR^d$ and the discrepancy of 
-the sequence $\bx=(x,2x,3x,\dots)$ in $(\bR/\bZ)^d$.
