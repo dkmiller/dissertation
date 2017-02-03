@@ -89,3 +89,62 @@ $\{t_p\}$ is $\nu$-equidistributed with good discrepancy.
 
 
 \section{Associated Galois representation}
+
+Let $\mu$ be an absolutely continuous measure on $[0,\pi]$ such that the 
+pushforward $\cos_\ast \mu$ is bounded (this is true for the Sato--Tate 
+measure). Fix a prime $l\geqslant 5$ and a constant $\alpha\in (0,1/2]$. We 
+want to construct a weight-$2$ Galois representation 
+$\rho_l\colon G_\bQ \to \GL_2(\bZ_l)$, ramified at a density zero set of 
+primes, such that 
+\begin{enumerate}
+\item
+If $\rho_l$ is unramified at $p$, then $a_p = \tr \rho_l(\frob_p)\in \bZ$ and 
+satisfies the Hasse bound $|a_p| \leqslant 2\sqrt p$. 
+
+\item
+If we write $\theta_p = \cos^{-1}(a_p / 2\sqrt p)$ for the Satake parameters at 
+unramified primes, then $\disc(\btheta^N, \mu) \ll N^{-\alpha+\epsilon}$ and 
+$\disc(\btheta^N,\mu) = \Omega(N^{-\alpha-\epsilon})$. 
+\end{enumerate}
+
+Recall the van der Corput sequence $\{x_p\}$ satisfies 
+$\disc(\bx^N) \ll N^{-1+\epsilon}$. Let $\nu = \cos_\ast \mu$; this is an 
+absolutely continuous measure supported on $[-1,1]$. By transforming the 
+van der Corput sequence by a continuous map, we may assume that in fact 
+$\disc(\bx^N,\nu) \ll N^{-1+\epsilon}$. In fact, by alternating between 
+``van der Corput elements'' and ``bad elements'' we can ensure that not 
+only does $\disc(\bx^N,\nu) \ll N^{-\alpha+\epsilon}$, but also 
+$\disc(\bx^N,\nu) = \Omega(N^{-\alpha-\epsilon})$. 
+
+We start by choosing a modular mod-$l$ representation 
+$\rho_1\colon G_\bQ \to \GL_2(\bZ/l)$, which is ramified at a finite set of 
+primes $S_1$. Let $R_1 = \{p\leqslant r_1 : p \notin S_1\}$. For $p\in R_1$, 
+we can choose $a_p\in \bZ$ subject only to the condition 
+$a_p \equiv \tr \rho_1(\frob_p)\pmod l$. For any $p\in R_1$, the set 
+\[
+	T_p(l) = \left\{\frac{a}{2\sqrt p} : |a| \leqslant 2\sqrt p\text{ and }a\equiv \tr \rho_1(\frob_p)\pmod l\right\}
+\]
+has an element within $l p^{-1/2}$ of any element of $[-1,1]$. Choose 
+$a_p\in T_p(l)$ so that 
+$\left|\frac{a_p}{2\sqrt p} - x_p\right| \leqslant l p^{-1/2}$. It follows 
+that for $p\in R_1$, we have 
+\[
+	|\disc(\{a_p/2\sqrt p\}_{p\leqslant N}, \nu) - \disc(\bx^N,\nu)| \ll l N^{-1/2}
+\]
+We get a lift of $\rho_1$ to $\rho_2\colon G_\bQ \to \GL_2(\bZ/l^2)$ respecting 
+our choices of the $a_p$ for $p\in R_1$, which is ramified at one (perhaps two) 
+extra primes. 
+
+
+What happens next is in stages. We'll already have a mod-$l^{n+1}$ 
+representation $\rho_{n+1}\colon G_\bQ \to \GL_2(\bZ/l^n)$, together with 
+choices of $a_p$ for $p\in R_1\cup \cdots \cup R_n$ that ensure 
+$|\disc(\{a_p / 2\sqrt p\}_{p\leqslant N}, \nu) - \disc(\bx^N,\nu)| \ll ?$
+
+
+The main question is: how do we choose $r_1$, and the later $r_n$? We ensure 
+that a) the set $T_p(l^n)$ are non-empty, and that b) $l^n < \log(r_n)$. This 
+gives us that for $N\leqslant r_n$, we have 
+\[
+	|\disc(\{a_p / 2\sqrt p\}_{p\leqslant N}, \nu) - \disc(\bx^N,\nu)| \ll N^{-\frac 1 2+\epsilon} .
+\]
