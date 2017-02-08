@@ -6,7 +6,7 @@
 
 
 
-\section{Definitions and first results}
+\section{Equidistribution}
 
 The discrepancy (also known as the Kolmogorov--Smirnov statistic) is a way of 
 measuring how closely sample data fits a predicted distribution. It has many 
@@ -14,7 +14,57 @@ applications in computer science and statistics, but here we will focus on only
 the basic known properties, as well as how discrepancy changes when sequences 
 are tweaked and/or combined. 
 
-Discrepancy will be defined for measures on the $d$-dimensional half-open box 
+First, recall that the discrepancy is a way of sharpening the ``soft'' 
+convergence results of, say \cite[A.1]{serre-1989}. Let $X$ be a compact 
+topological space, $\{x_p\}$ a sequence of points in $X$ indexed by the prime 
+numbers. 
+
+\begin{definition}
+Let $\mu$ be a continuous probability measure on $X$. The sequence $\{x_p\}$ is 
+\emph{equidistributed} with respect to $\mu$ if for all $f\in C(X)$, we have 
+\[
+	\lim_{x\to \infty} \frac{1}{\pi(x)} \sum_{p\leqslant x} f(x_p) \to \int f\, \dd \mu .
+\]
+\end{definition}
+
+In other words, $\{x_p\}$ is $\mu$-equidistributed if the empirical measures 
+$P_x = \frac{1}{\pi(x)} \sum_{p\leqslant x} \delta_{x_p}$ converge to $\mu$ in 
+the weak topology. It is easy to see that $\{x_p\}$ is $\mu$-equidistributed if 
+and only if $\left| \sum_{p\leqslant x} f(x_p)\right| = o(x)$ for all 
+continuous $f$ having $\int f\, \dd\mu = 0$. In fact, one can restrict to a 
+set of $f$ which generate a dense subpace of $C(X)^{\mu =0}$. 
+
+In the discussion in \cite[A.1]{serre-1989}, $X$ is the space of conjugacy 
+classes in a compact Lie group, and $f$ is allowed to range over the characters 
+of irreducible, nontrivial representations of the group. In this section, we 
+will show that the entire discussion can be generalized to a much broader class 
+of \emph{strange Dirichlet series}, which are of the form 
+\[
+	L_f(\{x_p\},s) = \prod_p \frac{1}{1-f(x_p)p^{-s}} .
+\]
+A useful, but not too well known, result, is that we in fact can consider 
+functions $f$ which are only continuous almost everywhere. 
+
+\begin{theorem}
+Let $X$ be a compact separable metric space with no isolated points. Let $\mu$ 
+be a Borel measure on $X$ and let $f\colon X\to \bC$ be bounded and measurable. 
+Then $f$ is continuous almost everywhere if and only if 
+\[
+	\lim_{x\to \infty} \frac{1}{\pi(x)} \sum_{p\leqslant x} f(x_p) = \int f\, \dd\mu
+\]
+for all $\mu$-equidistributed sequences $\{x_p\}$. 
+\end{theorem}
+\begin{proof}
+This follows immediately from the proof of \cite[Th.~1]{mazzone-1995}
+\end{proof}
+
+
+
+
+
+\section{Definitions and first results}
+
+We will define discrepancy for measures on the $d$-dimensional half-open box 
 $[0,\infty)^d$. For vectors $x,y\in [0,\infty)^d$, we say $x<y$ if 
 $x_1<y_1$,\dots,$x_d<y_d$, and in that case write $[x,y)$ for the half-open 
 box $[x_1,y_1)\times \cdots \times [x_d,y_d)$. 
