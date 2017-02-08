@@ -108,6 +108,8 @@ follows that
 \[
 	|\mu[x,y) - \nu[x,y)| \leqslant \sum_{S\subset \{1,\dots,d\}} |\mu(I_S) - \nu(I_S)| \leqslant 2^d \disc^\star(\mu,\nu) .
 \]
+For a discussion and related context, see 
+\cite[Ch.~2 Ex.~1.2]{kuipers-niederreiter-1974}. 
 \end{proof}
 
 We are usually interested in comparing empirical measures and their conjectured 
@@ -147,13 +149,41 @@ about van der Corput sequence for arbitrary measures.
 
 \section{The Koksma--Hlawka inequality}
 
-% TODO
-Basically just summarize the paper \cite{okten-1999}. 
-
+Here we summarize the results of the paper \cite{okten-1999}, generalizing them 
+as needed for our context. Recall that a function $f$ on $[0,\infty)^d$ is 
+said to be of \emph{bounded variation} if there is a finite Radon measure $\nu$ 
+such that $f(x) - f(0) = \nu[0,x]$. In such a case we write 
+$\Var(f) = |\nu|$. If the appropriate differentiability conditions are 
+satisfied, then 
+\[
+	\Var(f) = \int_{[0,\infty)^d} \left|\frac{\dd^d f}{\dd x_1 \dots \dd x_d} \right|.
+\]
 
 \begin{theorem}[Koksma--Hlawka]
-Todo.
+Let $\mu$ be a probability measure on $[0,\infty)^d$, $f$ a function of 
+bounded variation. Then for any sequence $\bx$ in $[0,\infty)^d$, we have 
+\[
+	\left| \frac{1}{\pi(x)} \sum_{p\leqslant x} f(x_p) - \int f\, \dd\mu \right| \leqslant \Var(f) \disc(\bx^N,\mu) .
+\]
 \end{theorem}
+\begin{proof}
+By our assumptions there is a Radon measure $\nu$ such that 
+$f(y) - f(0) = \nu[0,y]$. What follows is essentially trivial, noting that 
+$1_{[0,x]}(y) = 1_{[y,\infty)^d}(x)$. 
+\begin{align*}
+	\frac{1}{\pi(x)} \sum_{p\leqslant x} f(x_p) - \int f\, \dd\mu 
+		&= \frac{1}{\pi(x)} \sum_{p\leqslant x} \left(f(x_p) - f(0)\right) - \int \left(f - f(0)\right)\, \dd\mu \\
+		&= \frac{1}{\pi(x)} \sum_{p\leqslant x} \int 1_{[y,\infty)^d}(x_p)\, \dd \nu(y) - \int \int 1_{[0,y]}\, \dd\nu \, \dd\mu(y) \\
+		&= \int \frac{1}{\pi(x)} \sum_{p\leqslant x} 1_{[y,\infty)^d}(x_p) - \int 1_{[y,\infty)^d}\, \dd\mu \, \dd\nu(y)
+\end{align*}
+It follows that 
+\[
+	\left| \frac{1}{\pi(x)} \sum_{p\leqslant x} f(x_p) - \int f\, \dd\mu \right|
+		\leqslant \sup_{y\in [0,\infty)} \left| \frac{1}{\pi(x)} \sum_{p\leqslant x} 1_{[y,\infty)}(x_p) - \int 1_{[y,\infty)}\, \dd\mu\right| \cdot |\nu| .
+\]
+The supremum in question is clearly bounded above by $\disc(\bx^N,\mu)$, so the 
+proof is complete. 
+\end{proof}
 
 
 
