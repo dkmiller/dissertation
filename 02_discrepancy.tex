@@ -139,9 +139,99 @@ rather by some other discrete subset of $\bR^+$. In that case we will still
 use the notations $\bx^N$, $\bx_{\geqslant N}$, etc., keeping in mind that 
 $\pi(N)$ is replaced by $\#\{\textnormal{indices }\leqslant N\}$. 
 
-Todo: give some basic examples of equidistributed sequences, talk about 
-equidistribution, almost-everywhere continuous functions. Prove basic facts 
-about van der Corput sequence for arbitrary measures. 
+
+
+
+
+\section{Examples}
+Todo: give some basic examples of equidistributed sequences, 
+
+
+\begin{definition}
+The \emph{van der Corput sequence} is given by 
+$\{\frac 1 2,\frac 1 4,\frac 3 4,\dots\}$. More precisely, write $n$ in base 
+$2$ as $n = \sum a_i 2^i$. Then $x_n = \sum a_i 2^{-(i+1)}$. 
+\end{definition}
+
+The van der Corput sequence has generalizations to other bases and higher 
+dimensions. It is well-known for being ``very equidistributed''---i.e.~, its' 
+discrepancy has extremely fast convergence to zero. 
+
+\begin{lemma}
+We have $\disc(\{x_n\}_{n\leqslant N}) \leqslant \frac{\log(N+1)}{N\log 2}$. 
+\end{lemma}
+\begin{proof}
+This is \cite[Ch.~2 Th.~3.5]{kuipers-niederreiter-1974}. 
+\end{proof}
+
+Now, the van der Corput sequence is uniformly distributed, but there is a 
+convenient trick to construct sequences equidistributed with respect to more 
+general measures. 
+
+\begin{theorem}\label{thm:van-der-corput}
+Let $\mu$ be a measure on a closed interval $[a,b]$ such that the cumulative 
+distribution function $\cdf_\mu(x) = \mu[a,x]$ is continuous and strictly 
+increasing. Then there exists a sequence $\{x_n\}$ such that 
+$\disc(\{x_n\}_{n\leqslant N},\mu) \ll \log(N) N^{-1}$
+\end{theorem}
+\begin{proof}
+Since $\cdf_\mu$ is a continuous bijection and its domain is a compact set, 
+$\cdf_\mu$ is an order isomorphism. Then Lemma \ref{lem:push-discrepancy} tells 
+us that for $\{y_n\}$ the van der Corput sequence on $[0,1]$, we have 
+\[
+	\disc(\{\cdf_\mu^{-1}(y_n)\}_{n\leqslant N}, \mu) = \disc(\{y_n\}_{n\leqslant N})  ,
+\]
+which gives us the desired result with $x_n = \cdf_\mu^{-1}(y_n)$. 
+\end{proof}
+
+\begin{theorem}\label{thm:discrepancy-arbitrary}
+Let $\mu$ be a measure on a closed interval such that the cdf is continuous, 
+sends $0$ to $0$, and strictly increasing. Fix $\alpha\in (0,1)$. Then there 
+exists a sequence $\{x_n\}$ such that 
+$\disc(\{x_n\}_{n\leqslant N},\mu) = \Theta(N^{-\alpha})$. 
+\end{theorem}
+\begin{proof}
+Without loss of generality, assume the closed integral in question is $[0,1]$. 
+If $\{x_n\}_{n\leqslant N}$ is a sequence in $[0,1]$, let 
+$\{x_n\}_{n\leqslant N+M}$ be the sequence $x_1,\dots,x_N,0,\dots,0$ ($M$ 
+zeros). Then 
+\[
+	\disc^\star(\{y_n\}_{n\leqslant N+M},\mu)
+		\geqslant \left| \frac{\#\{ n\leqslant N+M : x_n = 0\}}{N+M} - \mu\{0\}\right| 
+		\geqslant \frac{M}{N+M} .
+\]
+On the other hand, 
+\begin{align*}
+	\left| \cdf_{N+M}(t) - \cdf_N(t)\right| 
+		&\leqslant \frac{\left|\#\{n\leqslant N : x_n\leqslant t\} + M - \frac{M+N}{N}\#\{n\leqslant N : x_n\leqslant t\}\right|}{M+N} \\
+		&\leqslant \frac{\left|M - \frac{M}{N} \#\{n\leqslant N : x_n \leqslant t\} \right|}{M+N} \\
+		&\leqslant \frac{2M}{M+N} ,
+\end{align*}
+which implies that 
+\[
+	\disc^\star\left(\{x_n\}_{n\leqslant N+M},\mu\right) \leqslant \disc^\star\left(\{x_n\}_{n\leqslant N},\mu\right) + \frac{2 M}{M+N} .
+\]
+Let $\{v_n\}$ be the $\mu$-equidistributed van der Corput sequence of 
+Theorem \ref{thm:van-der-corput}. We know that 
+$\disc(\{v_n\}_{n\leqslant N}, \mu) \ll N^{-\alpha}$. 
+
+If discrepancy of $\{x_n\}_{n\leqslant N}$ is too small, add zeros to the end 
+of the sequence, and the above argument shows the discrepancy will start to 
+increase (but very slowly). If the discrepancy of $\{x_n\}_{n\leqslant N}$ is 
+too big, continue adding van der Corput elements to the end. Note that the 
+discrepancy is independent of ordering. So, if $\{x_n\}_{n\leqslant N}$ 
+contains at most $M$ ``non-van der Corput elements'' then  note that (if we 
+reorder things) for any $\epsilon>0$, 
+$\#\{n\leqslant N : x_n\ne v_n\} = M$, which tells us that 
+\[
+	\disc^\star(\bx^N,\mu) \leqslant \disc^\star(\bv^N,\mu) + \frac{M}{N} \ll \frac{M+\log N}{N} .
+\]
+(This is the same as above. For $N$ sufficiently large and $M$ sufficiently 
+small, we can make the discrepancy small again by adding sufficiently many 
+van der Corput elements.)
+
+Todo: polish this proof.
+\end{proof}
 
 
 
@@ -196,28 +286,29 @@ Let $\bx$ and $\by$ be sequences in $[0,\infty)$. Suppose
 $\nu = f\cdot \lambda$ for $f$ a bounded continuous function and $\lambda$ the 
 Lebesgue measure. Then 
 \[
-	\left|\disc^\star(\bx^N, \nu) - \disc^\star(\by^N,\nu)\right| \leqslant \|f\|_\infty \epsilon + \disc^\star(\bx^N,\nu) + \frac{\#\{ p\leqslant N : \|x_p - y_p\|_\infty \geqslant \epsilon\}}{\pi(N)} .
+	\left|\disc^\star(\bx^N, \nu) - \disc^\star(\by^N,\nu)\right| \leqslant \|f\|_\infty \epsilon + \frac{\#\{ n\leqslant N : |x_n - y_n| \geqslant \epsilon\}}{N} .
 \]
 \end{lemma}
 \begin{proof}
-Let $\epsilon>0$ and $t\in [0,\infty)$ be arbitrary. For all $p\leqslant N$ 
-such that $y_p<t$, either $x_p < t+\epsilon$ or 
-$\|x_p - y_p\|_\infty \geqslant \epsilon$. It follows that 
+Let $\epsilon>0$ and $t\in [0,\infty)$ be arbitrary. For all $n\leqslant N$ 
+such that $y_n<t$, either $x_n < t+\epsilon$ or 
+$|x_n - y_n| \geqslant \epsilon$. It follows that 
 \[
-	\by^N[0,t) \leqslant \bx^N[0,t+\epsilon) + \frac{\#\{ p\leqslant N : \|x_p - y_p\|_\infty \geqslant \epsilon\}}{\pi(N)} .
+	\by^N[0,t) \leqslant \bx^N[0,t+\epsilon) + \frac{\#\{ n\leqslant N : |x_n - y_n| \geqslant \epsilon\}}{N} .
 \]
 Moreover, we trivially have 
-\[
-	\left| \bx^N[0,t+\epsilon) - \nu[0,t+\epsilon)\right| \leqslant \disc^\star(\bx^N,\nu) .
-\]
-Putting these together, we get: 
+$\left| \bx^N[0,t+\epsilon) - \nu[0,t+\epsilon)\right| \leqslant \disc^\star(\bx^N,\nu)$. Putting these together, we get: 
 \begin{align*}
 	\by^N[0,t) - \nu[0,t) 
-		&\leqslant \bx^N[0,t+\epsilon) - \nu[0,t) + \frac{\#\{ p\leqslant N : \|x_p - y_p\|_\infty \geqslant \epsilon\}}{\pi(N)} \\
-		&\leqslant \nu[t,t+\epsilon) + \disc^\star(\bx^N,\nu) + \frac{\#\{ p\leqslant N : \|x_p - y_p\|_\infty \geqslant \epsilon\}}{\pi(N)} \\
-		&\leqslant \|f\|_\infty \epsilon + \disc^\star(\bx^N,\nu) + \frac{\#\{ p\leqslant N : \|x_p - y_p\|_\infty \geqslant \epsilon\}}{\pi(N)} 
+		&\leqslant \bx^N[0,t+\epsilon) - \nu[0,t) + \frac{\#\{ n\leqslant N : |x_n - y_n| \geqslant \epsilon\}}{N} \\
+		&\leqslant \nu[t,t+\epsilon) + \disc^\star(\bx^N,\nu) + \frac{\#\{ n\leqslant N : |x_n - y_n| \geqslant \epsilon\}}{N} \\
+		&\leqslant \|f\|_\infty \epsilon + \disc^\star(\bx^N,\nu) + \frac{\#\{ n\leqslant N : |x_n - y_n| \geqslant \epsilon\}}{N} 
 \end{align*}
-as desired. 
+This tells us that 
+\[
+	\disc^\star(\by^N,\nu) \leqslant \|f\|_\infty \epsilon + \disc^\star(\bx^N,\nu) + \frac{\#\{ n\leqslant N : |x_n - y_n| \geqslant \epsilon\}}{N} .
+\]
+Reversing the roles of $\bx$ and $\by$, we obtain the desired result. 
 \end{proof}
 
 \begin{lemma}
@@ -244,6 +335,27 @@ hence
 	\left| \bx^N[s,t) - \nu[s,t) - (\sigma_\ast \bx^N)[a-t,a-s) - (\sigma_\ast \nu)[a-t,a-s)\right| \leqslant \frac{2}{\pi(N)} .
 \]
 This proves the result. 
+\end{proof}
+
+A trick we will use throughout this thesis involves comparing the discrepancy 
+of a sequence with the discrepancy of a pushforward sequence, with respect to 
+the pushforward measure. 
+
+\begin{lemma}\label{lem:push-discrepancy}
+Let $f$ be an order isomorphism $f\colon [a,b] \to [c,d]$. If 
+$\{x_n\}$ is a sequence on $[a,b]$ and $\mu$ is a probability measure on 
+$[a,b]$, then 
+$\disc(\{x_n\}_{n\leqslant N}, \mu) = \disc(\{f(x_n)\}_{n\leqslant N}, f_\ast \mu)$, 
+and likewise for star discrepancy. 
+\end{lemma}
+\begin{proof}
+This is a simple computation, which we only check for star discrepancy: 
+\begin{align*}
+	\disc(\{f(x_n)\}_{n\leqslant N}, f_\ast \mu)
+		&= \sup_{t\in [c,d]} \left| \frac{\#\{n\leqslant N : f(x_n) \leqslant t\}}{N} - (f_\ast \mu)[a,t]\right| \\
+		&= \sup_{t\in [a,b]} \left| \frac{\#\{n\leqslant N : x_n \leqslant f^{-1}(t)\}}{N} - \mu[a,f^{-1}(t)]\right| \\
+		&= \disc(\{x_n\}_{n\leqslant N}, \mu) .
+\end{align*}
 \end{proof}
 
 

@@ -8,39 +8,37 @@
 
 \section{Main ideas}
 
-Todo: first just construct the ``fake integral Satake parameters.'' The 
-results here are very strong!
+This chapter has two parts. First, for any reasonable measure $\mu$ on 
+$[0,\pi]$ invariant under the same ``flip'' automorphism as the Sato--Tate 
+measure, there is a sequence $\{a_p\}$ of integers satisfying the Hasse 
+bound $|a_p|\leqslant 2\sqrt p$, such that for 
+$\theta_p = \cos^{-1}\left(\frac{a_p}{2\sqrt p}\right)$, the discrepancy 
+$\disc(\{\theta_p\}_{p\leqslant x},\mu)$ behaves like $x^{-\alpha}$ for 
+predetermined $\alpha\in (0,1/2]$, while for any smooth $f$ satisfying 
+$f(\pi-\theta) = -f(\theta)$ (and hence $\int f\, \dd\mu = 0$), the 
+strange Dirichlet series $L_f(\{\theta_p\},s)$ satisfies the Riemann 
+Hypothesis. 
 
-The goal for this chapter is to construct a Galois representation 
-$\rho_l\colon G_\bQ \to \GL_2(\bZ_l)$, ramified at a density-zero set of 
-primes, such that 
-\begin{enumerate}
-\item
-We have $a_p = \tr \rho(\frob_p)\in \bZ$ whenever $\rho_l$ is unramified at 
-$p$. 
-
-\item
-$|a_p|\leqslant 2\sqrt p$. ($\rho_l$ satisfies the Hasse bound.)
-
-\item
-For $\theta_p=\cos^{-1}a_p / 2\sqrt p)$, the discrepancy 
-$\disc^\star(\btheta^N,\ST)\to 0$, but slower than any $N^{-\epsilon}$. 
-
-\item
-For any smooth $f\in C^\infty(\bR/2\pi\bZ)$ such that 
-$f(\pi-\theta) = -f(\theta)$, the associated $L$-function 
-$L_f(\btheta,s)$ satisfies the Riemann Hypothesis. 
-\end{enumerate}
-
-These points together imply that $\rho_l$ satisfies the Sato--Tate conjecture, 
-and $L(\sym^k \rho_l,s)$ satisfy the Riemann Hypothesis for odd $k$, but that 
-$\rho_l$ does not satisfy the strong Sato--Tate conjecture. 
+In the second part of this chapter, we associate (infinitely ramified) Galois 
+representations to the fake Satake parameters above, using techniques from 
+\cite{pande-2011,khare-larsen-ramakrishna-2005}. 
 
 
 
 
 
 \section{Construction}
+
+Fix for the remainder of this section a measure $\mu$ on $[0,\pi]$ such that 
+(Todo: state conditions nicely). By Theorem \cite{thm:discrepancy-arbitrary}, 
+
+
+
+
+
+\section{Associated Galois representation}
+
+
 
 Fix, for the remainder of this section, a continuous representation 
 \[
@@ -86,12 +84,6 @@ is a sequence $\{T_p\}$ of $\mu$-distributed sets, such that
 $\disc(T_p,\mu) \ll p^{-1/2}$. Suppose moreover that $\mu/\nu$ is bounded away 
 from zero (at the pdf side). Then we can choose $t_p\in T_p$ so that 
 $\{t_p\}$ is $\nu$-equidistributed with good discrepancy. 
-
-
-
-
-
-\section{Associated Galois representation}
 
 Let $\mu$ be an absolutely continuous measure on $[0,\pi]$ such that the 
 pushforward $\cos_\ast \mu$ is bounded (this is true for the Sato--Tate 
