@@ -171,66 +171,69 @@ general measures.
 \begin{theorem}\label{thm:van-der-corput}
 Let $\mu$ be a measure on a closed interval $[a,b]$ such that the cumulative 
 distribution function $\cdf_\mu(x) = \mu[a,x]$ is continuous and strictly 
-increasing. Then there exists a sequence $\{x_n\}$ such that 
-$\disc(\{x_n\}_{n\leqslant N},\mu) \ll \log(N) N^{-1}$
+increasing. Then there exists a sequence $\bx=(x_1,x_2,\dots)$ such that 
+$\disc(\bx^N,\mu) \ll \frac{\log(N)}{N}$. 
 \end{theorem}
 \begin{proof}
 Since $\cdf_\mu$ is a continuous bijection and its domain is a compact set, 
 $\cdf_\mu$ is an order isomorphism. Then Lemma \ref{lem:push-discrepancy} tells 
-us that for $\{y_n\}$ the van der Corput sequence on $[0,1]$, we have 
-\[
-	\disc(\{\cdf_\mu^{-1}(y_n)\}_{n\leqslant N}, \mu) = \disc(\{y_n\}_{n\leqslant N})  ,
-\]
-which gives us the desired result with $x_n = \cdf_\mu^{-1}(y_n)$. 
+us that for $\bv$ the van der Corput sequence on $[0,1]$, we have 
+$\disc(\cdf_\mu^{-1}(\bv)^N, \mu) = \disc(\bv^N,\mu)$, which gives us the 
+desired result with $\bx = \cdf_\mu^{-1}(\bv)$. 
 \end{proof}
 
 \begin{theorem}\label{thm:discrepancy-arbitrary}
-Let $\mu$ be a measure on a closed interval such that the cdf is continuous, 
-sends $0$ to $0$, and strictly increasing. Fix $\alpha\in (0,1)$. Then there 
-exists a sequence $\{x_n\}$ such that 
-$\disc(\{x_n\}_{n\leqslant N},\mu) = \Theta(N^{-\alpha})$. 
+Let $\mu$ be a measure on $[a,b]$ such that $\cdf_\mu$ is continuous, 
+sends $a$ to $0$, and strictly increasing. Fix $\alpha\in (0,1)$. Then there 
+exists a sequence $\bx=(x_1,x_2,\dots)$ such that 
+$\disc(\bx^N,\mu) = \Theta(N^{-\alpha})$. 
 \end{theorem}
 \begin{proof}
-Without loss of generality, assume the closed integral in question is $[0,1]$. 
-If $\{x_n\}_{n\leqslant N}$ is a sequence in $[0,1]$, let 
-$\{x_n\}_{n\leqslant N+M}$ be the sequence $x_1,\dots,x_N,0,\dots,0$ ($M$ 
-zeros). Then 
+If $\bx_{\leqslant N}$ is a sequence of length $N$, let 
+$\bx_{\leqslant N}:a_{\leqslant M}$ be the sequence $x_1,\dots,x_N,a,\dots,a$ 
+($M$ copies of $a$). Then 
 \[
-	\disc^\star(\{y_n\}_{n\leqslant N+M},\mu)
-		\geqslant \left| \frac{\#\{ n\leqslant N+M : x_n = 0\}}{N+M} - \mu\{0\}\right| 
+	\disc^\star(\bx^N:a^M,\mu)
+		\geqslant \left| \frac{\#\{ n\leqslant N+M : x_n = a\}}{N+M} - \mu\{a\}\right| 
 		\geqslant \frac{M}{N+M} .
 \]
 On the other hand, 
 \begin{align*}
-	\left| \cdf_{N+M}(t) - \cdf_N(t)\right| 
+	\left| \cdf_{N,M}(t) - \cdf_N(t)\right| 
 		&\leqslant \frac{\left|\#\{n\leqslant N : x_n\leqslant t\} + M - \frac{M+N}{N}\#\{n\leqslant N : x_n\leqslant t\}\right|}{M+N} \\
-		&\leqslant \frac{\left|M - \frac{M}{N} \#\{n\leqslant N : x_n \leqslant t\} \right|}{M+N} \\
+%		&\leqslant \frac{\left|M - \frac{M}{N} \#\{n\leqslant N : x_n \leqslant t\} \right|}{M+N} \\
 		&\leqslant \frac{2M}{M+N} ,
 \end{align*}
 which implies that 
-\[
-	\disc^\star\left(\{x_n\}_{n\leqslant N+M},\mu\right) \leqslant \disc^\star\left(\{x_n\}_{n\leqslant N},\mu\right) + \frac{2 M}{M+N} .
-\]
-Let $\{v_n\}$ be the $\mu$-equidistributed van der Corput sequence of 
-Theorem \ref{thm:van-der-corput}. We know that 
-$\disc(\{v_n\}_{n\leqslant N}, \mu) \ll N^{-\alpha}$. 
+$\disc^\star\left(\bx^N:a^M,\mu\right) \leqslant \disc^\star\left(\bx^N,\mu\right) + \frac{2 M}{M+N}$. 
+Let $\bv$ be the $\mu$-equidistributed van der Corput sequence of 
+Theorem \ref{thm:van-der-corput}, possibly transformed linearly to lie in 
+$[a,b]$. We know that $\disc(\{v_n\}_{n\leqslant N}, \mu) \ll N^{-\alpha}$, 
+with the constant in question depending only on $\alpha$. 
 
-If discrepancy of $\{x_n\}_{n\leqslant N}$ is too small, add zeros to the end 
-of the sequence, and the above argument shows the discrepancy will start to 
-increase (but very slowly). If the discrepancy of $\{x_n\}_{n\leqslant N}$ is 
-too big, continue adding van der Corput elements to the end. Note that the 
-discrepancy is independent of ordering. So, if $\{x_n\}_{n\leqslant N}$ 
-contains at most $M$ ``non-van der Corput elements'' then  note that (if we 
-reorder things) for any $\epsilon>0$, 
-$\#\{n\leqslant N : x_n\ne v_n\} = M$, which tells us that 
-\[
-	\disc^\star(\bx^N,\mu) \leqslant \disc^\star(\bv^N,\mu) + \frac{M}{N} \ll \frac{M+\log N}{N} .
-\]
-(This is the same as above. For $N$ sufficiently large and $M$ sufficiently 
-small, we can make the discrepancy small again by adding sufficiently many 
-van der Corput elements.)
+We construct the sequence $\bx$ via the following recipe. Start with 
+$(x_1 = v_1,x_2 = v_2,\dots)$ until, for some $N_1$, 
+$\disc(\bx^{N_1},\mu) < N^{-\alpha}$. Then set $x_{N_1+1} = a$, 
+$x_{N_1+2} = a$, \dots, until $\disc(\bx^{N_1+M_1},\mu) > N^{-\alpha}$. 
+Then set $x_{N_1+M_1+1} = v_{N_1+1}$, $x_{N_1+M_1+2} = v_{N_1+2}$, \dots, 
+until once again $\disc(\bx^{N_1+M_1+N_2},\mu) < N^{-\alpha}$. Repeat 
+indefinitely. We will show first, that the two steps are possible, and 
+that nowhere does $\disc(\bx^N,\mu)$ differ by too much from $N^{-\alpha}$. 
 
-Todo: polish this proof.
+Note that $\frac{M+1}{N+M+1} - \frac{M}{N+M} \leqslant N^{-1}$. This tells 
+us that when we are adding $a$s at the end of $\bx^N$, the discrepancy of 
+$\bx_{\leqslant N},a_{\leqslant M}$ increases by at most $N^{-1}$ at each 
+step. So if $\disc(\bx^N,\mu) < N^{-\alpha}$, we can ensure that 
+$\disc(\bx^N:a^M,\mu)$ is at most $N^{-1}$ greater than $N^{-\alpha}$. 
+
+Moreover, we know that $\disc(\bx^N:a,\mu)$ is at most 
+$\frac{2}{N+1}$ away from $\disc(\bx^N,\mu)$. So when adding van der Corput 
+elements to the end of the sequence, its' discrepancy cannot decay any faster 
+than by $\frac{2}{N+1}$ per $a$ added. This yields 
+\[
+	\left|\disc(\bx^N,\mu) - N^{-\alpha}\right| \ll N^{-1} , 
+\]
+which is even stronger than we need.
 \end{proof}
 
 
@@ -343,18 +346,18 @@ the pushforward measure.
 
 \begin{lemma}\label{lem:push-discrepancy}
 Let $f$ be an order isomorphism $f\colon [a,b] \to [c,d]$. If 
-$\{x_n\}$ is a sequence on $[a,b]$ and $\mu$ is a probability measure on 
+$\bx$ is a sequence on $[a,b]$ and $\mu$ is a probability measure on 
 $[a,b]$, then 
-$\disc(\{x_n\}_{n\leqslant N}, \mu) = \disc(\{f(x_n)\}_{n\leqslant N}, f_\ast \mu)$, 
+$\disc(\bx^N, \mu) = \disc(f(\bx)^N, f_\ast \mu)$, 
 and likewise for star discrepancy. 
 \end{lemma}
 \begin{proof}
 This is a simple computation, which we only check for star discrepancy: 
 \begin{align*}
-	\disc(\{f(x_n)\}_{n\leqslant N}, f_\ast \mu)
+	\disc(f(\bx)^N, f_\ast \mu)
 		&= \sup_{t\in [c,d]} \left| \frac{\#\{n\leqslant N : f(x_n) \leqslant t\}}{N} - (f_\ast \mu)[a,t]\right| \\
 		&= \sup_{t\in [a,b]} \left| \frac{\#\{n\leqslant N : x_n \leqslant f^{-1}(t)\}}{N} - \mu[a,f^{-1}(t)]\right| \\
-		&= \disc(\{x_n\}_{n\leqslant N}, \mu) .
+		&= \disc(\bx^N, \mu) .
 \end{align*}
 \end{proof}
 
