@@ -29,8 +29,41 @@ representations to the fake Satake parameters above, using techniques from
 
 \section{Construction}
 
-Fix for the remainder of this section a measure $\mu$ on $[0,\pi]$ such that 
-(Todo: state conditions nicely). By Theorem \ref{thm:discrepancy-arbitrary}, 
+To begin with, let $\mu$ be a probability measure on $[0,\pi]$ such that 
+$\cos_\ast \mu$, supported on $[-1,1]$, has continuous, strictly increasing 
+cdf, and fix $\alpha\in (0,1/2)$. Then we can apply Theorem 
+\ref{thm:discrepancy-arbitrary} to find a sequence $\bx$ such that 
+$\disc(\bx^N,\cos_\ast \mu) = \Theta(\pi(N)^{-\alpha})$. For each prime $p$, 
+there exists an integer $a_p$ such that $|a_p|\leqslant 2\sqrt p$ and 
+$\left| \frac{a_p}{2\sqrt p} - x_p\right| \leqslant p^{-1/2}$. Let 
+$y_p = \frac{a_p}{2\sqrt p}$. Now apply 
+Lemma \ref{lem:disc-of-two-seq} with $\epsilon = N^{-1/2}$. We obtain 
+\[
+	\left| \disc(\bx^N,\cos_\ast \mu) - \disc(\by^N, \cos_\ast \mu)\right| \ll  N^{-1/2} + \frac{\pi(N^{1/2})}{\pi(N)} ,
+\]
+which tells us that $\disc(\by^N,\cos_\ast\mu) = \Theta(\pi(N)^{-\alpha})$. 
+Now let $\btheta = \cos^{-1}(\by)$. Then we see that 
+$\disc(\btheta^N,\mu) = \Theta(\pi(N)^{-\alpha})$. 
+
+We can improve this example by controlling the behavior of sums of the form 
+$\sum_{p\leqslant N} f(\theta_p)$, at least for ``odd'' $f$. 
+
+Let $\sigma$ be the automorphism of $[0,\pi]$ given by 
+$\sigma(\theta) = \pi-\theta$. Note that $\sigma_\ast \ST = \ST$. 
+Fix a measure $\mu$ on $[0,\pi]$ such that $\sigma_\ast \mu = \mu$. If $f$ is a 
+function on $[0,\pi]$ satisfying $f\circ \sigma = - f$, then $\mu(f) = 0$. Let 
+$\nu = \cos_\ast \left. \mu\right|_{[0,\pi/2]}$; this is a measure on $[0,1]$. 
+Assume that $\nu$ has a bounded continuous density function. (For example, this 
+is true if $\nu = \ST$.) Finally, fix $\alpha\in (0,1/2)$. Then we can apply 
+Theorem \ref{thm:discrepancy-arbitrary} to find a sequence $\bx$ such that 
+$\disc(\bx^N,\nu) = \Theta(\pi(N)^{-\alpha})$. For each prime $p$, there 
+exists an integer $a_p\in \bZ$ such that $|a_p| \leqslant 2\sqrt p$ and 
+$\left| \frac{a_p}{2\sqrt p} - x_p\right| \leqslant p^{-1/2}$. Applying 
+? to the sequence $\ba$ with $\epsilon = ?$, we get 
+\[
+	\disc(\ba^N,\nu) = \ldots .
+\]
+We'd like to do better. 
 
 
 
