@@ -12,10 +12,19 @@
 
 \section{Category of test objects}
 
-The following is an exposition and explication of the theory outlined in 
-\cite[VII\textsubscript{B}, \S 0--1]{sga3-1}. In particular, we will heavily 
-use the notions of a pseudocompact ring, pseudocompact modules, etc. Let 
-$\Lambda$ be a pseudocompact ring. Write $\Art_\Lambda$ for the opposite 
+This section summarizes the theory in 
+\cite[VII\textsubscript{B}, \S 0--1]{sga3-1}, adapting it to the deformation 
+theory of Galois representations. All rings are commutative with unit. 
+
+\begin{definition}
+Let $\Lambda$ be a ring. A topological $\Lambda$-module $M$ is 
+\emph{pseudocompact} if it is a filtered inverse limit of discrete 
+finite-length $\Lambda$-modules. The ring $\Lambda$ is pseudocompact if it 
+is pseudocompact as a module over itself. 
+\end{definition}
+
+Let $\Lambda$ be a topological ring. Given a pseudocompact $\Lambda$-algebra 
+$A$, write $\Art_\Lambda$ for the opposite 
 of the category of $\Lambda$-algebras which have finite length as 
 $\Lambda$-modules. Given such a $\Lambda$-algebra $A$, write $X=\spf(A)$ for 
 the corresponding object of $\Art_\Lambda$, and we put $A=\sO(X)$. 
@@ -24,17 +33,42 @@ the corresponding object of $\Art_\Lambda$, and we put $A=\sO(X)$.
 Let $\Lambda$ be a pseudocompact ring, $\Art_\Lambda$ as above. Then 
 $\Art_\Lambda$ is closed under finite limits and colimits. 
 \end{lemma}
+\begin{proof}
+That $\Art_\Lambda$ is closed under finite colimits follows from the fact that 
+finite-length $\Lambda$-algebras are closed under finite limits (the 
+underlying modules are closed under finite limits). Moreover, since the tensor 
+product of finite length modules also has finite length, and quotients of 
+length modules have finite length, $\Art_\Lambda$ is closed under finite 
+limits. 
+\end{proof}
 
 \begin{lemma}
 Let $\Lambda$ be a pseudocompact local ring. Then $\Lambda$ is henselian, in 
 any of the following senses:
 \begin{enumerate}
 \item
-d
+Every finite $\Lambda$-algebra is a product of local $\Lambda$-algebras.
+
+\item
+The first condition is satisfied for $\Lambda$-algebras of the form 
+$\Lambda[t]/f$, where $f$ is monic. 
+
+\item
+Let $\fm$ be the maximal ideal of $\Lambda$. Then $A\mapsto A/\fm$ is an 
+equivalence of categories from finite \'etale $\Lambda$-algebras to 
+finite \'etale $\Lambda/\fm$-algebras. 
 \end{enumerate}
 \end{lemma}
 \begin{proof}
-\cite[18.5.?]{ega4-4}
+The conditions are equivalent by \cite[18.5.11]{ega4-4}. Recall that 
+$\Lambda = \varprojlim \Lambda/\fa$, where $\fa$ ranges over closed ideals of 
+finite index. Let $A$ be a pseudocompact $\Lambda$-algebra. For any 
+ideal $\fa\subset \Lambda$, the ring $\Lambda/\fa$ is henselian by 
+\cite[18.5.14]{ega4-4}, so $A/\fa$ is a product of local 
+$\Lambda/\fa$-algebras. Moreover, by \cite[18.5.4]{ega4-4}, the map 
+$A/\fa \to A/\fm$ is a bijection on idempotents. The inverse limit of 
+these compatible systems of idempotents decompose $A$ into a product of local 
+$\Lambda$-algebras. 
 \end{proof}
 
 Following Grothendieck, if $\cC$ is an arbitrary category, we write 
@@ -55,6 +89,14 @@ preserves filtered colimits.
 \end{lemma}
 \begin{proof}
 This follows from the results of \cite[6.1]{kashiwara-schapira-2006}. 
+\end{proof}
+
+\begin{lemma}\label{lem:ind-cat-left-exact}
+The functors $\Art_\Lambda \to \Ind(\Art_\Lambda) \to \widehat{\Art_\Lambda}$ 
+are left exact.
+\end{lemma}
+\begin{proof}
+This is \cite[6.1.17]{kashiwara-schapira-2006}. 
 \end{proof}
 
 If $R$ is a pseudocompact $\Lambda$-algebra, write $\spf(R)$ for the object of 
@@ -108,8 +150,9 @@ profinite group, then the functor
 is in $\Ind(\Art_\Lambda)$. 
 \end{corollary}
 \begin{proof}
-The first claim follows easily from \ref{thm:exponential-ideal}. Just note 
-that $[\Gamma,\cG]$ is the equalizer:
+The first claim follows easily from Lemma \ref{thm:exponential-ideal} and 
+Lemma \ref{lem:ind-cat-left-exact}. Just note that $[\Gamma,\cG]$ is the 
+equalizer:
 \[
 \begin{tikzcd}
 	{[\Gamma,\cG]} \ar[r]
@@ -237,7 +280,7 @@ finite length quotients $R/\fa$, we obtain the result.
 
 \begin{corollary}\label{thm:quotients-good}
 Let $\cR\to \cX\times \cX$ be an equivalence relation satisfying the hypotheses 
-of \ref{thm:quotients-ind}. Suppose further that 
+of Theorem \ref{thm:quotients-ind}. Suppose further that 
 \begin{enumerate}
 \item
 One of the maps $\cR\to \cX$ is smooth, and 
@@ -275,9 +318,10 @@ surjective for all $S\in \Art_k$, e.g.~it is not for $S=\spf(k)$.
 \end{example}
 
 \begin{example}
-The hypothesis of smoothness in \ref{thm:quotients-good} is necessary. To see 
-this, let $k$ be a field of characteristic $p>0$. Then the formal additive 
-group $\widehat\Ga=\spf(k\pow{t})$ has a subgroup $\balpha_p$ defined by 
+The hypothesis of smoothness in Theorem \ref{thm:quotients-good} is necessary. 
+To see this, let $k$ be a field of characteristic $p>0$. Then the formal 
+additive group $\widehat\Ga=\spf(k\pow{t})$ has a subgroup $\balpha_p$ defined 
+by 
 \[
   \balpha_p(S) = \{s\in \sO(S)\colon s^p=0\} .
 \]
@@ -306,32 +350,9 @@ all $S$.
 
 
 
-\section{Groupoids and quotient stacks}
-
-\begin{lemma}
-Let $\cG\in \Ind(\Art_\Lambda)$ be a smooth connected group. Then every 
-$\cG$-torsor is trivial. 
-\end{lemma}
-\begin{proof}
-Let $\cP\to \cB$ be a $\cG$-torsor in $\Ind(\Art_\Lambda)$. That is, $\cP$ has 
-an action of $\cG_\cS$ for which $\cP\times_\cB\cP\simeq \cG\times \cP$ as 
-$\cG$-spaces. [\ldots not done\ldots]
-\end{proof}
-
-\begin{theorem}
-Let $\cG$ be a smooth connected group in $\Ind(\Art_\Lambda)$, and 
-$\cX\in \Ind(\Art_\Lambda)$ a $\cG$-object. Then the quotient stack 
-$[\cX/\cG](S)$ has as objects $\cX(S)/\cG(S)$, but with extra automorphisms? 
-\end{theorem}
-\begin{proof}
-Use triviality of torsors. 
-\end{proof}
-
-
-
-
-
 \section{Deformations of group representations}
+
+Relate to \cite{bockle-2013}. 
 
 Let $\Gamma\in \Gp(\widehat{\Art_\Lambda})$ and $\cG\in \Ind(\Art_\Lambda)$. By 
 \ref{thm:framed-deformation}, the functor 
@@ -371,7 +392,7 @@ $(R/\fm_R)\otimes (S/\fm_S) = S/\fm_S$ is local, which it is.
 We conclude that the action of $\cG^{\ad,\circ}$ on $\Rep^\square(\Gamma,\cG)$ 
 preserves $\Rep^\square(\Gamma,\cG)_{\bar\rho}$. Thus we may put 
 \[
-	\Rep(\Gamma,\cG)_{\bar\rho} = [\Rep^\square(\Gamma,\cG)_{\bar\rho} / \cG^{\ad,\circ}] .
+	\Rep(\Gamma,\cG)_{\bar\rho} = \Rep^\square(\Gamma,\cG)_{\bar\rho} / \cG^{\ad,\circ} .
 \]
 If $\cG^{\ad,\circ}$ acts faithfully on $\Rep^\square(\Gamma,\cG)_{\bar\rho}$, 
 then we recover the classical notion of the deformation functor. 
@@ -478,44 +499,9 @@ yields the result.
 \end{proof}
 
 
----------------------------------------------
 
-Let $\cX\in \Ind(\Art_{/\Lambda})$ be smooth, and 
-$\LL_{\cX/\Lambda}\simeq \Omega_{\cX/\Lambda}^1[0]$ be its cotangent complex. 
-Fix $x_0\in \cX(S_0)$. From the chain 
-$S_0\xrightarrow{x_0} \cX \to \spf(\Lambda)$, we get a distinguished triangle 
-\cite[II 2.1.5.6]{illusie-1971}
-\[
-\begin{tikzcd}
-	x_0^\ast \LL_{\cX/\Lambda} \ar[r]
-		& \LL_{S_0/\Lambda} \ar[r]
-		& \LL_{S_0/\cX} \ar[r] 
-		& {} .
-\end{tikzcd}
-\]
-If $I$ is a coherent sheaf on $S_0$, we get a long exact sequence:
-\[
-\begin{tikzcd}[column sep=small]
-	\ext^0(\LL_{S_0/\Lambda},M) \ar[r]
-		& \ext^0(x_0^\ast \LL_{\cX/\Lambda},M) \ar[r]
-		& \ext^1(\LL_{S_0/\cX},M) \ar[r]
-		& \ext^1(\LL_{S_0/\Lambda},M) \ar[r]
-		& \ext^1(x_0^\ast \LL_{\cX/\Lambda},M)
-\end{tikzcd}
-\]
-If $\cX_{/\Lambda}$ is smooth, then $\ext^1(x_0^\ast\LL_{\cX/\Lambda},M)=0$ and 
-$\LL_{\cX/\Lambda} = \Omega_{\cX/\Lambda}^1$. This gives us an exact sequence 
-\[
-\begin{tikzcd}[column sep=small]
-	\ext^0(\LL_{S_0/\Lambda},M) \ar[r]
-		& \hom(\Omega_{\cX/\Lambda}^1,M) \ar[r]
-		& \ext^1(\LL_{S_0/\cX},M) \ar[r]
-		& \ext^1(\LL_{S_0/\Lambda},M) \ar[r]
-		& 0 .
-\end{tikzcd}
-\]
-The result \cite[III 2.1.7]{illusie-1971} tells us that the choice of 
-$S\in \Exal_{S_0}(M)$ gives us an element of $\ext^1(\LL_{S_0/\Lambda},M)$. 
-Its fiber admits an action of $\hom(\Omega_{\cX/\Lambda}^1,M)$. The only thing 
-remaining is: we need $\ext^0(\LL_{S_0/\Lambda},M)=0$, which doesn't hold in 
-complete generality. 
+
+
+\section{Deformation theory over \texorpdfstring{$\bQ$}{Q}}
+
+Todo: summarize \cite{pande-2011}. 
