@@ -29,12 +29,17 @@ representations to the fake Satake parameters above, using techniques from
 
 \section{Construction}
 
-To begin with, let $\mu$ be a probability measure on $[0,\pi]$ such that 
-$\cos_\ast \mu$, supported on $[-1,1]$, has continuous, strictly increasing 
-cdf, and fix $\alpha\in (0,1/2)$. Then we can apply Theorem 
-\ref{thm:discrepancy-arbitrary} to find a sequence $\bx$ such that 
-$\disc(\bx^N,\cos_\ast \mu) = \Theta(\pi(N)^{-\alpha})$. For each prime $p$, 
-there exists an integer $a_p$ such that $|a_p|\leqslant 2\sqrt p$ and 
+\begin{theorem}
+Let $\mu$ be a probability measure on $[0,\pi]$ such that $\cos_\ast\mu$ is 
+good, and fix $\alpha\in (0,1/2)$. Then there exists a sequence of integers 
+$a_p\in \bZ$ with $|a_p|\leqslant 2\sqrt p$, such that if we set 
+$\theta_p = \cos^{-1}\left(\frac{a_p}{2\sqrt p}\right)$, then 
+$\disc^\star(\btheta^N,\mu) = \Theta(\pi(N)^{-\alpha})$. 
+\end{theorem}
+\begin{proof}
+Apply Theorem \ref{thm:discrepancy-arbitrary} to find a sequence $\bx$ such 
+that $\disc(\bx^N,\cos_\ast \mu) = \Theta(\pi(N)^{-\alpha})$. For each prime 
+$p$, there exists an integer $a_p$ such that $|a_p|\leqslant 2\sqrt p$ and 
 $\left| \frac{a_p}{2\sqrt p} - x_p\right| \leqslant p^{-1/2}$. Let 
 $y_p = \frac{a_p}{2\sqrt p}$. Now apply 
 Lemma \ref{lem:disc-of-two-seq} with $\epsilon = N^{-1/2}$. We obtain 
@@ -42,28 +47,57 @@ Lemma \ref{lem:disc-of-two-seq} with $\epsilon = N^{-1/2}$. We obtain
 	\left| \disc(\bx^N,\cos_\ast \mu) - \disc(\by^N, \cos_\ast \mu)\right| \ll  N^{-1/2} + \frac{\pi(N^{1/2})}{\pi(N)} ,
 \]
 which tells us that $\disc(\by^N,\cos_\ast\mu) = \Theta(\pi(N)^{-\alpha})$. 
-Now let $\btheta = \cos^{-1}(\by)$. Then we see that 
+Now let $\btheta = \cos^{-1}(\by)$. Apply Lemma \ref{lem:pushforward-reverse} to 
+$\btheta = \cos^{-1}(\by)$, and we see that 
 $\disc(\btheta^N,\mu) = \Theta(\pi(N)^{-\alpha})$. 
+\end{proof}
 
 We can improve this example by controlling the behavior of sums of the form 
-$\sum_{p\leqslant N} f(\theta_p)$, at least for ``odd'' $f$. 
+$\sum_{p\leqslant N} f(\theta_p)$, at least for ``odd'' $f$. Let $\sigma$ be 
+the involution of $[0,\pi]$ given by $\sigma(\theta) = \pi-\theta$. Note that 
+$\sigma_\ast \ST = \ST$. Moreover, note that for any $f$ with 
+$f\circ \sigma = -f$, then $\int f\, \dd\ST = 0$. 
 
-Let $\sigma$ be the automorphism of $[0,\pi]$ given by 
-$\sigma(\theta) = \pi-\theta$. Note that $\sigma_\ast \ST = \ST$. 
-Fix a measure $\mu$ on $[0,\pi]$ such that $\sigma_\ast \mu = \mu$. If $f$ is a 
-function on $[0,\pi]$ satisfying $f\circ \sigma = - f$, then $\mu(f) = 0$. Let 
-$\nu = \cos_\ast \left. \mu\right|_{[0,\pi/2]}$; this is a measure on $[0,1]$. 
-Assume that $\nu$ has a bounded continuous density function. (For example, this 
-is true if $\nu = \ST$.) Finally, fix $\alpha\in (0,1/2)$. Then we can apply 
-Theorem \ref{thm:discrepancy-arbitrary} to find a sequence $\bx$ such that 
-$\disc(\bx^N,\nu) = \Theta(\pi(N)^{-\alpha})$. For each prime $p$, there 
-exists an integer $a_p\in \bZ$ such that $|a_p| \leqslant 2\sqrt p$ and 
-$\left| \frac{a_p}{2\sqrt p} - x_p\right| \leqslant p^{-1/2}$. Applying 
-? to the sequence $\ba$ with $\epsilon = ?$, we get 
+\begin{theorem}
+Let $\mu$ be a probability measure on $[0,\pi]$ such that 
+$\sigma_\ast\mu = \mu$ and $\left.\mu\right|_{[0,\pi/2)}$ is good. Fix 
+$\alpha\in (0,1/2)$. Then there exists a sequence of integers $a_p$ with 
+$|a_p|\leqslant 2\sqrt p$ such that for 
+$\theta_p =\cos^{-1}\left( \frac{a_p}{2\sqrt p}\right)$, we have 
+$\disc(\btheta^N,\mu) = \Theta(\pi(N)^{-\alpha})$, and moreover 
+$\left| \sum_{p\leqslant N} f(\theta_p)\right| \ll N^{-1/2+\epsilon}$ 
+whenever $f\circ \sigma = - f$, and $f$ is the restriction to $[0,\pi]$ of a 
+smooth periodic function on $[-\pi,\pi]$ satisfying $f(-\theta) = f(\theta)$. 
+\end{theorem}
+\begin{proof}
+The basic ideas is as follows. Enumerate the primes 
+$p_1 =2, p_2 = 3, p_3 = 5$, and divide them into the ``odd indexed primes'' and 
+the ``even indexed primes.'' For $n$ odd, choose $a_{p_n}$ so that 
+$\theta_{p_n}\in [0,\pi/2)$ are equidistributed with respect to 
+$\left.\mu\right|_{[0,\pi/2)}$ with desired rate of convergence. Then choose, 
+for $n$ odd, $a_{p_{n+1}}$ so that $\theta_{p_{n+1}}\in [\pi/2,\pi]$ is very 
+close to $\pi-\theta_{p_n}$. We can ensure that the discrepancy of the 
+combined sequence decays at the correct rate. Moreover, for functions with  
+$f(\pi-\theta) = -f(\theta)$, sums like $\sum_{p\leqslant N} f(\theta_p)$ 
+have a bunch of terms looking like 
 \[
-	\disc(\ba^N,\nu) = \ldots .
+	f(\theta_{p_n}) + f(\theta_{p_{n+1}})\approx f(\theta) + f(\pi-\theta) \approx f(\theta) - f(\theta) \approx 0 .
 \]
-We'd like to do better. 
+We proceed to do this rigorously. 
+
+Let $\bx=(x_1,x_2,\dots)$ be the sequence of Theorem 
+\ref{thm:discrepancy-arbitrary} for $\cos_\ast \left. \mu\right|_{[0,\pi/2]}$ 
+and $\alpha$. This is supported on $[0,1]$. Choose $a_{p_{2n-1}}$ so that 
+$\left| \frac{a_{p_{2n-1}}}{2\sqrt{p_{2n-1}}} - x_n\right| \leqslant p^{-1/2}$ 
+and also\ldots
+
+Let $p<q$ be successive primes. Suppose we have already chosen $a_p<0$. Then 
+we can choose $a_q>0$ to guarantee that 
+\[
+	\left| \frac{a_p}{2\sqrt p} + \frac{a_q}{2\sqrt q}\right| \leqslant \frac{1}{\sqrt q} .
+\]
+
+\end{proof}
 
 
 

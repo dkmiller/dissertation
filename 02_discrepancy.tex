@@ -144,35 +144,58 @@ $\pi(N)$ is replaced by $\#\{\textnormal{indices }\leqslant N\}$.
 
 
 \section{Examples}
-Todo: give some basic examples of equidistributed sequences, 
 
+One of the first examples of equidistributed sequences is translates of an 
+irrational quantity modulo one. 
+
+\begin{theorem}
+Let $a\in \bR$ be irrational. Then the sequence 
+$\bx=(a,2a\mod 1,3a\mod 1,\dots)$ is equidistributed in $[0,1]$. 
+\end{theorem}
+\begin{proof}
+This follows from the more precise results of Chapter 
+\ref{chapter:irrationality-exponent}. 
+\end{proof}
+
+Sequences of this form will have discrepancy that decays like 
+$N^{-\alpha\pm \epsilon}$, for $\alpha\in (0,1/2)$. It can be useful to have a 
+sequence whose discrepancy decays faster. The best known decay is achieved by 
+the following sequence. 
 
 \begin{definition}
 The \emph{van der Corput sequence} is given by 
 $\{\frac 1 2,\frac 1 4,\frac 3 4,\dots\}$. More precisely, write $n$ in base 
-$2$ as $n = \sum a_i 2^i$. Then $x_n = \sum a_i 2^{-(i+1)}$. 
+$2$ as $n = \sum a_i 2^i$. Then $v_n = \sum a_i 2^{-(i+1)}$. 
 \end{definition}
 
 The van der Corput sequence has generalizations to other bases and higher 
-dimensions. It is well-known for being ``very equidistributed''---i.e.~, its' 
+dimensions. It is well-known for being ``very equidistributed''---i.e., its 
 discrepancy has extremely fast convergence to zero. 
 
 \begin{lemma}
-We have $\disc(\{x_n\}_{n\leqslant N}) \leqslant \frac{\log(N+1)}{N\log 2}$. 
+Let $\bv=\{v_n\}$ be the van der Corput sequence. Then
+$\disc(\bv^N) \leqslant \frac{\log(N+1)}{N\log 2}$. 
 \end{lemma}
 \begin{proof}
-This is \cite[Ch.~2 Th.~3.5]{kuipers-niederreiter-1974}. 
+This is \cite[Ch.~2 Th.~3.5]{kuipers-niederreiter-1974}. In particular, we 
+will use often that $\disc(\bv^N)\ll \frac{\log N}{N}$. 
 \end{proof}
 
 Now, the van der Corput sequence is uniformly distributed, but there is a 
 convenient trick to construct sequences equidistributed with respect to more 
 general measures. 
 
+\begin{definition}
+Let $\mu$ be a probability measure on $[a,b]$. We call $\mu$ \emph{good} if 
+$\cdf_\mu$ is continuous, strictly increasing, and sends $a\mapsto 0$. 
+\end{definition}
+
+Note that if $\mu$ is a good measure, then $\cdf_\mu$ is an order isomorphism 
+from $[a,b]$ to $[0,1]$. 
+
 \begin{theorem}\label{thm:van-der-corput}
-Let $\mu$ be a measure on a closed interval $[a,b]$ such that the cumulative 
-distribution function $\cdf_\mu(x) = \mu[a,x]$ is continuous and strictly 
-increasing. Then there exists a sequence $\bx=(x_1,x_2,\dots)$ such that 
-$\disc(\bx^N,\mu) \ll \frac{\log(N)}{N}$. 
+Let $\mu$ be a good measure on a closed interval. Then there exists a sequence 
+$\bx=(x_1,x_2,\dots)$ such that $\disc(\bx^N,\mu) \ll \frac{\log(N)}{N}$. 
 \end{theorem}
 \begin{proof}
 Since $\cdf_\mu$ is a continuous bijection and its domain is a compact set, 
@@ -183,10 +206,9 @@ desired result with $\bx = \cdf_\mu^{-1}(\bv)$.
 \end{proof}
 
 \begin{theorem}\label{thm:discrepancy-arbitrary}
-Let $\mu$ be a measure on $[a,b]$ such that $\cdf_\mu$ is continuous, 
-sends $a$ to $0$, and strictly increasing. Fix $\alpha\in (0,1)$. Then there 
-exists a sequence $\bx=(x_1,x_2,\dots)$ such that 
-$\disc(\bx^N,\mu) = \Theta(N^{-\alpha})$. 
+Let $\mu$ be a good measure on a closed interval. Fix $\alpha\in (0,1)$. 
+Then there exists a sequence $\bx=(x_1,x_2,\dots)$ such that 
+$\disc^\star(\bx^N,\mu) = \Theta(N^{-\alpha})$. 
 \end{theorem}
 \begin{proof}
 If $\bx_{\leqslant N}$ is a sequence of length $N$, let 
@@ -208,30 +230,33 @@ which implies that
 $\disc^\star\left(\bx^N:a^M,\mu\right) \leqslant \disc^\star\left(\bx^N,\mu\right) + \frac{2 M}{M+N}$. 
 Let $\bv$ be the $\mu$-equidistributed van der Corput sequence of 
 Theorem \ref{thm:van-der-corput}, possibly transformed linearly to lie in 
-$[a,b]$. We know that $\disc(\{v_n\}_{n\leqslant N}, \mu) \ll N^{-\alpha}$, 
-with the constant in question depending only on $\alpha$. 
+$[a,b]$. We know that $\disc(\bv^N, \mu) \ll N^{-\alpha}$, with the constant 
+in question depending only on $\alpha$. 
 
 We construct the sequence $\bx$ via the following recipe. Start with 
 $(x_1 = v_1,x_2 = v_2,\dots)$ until, for some $N_1$, 
-$\disc(\bx^{N_1},\mu) < N^{-\alpha}$. Then set $x_{N_1+1} = a$, 
-$x_{N_1+2} = a$, \dots, until $\disc(\bx^{N_1+M_1},\mu) > N^{-\alpha}$. 
-Then set $x_{N_1+M_1+1} = v_{N_1+1}$, $x_{N_1+M_1+2} = v_{N_1+2}$, \dots, 
-until once again $\disc(\bx^{N_1+M_1+N_2},\mu) < N^{-\alpha}$. Repeat 
-indefinitely. We will show first, that the two steps are possible, and 
-that nowhere does $\disc(\bx^N,\mu)$ differ by too much from $N^{-\alpha}$. 
+$\disc^\star(\bx^{N_1},\mu) < N_1^{-\alpha}$. Then set $x_{N_1+1} = a$, 
+$x_{N_1+2} = a$, \dots, until 
+$\disc^\star(\bx^{N_1+M_1},\mu) > (N_1+M_1)^{-\alpha}$. Then set 
+$x_{N_1+M_1+1} = v_{N_1+1}$, $x_{N_1+M_1+2} = v_{N_1+2}$, \dots, 
+until once again 
+$\disc^\star(\bx^{N_1+M_1+N_2},\mu) < (N_1+M_1+N_2)^{-\alpha}$. Repeat 
+indefinitely. We will show first, that the two steps are possible, and that 
+nowhere does $\disc^\star(\bx^N,\mu)$ differ by too much from 
+$N^{-\alpha}$. 
 
 Note that $\frac{M+1}{N+M+1} - \frac{M}{N+M} \leqslant N^{-1}$. This tells 
-us that when we are adding $a$s at the end of $\bx^N$, the discrepancy of 
-$\bx_{\leqslant N},a_{\leqslant M}$ increases by at most $N^{-1}$ at each 
-step. So if $\disc(\bx^N,\mu) < N^{-\alpha}$, we can ensure that 
-$\disc(\bx^N:a^M,\mu)$ is at most $N^{-1}$ greater than $N^{-\alpha}$. 
+us that when we are adding $a$'s at the end of $\bx^N$, the discrepancy of 
+$\bx_{\leqslant N}:a_{\leqslant M}$ increases by at most $N^{-1}$ at each 
+step. So if $\disc^\star(\bx^N,\mu) < N^{-\alpha}$, we can ensure that 
+$\disc^\star(\bx^N:a^M,\mu)$ is at most $N^{-1}$ greater than $N^{-\alpha}$. 
 
-Moreover, we know that $\disc(\bx^N:a,\mu)$ is at most 
-$\frac{2}{N+1}$ away from $\disc(\bx^N,\mu)$. So when adding van der Corput 
-elements to the end of the sequence, its' discrepancy cannot decay any faster 
-than by $\frac{2}{N+1}$ per $a$ added. This yields 
+Moreover, we know that $\disc^\star(\bx^N:a,\mu)$ is at most 
+$\frac{2}{N+1}$ away from $\disc^\star(\bx^N,\mu)$. So when adding van der 
+Corput elements to the end of the sequence, its' discrepancy cannot decay any 
+faster than by $\frac{2}{N+1}$ per $a$ added. This yields 
 \[
-	\left|\disc(\bx^N,\mu) - N^{-\alpha}\right| \ll N^{-1} , 
+	\left|\disc^\star(\bx^N,\mu) - N^{-\alpha}\right| \ll N^{-1} , 
 \]
 which is even stronger than we need.
 \end{proof}
@@ -285,11 +310,12 @@ proof is complete.
 \section{Comparing sequences}
 
 \begin{lemma}\label{lem:disc-of-two-seq}
-Let $\bx$ and $\by$ be sequences in $[0,\infty)$. Suppose 
-$\nu = f\cdot \lambda$ for $f$ a bounded continuous function and $\lambda$ the 
-Lebesgue measure. Then 
+Let $\bx$ and $\by$ be sequences in $[0,\infty)$. Suppose $\mu$ is an 
+absolutely continuous probability measure on $[0,\infty)$ with continuous 
+bounded Radon--Nikodym derivative $\frac{\dd \mu}{\dd\lambda}$, where 
+$\lambda$ is the Lebesgue measure. Then 
 \[
-	\left|\disc^\star(\bx^N, \nu) - \disc^\star(\by^N,\nu)\right| \leqslant \|f\|_\infty \epsilon + \frac{\#\{ n\leqslant N : |x_n - y_n| \geqslant \epsilon\}}{N} .
+	\left|\disc^\star(\bx^N, \nu) - \disc^\star(\by^N,\nu)\right| \leqslant \left\|\frac{\dd\mu}{\dd\lambda}\right\|_\infty \epsilon + \frac{\#\{ n\leqslant N : |x_n - y_n| \geqslant \epsilon\}}{N} .
 \]
 \end{lemma}
 \begin{proof}
@@ -305,11 +331,11 @@ $\left| \bx^N[0,t+\epsilon) - \nu[0,t+\epsilon)\right| \leqslant \disc^\star(\bx
 	\by^N[0,t) - \nu[0,t) 
 		&\leqslant \bx^N[0,t+\epsilon) - \nu[0,t) + \frac{\#\{ n\leqslant N : |x_n - y_n| \geqslant \epsilon\}}{N} \\
 		&\leqslant \nu[t,t+\epsilon) + \disc^\star(\bx^N,\nu) + \frac{\#\{ n\leqslant N : |x_n - y_n| \geqslant \epsilon\}}{N} \\
-		&\leqslant \|f\|_\infty \epsilon + \disc^\star(\bx^N,\nu) + \frac{\#\{ n\leqslant N : |x_n - y_n| \geqslant \epsilon\}}{N} 
+		&\leqslant \left\|\frac{\dd\mu}{\dd\lambda}\right\|_\infty \epsilon + \disc^\star(\bx^N,\nu) + \frac{\#\{ n\leqslant N : |x_n - y_n| \geqslant \epsilon\}}{N} 
 \end{align*}
 This tells us that 
 \[
-	\disc^\star(\by^N,\nu) \leqslant \|f\|_\infty \epsilon + \disc^\star(\bx^N,\nu) + \frac{\#\{ n\leqslant N : |x_n - y_n| \geqslant \epsilon\}}{N} .
+	\disc^\star(\by^N,\nu) \leqslant \left\|\frac{\dd\mu}{\dd\lambda}\right\|_\infty \epsilon + \disc^\star(\bx^N,\nu) + \frac{\#\{ n\leqslant N : |x_n - y_n| \geqslant \epsilon\}}{N} .
 \]
 Reversing the roles of $\bx$ and $\by$, we obtain the desired result. 
 \end{proof}
@@ -354,11 +380,23 @@ and likewise for star discrepancy.
 \begin{proof}
 This is a simple computation, which we only check for star discrepancy: 
 \begin{align*}
-	\disc(f(\bx)^N, f_\ast \mu)
+	\disc^\star(f(\bx)^N, f_\ast \mu)
 		&= \sup_{t\in [c,d]} \left| \frac{\#\{n\leqslant N : f(x_n) \leqslant t\}}{N} - (f_\ast \mu)[a,t]\right| \\
 		&= \sup_{t\in [a,b]} \left| \frac{\#\{n\leqslant N : x_n \leqslant f^{-1}(t)\}}{N} - \mu[a,f^{-1}(t)]\right| \\
 		&= \disc(\bx^N, \mu) .
 \end{align*}
+\end{proof}
+
+\begin{lemma}\label{lem:pushforward-reverse}
+Let $f$ be an order anti-automorphism $[a,b] \to [c,d]$. If $\bx$ is a 
+sequence on $[a,b]$ and $\mu$ is a probability measure on $[a,b]$, then 
+$\disc(\bx^N,\mu) ?$. 
+\end{lemma}
+\begin{proof}
+Repeat the proof of Lemma \ref{lem:push-discrepancy}, except we have 
+$s\leqslant f(x_n) \leqslant t$ if and only if 
+$f^{-1}(t) \leqslant f(x_n) \leqslant f^{-1}(s)$, and likewise 
+$(f_\ast\mu)[s,t] = \mu[f^{-1}(t),f^{-1}(s)]$. 
 \end{proof}
 
 
