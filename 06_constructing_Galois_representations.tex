@@ -24,3 +24,40 @@ slowly and decaying quickly) to any measure $\mu$ such that $\ST/\mu$ is
 bounded away from zero. (By this, we mean: if $\ST=f\cdot\lambda$ and 
 $\mu = g\cdot\lambda$, where $\lambda$ is Lebesgue, then $f/g$ is bounded away 
 from zero.)
+
+We loosely summarize \cite{pande-2011}, changing the notation to make things 
+clearer. 
+
+Start with a prime $l$ and a representation 
+$\bar\rho\colon G_\bQ \to \GL_2(\bZ/l)$. For any set $S$ of primes outside 
+which $\bar\rho$ is unramified, let $\cX_{\bar\rho,S}$ be the space of 
+deformations of $\bar\rho$ that are also unramified outside $S$. If 
+$\chi\colon G_{\bQ,S} \to \bZ_l^\times$ is a character (perhaps a power of the 
+cyclotomic character) let $\cX_{\bar\rho,S}^\chi$ be the subspace of 
+$\cX_{\bar\rho,S}$ with determinant $\chi$. 
+
+It is known that the obstruction to lifting an element of 
+$\cX_{\bar\rho,S}^\chi(\bZ/l^n)$ to $\cX_{\bar\rho,S}^\chi(\bZ/l^{n+1})$ lies 
+in $\h^2(G_{\bQ,S},\Ad^0\bar\rho)$. If the obstruction vanishes, lifts are a
+torsor under a natural action of $\h^1(G_{\bQ,S},\Ad^0\bar\rho)$. 
+
+Given $\bar\rho$, there is a set of primes $p$ called \emph{nice primes}, which 
+are those $p$ for which:
+\begin{enumerate}
+\item
+$\bar\rho$ is unramified at $p$.
+
+\item
+The ratio of eigenvalues of $\bar\rho(\frob_p)$ is $p$. 
+\end{enumerate}
+If $p$ is a nice prime, there is a subspace $\cC_p$ of deformations of 
+$\left.\bar\rho\right|_{G_{\bQ_p}}$ consisting of \emph{nice deformations}. 
+(Not too sure about that.)
+
+At the very least, $p$ is nice iff 
+$\Ad^0 \bar\rho\simeq \bF_l\oplus \bF_l(1)\oplus \bF_l(-1)$. (Maybe this is a 
+nicer way to think about it.)
+
+Then put $N_p = \h^1(G_{\bQ_p},\bF_l(1))\subset \h^1(G_{\bQ_p},\Ad^0\bar\rho)$. 
+Let $C_p$ be deformations of $\bar\rho$ which are fixed by $N_p$. (What does 
+this mean?)
