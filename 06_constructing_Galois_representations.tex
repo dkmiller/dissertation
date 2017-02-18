@@ -124,3 +124,57 @@ $R_{n+1}\smallsetminus R_n$ and $S_{n+1}\smallsetminus S_n$. There will be a
 set $Q_{n+1}^\ast$ such that if we allow ramification at $Q_{n+1}^\ast$, we can 
 ensure that there is a lift of $\rho_n$ to $\bZ/l^{n+1}$ which agrees with 
 our choices of lifts for primes in $S_{n+1}$ and $R_{n+1}$. 
+
+
+
+
+
+\section{More summary}
+
+We begin by bounding the size of some sets. In the discussion below, sets 
+$Q_{n+1}^\ast$ arise. By the proof of 
+\cite[Lem.~8]{khare-larsen-ramakrishna-2005}, we see that 
+$\# Q_{n+1} = h^1(G_{\bQ,S_{n+1}\cup R_{n+1}},\Ad^0\bar\rho^\ast)$. Adapting 
+equation (9) of the same paper with $M=\Ad^0\bar\rho$ and 
+$L_p = 0$, we see that 
+\[
+	h^1(G_{\bQ,S_{n+1}\cup R_{n+1}},\Ad^0\bar\rho^\ast) = h^0(\bQ,\Ad\bar\rho^\ast) + \sum_{p\in S_{n+1}\cup R_{n+1}} h^0(\bQ_p,\Ad^0\bar\rho) .
+\]
+The $h^0(\bQ,\Ad^0\bar\rho) = 0$, at least if $\bar\rho$ surjects onto 
+$\GL_2(\bZ/l)$ (prove this!). Moreover, if $p$ is a nice prime, then 
+$h^0(\bQ_p,\Ad^0\bar\rho) = 1$. It follows that 
+\[
+	\# Q_{n+1}^\ast = \# S_{n+1} + \sum_{p\in R_{n+1}} h^0(\bQ_p,\Ad^0\bar\rho) .
+\]
+Now, $S_{n+1} = S_2\bigcup_{m\leqslant n} Q_m^\ast \bigcup_{m\leqslant n} A_m$, 
+and $\# A_m \leqslant 2$. So 
+\[
+	\# Q_{n+1}^\ast \leqslant \# S_2 + \sum_{m\leqslant n} \# Q_m^\ast + 2 n + 3\# R_{n+1} .
+\]
+(Not sure if this matters\ldots)
+
+Let $\bar\rho\colon G_\bQ \to \GL_2(\bZ/l)$ be a continuous, odd, absolutely 
+irreducible representation. By results of Khare--Wintenberger, $\bar\rho$ is 
+modular. By \cite[Lem.~6]{khare-larsen-ramakrishna-2005}, there exists a finite 
+set $S$ of primes, containing the primes at which $\bar\rho$ ramifies, such 
+that $\sha_S^1(\Ad^0\bar\rho) = \sha_S^2(\Ad^0\bar\rho) = 0$, and thus any 
+obstructions to lifting can be detected locally. 
+
+Let $S_2=S$, and for each $p\in S_2$, choose a lift 
+$\rho_p\colon G_{\bQ_p} \to \GL_2(\bZ_l)$ of 
+$\left.\bar\rho\right|_{G_{\bQ_p}}$. Choose $r_2$, and let 
+$R_2 = \{p\notin S_2 : p\leqslant r_2\}$. Choose $a_p\in \bZ$ (hence a lift 
+$\rho_p\colon G_{\bQ_p} \to \GL_2(\bZ_l)$ of 
+$\left.\bar\rho\right|_{G_{\bQ_p}}$) for all $p\in R_2$. 
+
+Let $\rho_2^\ast$ be any lift of $\bar\rho$ to 
+$G_{\bQ,S_2} \to \GL_2(\bZ/l^2)$. Such lifts exist because $\bar\rho$ is 
+modular. By \cite[Lem.~8]{khare-larsen-ramakrishna-2005}, there is a finite set $Q_2^\ast$ of primes such that the following maps is an isomorphism:
+\[
+	\h^1(G_{\bQ,S_2\cup Q_2^\ast},\Ad^0\bar\rho) 
+		\to \prod_{p\in S_2} \h^1(G_{\bQ_p},\Ad^0\bar\rho)\times \prod_{p\in R_2} \h^1_\nr(G_{\bQ_p},\Ad^0\bar\rho) .
+\]
+Looking at the proof of \cite[Fact 5]{khare-larsen-ramakrishna-2005}, we can 
+ensure that all primes in $Q_2^\ast$ are larger than an arbitrary fixed bound 
+$q_2$. In fact, we can ensure that the primes in $Q_2^\ast$ (and $Q_2$) grow 
+faster than any function we give. 
