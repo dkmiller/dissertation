@@ -178,3 +178,45 @@ Looking at the proof of \cite[Fact 5]{khare-larsen-ramakrishna-2005}, we can
 ensure that all primes in $Q_2^\ast$ are larger than an arbitrary fixed bound 
 $q_2$. In fact, we can ensure that the primes in $Q_2^\ast$ (and $Q_2$) grow 
 faster than any function we give. 
+
+
+
+
+
+\section{A precise theorem}
+
+If $\rho$ is a Galois representation, let $\pi_{\nr(\rho)}(x)$ be the number of 
+$p\leqslant x$ such that $\rho$ is unramified at $p$. 
+
+\begin{theorem}
+Let $\bx=(x_1,x_2,\dots)$ be a sequence in $[-1,1]$. Let $l\geqslant 5$ be a 
+rational prime, and let $\bar\rho\colon G_\bQ \to \GL_2(\bF_l)$ be a continuous, 
+absolutely irreducible representation that is odd of weight $2$. Fix a function 
+$h\colon \bR^+ \to \bR^+$ which decreases to zero, and a function 
+$b\colon \bN \to \bN$ which increases to infinity. Then there exists a 
+continuous lift of $\bar\rho$, namely  $\rho\colon G_\bQ\to \GL_2(\bZ_l)$, also 
+of weight $2$, such that 
+\begin{enumerate}
+\item
+For all $x\gg 0$, $\pi_{\nr(\rho)}(x) \leqslant h(x) \pi(x)$.
+
+\item
+For each unramified prime $p$, $a_p = \tr \rho(\frob_p)\in \bZ$, satisfies 
+$|a_p| \leqslant 2\sqrt p$.
+
+\item
+If $\{x_p\}$ is a renumeration of $\bx$ by unramified primes, then 
+$\left|\frac{a_p}{2\sqrt p} - x_p\right| \leqslant  lb(p) p^{-1/2}$. 
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+By \cite[Lem.~6]{khare-larsen-ramakrishna-2005}, there exist a finite set 
+$S$, containing the primes at which $\bar\rho$ ramifies, such that 
+$\sha_{S_2}^1(\Ad^0\bar\rho) = \sha_{S_2}^2(\Ad^0\bar\rho) = 0$. 
+
+We follow \cite{khare-larsen-ramakrishna-2005,pande-2011}. By results of 
+Fontaine and Wintenberger, $\bar\rho$ is modular, so in particular it admits a 
+lift to $\bZ_l$, and hence a lift to $\bZ/l^2$. 
+
+
+\end{proof}
