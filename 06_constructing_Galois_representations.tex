@@ -198,7 +198,7 @@ continuous lift of $\bar\rho$, namely  $\rho\colon G_\bQ\to \GL_2(\bZ_l)$, also
 of weight $2$, such that 
 \begin{enumerate}
 \item
-For all $x\gg 0$, $\pi_{\nr(\rho)}(x) \leqslant h(x) \pi(x)$.
+$\pi_{\nr(\rho)}(x) \ll h(x) \pi(x)$.
 
 \item
 For each unramified prime $p$, $a_p = \tr \rho(\frob_p)\in \bZ$, satisfies 
@@ -206,17 +206,83 @@ $|a_p| \leqslant 2\sqrt p$.
 
 \item
 If $\{x_p\}$ is a renumeration of $\bx$ by unramified primes, then 
-$\left|\frac{a_p}{2\sqrt p} - x_p\right| \leqslant  lb(p) p^{-1/2}$. 
+$\left|\frac{a_p}{2\sqrt p} - x_p\right| \leqslant l b(p) p^{-1/2}$. 
 \end{enumerate}
 \end{theorem}
 \begin{proof}
 By \cite[Lem.~6]{khare-larsen-ramakrishna-2005}, there exist a finite set 
 $S$, containing the primes at which $\bar\rho$ ramifies, such that 
-$\sha_{S_2}^1(\Ad^0\bar\rho) = \sha_{S_2}^2(\Ad^0\bar\rho) = 0$. 
+$\sha_S^1(\Ad^0\bar\rho) = \sha_S^2(\Ad^0\bar\rho) = 0$. We will 
+consider deformations of $\bar\rho$ that are also of weight $2$ and ramified at 
+$S$ (or a larger, but finite set). Thus, a deformation to $\bZ/l^n$ will 
+admit a lift to $\bZ/l^{n+1}$ if and only if all its restrictions to 
+$G_{\bQ_p}$ admit such lifts. As we progress, re-index $\bx$ so that its 
+segment is indexed by unramified primes of $\rho_n$. 
 
-We follow \cite{khare-larsen-ramakrishna-2005,pande-2011}. By results of 
-Fontaine and Wintenberger, $\bar\rho$ is modular, so in particular it admits a 
-lift to $\bZ_l$, and hence a lift to $\bZ/l^2$. 
+Let $S_2$ be the union of $S$ and those primes $p$ for which there does 
+\emph{not} exist an $a\in \bZ$ with $a\equiv \tr\bar\rho(\frob_p)\pmod{l}$ and 
+$|a|\leqslant 2\sqrt p$. For the remainder of the proof, we modify the methods 
+of\cite{khare-larsen-ramakrishna-2005,pande-2011}. For all primes $p\in S_2$, 
+choose a ramified lift $\rho_p$ of $\left.\bar\rho\right|_{G_{\bQ_p}}$ to 
+$\bZ_l$. Let $r_2$ be large enough so that $r_2 < p$ implies $l < b(p)$. Let 
+$R_2 = \{p\notin S_2 : p \leqslant r_2\}$, and choose $a_p$ for $p\in R_2$ so 
+that $|a_p| \leqslant 2\sqrt p$ and 
+$\left|\frac{a_p}{2\sqrt p} - x_p\right| < l p^{-1/2}$. For $p\in R_2$, let 
+$\rho_p$ be the unique unramified representation $G_{\bQ_p} \to \GL_2(\bZ_l)$ 
+that has weight $2$ and $\tr\rho_p(\frob_p) = a_p$. 
 
+By results of Fontaine and Wintenberger, $\bar\rho$ is modular, so in particular 
+it admits a lift $\rho_2^\ast$ to $\bZ/l^2$. By 
+\cite[Lem.~8]{khare-larsen-ramakrishna-2005}, there exists a finite set of 
+nice primes $Q_2^\ast$, such that the map 
+\[
+	\h^1(\bQ_{S_2\cup Q_2^\ast},\Ad^0\bar\rho) \to \prod_{p\in S_2} \h^1(\bQ_p,\Ad^0\bar\rho) \times \prod_{p\in R_2} \h_\nr^1(\bQ_p,\Ad^0\bar\rho) 
+\]
+is an isomorphism. Moreover, an examination of the proof of 
+\cite[Fact 5]{khare-larsen-ramakrishna-2005} shows that we may ensure that 
+$\pi_{\nr(\rho_2^\ast)}(p) \leqslant h(p) \pi(p)$ for all $p\in Q_2^\ast$. 
+Since the above map is an isomorphism, there exists 
+$f_2\in \h^1(\bQ_{S_2\cup Q_2^\ast},\Ad^0\bar\rho)$ such that 
+$f_2\cdot\bar\rho\equiv \rho_p\pmod{l^2}$ for all $p\in S_2\cup R_2$. Clearly 
+$\rho_2^\ast$ can lift to $\bZ/l^3$ when restricted to all primes in 
+$S_2\cup R_2$, but it might be obstructed at some primes in $Q_2^\ast$. By 
+\cite[Prop.~3.10]{pande-2011}, there exists a set $A_2$ of nice primes, with 
+$\# A_2\leqslant 2$ and with $\pi_\nr(p) \leqslant h(p) \pi(p)$ for 
+$p\in A_2$, together with 
+$g_2\in \h^1(\bQ_{S_2\cup Q_2^\ast \cup A_2},\Ad^0\bar\rho)$, such that 
+$(f_2+g_2)\cdot\rho_2^\ast$ still agrees with $\rho_p$ modulo $l^2$ for all 
+$p\in S_2\cup R_2$, and $(f_2+g_2)\cdot\rho_2^\ast$ is unobstructed at all 
+primes in $Q_2 = Q_2^\ast\cup A_2$. 
 
+Set $\rho_2 = (f_2+g_2)\cdot\rho_2^\ast$ and put $S_3 = S_2\cup Q_2$. Then 
+$\rho_2$ admits a lift to $\bZ/l^3$; call it $\rho_3^\ast$. For all 
+$p\in S_3\smallsetminus S_2$, choose a ramified, weight-$2$ lift $\rho_p$ of 
+$\left.\rho_2\right|_{G_{\bQ_p}}$ to $\bZ_l$. Let $r_3$ be large enough so that 
+$r_3 < p$ implies $l^2 < b(p)$, and let 
+$R_3 = \{p\notin S_3 : p\leqslant r_3\}$. For all $p\in R_3\smallsetminus R_2$, 
+choose $a_p$ such that $\left|\frac{a_p}{2\sqrt p} - x_p\right| < l^2 p^{-1/2}$ 
+and $|a_p| \leqslant 2\sqrt p$ and $a_p \equiv \tr\rho_2(\frob_p)\pmod{l^2}$. 
+
+Once again, there exists a finite set of primes $Q_3$ and 
+$f_3\in \h^1(\bQ_{S_3\cup Q_3},\Ad^0\bar\rho)$ such that 
+$f_3\cdot\rho_3^\ast\equiv \rho_p\pmod{l^3}$ for all $p\in S_3\cup R_3$, and 
+$\rho_3 = f_3\cdot\rho_3^\ast$ is unobstructed for primes in $Q_3$. Moreover, 
+we can ensure that $\pi_\nr(p) \leqslant h(p) \pi(p)$ for all $p\in Q_3$. Set 
+$S_4 = S_3\cup Q_3$ and continue in the same manner. 
+
+For the general inductive step, let $\rho_{n+1}^\ast$ be a lift of $\rho_n$ 
+from $\bZ/l^n$ to $\bZ/l^{n+1}$. Let $r_{n+1}$ be large enough so that 
+$r_{n+1} < p$ implies $l^n < b(p)$, and let 
+$R_{n+1} = \{p\notin S_{n+1} : p\leqslant r_{n+1}\}$. For 
+$p\in S_{n+1}\smallsetminus S_n$, choose a ramified, weight-$2$ lift $\rho_p$ 
+of $\left.\rho_n\right|_{G_{\bQ_p}}$ to $\bZ_l$, and for 
+$p\in R_{n+1}\smallsetminus R_n$, choose $a_p\in \bZ$ satisfying the Hasse 
+bound such that $\left|\frac{a_p}{2\sqrt p} - x_p\right| < l^n p^{-1/2}$. As 
+before, there exists a finite set $Q_{n+1}$ of nice primes, enforcing 
+$\pi_\nr \leqslant h \pi$, and 
+$f_{n+1}\in H^1(\bQ_{S_{n+1}\cup Q_{n+1}},\Ad^0\bar\rho)$ such that 
+$\rho_{n+1} = f_{n+1}\cdot\rho_{n+1}^\ast$ agrees with $\rho_p$ modulo 
+$l^{n+1}$ for all $p\in S_{n+1}\cup R_{n+1}$, and moreover $\rho_{n+1}$ is 
+unobstructed at $Q_{n+1}$. Set $S_{n+2} = S_{n+1} \cup Q_{n+1}$, and the 
+inductive step is complete. 
 \end{proof}
