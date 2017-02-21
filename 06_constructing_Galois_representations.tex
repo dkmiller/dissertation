@@ -6,7 +6,90 @@
 
 
 
-\section{Main idea}
+\section{Notation and necessary results}
+
+In this chapter we loosely summarize, and adapt as needed, the results of 
+\cite{khare-larsen-ramakrishna-2005,pande-2011}. Throughout, if $F$ is a field, 
+$M$ a $G_F$-module, we write $\h^i(F,M)$ in place of $\h^1(G_F,M)$. All Galois 
+representations will be to $\GL_2(\bZ/l^n)$ or $\GL_2(\bZ_l)$ for $l$ a (fixed) 
+rational prime, and all deformations will have fixed determinant, so we only 
+consider the cohomology of $\Ad^0\bar\rho$, the induced representation on 
+trace-zero matrices by conjugation. 
+
+If $S$ is a set of rational primes, $\bQ_S$ denotes the largest extension of 
+$\bQ$ unramified outside $S$. So $\h^i(\bQ_S,-)$ is what is usually written as 
+$\h^1(G_{\bQ,S},-)$. If $M$ is a $G_\bQ$-module and $S$ a finite set of primes, 
+write 
+\[
+	\sha^i_S(M) = \ker\left( \h^i(\bQ_S,M) \to \prod_{p\in S} \h^i(\bQ_p,M)\right) .
+\]
+If $l$ is a rational prime and $S$ a finite set of primes containing $l$, then 
+for any $\bF_l[G_{\bQ_S}]$-module $M$, write $M^\vee=\hom_{\bF_l}(M,\bF_l)$ 
+with the obvious $G_{\bQ_S}$-action, and write $M^\ast = M^\vee(1)$ for the 
+Cartier dual. By \cite[Th.~8.6.7]{neukirch-schmidt-winberg-2008}, there is an 
+isomorphism $\sha^1_S(M^\ast) = \sha_S^2(M)^\vee$. 
+
+Recall that if $\rho_n\colon G_{\bQ_S} \to \GL_2(\bZ/l^n)$ is a deformation of 
+$\bar\rho$, then $\rho_n$ lifts to a $\GL_2(\bZ/l^{n+1})$-valued deformation if 
+and only if the ``obstruction class'' of $\rho_n$ in 
+$\h^2(\bQ_S,\Ad^0\bar\rho)$ vanishes. If $\sha_S^2(\Ad^0\bar\rho) = 0$, then 
+$\rho_n$ lifts if and only if each $\left.\rho_n\right|_{G_{\bQ_p}}$ lifts. 
+Moreover, if $\rho_n$ lifts to $\bZ/l^{n+1}$, the set of its lifts form a 
+$\h^1(\bQ_S,\Ad^0\bar\rho)$-torsor. Write this action multiplicatively, i.e.~if 
+$\rho_{n+1}$ is one lift and $f\in \h^1(\bQ_S,\Ad^0\bar\rho)$, then 
+$f\cdot \rho_{n+1}$ is the lift that \cite{khare-larsen-ramakrishna-2005} write 
+as $(1+p f)\rho_2$. If $\rho_n$ lifts and $\sha_S^1(\Ad^0\bar\rho) = 0$, then 
+the choice of $\left. \rho_{n+1}\right|_{G_{\bQ_p}}$ for all primes $p$ can be 
+satisfied by at most one specific lift $\rho_{n+1}$. 
+
+
+
+
+
+\section{Galois representations with specified Satake parameters}
+
+Fix a rational prime $l\geqslant 5$ and a continuous, absolutely irreducible 
+representation $\bar\rho\colon G_\bQ \to \GL_2(\bF_l)$ that is weight-$2$. We 
+consider weight-$2$ deformations of $\bar\rho$. The final deformation, 
+$\rho\colon G_\bQ \to \GL_2(\bZ_l)$, will be constructed as the inverse limit 
+of a compatible collection of lifts $\rho_n\colon G_\bQ \to \GL_2(\bZ/l^n)$. At 
+any given stage, we will be concerned with making sure that a) there exists a 
+lift to the next stage, and b) there is a lift with the necessary properties. 
+Fix a sequence $\bx=(x_1,x_2,\dots)$ in $[-1,1]$. The set of unramified primes 
+of $\rho$ is not determined at the beginning, but at each stage there will be 
+a large finite set $R_n$ of primes which we know will remain unramified. 
+Re-indexing $\bx$ by these unramified primes, we will construct $\rho$ so that 
+for all unramified primes $p$, $\tr\rho(\frob_p)\in \bZ$, satisfies the Hasse 
+bound, and has $\tr\rho(\frob_p) \approx x_p$. Moreover, we can ensure that the 
+set of ramified primes has density zero in a very strong sense (controlled by a 
+parameter function $h$) and that our trace of Frobenii are very close to 
+specified values (the ``closeness'' again controlled by a parameter function 
+$b$). 
+
+Given any deformation $\rho_n$, write $\pi_{\nr(\rho_n)}(x)$ for the function 
+which counts $\rho_n$-unramified primes $\leqslant x$. 
+
+\begin{theorem}
+Let $l$, $\bar\rho$, $\bx$ be as above. Fix functions 
+$h,b\colon \bR^+\to \bR^+$ which decrease to zero (resp.~increase to infinity). 
+Then there exists a weight-$2$ deformation $\rho$ of $\bar\rho$, such that 
+\begin{enumerate}
+\item
+$\pi_{\nr(\rho)}(x) \ll h(x) \pi(x)$. 
+
+\item
+For each unramified prime $p$, $a_p=\tr\rho(\frob_p)\in \bZ$ and satisfies the 
+Hasse bound. 
+
+\item
+For each unramified prime $p$, 
+$\left| \frac{a_p}{2\sqrt p} - x_p\right| \leqslant \frac{l b_p}{\sqrt p}$. 
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+?
+\end{proof}
+
 
 Basic ideas is as follows. Start with $\rho_1\colon G_\bQ \to \GL_2(\bF_l)$. At 
 each stage, we have $\rho_n\colon G_\bQ \to \GL_2(\bZ/l^n)$. At that stage, 
@@ -65,8 +148,6 @@ this mean?)
 
 
 
-
-\section{A precise theorem}
 
 If $\rho$ is a Galois representation, let $\pi_{\nr(\rho)}(x)$ be the number of 
 $p\leqslant x$ such that $\rho$ is unramified at $p$. 
