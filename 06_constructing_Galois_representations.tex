@@ -42,6 +42,17 @@ as $(1+p f)\rho_2$. If $\rho_n$ lifts and $\sha_S^1(\Ad^0\bar\rho) = 0$, then
 the choice of $\left. \rho_{n+1}\right|_{G_{\bQ_p}}$ for all primes $p$ can be 
 satisfied by at most one specific lift $\rho_{n+1}$. 
 
+\begin{theorem}\label{thm:always-can-lift}
+Let $l\geqslant 7$ be a rational prime and 
+$\bar\rho\colon G_\bQ \to \GL_2(\bF_l)$ an odd, absolutely irreducible, 
+weight-$2$ representation. Then there exists a weight-$2$ lift of $\bar\rho$ to 
+$\bZ_l$. 
+\end{theorem}
+\begin{proof}
+This is \cite[Th.~1]{ramakrishna-2002}, taking into account that the paper in 
+question allows for arbitrary fixed determinants. 
+\end{proof}
+
 
 
 
@@ -195,7 +206,7 @@ $\left|\frac{a_p}{2\sqrt p} - x_p\right| < l p^{-1/2}$. For $p\in R_2$, let
 $\rho_p$ be the unique unramified representation $G_{\bQ_p} \to \GL_2(\bZ_l)$ 
 that has weight $2$ and $\tr\rho_p(\frob_p) = a_p$. 
 
-By results of Fontaine and Wintenberger, $\bar\rho$ is modular, so in particular 
+By Theorem \ref{thm:always-can-lift}, $\bar\rho$ is modular, so in particular 
 it admits a lift $\rho_2^\ast$ to $\bZ/l^2$. By 
 \cite[Lem.~8]{khare-larsen-ramakrishna-2005}, there exists a finite set of 
 nice primes $Q_2^\ast$, such that the map 
