@@ -29,35 +29,143 @@ with the obvious $G_{\bQ_S}$-action, and write $M^\ast = M^\vee(1)$ for the
 Cartier dual. By \cite[Th.~8.6.7]{neukirch-schmidt-winberg-2008}, there is an 
 isomorphism $\sha^1_S(M^\ast) = \sha_S^2(M)^\vee$. 
 
-Recall that if $\rho_n\colon G_{\bQ_S} \to \GL_2(\bZ/l^n)$ is a deformation of 
-$\bar\rho$, then $\rho_n$ lifts to a $\GL_2(\bZ/l^{n+1})$-valued deformation if 
-and only if the ``obstruction class'' of $\rho_n$ in 
-$\h^2(\bQ_S,\Ad^0\bar\rho)$ vanishes. If $\sha_S^2(\Ad^0\bar\rho) = 0$, then 
-$\rho_n$ lifts if and only if each $\left.\rho_n\right|_{G_{\bQ_p}}$ lifts. 
-Moreover, if $\rho_n$ lifts to $\bZ/l^{n+1}$, the set of its lifts form a 
-$\h^1(\bQ_S,\Ad^0\bar\rho)$-torsor. Write this action multiplicatively, i.e.~if 
-$\rho_{n+1}$ is one lift and $f\in \h^1(\bQ_S,\Ad^0\bar\rho)$, then 
-$f\cdot \rho_{n+1}$ is the lift that \cite{khare-larsen-ramakrishna-2005} write 
-as $(1+p f)\rho_2$. If $\rho_n$ lifts and $\sha_S^1(\Ad^0\bar\rho) = 0$, then 
-the choice of $\left. \rho_{n+1}\right|_{G_{\bQ_p}}$ for all primes $p$ can be 
-satisfied by at most one specific lift $\rho_{n+1}$. 
+\begin{definition}
+A \emph{good residual representation} is an odd, absolutely irreducible, 
+weight-$2$ representation $\bar\rho\colon G_{\bQ_S} \to \GL_2(\bF_l)$, where 
+$l\geqslant 7$ is a rational prime. 
+\end{definition}
+
+Roughly, ``good residual representations'' have enough properties that we can 
+prove quite a lot about their lifts. By results of Khare--Wintenberger, we know 
+that good residual representations have characteristic-zero lifts. Even better, 
+they admit $\bZ_l$-lifts. 
 
 \begin{theorem}\label{thm:always-can-lift}
-Let $l\geqslant 7$ be a rational prime and 
-$\bar\rho\colon G_\bQ \to \GL_2(\bF_l)$ an odd, absolutely irreducible, 
-weight-$2$ representation. Then there exists a weight-$2$ lift of $\bar\rho$ to 
-$\bZ_l$. 
+Let $\bar\rho\colon G_{\bQ_S} \to \GL_2(\bF_l)$ be a good residual 
+representation. Then there exists a weight-$2$ lift of $\bar\rho$ to $\bZ_l$. 
 \end{theorem}
 \begin{proof}
 This is \cite[Th.~1]{ramakrishna-2002}, taking into account that the paper in 
 question allows for arbitrary fixed determinants. 
 \end{proof}
 
-\begin{theorem}\label{thm:one-nice-prime}
-To-do: state theorem.
+\begin{definition}
+Let $\bar\rho\colon G_{\bQ_S} \to \GL_2(\bF_l)$ be a good residual 
+representation. A prime $p\not\equiv \pm 1\pmod l$ is \emph{nice} if 
+$\Ad^0\bar\rho\simeq \bF_l \oplus \bF_l(1)\oplus \bF_l(-1)$, i.e.~if the 
+eigenvalues of $\bar\rho(\frob_p)$ have ratio $p$. 
+\end{definition}
+
+\begin{theorem}
+Let $\bar\rho$ be a good residual representation and $p$ a nice prime. Then 
+any deformation of $\left.\bar\rho\right|_{G_{\bQ_p}}$ is induced by 
+$G_{\bQ_p} \to \GL_2(\bZ_l\pow{a,b} / \langle a b\rangle)$, sending 
+\[
+	\frob_p \mapsto \smat{p(1+a)}{}{}{(1+a)^{-1}} \qquad \tau_p \mapsto \smat{1}{b}{}{1} ,
+\]
+where $\tau_p\in G_{\bQ_p}$ is a generator for tame inertia. 
 \end{theorem}
 \begin{proof}
-To-do: prove theorem.
+This is mentioned in KLR, find the real proof. 
+\end{proof}
+
+We close this section by introducing some new terminology and notation to 
+condense the lifting process used in \cite{khare-larsen-ramakrishna-2005}. 
+
+Fix a good residual representation $\bar\rho$. We will consider weight-$2$ 
+deformations of $\bar\rho$ to $\bZ/l^n$ and $\bZ_l$. Call such a deformation a 
+``lift of $\bar\rho$ to $\bZ/l^n$ (resp.~$\bZ_l$).'' We will often restrict the 
+local behavior of such lifts, i.e.~the restrictions of a lift to $G_{\bQ_p}$ 
+for $p$ in some set of primes. The necessary constraints are captured in the 
+following definition. 
+
+\begin{definition}
+Let $\bar\rho$ be a good residual representation, $h\colon \bR^+ \to \bR^+$ a 
+function decreasing to zero. An \emph{$h$-bounded lifting datum} is a tuple 
+$(\rho_n,R,U,\{\rho_p\}_{p\in R\cup U})$, where 
+\begin{enumerate}
+\item
+$\rho_n\colon G_{\bQ_R} \to \GL_2(\bZ/l^n)$ is a lift of $\bar\rho$.
+
+\item
+$R$ and $U$ are finite sets of primes, $R$ containing $l$ and all primes at 
+which $\rho_n$ ramifies. 
+
+\item
+$\pi_R(x)\leqslant h(x)\pi(x)$ for all $x$. 
+
+\item
+$\sha_R^1(\Ad^0\bar\rho) = \sha_R^2(\Ad^0\bar\rho) = 0$. 
+
+\item
+For all $p\in R\cup U$, 
+$\rho_p\equiv \left. \rho_n\right|_{G_{\bQ_p}}\pmod{l^n}$. 
+
+\item
+For all $p\in R$, $\rho_p$ is ramified. 
+
+\item
+$\rho_n$ admits a lift to $\bZ/l^{n+1}$. 
+\end{enumerate}
+\end{definition}
+
+If $(\rho_n,R,U,\{\rho_p\})$ is an $h$-bounded lifting datum, we call 
+another $h$-bounded lifting datum $(\rho_{n+1},R',U',\{\rho_p\})$ a \emph{lift 
+of $(\rho_n,R,U,\{\rho_p\})$} if $U\subset U'$, $R\subset R'$, and for all 
+$p\in R\cup U$, the two possible ``$\rho_p$'' agree. 
+
+\begin{theorem}\label{thm:lifting-datum}
+Let $\bar\rho$ be a good residual representation, $h\colon \bR^+ \to \bR^+$ 
+decreasing to zero. If $(\rho_n,R,U,\{\rho_p\})$ is an $h$-bounded lifting 
+datum, $U'\supset U$ is a finite set of primes disjoint from $R$, and 
+$\{\rho_p\}_{p\in U'}$ extends $\{\rho_p\}_{p\in U}$, then there exists an 
+$h$-bounded lift $(\rho_{n+1},R',U',\{\rho_p\})$ of 
+$(\rho_n,R,U,\{\rho_p\})$. 
+\end{theorem}
+\begin{proof}
+Note that we do not bound the size of $R'\smallsetminus R$. It is possible that 
+this can be done, using unpublished results of Ramakrishna, but that is not 
+necessary for the results that follow. 
+
+By \cite[Lem.~8]{khare-larsen-ramakrishna-2005}, there exists a finite set 
+$N$ of what they call \emph{nice primes}, such that the map 
+\begin{equation}\label{eq:h1-isom}
+	\h^1(\bQ_{R\cup N},\Ad^0\bar\rho) \to \prod_{p\in R} \h^1(\bQ_p,\Ad^0\bar\rho) \times \prod_{p\in U'} \h_\nr^1(\bQ_p,\Ad^0\bar\rho) 
+\end{equation}
+is an isomorphism. In fact, $\# N = h^1(\bQ_{R\cup N},\Ad^0\bar\rho^\ast)$, and 
+the primes in $N$ are chosen, one at a time, from Chebotarev sets. This means we 
+can force them to be large enough to ensure that the bound 
+$\pi_{R\cup N}(x) \leqslant h(x) \pi(x)$ continues to hold. 
+
+By our hypothesis, $\rho_n$ admits a lift to $\bZ/l^{n+1}$; call one such lift 
+$\rho^\ast$. For each $p\in R\cup U'$, $\h^1(\bQ_p,\Ad^0\bar\rho)$ acts simply 
+transitively on lifts of $\left.\rho_n\right|_{G_{\bQ_p}}$ to $\bZ/l^{n+1}$. In 
+particular, there are cohomology classes $f_p\in \h^1(\bQ_p,\Ad^0\bar\rho)$ 
+such that $f_p\cdot \rho^\ast \equiv \rho_p\pmod{l^{n+1}}$ for all 
+$p\in R\cup U'$. Moreover, for all $p\in U'$, the class $f_p$ is unramified. 
+Since the map in \eqref{eq:h1-isom} is an isomorphism, there exists 
+$f\in \h^1(\bQ_{R\cup N},\Ad^0\bar\rho)$ such that 
+$\left.f\cdot \rho^\ast\right|_{G_{\bQ_p}}\equiv \rho_p\pmod{l^{n+1}}$ for all 
+$p\in R\cup U'$. 
+
+Clearly $\left. f\cdot \rho^\ast\right|_{G_{\bQ_p}}$ admits a lift to $\bZ_l$ 
+for all $p\in R\cup U'$, but it does not necessarily admit such a lift for 
+$p\in N$. By repeated applications of \cite[Prop.~3.10]{pande-2011}, there 
+exists a set $N'\supset N$, with $\# N'\leqslant 2\# N$, of nice primes and 
+$g\in \h^1(\bQ_{R\cup N'},\Ad^0\bar\rho)$ such that 
+$(g+f)\cdot \rho^\ast$ still agrees with $\rho_p$ for $p\in R\cup U'$, and 
+$(g+f)\cdot \rho^\ast$ is nice for all $p\in N'$. As above, the primes in $N'$ 
+are chosen one at a time from Chebotarev sets, so we can continue to ensure the 
+bound $\pi_{R\cup N'}(x)\leqslant h(x) \pi(x)$. Let 
+$\rho_{n+1} = (g+f) \cdot \rho^\ast$. Let $R' = R\cup N'$. For each 
+$p\in R'\smallsetminus R$, choose a ramified lift $\rho_p$ of 
+$\left. \rho_{n+1}\right|_{G_{\bQ_p}}$ to $\bZ_l$. 
+
+Since $\left.\rho_{n+1}\right|_{G_{\bQ_p}}$ admits a lift to $\bZ/l^{n+2}$ (in 
+fact, it admits a lift to $\bZ_l$) for each $p$, and 
+$\sha_{R'}^2(\Ad^0\bar\rho) = 0$, the deformation $\rho_{n+1}$ admits a lift to 
+$\bZ/l^{n+2}$. Thus $(\rho_{n+1},R',U',\{\rho_p\})$ is the desired lift of 
+$(\rho_n,R,U,\{\rho_p\})$. 
 \end{proof}
 
 
@@ -268,3 +376,8 @@ $l^{n+1}$ for all $p\in S_{n+1}\cup R_{n+1}$, and moreover $\rho_{n+1}$ is
 unobstructed at $Q_{n+1}$. Set $S_{n+2} = S_{n+1} \cup Q_{n+1}$, and the 
 inductive step is complete. 
 \end{proof}
+
+
+
+
+
