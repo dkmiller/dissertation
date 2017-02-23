@@ -174,8 +174,7 @@ $(\rho_n,R,U,\{\rho_p\})$.
 
 \section{Galois representations with specified Satake parameters}
 
-Fix a rational prime $l\geqslant 5$ and a continuous, absolutely irreducible 
-representation $\bar\rho\colon G_\bQ \to \GL_2(\bF_l)$ that is weight-$2$. We 
+Fix a good residual representation $\bar\rho$. We 
 consider weight-$2$ deformations of $\bar\rho$. The final deformation, 
 $\rho\colon G_\bQ \to \GL_2(\bZ_l)$, will be constructed as the inverse limit 
 of a compatible collection of lifts $\rho_n\colon G_\bQ \to \GL_2(\bZ/l^n)$. At 
@@ -183,7 +182,7 @@ any given stage, we will be concerned with making sure that a) there exists a
 lift to the next stage, and b) there is a lift with the necessary properties. 
 Fix a sequence $\bx=(x_1,x_2,\dots)$ in $[-1,1]$. The set of unramified primes 
 of $\rho$ is not determined at the beginning, but at each stage there will be 
-a large finite set $R_n$ of primes which we know will remain unramified. 
+a large finite set $U$ of primes which we know will remain unramified. 
 Re-indexing $\bx$ by these unramified primes, we will construct $\rho$ so that 
 for all unramified primes $p$, $\tr\rho(\frob_p)\in \bZ$, satisfies the Hasse 
 bound, and has $\tr\rho(\frob_p) \approx x_p$. Moreover, we can ensure that the 
@@ -192,13 +191,14 @@ parameter function $h$) and that our trace of Frobenii are very close to
 specified values (the ``closeness'' again controlled by a parameter function 
 $b$). 
 
-Given any deformation $\rho_n$, write $\pi_{\nr(\rho_n)}(x)$ for the function 
+Given any deformation $\rho$, write $\pi_{\nr(\rho)}(x)$ for the function 
 which counts $\rho_n$-unramified primes $\leqslant x$. 
 
 \begin{theorem}\label{thm:master-Galois}
 Let $l$, $\bar\rho$, $\bx$ be as above. Fix functions 
-$h,b\colon \bR^+\to \bR^+$ which decrease to zero (resp.~increase to infinity). 
-Then there exists a weight-$2$ deformation $\rho$ of $\bar\rho$, such that 
+$h\colon \bR^+\to \bR^+$ (resp.~$b\colon \bN \to \bN$) which decrease to 
+zero (resp.~increase to infinity). Then there exists a weight-$2$ deformation 
+$\rho$ of $\bar\rho$, such that 
 \begin{enumerate}
 \item
 $\pi_{\nr(\rho)}(x) \ll h(x) \pi(x)$. 
@@ -209,175 +209,56 @@ Hasse bound.
 
 \item
 For each unramified prime $p$, 
-$\left| \frac{a_p}{2\sqrt p} - x_p\right| \leqslant \frac{l b_p}{\sqrt p}$. 
+$\left| \frac{a_p}{2\sqrt p} - x_p\right| \leqslant \frac{l b(p)}{2\sqrt p}$. 
 \end{enumerate}
 \end{theorem}
 \begin{proof}
-?
-\end{proof}
-
-
-Basic ideas is as follows. Start with $\rho_1\colon G_\bQ \to \GL_2(\bF_l)$. At 
-each stage, we have $\rho_n\colon G_\bQ \to \GL_2(\bZ/l^n)$. At that stage, 
-we're allowed to choose the (integral) characteristic polynomial for Frobenius 
-at an arbitrarily large set of primes $R_n$. Then some (but density zero) extra 
-primes ramify, and then we get $\rho_{n+1}$ that agrees with our choices for 
-$R_1\cup \cdots \cup R_n$. Then we have to choose characteristic polynomials for 
-$R_{n+1}$, but these are already determined modulo $l^{n+1}$. 
-
-Basic idea is, we can choose the $R_n$ to be so huge that the primes involved are 
-way way bigger than $l^n$. For example, we could have 
-$R_n=\{p\leqslant l^{l^n}\}$. Thus the set of possible $a_p$'s is very big (big 
-enough) so that we can get discrepancy to behave as we like (both decaying 
-slowly and decaying quickly) to any measure $\mu$ such that $\ST/\mu$ is 
-bounded away from zero. (By this, we mean: if $\ST=f\cdot\lambda$ and 
-$\mu = g\cdot\lambda$, where $\lambda$ is Lebesgue, then $f/g$ is bounded away 
-from zero.)
-
-We loosely summarize \cite{pande-2011}, changing the notation to make things 
-clearer. 
-
-Start with a prime $l$ and a representation 
-$\bar\rho\colon G_\bQ \to \GL_2(\bZ/l)$. For any set $S$ of primes outside 
-which $\bar\rho$ is unramified, let $\cX_{\bar\rho,S}$ be the space of 
-deformations of $\bar\rho$ that are also unramified outside $S$. If 
-$\chi\colon G_{\bQ,S} \to \bZ_l^\times$ is a character (perhaps a power of the 
-cyclotomic character) let $\cX_{\bar\rho,S}^\chi$ be the subspace of 
-$\cX_{\bar\rho,S}$ with determinant $\chi$. 
-
-It is known that the obstruction to lifting an element of 
-$\cX_{\bar\rho,S}^\chi(\bZ/l^n)$ to $\cX_{\bar\rho,S}^\chi(\bZ/l^{n+1})$ lies 
-in $\h^2(G_{\bQ,S},\Ad^0\bar\rho)$. If the obstruction vanishes, lifts are a
-torsor under a natural action of $\h^1(G_{\bQ,S},\Ad^0\bar\rho)$. 
-
-Given $\bar\rho$, there is a set of primes $p$ called \emph{nice primes}, which 
-are those $p$ for which:
-\begin{enumerate}
-\item
-$\bar\rho$ is unramified at $p$.
-
-\item
-The ratio of eigenvalues of $\bar\rho(\frob_p)$ is $p$. 
-\end{enumerate}
-If $p$ is a nice prime, there is a subspace $\cC_p$ of deformations of 
-$\left.\bar\rho\right|_{G_{\bQ_p}}$ consisting of \emph{nice deformations}. 
-(Not too sure about that.)
-
-At the very least, $p$ is nice iff 
-$\Ad^0 \bar\rho\simeq \bF_l\oplus \bF_l(1)\oplus \bF_l(-1)$. (Maybe this is a 
-nicer way to think about it.)
-
-Then put $N_p = \h^1(G_{\bQ_p},\bF_l(1))\subset \h^1(G_{\bQ_p},\Ad^0\bar\rho)$. 
-Let $C_p$ be deformations of $\bar\rho$ which are fixed by $N_p$. (What does 
-this mean?)
-
-
-
-
-
-If $\rho$ is a Galois representation, let $\pi_{\nr(\rho)}(x)$ be the number of 
-$p\leqslant x$ such that $\rho$ is unramified at $p$. 
-
-\begin{theorem}
-Let $\bx=(x_1,x_2,\dots)$ be a sequence in $[-1,1]$. Let $l\geqslant 5$ be a 
-rational prime, and let $\bar\rho\colon G_\bQ \to \GL_2(\bF_l)$ be a continuous, 
-absolutely irreducible representation that is odd of weight $2$. Fix a function 
-$h\colon \bR^+ \to \bR^+$ which decreases to zero, and a function 
-$b\colon \bN \to \bN$ which increases to infinity. Then there exists a 
-continuous lift of $\bar\rho$, namely  $\rho\colon G_\bQ\to \GL_2(\bZ_l)$, also 
-of weight $2$, such that 
-\begin{enumerate}
-\item
-$\pi_{\nr(\rho)}(x) \ll h(x) \pi(x)$.
-
-\item
-For each unramified prime $p$, $a_p = \tr \rho(\frob_p)\in \bZ$, satisfies 
-$|a_p| \leqslant 2\sqrt p$.
-
-\item
-If $\{x_p\}$ is a renumeration of $\bx$ by unramified primes, then 
-$\left|\frac{a_p}{2\sqrt p} - x_p\right| \leqslant l b(p) p^{-1/2}$. 
-\end{enumerate}
-\end{theorem}
-\begin{proof}
-By \cite[Lem.~6]{khare-larsen-ramakrishna-2005}, there exist a finite set 
-$S$, containing the primes at which $\bar\rho$ ramifies, such that 
-$\sha_S^1(\Ad^0\bar\rho) = \sha_S^2(\Ad^0\bar\rho) = 0$. We will 
-consider deformations of $\bar\rho$ that are also of weight $2$ and ramified at 
-$S$ (or a larger, but finite set). Thus, a deformation to $\bZ/l^n$ will 
-admit a lift to $\bZ/l^{n+1}$ if and only if all its restrictions to 
-$G_{\bQ_p}$ admit such lifts. As we progress, re-index $\bx$ so that its 
-segment is indexed by unramified primes of $\rho_n$. 
-
-Let $S_2$ be the union of $S$ and those primes $p$ for which there does 
-\emph{not} exist an $a\in \bZ$ with $a\equiv \tr\bar\rho(\frob_p)\pmod{l}$ and 
-$|a|\leqslant 2\sqrt p$. For the remainder of the proof, we modify the methods 
-of\cite{khare-larsen-ramakrishna-2005,pande-2011}. For all primes $p\in S_2$, 
-choose a ramified lift $\rho_p$ of $\left.\bar\rho\right|_{G_{\bQ_p}}$ to 
-$\bZ_l$. Let $r_2$ be large enough so that $r_2 < p$ implies $l < b(p)$. Let 
-$R_2 = \{p\notin S_2 : p \leqslant r_2\}$, and choose $a_p$ for $p\in R_2$ so 
-that $|a_p| \leqslant 2\sqrt p$ and 
-$\left|\frac{a_p}{2\sqrt p} - x_p\right| < l p^{-1/2}$. For $p\in R_2$, let 
-$\rho_p$ be the unique unramified representation $G_{\bQ_p} \to \GL_2(\bZ_l)$ 
-that has weight $2$ and $\tr\rho_p(\frob_p) = a_p$. 
-
-By Theorem \ref{thm:always-can-lift}, $\bar\rho$ is modular, so in particular 
-it admits a lift $\rho_2^\ast$ to $\bZ/l^2$. By 
-\cite[Lem.~8]{khare-larsen-ramakrishna-2005}, there exists a finite set of 
-nice primes $Q_2^\ast$, such that the map 
+Begin with $\rho_1= \bar\rho$. By \cite[Lem.~6]{khare-larsen-ramakrishna-2005}, 
+there exists a finite set $R$, containing the set of primes at which $\bar\rho$ 
+ramifies, such that $\sha_R^1(\Ad^0\bar\rho) = \sha_R^2(\Ad^0\bar\rho) = 0$. 
+Let $R_2$ be the union of $R$ and all primes $p$ with 
+$\frac{l}{2\sqrt p} > 2$. For all $p\notin R_2$ and any $a\in \bF_l$, there 
+exists $a_p\in \bZ$ satisfying the Hasse bound with $a_p\equiv a\pmod l$. In 
+fact, given any $x_p\in [-1,1]$, there exists $a_p\in \bZ$ satisfying the Hasse 
+bound such that 
+$\left| \frac{a_p}{2\sqrt p} - x_p\right| \leqslant \frac{l}{2\sqrt p}$.
+Choose, for all primes $p\in R_2$, a ramified 
+lift $\rho_p$ of $\left. \rho_1\right|_{G_{\bQ_p}}$. Let $U_2$ be the set of 
+primes not in $R_2$ such that 
+$\frac{l^2}{2\sqrt p} > \min\left(2, \frac{l b(p)}{2\sqrt p}\right)$. 
+For each $p\in U_2$, there exists $a_p\in \bZ$, satisfying the 
+Hasse bound, such that 
 \[
-	\h^1(\bQ_{S_2\cup Q_2^\ast},\Ad^0\bar\rho) \to \prod_{p\in S_2} \h^1(\bQ_p,\Ad^0\bar\rho) \times \prod_{p\in R_2} \h_\nr^1(\bQ_p,\Ad^0\bar\rho) 
+	\left| \frac{a_p}{2\sqrt p} - x_p\right| \leqslant \frac{l}{2\sqrt p} \leqslant \frac{l b(p)}{2\sqrt p} ,
 \]
-is an isomorphism. Moreover, an examination of the proof of 
-\cite[Fact 5]{khare-larsen-ramakrishna-2005} shows that we may ensure that 
-$\pi_{\nr(\rho_2^\ast)}(p) \leqslant h(p) \pi(p)$ for all $p\in Q_2^\ast$. 
-Since the above map is an isomorphism, there exists 
-$f_2\in \h^1(\bQ_{S_2\cup Q_2^\ast},\Ad^0\bar\rho)$ such that 
-$f_2\cdot\bar\rho\equiv \rho_p\pmod{l^2}$ for all $p\in S_2\cup R_2$. Clearly 
-$\rho_2^\ast$ can lift to $\bZ/l^3$ when restricted to all primes in 
-$S_2\cup R_2$, but it might be obstructed at some primes in $Q_2^\ast$. By 
-\cite[Prop.~3.10]{pande-2011}, there exists a set $A_2$ of nice primes, with 
-$\# A_2\leqslant 2$ and with $\pi_\nr(p) \leqslant h(p) \pi(p)$ for 
-$p\in A_2$, together with 
-$g_2\in \h^1(\bQ_{S_2\cup Q_2^\ast \cup A_2},\Ad^0\bar\rho)$, such that 
-$(f_2+g_2)\cdot\rho_2^\ast$ still agrees with $\rho_p$ modulo $l^2$ for all 
-$p\in S_2\cup R_2$, and $(f_2+g_2)\cdot\rho_2^\ast$ is unobstructed at all 
-primes in $Q_2 = Q_2^\ast\cup A_2$. 
+and moreover $a_p\equiv \tr\bar\rho(\frob_p)\pmod l$. For each $p\in U_2$, let 
+$\rho_p$ be an unramified lift of $\left.\bar\rho\right|_{G_{\bQ_p}}$ with 
+$a_p\equiv\tr\rho_p(\frob_p)\pmod l$. It may not be that 
+$\pi_{R_2}(x) \leqslant h(x) \pi(x)$ for all $x$, but there is a scalar 
+multiple $h^\ast$ of $h$ so that $\pi_{R_2}(x) \leqslant h^\ast(x) \pi(x)$ for 
+all $x$. 
 
-Set $\rho_2 = (f_2+g_2)\cdot\rho_2^\ast$ and put $S_3 = S_2\cup Q_2$. Then 
-$\rho_2$ admits a lift to $\bZ/l^3$; call it $\rho_3^\ast$. For all 
-$p\in S_3\smallsetminus S_2$, choose a ramified, weight-$2$ lift $\rho_p$ of 
-$\left.\rho_2\right|_{G_{\bQ_p}}$ to $\bZ_l$. Let $r_3$ be large enough so that 
-$r_3 < p$ implies $l^2 < b(p)$, and let 
-$R_3 = \{p\notin S_3 : p\leqslant r_3\}$. For all $p\in R_3\smallsetminus R_2$, 
-choose $a_p$ such that $\left|\frac{a_p}{2\sqrt p} - x_p\right| < l^2 p^{-1/2}$ 
-and $|a_p| \leqslant 2\sqrt p$ and $a_p \equiv \tr\rho_2(\frob_p)\pmod{l^2}$. 
+We have constructed our first $h^\ast$-bounded lifting datum 
+$(\rho_1,R_2,U_2,\{\rho_p\})$. We proceed to construct 
+$\rho = \varprojlim \rho_n$ inductively, by constructing a new $h^\ast$-bounded 
+lifting datum for each $n$. We ensure that $U_n$ contains all primes for which 
+$\frac{l^n}{2\sqrt p} > \min\left(2, \frac{l b(p)}{2\sqrt p}\right)$, so there 
+are always integral $a_p$ satisfying the Hasse bound which satisfy any 
+mod-$l^n$ constraint, and that can always choose these $a_p$ so as to preserve 
+statement 2 in the theorem. 
 
-Once again, there exists a finite set of primes $Q_3$ and 
-$f_3\in \h^1(\bQ_{S_3\cup Q_3},\Ad^0\bar\rho)$ such that 
-$f_3\cdot\rho_3^\ast\equiv \rho_p\pmod{l^3}$ for all $p\in S_3\cup R_3$, and 
-$\rho_3 = f_3\cdot\rho_3^\ast$ is unobstructed for primes in $Q_3$. Moreover, 
-we can ensure that $\pi_\nr(p) \leqslant h(p) \pi(p)$ for all $p\in Q_3$. Set 
-$S_4 = S_3\cup Q_3$ and continue in the same manner. 
-
-For the general inductive step, let $\rho_{n+1}^\ast$ be a lift of $\rho_n$ 
-from $\bZ/l^n$ to $\bZ/l^{n+1}$. Let $r_{n+1}$ be large enough so that 
-$r_{n+1} < p$ implies $l^n < b(p)$, and let 
-$R_{n+1} = \{p\notin S_{n+1} : p\leqslant r_{n+1}\}$. For 
-$p\in S_{n+1}\smallsetminus S_n$, choose a ramified, weight-$2$ lift $\rho_p$ 
-of $\left.\rho_n\right|_{G_{\bQ_p}}$ to $\bZ_l$, and for 
-$p\in R_{n+1}\smallsetminus R_n$, choose $a_p\in \bZ$ satisfying the Hasse 
-bound such that $\left|\frac{a_p}{2\sqrt p} - x_p\right| < l^n p^{-1/2}$. As 
-before, there exists a finite set $Q_{n+1}$ of nice primes, enforcing 
-$\pi_\nr \leqslant h \pi$, and 
-$f_{n+1}\in H^1(\bQ_{S_{n+1}\cup Q_{n+1}},\Ad^0\bar\rho)$ such that 
-$\rho_{n+1} = f_{n+1}\cdot\rho_{n+1}^\ast$ agrees with $\rho_p$ modulo 
-$l^{n+1}$ for all $p\in S_{n+1}\cup R_{n+1}$, and moreover $\rho_{n+1}$ is 
-unobstructed at $Q_{n+1}$. Set $S_{n+2} = S_{n+1} \cup Q_{n+1}$, and the 
-inductive step is complete. 
+The base case is already complete, so suppose we are given 
+$(\rho_n,R_n,U_n,\{\rho_p\})$. We may assume that $U_n$ contains all primes for 
+which $\frac{l^n}{2\sqrt p} > \min\left(2, \frac{l b(p)}{2\sqrt p}\right)$. Let 
+$U_{n+1}$ be the set of all primes not in $R_n$ such that 
+$\frac{l^{n+1}}{2\sqrt p} > \min\left(2, \frac{l b(p)}{2\sqrt p}\right)$. For 
+each $p\in U_{n+1}\smallsetminus U_n$, there is an integer $a_p$, satisfying 
+the Hasse bound, such that $a_p\equiv \rho_n(\frob_p)\pmod{l^n}$, and moreover 
+$\left|\frac{a_p}{2\sqrt p} - x_p\right| \leqslant \frac{l b(p)}{2\sqrt p}$. 
+For such $p$, let $\rho_p$ be an unramified lift of 
+$\left. \rho_n\right|_{G_{\bQ_p}}$ such that 
+$a_p\equiv\tr\rho_n(\frob_p)\pmod{l^n}$. By Theorem \ref{thm:lifting-datum}, 
+there exists an $h^\ast$-bounded lifting datum 
+$(\rho_{n+1},R_{n+1},U_{n+1},\{\rho_p\})$ extending and lifting 
+$(\rho_n,R_n,U_n,\{\rho_p\})$. This completes the inductive step.  
 \end{proof}
-
-
-
-
-
