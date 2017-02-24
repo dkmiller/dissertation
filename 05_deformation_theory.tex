@@ -1,8 +1,4 @@
-% !TEX root = main.tex
-
-
-
-
+% !TEX root = thesis.tex
 
 \chapter{Deformation theory}
 
@@ -352,30 +348,36 @@ all $S$.
 
 \section{Deformations of group representations}
 
-Relate to \cite{bockle-2013}. 
+Here we elaborate on (and correct some mistakes in) the arguments in 
+\cite[\S 2.1]{bockle-2013}. 
 
-Let $\Gamma\in \Gp(\widehat{\Art_\Lambda})$ and $\cG\in \Ind(\Art_\Lambda)$. By 
+Let $\Gamma\in \Gp(\widehat{\Art_\Lambda})$ and $G_{/\Lambda}$ be a smooth 
+group scheme of finite type. Write $\widehat G$ for the group object in 
+$\Ind(\Art_\Lambda)$ given by $\widehat G(\spf A) = G(\spec A)$. By 
 \ref{thm:framed-deformation}, the functor 
 \[
-  \Rep^\square(\Gamma,\cG)(S) = \hom_{\Gp/S}(\Gamma_S,\cG_S)
+  \Rep^\square(\Gamma,\widehat G)(S) = \hom_{\Gp/S}(\Gamma_S,\widehat G_S) = \hom_{\Gp}(\Gamma(S), G(S)) 
 \]
 is in $\Ind(\Art_\Lambda)$. We would like to define an ind-scheme 
 $\Rep(\Gamma,\cG)$ as ``$\Rep^\square(\Gamma,\cG)$ modulo conjugation,'' but 
 this requires some care. The conjugation action of $\cG$ on 
 $\Rep^\square(\Gamma,\cG)$ will have fixed points, so the quotient will be 
-badly behaved. We loosely follow \cite{tilouine-1996}. 
+badly behaved. We loosely follow \cite[Ch.~2--3]{tilouine-1996}. 
 
-Assume $\Lambda$ is local, with maximal ideal $\fm$ and residue field $\kk$. 
-Fix $\bar\rho\in \Rep^\square(\Gamma,\cG)(\kk)$, i.e.~a residual representation 
-$\bar\rho\colon \Gamma\to \cG(\kk)$. Let $\Rep^\square(\Gamma,\cG)_{\bar\rho}$ 
-be the connected component of $\bar\rho$ in $\Rep^\square(\Gamma,\cG)$. Assume 
-that $\cG$ and $\zentrum(\cG)$ are smooth; then the quotient 
-$\cG^\ad=\cG/\zentrum(\cG)$ is also smooth. Let $\cG^{\ad,\circ}$ be the 
-connected component of $1$ in $\cG^\ad$. 
+Assume $\Lambda$ is local, with maximal ideal $\fm$ and residue field $k$. 
+Fix $\bar\rho\in \Rep^\square(\Gamma,\widehat G)(k)$, i.e.~a residual 
+representation $\bar\rho\colon \Gamma\to G(k)$. Let 
+$\Rep^\square(\Gamma,\widehat G)_{\bar\rho}$ be the connected component of 
+$\bar\rho$ in $\Rep^\square(\Gamma,\widehat G)$. Assume 
+that $G$ and $\zentrum(G)$ are smooth; then the quotient 
+$\widehat{G}^{\circ,\ad}=\widehat G^\circ/\zentrum(\widehat G^\circ)$ is also 
+smooth, where $(-)^\circ$ denotes ``connected component of identity.'' 
+Since $\zentrum(\widehat G^\circ)$ is also smooth, the quotient sheaf 
+$\widehat G^{\circ,\ad}$ is the same as the quotient presheaf. 
 
 \begin{theorem}
-Suppose $(\Lambda,\fm,\kk)$ is local. If $\cX,\cY\in \Ind(\Art_\Lambda)$ are 
-connected and $\cX(\kk)\ne\varnothing$, then $\cX\times_\Lambda \cY$ is 
+Suppose $(\Lambda,\fm,k)$ is local. If $\cX,\cY\in \Ind(\Art_\Lambda)$ are 
+connected and $\cX(k)\ne\varnothing$, then $\cX\times_\Lambda \cY$ is 
 connected. 
 \end{theorem}
 \begin{proof}
@@ -389,30 +391,58 @@ henselian, so $R\otimes S$ is local if and only if
 $(R/\fm_R)\otimes (S/\fm_S) = S/\fm_S$ is local, which it is. 
 \end{proof}
 
-We conclude that the action of $\cG^{\ad,\circ}$ on $\Rep^\square(\Gamma,\cG)$ 
+We conclude that the action of $\widehat G^{\circ,\ad}$ on 
+$\Rep^\square(\Gamma,\widehat G)$ 
 preserves $\Rep^\square(\Gamma,\cG)_{\bar\rho}$. Thus we may put 
 \[
-	\Rep(\Gamma,\cG)_{\bar\rho} = \Rep^\square(\Gamma,\cG)_{\bar\rho} / \cG^{\ad,\circ} .
+	\Rep(\Gamma,G)_{\bar\rho} = \Rep^\square(\Gamma,\widehat G)_{\bar\rho} / \widehat G^{\circ,\ad} .
 \]
-If $\cG^{\ad,\circ}$ acts faithfully on $\Rep^\square(\Gamma,\cG)_{\bar\rho}$, 
-then we recover the classical notion of the deformation functor. 
+Obviously, that quotient will only be well-behaved if $\widehat G^{\circ,\ad}$ 
+acts faithfully on $\Rep^\square(\Gamma,\widehat G)$. Whether or not it does 
+is governed by the action of $\Gamma$ on $\fg(k)$. Let 
+$\fz = \lie(\zentrum(G))$. 
 
 \begin{theorem}
-Let $\Gamma$ be a profinite group, $\bar\rho\colon \Gamma\to \cG(\kk)$ a 
-representation with $\h^0(\Gamma,\Ad\bar\rho)=0$. Then 
-$\Rep(\Gamma,\cG)_{\bar\rho}$ exists and is what you expect. 
+Let $\Gamma,G,\bar\rho$ be as above. Assume $\h^0(\Gamma,\fg(k))=\fz(k)$. Then 
+$\Rep(\Gamma,G)_{\bar\rho}$ exists and, for $A$ a local $\Lambda$-algebra, 
+consists of $\widehat G^\circ(A)$-conjugacy classes of maps 
+$\Gamma \to  G(A)$ that reduce to $\bar\rho$ modulo $\fm_A$. 
 \end{theorem}
 \begin{proof}
-To-do: this shouldn't be hard. 
+We begin by proving that if $\h^0(\Gamma,\fg(k)) = \fz(k)$, then 
+$\widehat G^{\circ,\ad}$ acts faithfully on $\Rep^\square(\Gamma,\widehat G)$. 
+First, note that if the given $\h^0 = \fz$, then 
+$\h^0(\Gamma,\fg^\ad(k)) = 0$, where 
+$\fg^\ad = \lie(\widehat G^{\circ,\ad}) = \fg / \fz$. The action of 
+$\widehat G^{\circ,\ad}$ is faithful if and only if, whenever $A$ is a local 
+Artinian $\Lambda$-algebra and $\rho\colon \Gamma \to G(A)$ agrees with 
+$\bar\rho$ modulo $\fm_A$, and for $g\in G(A)$ with $g\equiv 1$ modulo 
+$\fm_A$, then if $g \rho g^{-1} = \rho$, we have $g = 1$. 
 
-Need assumptions on $\zentrum(\cG)$, $\cG$ should be smooth. 
+Let $I\subset A$ be a square-zero ideal that is one-dimensional over $k$. By 
+induction, we may assume that in fact $g \equiv 1$ modulo $I$. There is the 
+exponential short exact sequence 
+\[
+\begin{tikzcd}
+	0 \ar[r]
+		& \fg^\ad(I) \ar[r, "\exp"] 
+		& \widehat G^{\circ,\ad}(A) \ar[r]
+		& \widehat G^{\circ,\ad}(A/I) \ar[r]
+		& 1
+\end{tikzcd}
+\]
+Since $g\equiv 1$ modulo $I$, we can write $g = \exp(X)$ for some 
+$X\in \fg^\ad(I)\simeq \fg^\ad(k)$. Our assumption $g \rho g^{-1}$ tells 
+us that for all $\gamma\in \Gamma$, 
+$\exp(X)\rho(\gamma) \exp(-X) = \rho(\gamma)$, i.e.~
+$[\exp(X),\rho(\gamma)] = 0$. From this, it follows that $X$ is fixed by all 
+$\Ad\rho(\gamma)$ acting on $\fg^\ad(I)$, so $X = 0$, i.e.~$g = 1$. 
 
-Need $\zentrum(\cG)=\ker(\cG\to \GL(\fg))$ in connected case. This should use 
-$\fg=\lie(\aut \cG)$, via deviations in \cite{sga3-1}. 
-
-Recall first that $\Rep^\square(\Gamma,\cG)_{\bar\rho}$\ldots. Main things: 
-need a residual isomorphism (this one can check directly) and faithful 
-action (do this!). 
+Since the action of $\widehat G^{\circ,\ad}$ on 
+$\Rep^\square(\Gamma,\widehat G)_{\bar\rho}$ is faithful, we can apply 
+Theorem \ref{thm:quotients-good} to see that $\Rep(\Gamma,G)_{\bar\rho}$ is 
+the presheaf quotient, which is exactly what is described in the statement of 
+the theorem. 
 \end{proof}
 
 
@@ -421,29 +451,30 @@ action (do this!).
 
 \section{Tangent spaces and obstruction theory}
 
-To-do: define tangent spaces, show that they're isomorphic to $\h^1(-)$. 
+A routine argument shows that if $I\subset A$ is a square-zero ideal, and 
+$\rho\colon \Gamma \to G(A/I)$ admits some lift to $G(A)$, then the set of 
+such lifts form a $\h^1(\Gamma,\fg(I))$-torsor. We show that obstruction 
+theory also works in this more general context. 
 
 For $S_0\in \Art_\Lambda$, let $\Exal_{S_0}$ be the category of square-zero 
 thickenings of $S_0$. An object of $\Exal_{S_0}$ is a closed embedding 
-$S_0\hookrightarrow S$ whose ideal of definition has square zero. Should be 
-``exponential exact sequence''
+$S_0\hookrightarrow S$ whose ideal of definition has square zero. For any 
+such object, there is an ``exponential exact sequence''
 \[
 \begin{tikzcd}
 	0 \ar[r]
 		& \fg(I) \ar[r]
-		& \cG(S) \ar[r]
-		& \cG(S_0) \ar[r]
+		& G(S) \ar[r]
+		& G(S_0) \ar[r]
 		& 1
 \end{tikzcd}
 \]
-This gives us a class $\exp\in \h^2(\cG(S_0),\fg(I))$. For 
-$\rho_0\colon \Gamma\to \cG(S_0)$, the obstruction class is 
+This gives us a class $\exp\in \h^2(G(S_0),\fg(I))$. For 
+$\rho_0\colon \Gamma\to G(S_0)$, the obstruction class is 
 $o(\rho_0,I) = \rho_0^\ast(\exp)\in \h^2(\Gamma,\fg(I))$. It's easy to check 
-that $o(\rho_0,I)=0$ if and only if $\rho_0$ lifts to $\rho$. So obstruction 
-theory naturally for $\Rep^\square(\Gamma,\cG)$. 
-
-[Use \cite[6.6.4]{weibel-1994}. Given setting as above, $\rho_0^\ast(\exp)$ is 
-the pullback by $\rho_0$:
+that $o(\rho_0,I)=0$ if and only if $\rho_0$ lifts to $\rho$. More formally, 
+we use \cite[6.6.4]{weibel-1994}. Given setting as above, $\rho_0^\ast(\exp)$ 
+is the pullback by $\rho_0$:
 \[
 \begin{tikzcd}
 	0 \ar[r] 
@@ -459,7 +490,6 @@ the pullback by $\rho_0$:
 \end{tikzcd}
 \]
 Computing explicitly, we see the result. 
-]
 
 \begin{proposition}
 Let $f\colon G\to H$ be a morphism of profinite groups. Suppose $M$ is a 
@@ -503,3 +533,9 @@ diagram:
 Writing explicitly what it means for $G\times_H \widetilde H \to G$ to split 
 yields the result. 
 \end{proof}
+
+\begin{corollary}
+Let $\rho\in \Rep(\Gamma,G)_{\bar\rho}(A/I)$, where $I$ is a square-zero ideal. 
+Then $\rho$ lifts to $A$ if and only if $\rho^\ast(\exp_I) = 0$ in the group 
+$\h^2(\Gamma,\fg(I))$. 
+\end{corollary}
