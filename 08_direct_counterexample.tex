@@ -8,24 +8,27 @@
 
 \section{Main ideas}
 
+For $k\geqslant 1$, let 
+\[
+	U_k(\theta) = \tr\sym^k\smat{e^{i\theta}}{}{}{e^{- i \theta}} = \frac{\sin((k+1)\theta)}{\sin\theta} .
+\]
+Then $U_k(\cos^{-1} t)$ is the $k$-th Chebyshev polynomial of the 2nd kind. 
+Moreover, $\{U_k\}$ forms an orthonormal basis for 
+$L^2([0,\pi],\ST) = L^2(\SU(2)^\natural)$. 
+
 This chapter has two parts. First, for any reasonable measure $\mu$ on 
 $[0,\pi]$ invariant under the same ``flip'' automorphism as the Sato--Tate 
 measure, there is a sequence $\{a_p\}$ of integers satisfying the Hasse 
 bound $|a_p|\leqslant 2\sqrt p$, such that for 
 $\theta_p = \cos^{-1}\left(\frac{a_p}{2\sqrt p}\right)$, the discrepancy 
-$\disc(\{\theta_p\}_{p\leqslant x},\mu)$ behaves like $x^{-\alpha}$ for 
-predetermined $\alpha\in (0,1/2]$, while for any smooth $f$ satisfying 
-$f(\pi-\theta) = -f(\theta)$ (and hence $\int f\, \dd\mu = 0$), the 
-strange Dirichlet series $L_f(\{\theta_p\},s)$ satisfies the Riemann 
-Hypothesis. 
+$\disc(\btheta^N,\mu)$ behaves like $\pi(N)^{-\alpha}$ for 
+predetermined $\alpha\in (0,1/2]$, while for any odd $k$, the strange 
+Dirichlet series $L_{U_k}(\btheta,s)$, which we will write 
+$L(\sym^k \btheta,s)$, satisfies the Riemann Hypothesis. 
 
 In the second part of this chapter, we associate (infinitely ramified) Galois 
-representations to the fake Satake parameters above, using techniques from 
-\cite{pande-2011,khare-larsen-ramakrishna-2005}. 
-
-Let $\mu=f(t)\, \dd t$ be a measure on $[0,\pi]$, where $f$ is a continuous 
-function, nonzero except on $\{0,\pi\}$, such that $f(t) \ll \sin(t)$. Then 
-$\cos_\ast\mu$ satisfies the hypotheses of 
+representations to the fake Satake parameters above, using the techniques 
+in Chapter \ref{ch:construct-Galois}. 
 
 
 
@@ -33,12 +36,25 @@ $\cos_\ast\mu$ satisfies the hypotheses of
 
 \section{Construction}
 
-\begin{theorem}
-Let $\mu$ be a probability measure on $[0,\pi]$ such that $\cos_\ast\mu$ is 
-good, and fix $\alpha\in (0,1/2)$. Then there exists a sequence of integers 
-$a_p\in \bZ$ with $|a_p|\leqslant 2\sqrt p$, such that if we set 
-$\theta_p = \cos^{-1}\left(\frac{a_p}{2\sqrt p}\right)$, then 
-$\disc^\star(\btheta^N,\mu) = \Theta(\pi(N)^{-\alpha})$. 
+
+\begin{definition}
+Let $\mu = f(t)\, \dd t$ be a good measure on $[0,\pi]$. If 
+$f(t) \ll \sin(t)$, then $\mu$ is a \emph{Sato--Tate compatible measure}. 
+\end{definition}
+
+The key facts about Sato--Tate compatible measures are that $\cos_\ast\mu$ 
+satisfies the hypotheses of Theorem \ref{thm:discrepancy-arbitrary}, so 
+there are ``$N^{-\alpha}$-decaying van der Corput sequences'' for 
+$\cos_\ast\mu$, and also that since $\cos\colon [0,\pi] \to [-1,1]$ is an 
+order anti-isomorphism, we know that for any sequence $\bx$ on $[-1,1]$, there 
+is equality $\disc(\bx^N,\cos_\ast\mu) = \disc(\cos^{-1}\bx^N,\mu)$. 
+
+
+\begin{theorem}\label{thm:integral-a_p-alpha}
+Let $\mu$ be a Sato--Tate compatible measure, and fix $\alpha\in (0,1/2)$. 
+Then there exists a sequence of integers $a_p$ satisfying the Hasse bound, 
+such that if we set $\theta_p = \cos^{-1}\left(\frac{a_p}{2\sqrt p}\right)$, 
+then $\disc^\star(\btheta^N,\mu) = \Theta(\pi(N)^{-\alpha})$. 
 \end{theorem}
 \begin{proof}
 Apply Theorem \ref{thm:discrepancy-arbitrary} to find a sequence $\bx$ such 
@@ -57,50 +73,54 @@ $\disc(\btheta^N,\mu) = \Theta(\pi(N)^{-\alpha})$.
 \end{proof}
 
 We can improve this example by controlling the behavior of sums of the form 
-$\sum_{p\leqslant N} f(\theta_p)$, at least for ``odd'' $f$. Let $\sigma$ be 
+$\sum_{p\leqslant N} U_k(\theta_p)$ for odd $k$. Let $\sigma$ be 
 the involution of $[0,\pi]$ given by $\sigma(\theta) = \pi-\theta$. Note that 
-$\sigma_\ast \ST = \ST$. Moreover, note that for any $f$ with 
-$f\circ \sigma = -f$, then $\int f\, \dd\ST = 0$. 
+$\sigma_\ast \ST = \ST$. Moreover, note that for any odd $k$, 
+$U_k\circ\sigma = - U_k$, so $\int U_k\, \dd\ST = 0$. (Of course, 
+$\int U_k = 0$ for the reason that $U_k$ is the trace of a non-trivial unitary 
+representation, but we will directly exploit the ``oddness'' of $U_k$ in what 
+follows.)
 
-\begin{theorem}
-Let $\mu$ be a probability measure on $[0,\pi]$ such that 
-$\sigma_\ast\mu = \mu$ and $\left.\mu\right|_{[0,\pi/2)}$ is good. Fix 
-$\alpha\in (0,1/2)$. Then there exists a sequence of integers $a_p$ with 
-$|a_p|\leqslant 2\sqrt p$ such that for 
-$\theta_p =\cos^{-1}\left( \frac{a_p}{2\sqrt p}\right)$, we have 
-$\disc(\btheta^N,\mu) = \Theta(\pi(N)^{-\alpha})$, and moreover 
-$\left| \sum_{p\leqslant N} f(\theta_p)\right| \ll N^{-1/2+\epsilon}$ 
-whenever $f\circ \sigma = - f$, and $f$ is the restriction to $[0,\pi]$ of a 
-smooth periodic function on $[-\pi,\pi]$ satisfying $f(-\theta) = f(\theta)$. 
+\begin{theorem}\label{thm:int-flip-seq}
+Let $\mu$ be a $\sigma$-invariant Sato--Tate compatible measure. Fix 
+$\alpha\in (0,1/2)$. Then there is a sequence of integers $a_p$, satisfying 
+the Hasse bound, such that for 
+$\theta_p =\cos^{-1}\left( \frac{a_p}{2\sqrt p}\right)$, we have
+\begin{enumerate}
+\item
+$\disc(\btheta^N,\mu) = \Theta(\pi(N)^{-\alpha})$. 
+
+\item
+For all odd $k$, 
+$\left| \sum_{k\leqslant N} U_k(\theta_p)\right| \ll \pi(N)^{1/2}$. 
+\end{enumerate}
 \end{theorem}
 \begin{proof}
 The basic ideas is as follows. Enumerate the primes 
-$p_1 =2, p_2 = 3, p_3 = 5$, and divide them into the ``odd indexed primes'' and 
-the ``even indexed primes.'' For $n$ odd, choose $a_{p_n}$ so that 
-$\theta_{p_n}\in [0,\pi/2)$ are equidistributed with respect to 
-$\left.\mu\right|_{[0,\pi/2)}$ with desired rate of convergence. Then choose, 
-for $n$ odd, $a_{p_{n+1}}$ so that $\theta_{p_{n+1}}\in [\pi/2,\pi]$ is very 
-close to $\pi-\theta_{p_n}$. We can ensure that the discrepancy of the 
-combined sequence decays at the correct rate. Moreover, for functions with  
-$f(\pi-\theta) = -f(\theta)$, sums like $\sum_{p\leqslant N} f(\theta_p)$ 
-have a bunch of terms looking like 
 \[
-	f(\theta_{p_n}) + f(\theta_{p_{n+1}})\approx f(\theta) + f(\pi-\theta) \approx f(\theta) - f(\theta) \approx 0 .
+	p_1 = 2, q_1 = 3, p_2 = 5, q_2 = 7, p_3 = 11, q_3 = 13, \dots .
 \]
-We proceed to do this rigorously. 
-
-Let $\bx=(x_1,x_2,\dots)$ be the sequence of Theorem 
-\ref{thm:discrepancy-arbitrary} for $\cos_\ast \left. \mu\right|_{[0,\pi/2]}$ 
-and $\alpha$. This is supported on $[0,1]$. Choose $a_{p_{2n-1}}$ so that 
-$\left| \frac{a_{p_{2n-1}}}{2\sqrt{p_{2n-1}}} - x_n\right| \leqslant p^{-1/2}$ 
-and also\ldots
-
-Let $p<q$ be successive primes. Suppose we have already chosen $a_p<0$. Then 
-we can choose $a_q>0$ to guarantee that 
+Consider the measure $\left.\mu\right|_{[0,\pi/2)}$. An argument 
+nearly identical to the proof of Theorem \ref{thm:integral-a_p-alpha} shows 
+that we can choose $a_{p_i}$ satisfying the Hasse bound so that 
 \[
-	\left| \frac{a_p}{2\sqrt p} + \frac{a_q}{2\sqrt q}\right| \leqslant \frac{1}{\sqrt q} .
+	\disc\left( \left\{\theta_{p_i}\right\}_{i\leqslant N},\left.\mu\right|_{[0,\pi/2)}\right) = \Theta(N^{-\alpha}) .
 \]
+We can also choose the $a_{q_i}\in [\pi/2,\pi]$ so that 
+\[
+	\left| \frac{a_{p_i}}{2\sqrt{p_i}} + \frac{a_{q_i}}{2\sqrt{q_i}}\right| \ll \frac{1}{\sqrt{p_i}} .
+\]
+If $\bx$ is the sequence of the $\frac{a_{p_i}}{2\sqrt{p_i}}$ and $\by$ is 
+the similar sequence with the $q_i$-s, then Lemma \ref{lem:flip-discrepancy}, 
+Lemma \ref{lem:disc-of-two-seq}, and Theorem \ref{thm:wreath-seq} tell us 
+that $\disc((\bx\wr\by)^N,\mu) = \Theta(N^{-\alpha})$. 
 
+Moreover, $U_k(\cos^{-1} t)$ is an odd polynomial in $t$, so if 
+$|x_i - (-y_i)| \ll p_i^{-1/2}$, then 
+$|U_k(\theta_{p_i}) + U_k(\theta_{q_i})| \ll p_i^{-1/2}$. We can then bound 
+\[
+	\left| \sum_{i\leqslant N} U_k(\theta_{p_i}) + U_k(\theta_{q_i})\right| \ll \sum_{p\leqslant N} p^{-1/2} \ll \pi(N)^{1/2} .
+\]
 \end{proof}
 
 
@@ -109,75 +129,41 @@ we can choose $a_q>0$ to guarantee that
 
 \section{Associated Galois representation}
 
-
-
-Fix, for the remainder of this section, a continuous representation 
-\[
-	\bar\rho_l \colon G_\bQ \to \GL_2(\bF_l) .
-\]
-For each $p$ at which $\bar\rho_l$ is unramified, we write 
-\[
-	\Theta_p(\bar\rho_l) = \left\{\cos^{-1}\left(\frac{a}{2\sqrt p}\right) : a\in \bZ\text{, }|a|\leqslant 2\sqrt p\text{, and }a\equiv \tr\bar\rho_l(\frob_p)\pmod l\right\} .
-\]
-For the finitely many primes $p$ for which $\Theta_p(\bar\rho_l)$ is empty, 
-redefine $\Theta_p(\bar\rho_l)$ to include some elements for which 
-$|a|>2\sqrt p$. We have a sequence of $\Theta_p(\bar\rho_l)$ for which at most 
-finitely many do not satisfy the Hasse bound. 
+Now we combine the results of the last section and Chapter 
+\ref{ch:construct-Galois} to obtain a ``beefed-up'' version of Theorem 
+\ref{thm:int-flip-seq}. 
 
 \begin{theorem}
-There exists a choice of $\theta_p\in \Theta_p(\bar\rho_l)$ for odd-indexed 
-primes $\{2,5,11,\dots\}$ such that 
+Let $\mu$ be a Sato--Tate compatible $\sigma$-invariant measure on $[0,\pi]$. 
+Fix $\alpha\in (0,1/2)$ and a good residual representation 
+$\rho\colon G_\bQ \to \GL_2(\bF_l)$. Then there exists a weight-$2$ lift 
+$\rho\colon G_\bQ \to \GL_2(\bZ_l)$ of $\bar\rho$ such that 
 \begin{enumerate}
 \item
-$\theta_p\in [0,\pi/2)$ for all but finitely many $p$. 
+$\pi_{\ram(\rho)}(x) \ll e^{-x}\pi(x)$. 
 
 \item
-$\disc\left(\btheta_\odd^N, \left.\ST\right|_{[0,\pi/2)}\right) \to 0$, 
-but is not $\ll N^{-\epsilon}$ for any $\epsilon>0$. 
+For each unramified prime $p$, $a_p = \tr\rho(\frob_p)\in \bZ$ and satisfies 
+the Hasse bound. 
+
+\item
+If, for unramified $p$ we set 
+$\theta_p = \cos^{-1}\left(\frac{a_p}{2\sqrt p}\right)$, then 
+$\disc(\btheta^N,\mu) = \Theta(\pi(N)^{-\alpha})$. 
+
+\item
+For each odd $k$, the function $L(\sym^k \rho,s)$ satisfies the Riemann 
+Hypothesis. 
 \end{enumerate}
 \end{theorem}
 \begin{proof}
-This is intuitively obvious, but a bit tricky to prove rigorously. 
-
-Two key ideas: 
-
-1. If we're given a ``bad'' finite distribution $\nu$, we can choose ``good'' 
-$\theta_p$'s to make the combined distribution close enough (discrepancy-wise) 
-to $\ST$. 
-
-2. If we're given a ``good'' finite distribution $\nu$, we can choose ``bad'' 
-$\theta_p\sim \pi/2$ to make the combined distribution far away 
-(discrepancy-wise) from $\ST$. 
+Let $\bx$ be an $N^{-\alpha}$-decay van der Corput sequence for 
+$\cos_\ast \left.\mu\right|_{[0,\pi/2)}$. Let $\by = -\bx$. Then 
+$\disc((\bx\wr\by)^N,\cos_\ast\mu) = \Theta(N^{-\alpha})$. Set $h(x) = e^{-x}$ 
+and $b(x) = \log(x)$. By Theorem \ref{thm:master-Galois}, there is a 
+$\rho\colon G_\bQ \to \GL_2(\bZ_l)$ lifting $\bar\rho$ such that parts 
+1 and 2 of the theorem hold. The discrepancy estimate comes from Lemma 
+\ref{lem:flip-discrepancy}, Lemma \ref{lem:disc-of-two-seq}, and Theorem 
+\ref{thm:wreath-seq} as above, while the Riemann Hypothesis for odd symmetric 
+powers follows from the proof of Theorem \ref{thm:int-flip-seq}. 
 \end{proof}
-
-Claim: let $\mu,\nu$ be two absolutely continuous distributions. Suppose there 
-is a sequence $\{T_p\}$ of $\mu$-distributed sets, such that 
-$\disc(T_p,\mu) \ll p^{-1/2}$. Suppose moreover that $\mu/\nu$ is bounded away 
-from zero (at the pdf side). Then we can choose $t_p\in T_p$ so that 
-$\{t_p\}$ is $\nu$-equidistributed with good discrepancy. 
-
-Let $\mu$ be an absolutely continuous measure on $[0,\pi]$ such that the 
-pushforward $\cos_\ast \mu$ is bounded (this is true for the Sato--Tate 
-measure). Fix a prime $l\geqslant 5$ and a constant $\alpha\in (0,1/2]$. We 
-want to construct a weight-$2$ Galois representation 
-$\rho_l\colon G_\bQ \to \GL_2(\bZ_l)$, ramified at a density zero set of 
-primes, such that 
-\begin{enumerate}
-\item
-If $\rho_l$ is unramified at $p$, then $a_p = \tr \rho_l(\frob_p)\in \bZ$ and 
-satisfies the Hasse bound $|a_p| \leqslant 2\sqrt p$. 
-
-\item
-If we write $\theta_p = \cos^{-1}(a_p / 2\sqrt p)$ for the Satake parameters at 
-unramified primes, then $\disc(\btheta^N, \mu) \ll N^{-\alpha+\epsilon}$ and 
-$\disc(\btheta^N,\mu) = \Omega(N^{-\alpha-\epsilon})$. 
-\end{enumerate}
-
-Recall the van der Corput sequence $\{x_p\}$ satisfies 
-$\disc(\bx^N) \ll N^{-1+\epsilon}$. Let $\nu = \cos_\ast \mu$; this is an 
-absolutely continuous measure supported on $[-1,1]$. By transforming the 
-van der Corput sequence by a continuous map, we may assume that in fact 
-$\disc(\bx^N,\nu) \ll N^{-1+\epsilon}$. In fact, by alternating between 
-``van der Corput elements'' and ``bad elements'' we can ensure that not 
-only does $\disc(\bx^N,\nu) \ll N^{-\alpha+\epsilon}$, but also 
-$\disc(\bx^N,\nu) = \Omega(N^{-\alpha-\epsilon})$. 
