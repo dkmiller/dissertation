@@ -102,7 +102,7 @@ $\epsilon$ is arbitrary, the integral converges absolutely, and the proof is
 complete. 
 \end{proof}
 
-\begin{theorem}
+\begin{theorem}\label{thm:RH->bound}
 Let $\bz=(z_2,z_3,\dots)$ be a sequence with $\|\bz\|_\infty\leqslant 1$, and 
 assume $\log L(\bz,s)$ has analytic continuation to $\{\Re s>\alpha\}$ for some 
 $\alpha\in \frac 1 2,1]$, and that for $\sigma>\alpha$, we have 
@@ -192,11 +192,23 @@ for the associated strange Dirichlet series.
 To-do: show that \cite[A.1]{serre-1989} works for $L_f(\bx,s)$, $f$ 
 almost-everywhere continuous. 
 
+Define $L(\rho(\bx),s)$. 
+
 
 
 
 
 \section{Discrepancy of sequences and the Riemann Hypothesis}
+
+\begin{definition}
+Let $L(s)$ be a Dirichlet series with full product formula. Then the Riemann 
+Hypothesis for $L$ holds if $\log L$ admits analytic continuation 
+to $\{\Re > 1/2\}$. 
+\end{definition}
+
+In effect, Theorem \ref{thm:RH->bound} says that under reasonable analytic 
+hypotheses, the Riemann Hypothesis for $L(\bz,s)$ implies the estimate 
+$|\sum_{p\leqslant N} z_p| \ll N^{-\frac 1 2+\epsilon}$. 
 
 To-do: show that A--T implies RH. 
 

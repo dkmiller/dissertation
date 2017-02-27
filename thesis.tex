@@ -22,7 +22,7 @@
 \DeclareFieldFormat{multipostnote}{#1}
 \addbibresource{thesis-sources.bib}
 
-\title{Around Akiyama--Tanigawa's conjecture}
+\title{Counterexamples related to the strong Sato--Tate conjecture}
 \author{Daniel Miller}
 \conferraldate{May}{2017}
 
@@ -32,7 +32,29 @@
 \makecopyright
 
 \begin{abstract}
-To-do. 
+Let $E_{/\bQ}$ be an elliptic curve. The Sato--Tate conjecture (now a theorem) 
+tells us that the angles $\theta_p =\cos^{-1}\left(\frac{a_p}{2\sqrt p}\right)$ 
+are equidistributed in $[0,\pi]$ with respect to the measure 
+$\frac{2}{\pi}\sin^2\theta$ if $E$ is not CM, and uniformly distributed if 
+$E$ has CM over $\bQ$. Akiyama and Tanigawa conjecture that in fact, the 
+discrepancy 
+\[
+	D_N = \sup_{x\in [0,\pi]} \left| \frac{1}{\pi(N)} \sum_{p\leqslant N} 1_{[0,x]}(\theta_p) - \int_0^x \frac{2}{\pi} \sin^2\theta\, \dd\theta\right| 
+\]
+decays as $D_N \ll N^{-\frac 1 2+\epsilon}$, as is suggested by computational 
+evidence and certain natural heuristics. This conjecture implies the Riemann 
+Hypothesis for all $L(\sym^k E,s)$. It is natural to assume that the converse 
+holds, as is suggested by analogy with the Riemann Hypothesis for Artin 
+$L$-functions. We show that at least when $E$ has CM over $\bQ$, there is no 
+reason to believe that the converse holds, as there are ``fake Satake 
+parameters'' yielding $L$-functions which satisfy the Generalized Riemann 
+Hypothesis, but for which the discrepancy decays like $N^{-\epsilon}$. 
+
+Returning to the non-CM case, we show that there are Galois representations 
+$\rho\colon \Gal(\overline \bQ /\bQ) \to \GL_2(\bZ_l)$, ramified at an 
+arbitrarily ``thin'' density-zero set of primes, whose ``Satake parameters'' 
+converge at any specified rate to any reasonable specified measure on 
+$[0,\pi]$. 
 \end{abstract}
 
 \begin{biosketch}
