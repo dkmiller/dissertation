@@ -2,7 +2,89 @@
 
 \chapter{Concluding remarks and future directions}
 
-Todo: future direction, discrete dense subgroups of $\SU(2)$ and other 
-compact, semisimple groups. 
 
-Use \cite{arnold-krylov-1963,breuillard-gelander-2003}. 
+
+
+
+\section{Fake modular forms}
+
+The Galois representations of Theorem \ref{thm:bad-Galois} have ``fake modular 
+forms'' associated to them. Namely, there is a representation of $\GL_2(\bA)$ 
+with the specified Satake parameters at each prime (for now, set $\theta_p = 0$ 
+at ramified primes). It is natural to ask if these ``fake modular forms'' have 
+any interesting properties. For example, we know that all their odd symmetric 
+powers satisfy the Riemann Hypothesis. The author is unaware of any further 
+results (say about analytic continuation or functional equation) concerning 
+these fake modular forms. 
+
+
+
+
+
+\section{Dense free subgroups of compact semisimple groups}
+
+Let $G$ be a compact semisimple Lie group, for example $\SU(2)$. By 
+\cite{breuillard-gelander-2003}, $G$ contains a dense free subgroup 
+$\Gamma = \langle \gamma_1,\gamma_2\rangle$. We will now follow the argument of 
+\cite{arnold-krylov-1963} to hint at how $\Gamma$ may yield equidistributed 
+sequences with ``bad'' discrepancy and small character sums. 
+
+Given an integer $N$, let $B_N$ be the ``closed ball of size $N$'' in $\Gamma$, 
+that is the set of products $\gamma_{\sigma(1)} \dots \gamma_{\sigma(n)}$, 
+where $n\leqslant N$ and $\sigma\colon \{1,\dots,n\} \to \{1,2\}$ is a 
+function. We will write $\sigma\colon [n] \to [2]$ in this case. Given an 
+irreducible unitary representation $\rho\in \widehat G$, we wish to control 
+the behavior of $\sum_{\gamma\in B_N} \tr\rho(\gamma)$, ideally to show an 
+estimate of the form 
+\[
+	\left| \sum_{\gamma\in B_N} \tr\rho(\gamma)\right| \ll \left(\# B_N\right)^{\frac 1 2 + \epsilon} .
+\]
+In fact, $\# B_N = \sum_{n=0}^N 2^n = 2^{N+1} - 1$. We can encode these sums 
+in terms of convolutions of a measure as follows. Let $\mu$ be the measure 
+$\delta_{\gamma_1^{-1}} + \delta_{\gamma_2^{-1}}$ on $G$. 
+If $\rho$ is any unitary representation (not necessarily irreducible or even 
+finite-dimensional) then $\mu$ acts on $\rho$ via 
+$\rho(\mu) \int \rho\, \dd\mu$. So, if $\rho = L^2(G)$ via the left regular 
+representation, then $(\mu\cdot f)(x) = f(\gamma_1 x) + f(\gamma_2 x)$, while 
+if $\rho\in \widehat G$ and $v\in \rho$, then 
+$\mu\cdot v = \rho(\gamma_1) v + \rho(\gamma_2) v$. Note that 
+\[
+	\mu^{\ast n} = \sum_{\sigma\colon [n] \to [2]} \delta_{\gamma_{\sigma(1)} \dots \gamma_{\sigma(n)}} .
+\]
+This tells us that 
+$\sum_{\gamma\in B_N} f(\gamma) = \sum_{n\leqslant N} \mu^{\ast n}(f)$. So 
+we really only need to study how $\mu$ and its powers act on the functions 
+$\tr\rho$, $\rho\in \widehat G$. 
+
+First note that $\tr\rho$ generates a subrepresentation of $L^2(G)$ which is 
+isomorphic to $\rho$. On that representation, we claim that $\mu$ is 
+invertible, hence 
+$\sum_{n=0}^N \mu^{\ast n} = (\mu^{\ast(N+1)} - 1)(\mu - 1)^{-1}$.It 
+follows that 
+$\| \sum_{n=0}^N \mu^{\ast n}\| \leqslant \frac{\|\mu\|^{N+1}}{\|\mu - 1\|}$, 
+
+Note that $\|\mu\|^{N+1} \leqslant 2^{(N+1)\alpha}$ if and only if 
+$\|\mu\| \leqslant 2^\alpha$. In other words, to get the Riemann Hypothesis for 
+$L$-functions coming from $\Gamma$, we need $\|\mu\| \leqslant \sqrt 2$. 
+If $v\in \rho$ has norm $1$, then 
+\begin{align*}
+	\|\rho(\mu) v\|^2
+		&= \langle \rho(\gamma_1^{-1}) v + \rho(\gamma_2^{-1}) v, \rho(\gamma_1^{-1}) v + \rho(\gamma_2^{-1}) v\rangle \\
+%		&= 2 \|v\|^2 + 2 \Re\langle \rho(\gamma_1^{-1}) v,\rho(\gamma_2^{-1}) v\rangle \\
+		&= 2\|v\|^2 + 2\Re \langle \rho(\gamma_2 \gamma_1^{-1}) v,v\rangle .
+\end{align*}
+So, we want $\Re \langle \rho(\gamma_2 \gamma_1^{-1}) v,v\rangle \leqslant 0$ 
+for all irreducible $\rho$. Sadly, even for $\SU(2)$, this is not possible. 
+
+Write $\gamma = \gamma_2 \gamma_1^{-1}$, then the identity 
+$\langle \rho(\gamma)\rho(\delta)v,\rho(\delta)v\rangle = \langle \rho(\delta^{-1} \gamma\delta) v,v\rangle$ tells us that we can restrict our search to 
+$\gamma$ of the form $\smat{a}{}{}{\overline a}$ with $|a|=1$. Now 
+\[
+	\left\langle \smat{a}{}{}{\overline a} \svec{u}{v}, \svec{u}{v}\right\rangle = \Re(a) ,
+\]
+which appears to be promising. But a similar computation with $\sym^2$ shows 
+that one can always get $\langle \sym^2 \gamma  v,v\rangle = 1$, so the above 
+approach fails. 
+
+There may be alternative ways of bounding the sums $\sum\mu^{\ast n}(\tr\rho)$, 
+but we do not investigate them here. 
