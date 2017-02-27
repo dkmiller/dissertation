@@ -220,5 +220,26 @@ To-do: define ``Riemann Hypothesis'' for strange Dirichlet series.
 
 \section{Strange Dirichlet series over function fields}
 
-To-do: summarize \cite[Ch.~9]{katz-sarnak-1999} and 
-\cite{niederreiter-1991}. 
+Let $F = \bF_q(t)$ be a function field, $E_{/F}$ a generic elliptic curve. 
+There is, for every prime $\fp$ of $F$, a Satake parameter 
+$\theta_\fp \in [0,\pi]$, defined in the usual way. It is known 
+\cite[Ch.~3]{katz-1988} that
+\[
+	\left|\sum_{\N(\fp) \leqslant x} U_k(\theta_\fp) \right| \ll k \sqrt{x} .
+\]
+This tells us that for any $f\in C(\SU(2))$ with 
+$\sum_{k\geqslant 1} |\widehat f(\sym^k)|<\infty$, the strange Dirichlet 
+series $L_f(\btheta,s)$ satisfies the Riemann Hypothesis. 
+
+However, even for function fields, the best estimate on discrepancy is found in 
+\cite{niederreiter-1991}. Niederreiter shows that 
+$D_N \ll N^{-1/4}$ by applying a generalization of the Koksma--Hlawka 
+inequality to $\SU(2)^\natural$. Namely, for any odd $r$, we have 
+\[
+	\disc^\star(\btheta^x,\ST) \ll \frac 1 r + \sum_{k=1}^{2 r -1} \frac 1 k \left| \frac{1}{\pi_F(x)} \sum_{\N(\fp)\leqslant x} U_k(\btheta_\fp)\right| .
+\]
+Using the above estimate on $\sum U_k(\btheta_\fp)$, he is able to derive 
+$D_N \ll N^{-1/4}$. This fits the results of 
+\cite{bucar-kedlaya-2015,rouse-thorner-2016}, both of which derive estimates 
+of the form $D_N \ll N^{-1/4+\epsilon}$ under GRH + functional equation for 
+the (non-CM) elliptic curve in question. 

@@ -42,8 +42,8 @@ of \emph{strange Dirichlet series}, which are of the form
 \[
 	L_f(\{x_p\},s) = \prod_p \frac{1}{1-f(x_p)p^{-s}} .
 \]
-A useful, but not too well known, result, is that we in fact can consider 
-functions $f$ which are only continuous almost everywhere. 
+In fact, we can consider functions $f$ which are only only continuous almost 
+everywhere. 
 
 \begin{theorem}
 Let $X$ be a compact separable metric space with no isolated points. Let $\mu$ 
@@ -134,6 +134,21 @@ $[0,a)^d\subset [0,\infty)^d$. If $\nu$ is the Lebesgue measure (on
 $[0,\infty)^d$) or the normalized Haar measure on the torus, we write 
 $\disc^\star(\bx^N)$ in place of $\disc^\star(\bx^N, \nu)$. 
 
+If the sequence $\bx$ lies in the space $G^\natural$ of conjugacy classes in a 
+compact Lie group $G$, choose a maximal torus $T\subset G$, and recall that 
+$G^\natural = T/W$, where $W$ is the Weyl group of $T$. There is a ``half-open 
+box'' in $\ft = \lie(T)$ which maps bijectively to $T$ under the exponential 
+map. Choose a ``half-open'' polyhedral set $Q$ that maps bijectively to $T/W$. 
+Then $Q\subset \ft$ and, if we choose a basis for $\ft$ mapping to zero in 
+$T$, then it makes sense to talk about the discrepancy of a sequence in 
+$G^\natural$ with respect to the Haar measure. The paper 
+\cite{rosengarten-2013} has a different definition of discrepancy which only 
+works for semisimple simply-connected groups, but also proves an 
+Erd\"os--Tur\'an inequality in that context. It is likely that a reasonable 
+application of isotropic discrepancy would render these definitions equivalent, 
+at least for asymptotic purposes, but as the two definitions coincide for 
+$\SU(2)$, we do not explore this further. 
+
 Sometimes the sequence $\bx$ will not be indexed by the prime numbers, but 
 rather by some other discrete subset of $\bR^+$. In that case we will still 
 use the notations $\bx^N$, $\bx_{\geqslant N}$, etc., keeping in mind that 
@@ -145,7 +160,30 @@ $\pi(N)$ is replaced by $\#\{\textnormal{indices }\leqslant N\}$.
 
 \section{Statistical heuristics}
 
-To-do: statistical behavior of the Kolomogorov--Smirnov statistic. 
+Here we replace the Satake parameters $\theta_p$ of an elliptic curve with 
+a sequence $\{\theta_p\}$ of iid random variables with common distribution 
+$\mu = \frac{2}{\pi} \sin^2 \theta\, \dd\theta$ supported on $[0,\pi]$. Then 
+the discrepancy (in this context, it is known as the Kolmogorov--Smirnov 
+statistic) is 
+\[
+	D_N = \sup_{x\in [0,\pi]} \left|\frac{1}{\pi(N)} \sum_{p\leqslant N} 1_{[0,x]}\circ \theta_p - \int 1_{[0,x]}\, \dd\mu\right| .
+\]
+This is a $\bR^+$-valued random variable. Kolmogorov and Smirnov proved that 
+the inside of the absolute value converges to zero. The Glivenko--Cantelli 
+Theorem says that $D_N \to 0$ almost surely, and even better that the 
+normalized discrepancy $\sqrt{\pi(N)} D_N$ approaches a limiting distribution 
+(supremum of the Brownian Bridge) which does not depend on $\mu$. The rate of 
+convergence of $\sqrt{\pi(N)} D_N$ to that distribution is quantified by the 
+Dvoretzky--Kiefer--Wolfowitz inequality, which tells us that 
+\[
+	\mathrm{P}\left(\sqrt{\pi(N)} D_N > z\right) \leqslant 2 e^{-2 z^2} .
+\]
+At the very least, these theorems suggest that for $E_{/\bQ}$ an elliptic 
+curve, the ``real'' discrepancy $\disc^\star(\btheta^N,\ST)$ should decay 
+like $\pi(N)^{-\frac 1 2}$, or at least $\pi(N)^{-\frac 1 2+\epsilon}$. 
+Ideally, the normalized discrepancy $\sqrt{\pi(N)}\disc^\star(\btheta^N,\ST)$ 
+would also be equidistributed, but sadly numerical experiments suggest that 
+this is not the case. 
 
 
 
@@ -311,6 +349,17 @@ The supremum in question is clearly bounded above by $\disc(\bx^N,\mu)$, so the
 proof is complete. 
 \end{proof}
 
+This theorem is proved in a somewhat restrictive setting, and can be 
+generalized. For $f$ a function on $\bR^+$ that is bounded variation in 
+the traditional sense and $\mu$ a continuous probability measure, the 
+inequality 
+\[
+	\left| \frac{1}{\pi(N)} \sum_{p\leqslant N} f(x_p) - \int f\, \dd\mu\right| \leqslant \Var(f) \disc^\star(\bx^N,\mu) 
+\]
+holds \cite[Ch.~2, Th.~5.1]{kuipers-niederreiter-1974}. In particular, when 
+$\mu$ is the Sato--Tate measure and $f$ is piecewise continuous, we can apply 
+this inequality. 
+
 
 
 
@@ -456,15 +505,3 @@ intersect $J$, and thus
 \]
 which yields the result. 
 \end{proof}
-
-
-
-
-
-\section{Discrepancy for compact groups}
-
-Let $G$ be a compact Lie group. If $G$ is semisimple and simply-connected, then 
-\cite{rosengarten-2013} has defined the discrepancy for sequences in $G$ and 
-proved an Erd\"os--Tur\'an inequality. We define discrepancy for conjugacy 
-classes in more general Lie groups, without proving an Erd\"os--Tur\'an 
-inequality, but we relate this discrepancy to the Riemann Hypothesis. 
