@@ -8,41 +8,41 @@
 
 \section{Motivation from classical analytic number theory}
 
-We start with a problem central to the history of number theory: counting 
+Start with a problem central to the history of number theory---counting 
 prime numbers. As usual, let $\pi(x)$ be the number of rational primes 
 $\leqslant x$ and $\Li(x) = \int_2^x \frac{\dd t}{\log t}$ be the 
-logarithmic integral. For any $x$, there is a (normalized) empirical measure 
-capturing the distribution of those primes $\leqslant x$: 
+logarithmic integral. For any $x\geqslant 2$, there is a (normalized) 
+empirical measure capturing the distribution of those primes $\leqslant x$: 
 \[
 	P_x = \frac{1}{\pi(x)} \sum_{p\leqslant x} \delta_{p/x} ,
 \]
 which is supported on the unit interval $[0,1]$. The prime number theorem 
 tells us that as $x\to \infty$, these empirical measures approach the 
-``true'' measure $L_x = \frac{\Li(t x)}{\Li(x)}\, \dd t$. Traditionally, the 
-prime number theorem is proven by showing that the Riemann $\zeta$-function 
-has a meromorphic continuation past $\Re =1$. 
+``true'' measure $L_x = \frac{\Li(t x)}{\Li(x)}\, \dd t$. The standare approach 
+to proving the prime number theorem is by showing that the Riemann 
+$\zeta$-function has meromorphic continuation past $\Re = 1$. 
 
 \begin{theorem}
 The function $\zeta(s)$ admits a meromorphic continuation past $\Re =1$ with 
-at most a simple pole at $s=1$ if and only if $P_x \to L_x$ in the weak sense 
-as $x\to \infty$. 
+at most a simple pole at $s=1$, if and only if $P_x \to L_x$ in the weak sense. 
 \end{theorem}
 
-Since $\zeta(s)$ has the desired property, the prime number theorem is true. 
+Since $\zeta(s)$ does have such a meromorphic continuation, the prime number 
+theorem holds. 
 It is natural to try to quantify the rate of converge of $P_x$ to $L_x$. One 
-natural way to do this is via the discrepancy 
+way to do this is via the (star) discrepancy 
 \[
-	\disc(P_x,L_x) 
+	\disc^\star(P_x,L_x) 
 		= \sup_{t\in [0,1]} \left| P_x[0,t] - L_x[0,t]\right|
 		= \sup_{t\in [0,1]} \left| \frac{\pi(t x)}{\pi(x)} - \frac{\int_2^{tx} \frac{\dd s}{\log s}}{\int_2^x \frac{\dd s}{\log s}}\right| .
 \]
 Numerical experiments suggest that 
-$\disc(P_x,L_x) \ll x^{-\frac 1 2+\epsilon}$, and in fact we have the following 
-result. 
+$\disc^\star(P_x,L_x) \ll x^{-\frac 1 2+\epsilon}$, and in fact we have the 
+following result. 
 
 \begin{theorem}
-The Riemann Hypothesis holds if and only if 
-$\disc(P_x,L_x) \ll x^{-\frac 1 2+\epsilon}$. 
+The Riemann Hypothesis is true if and only if 
+$\disc^\star(P_x,L_x) \ll x^{-\frac 1 2+\epsilon}$. 
 \end{theorem}
 
 Of course, neither side of this equivalence is known for certain to be true! 
@@ -54,15 +54,15 @@ corresponding $L$-function defined as
 \[
 	L(\rho,s) = \prod_p \frac{1}{\det(1-\rho(\frob_p) p^{-s})} ,
 \]
-where here (and for the remainder of this thesis) we tacitly omit those primes 
-$p$ at which $\rho$ is ramified. Given a cutoff $x$, there is a natural 
-empirical measure 
+where here (and for the remainder of this thesis) we tacitly omit from the 
+product those primes at which $\rho$ is ramified. Given a cutoff $x$, there is 
+a natural empirical measure 
 \[
 	P_x = \frac{1}{\pi(x)} \sum_{p\leqslant x} \delta_{\frob_p} ,
 \]
 where $\frob_p$ is the $p$-th Frobenius conjugacy class in $G$. Let 
 \[
-	\disc(P_x) = \sup_{c\in G^\natural} \left| P_x(c) - \frac{1}{\# G^\natural}\right|,
+	\disc(P_x) = \sup_{S\subset G^\natural} \left| P_x(S) - \frac{\# S}{\# G^\natural}\right|,
 \]
 where $G^\natural$ is the set of conjugacy classes in $G$. 
 
@@ -90,7 +90,7 @@ representations---those arising from elliptic curves.
 
 \section{Discrepancy and Riemann Hypothesis for elliptic curves}
 
-Let $E_{/\bQ}$ be a non-CM elliptic curve. For any prime $l$, there is an 
+Let $E_{/\bQ}$ be an elliptic curve. For any prime $l$, there is an 
 $l$-adic Galois representation $\tate_l E$ associated to $E$, known as the 
 Tate module. This is a rank-$2$ $\bZ_l$-module with continuous $G_\bQ$-action, 
 so it induces a continuous representation 
@@ -122,15 +122,15 @@ $P_x$ be the empirical measure
 \]
 The convergence of the $P_x$ to the Sato--Tate measure is closely related to 
 the analytic properties of the $L(\sym^k E,s)$. First, here is the famous 
-Sato--Tate conjecture (now a theorem) in our language. 
+Sato--Tate Conjecture (now a theorem) in our notation. 
 
 \begin{theorem}[Sato--Tate conjecture]
-The measures $P_x$ converge weakly to $\ST$. 
+If $E$ is non-CM, the measures $P_x$ converge weakly to $\ST$. 
 \end{theorem}
 
 \begin{theorem}
-Let Sato--Tate conjecture holds for $E$ if and only if each of the functions 
-$L(\sym^k E,s)$ have analytic continuation past $\Re =1$. 
+Let Sato--Tate conjecture holds for (a non-CM) $E$ if and only if each of 
+the functions $L(\sym^k E,s)$ have analytic continuation past $\Re = 1$. 
 \end{theorem}
 
 The stunning recent proof of the Sato--Tate conjecture 
@@ -155,9 +155,15 @@ If $\disc\left(\{\theta_p\}_{p\leqslant x},\ST\right)\ll x^{-\frac 1 2+\epsilon}
 then all the functions $L(\sym^k E, s)$ satisfy the Riemann Hypothesis. 
 \end{theorem}
 
-It is natural to assume that the converse to this theorem holds. David Zywina 
+This discussion also makes sense when $E$ has complex multiplication (say, 
+defined over $\bQ$), but the Sato--Tate measure is instead the Haar measure 
+on $\SO(2)$, i.e.~the uniform measure on $[0,\pi]$. Instead of symmetric power 
+$L$-functions, one takes $L$-functions for each representation of $\SO(2)$. 
+
+It is natural to assume that the converse to the implication 
+``Strong Sato--Tate implies General Riemann Hypothesis'' holds. David Zywina 
 first suggested to the author that it might not. In this thesis, we construct a 
-range of counterexamples to the implication ``strong Sato--Tate implies 
+range of counterexamples to the implication ``Strong Sato--Tate implies 
 Riemann Hypothesis.'' We also construct a broader conjectural framework 
 generalizing 
 Akiyama--Tanigawa's conjecture to more general motives. Moreover, we generalize 
