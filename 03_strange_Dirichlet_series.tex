@@ -68,7 +68,7 @@ $\leqslant N$, we have
 as desired. 
 \end{proof}
 
-\begin{theorem}
+\begin{theorem}\label{thm:AT->RH}
 Assume $|\sum_{p\leqslant x} z_p| \ll x^{\alpha+\epsilon}$ for some 
 $\alpha\in [\frac 1 2,1]$. Then the series for $\log L(\bz,s)$ converges to a 
 holomorphic function on the region $\{\Re s>\alpha\}$. 
@@ -188,11 +188,23 @@ for the associated strange Dirichlet series.
 
 \section{Relation to automorphic and motivic \texorpdfstring{$L$}{L}-functions}
 
-
-To-do: show that \cite[A.1]{serre-1989} works for $L_f(\bx,s)$, $f$ 
-almost-everywhere continuous. 
-
-Define $L(\rho(\bx),s)$. 
+Suppose $G$ is a compact group, $G^\natural$ the space of conjugacy classes in 
+$G$. If $\bx = (x_2,x_3,x_5,\dots)$ is a sequence in $G^\natural$ and $\rho$ is 
+a finite-dimensional representation of $G$, put 
+\[
+	L(\rho(\bx),s) = \prod_p \frac{1}{\det(1-\rho(x_p) p^{-s})} .
+\]
+Clearly $L((\rho_1\oplus \rho_2)(\bx),s) = L(\rho_1(\bx),s) L(\rho_2(\bx),s)$. 
+Now, let $T\subset G$ be a maximal torus, and recall that 
+$T\twoheadrightarrow G^\natural$. The representation 
+$\left.\rho\right|_T$ decomposes as $\bigoplus \chi^{\oplus m_\chi}$, where 
+$\chi$ ranges over characters of $T$ and the entire expression is 
+$W$-invariant. We may regard the $x_p$ as lying in $T/W$, so we have 
+\[
+	L(\rho(\bx),s) = \prod_\chi L(\chi(\bx),s)^{m_\chi} .
+\]
+If the trivial representation appears in $\left.\rho\right|_T$, this product 
+formula will include a copy (possibly several) of $\zeta(s)$. 
 
 
 
@@ -210,15 +222,20 @@ In effect, Theorem \ref{thm:RH->bound} says that under reasonable analytic
 hypotheses, the Riemann Hypothesis for $L(\bz,s)$ implies the estimate 
 $|\sum_{p\leqslant N} z_p| \ll N^{-\frac 1 2+\epsilon}$. 
 
-To-do: show that A--T implies RH. 
-
-To-do: define ``Riemann Hypothesis'' for strange Dirichlet series. 
-
-
-
-
-
-\section{Strange Dirichlet series over function fields}
+\begin{theorem}
+Let $(X,\mu)$ be a probability space in which discrepancy makes sense, and let 
+$\bx=(x_2,x_3,x_5,\dots)$ be a sequence in $X$ with 
+$\disc(\bx^N,\mu) \ll N^{-\frac 1 2+\epsilon}$. Then for any function $f$ on 
+$X$ of bounded variation, the strange Dirichlet series $L_f(\bx,s)$ satisfies 
+the Riemann Hypothesis. 
+\end{theorem}
+\begin{proof}
+The bound on discrepancy yields (by the Koksma--Hlawka inequality) the estimate 
+\[
+	\left| \sum_{p\leqslant N} f(x_p)\right| \ll N^{-\frac 1 2+\epsilon} .
+\]
+By Theorem \ref{thm:AT->RH}, the Riemann Hypothesis holds for $L_f(\bx,s)$. 
+\end{proof}
 
 Let $F = \bF_q(t)$ be a function field, $E_{/F}$ a generic elliptic curve. 
 There is, for every prime $\fp$ of $F$, a Satake parameter 
