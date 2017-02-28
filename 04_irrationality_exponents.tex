@@ -15,7 +15,7 @@ independent.
 \begin{definition}\label{def:approx-exp}
 Let $\omega_0(x)$ (resp.~$\omega_{d-1}(x)$) be the supremum of the set of real 
 numbers $\omega$ for which there exist infinitely many 
-$m=(m_0,\dots,m_d)\in \bZ^{r+1}$ such that 
+$m=(m_0,\dots,m_d)\in \bZ^{d+1}$ such that 
 \begin{align*}
 	\max\{|m_0 x_i - m_i|\} 
 		&\leqslant \|m\|_\infty^{-\omega}  \qquad\text{(resp.} \\
@@ -34,25 +34,14 @@ Moreover, these inequalities are sharp in a very strong sense.
 Let $w\geqslant 1/d$. Then there exists $x\in \bR^d$ such that $\omega_0(x)=w$ 
 and $\omega_{d-1}(x) = d w+d-1$. 
 \end{theorem}
-\begin{proof}
-% TODO
-Do this. 
-\end{proof}
 
-% TODO
 \begin{theorem}
-When $d=1$, relate $\omega_0(x)$ to the irrationality measure. 
+If $d=1$, then $\omega_0(x) = \mu-1$, where $\mu$ is the traditional 
+irrationality measure of $x$. 
 \end{theorem}
-\begin{proof}
-Recall that the irrationality measure $\mu(x)$ is the infimum of the set of 
-positive reals $\mu$ such that 
-\[
-	0 < \left| x - \frac p q\right| < q^{-\mu} 
-\]
-has only finitely many solutions $p/q$ with $p,q$ integers. 
-\end{proof}
 
-Mention Roth's theorem\ldots generalize to higher dimension?
+So Roth's Theorem tells us that for $x$ an algebraic irrational, 
+$\omega_0(x) = 1$. 
 
 Now given $x\in \bR^d$, we write $d(x,\bZ^d)=\min_{m\in \bZ^d} |x-m|$, where 
 $|\cdot|$ is any fixed norm on $\bR^d$. Note that $d(x,\bZ^d)=0$ if and only if 
