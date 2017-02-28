@@ -11,13 +11,14 @@
 We start by considering a very general class of Dirichlet series. In fact, they 
 are all Dirichlet series that admit a product formula with degree-1 factors, 
 but in this thesis they will be called strange Dirichlet series. The motivating 
-example was suggested by Ramakrishna. Let $E_{/\bQ}$ be an elliptic curve and 
-let 
+example was suggested to the author by Ravi Ramakrishna. Let $E_{/\bQ}$ be an 
+elliptic curve and let 
 \[
 	L_{\sgn}(E,s) = \prod_p \frac{1}{1-\sgn(a_p) p^{-s}} .
 \]
 How much can we say about the behavior of $L_{\sgn}(E,s)$? For example, does it 
-``know'' the rank of $E$?
+admit analytic continuation past $\Re = 1$? Can the rank of $E$ be found from 
+$L_{\sgn}(E,s)$?
 
 \begin{definition}
 Let $\bz=(z_2,z_3,z_5,\dots)$ be a sequence of complex numbers indexed by the 
@@ -87,8 +88,9 @@ Elementary analysis gives
 	1 \leqslant \frac{1}{1-p^{-\Re s}} \leqslant 2 + 2\sqrt 2 ,
 \]
 so the second piece of $\log L(\bz,s)$ converges absolutely when 
-$\Re s>\frac 1 2$. We could simply cite \cite[II.1 Th.~10]{tenenbaum-1995}; 
-instead we prove directly that $\sum_p \frac{z_p}{p^s}$ converges absolutely 
+$\Re s>\frac 1 2$. We could simply cite \cite[II.1 Th.~10]{tenenbaum-1995} to 
+finish the proof; 
+instead we prove directly that $\sum \frac{z_p}{p^s}$ converges absolutely 
 to a holomorphic function on the region $\{\Re s>\alpha\}$. 
 
 By Lemma \ref{lem:abel-sum} with $f(x) = x^{-s}$, we have 
@@ -97,7 +99,8 @@ By Lemma \ref{lem:abel-sum} with $f(x) = x^{-s}$, we have
 		&= N^{-s} \sum_{p\leqslant N} z_p + s \int_2^N \sum_{p\leqslant x} z_p\, \frac{\dd x}{x^{s+1}} \\
 		&\ll N^{-\Re s + \alpha + \epsilon} + s \int_2^N x^{\alpha+\epsilon} \frac{\dd x}{x^{s+1}} .
 \end{align*}
-Since $\alpha-\Re s < 0$, the first term is bounded. Since $s+1-\alpha > 1$ and 
+Since $\alpha-\Re s < 0$, the first term is bounded. Since 
+$\Re s+1-\alpha > 1$ and 
 $\epsilon$ is arbitrary, the integral converges absolutely, and the proof is 
 complete. 
 \end{proof}
@@ -105,7 +108,7 @@ complete.
 \begin{theorem}\label{thm:RH->bound}
 Let $\bz=(z_2,z_3,\dots)$ be a sequence with $\|\bz\|_\infty\leqslant 1$, and 
 assume $\log L(\bz,s)$ has analytic continuation to $\{\Re s>\alpha\}$ for some 
-$\alpha\in \frac 1 2,1]$, and that for $\sigma>\alpha$, we have 
+$\alpha\in \left[\frac 1 2,1\right]$, and that for $\sigma>\alpha$, we have 
 $|\log L(\bz,\sigma+i t)| \ll |t|^{1-\epsilon}$ (implied constant independent 
 of $\sigma$.) Then $|\sum_{p\leqslant N} z_p| \ll N^{\alpha+\epsilon}$. 
 \end{theorem}
@@ -127,7 +130,7 @@ following contour:
 	\gamma_{3,T}(t) &= (1+\epsilon) + i t \qquad t\in [T,-T] \\
 	\gamma_{4,T}(t) &= t - i T \qquad t\in [1+\epsilon,\alpha+\epsilon] .
 \end{align*}
-Graphically, the contour looks like this: 
+As a picture, $\gamma_T$ looks like this: 
 \begin{center}
 \begin{tikzpicture}[
 	decoration={%
@@ -141,7 +144,7 @@ Graphically, the contour looks like this:
 	\node at (0.6,1) {$\gamma_{1,T}$};
 	\node at (2, 2.5) {$\gamma_{2,T}$};
 	\node at (3.6, 1) {$\gamma_{3,T}$};
-	\node at (-2.5, 2) {$\gamma_{4,T}$};
+	\node at (2, -2.5) {$\gamma_{4,T}$};
 	\path[draw,postaction=decorate] 
 		(1,-3) node[below] {$\alpha+\epsilon - i T$} -- 
 		(1,3) node[above] {$\alpha+\epsilon + i T$} -- 
@@ -174,13 +177,13 @@ and similarly for $\gamma_{4,T}$. Finally, note that
 Letting $T\to \infty$ we obtain the desired result. 
 \end{proof}
 
-In this thesis, we are interested in the following sort of strange Dirichlet 
-series. Let $X$ be a space, $f\colon X\to \bC$ a function with 
+Let $X$ be a space, $f\colon X\to \bC$ a function with 
 $\|f\|_\infty\leqslant 1$, and $\bx=(x_2,x_3,\dots)$ a sequence in $X$. Write 
 \[
 	L_f(\bx,s) = \prod_p \frac{1}{1-f(x_p) p^{-s}} ,
 \]
-for the associated strange Dirichlet series. 
+for the associated strange Dirichlet series. In the remainder, we will 
+exclusively focus on strange Dirichlet series of this form. 
 
 
 
@@ -248,12 +251,12 @@ This tells us that for any $f\in C(\SU(2))$ with
 $\sum_{k\geqslant 1} |\widehat f(\sym^k)|<\infty$, the strange Dirichlet 
 series $L_f(\btheta,s)$ satisfies the Riemann Hypothesis. 
 
-However, even for function fields, the best estimate on discrepancy is found in 
-\cite{niederreiter-1991}. Niederreiter shows that 
-$D_N \ll N^{-1/4}$ by applying a generalization of the Koksma--Hlawka 
-inequality to $\SU(2)^\natural$. Namely, for any odd $r$, we have 
+For function fields, the best estimate on discrepancy is found in 
+\cite{niederreiter-1991}, where it is shown that $D_N \ll N^{-1/4}$ 
+by applying a generalization of the Koksma--Hlawka inequality to 
+$\SU(2)^\natural$. Namely, for any odd $r$, we have 
 \[
-	\disc^\star(\btheta^x,\ST) \ll \frac 1 r + \sum_{k=1}^{2 r -1} \frac 1 k \left| \frac{1}{\pi_F(x)} \sum_{\N(\fp)\leqslant x} U_k(\btheta_\fp)\right| .
+	\disc(\btheta^x,\ST) \ll \frac 1 r + \sum_{k=1}^{2 r -1} \frac 1 k \left| \frac{1}{\pi_F(x)} \sum_{\N(\fp)\leqslant x} U_k(\btheta_\fp)\right| .
 \]
 Using the above estimate on $\sum U_k(\btheta_\fp)$, he is able to derive 
 $D_N \ll N^{-1/4}$. This fits the results of 
