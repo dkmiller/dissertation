@@ -11,36 +11,36 @@
 Discrepancy (also known as the Kolmogorov--Smirnov statistic) is a way of 
 measuring how closely sample data fits a predicted distribution. It has many 
 applications in computer science and statistics, but here we will focus on only 
-the basic known properties, as well as how discrepancy changes when sequences 
-are tweaked and combined. 
+the basic properties, such as how discrepancy changes when sequences 
+are ``tweaked'' and combined. 
 
 First, recall that the discrepancy is a way of sharpening the ``soft'' 
 convergence results of, say \cite[A.1]{serre-1989}. Let $X$ be a compact 
-topological space, $\{x_p\}$ a sequence of points in $X$ indexed by the prime 
-numbers. 
+topological space, $\bx = (x_2,x_3,x_5,\dots)$ a sequence of points in $X$ 
+indexed by the rational primes. 
 
 \begin{definition}
-Let $\mu$ be a continuous probability measure on $X$. The sequence $\{x_p\}$ is 
+Let $\mu$ be a continuous probability measure on $X$. The sequence $\bx$ is 
 \emph{equidistributed} with respect to $\mu$ if for all $f\in C(X)$, we have 
 \[
-	\lim_{x\to \infty} \frac{1}{\pi(x)} \sum_{p\leqslant x} f(x_p) \to \int f\, \dd \mu .
+	\lim_{N\to \infty} \frac{1}{\pi(N)} \sum_{p\leqslant N} f(x_p) \to \int f\, \dd \mu .
 \]
 \end{definition}
 
-In other words, $\{x_p\}$ is $\mu$-equidistributed if the empirical measures 
-$P_x = \frac{1}{\pi(x)} \sum_{p\leqslant x} \delta_{x_p}$ converge to $\mu$ in 
-the weak topology. It is easy to see that $\{x_p\}$ is $\mu$-equidistributed if 
-and only if $\left| \sum_{p\leqslant x} f(x_p)\right| = o(x)$ for all 
+In other words, $\bx$ is $\mu$-equidistributed if the empirical measures 
+$P_N = \frac{1}{\pi(N)} \sum_{p\leqslant N} \delta_{x_p}$ converge to $\mu$ in 
+the weak topology. It is easy to see that $\bx$ is $\mu$-equidistributed if 
+and only if $\left| \sum_{p\leqslant N} f(x_p)\right| = o(N)$ for all 
 continuous $f$ having $\int f\, \dd\mu = 0$. In fact, one can restrict to a 
-set of $f$ which generate a dense subpace of $C(X)^{\mu =0}$. 
+set of $f$ which generate a dense subpace of $C(X)^{\mu = 0}$. 
 
 In the discussion in \cite[A.1]{serre-1989}, $X$ is the space of conjugacy 
 classes in a compact Lie group, and $f$ is allowed to range over the characters 
-of irreducible, nontrivial representations of the group. In this section, we 
-will show that the entire discussion can be generalized to a much broader class 
-of \emph{strange Dirichlet series}, which are of the form 
+of irreducible, nontrivial representations of the group. We will see that the 
+entire discussion can be generalized to a much broader class of 
+\emph{strange Dirichlet series}, which are of the form 
 \[
-	L_f(\{x_p\},s) = \prod_p \frac{1}{1-f(x_p)p^{-s}} .
+	L_f(\bx,s) = \prod_p \frac{1}{1-f(x_p)p^{-s}} .
 \]
 In fact, we can consider functions $f$ which are only only continuous almost 
 everywhere. 
@@ -50,9 +50,9 @@ Let $X$ be a compact separable metric space with no isolated points. Let $\mu$
 be a Borel measure on $X$ and let $f\colon X\to \bC$ be bounded and measurable. 
 Then $f$ is continuous almost everywhere if and only if 
 \[
-	\lim_{x\to \infty} \frac{1}{\pi(x)} \sum_{p\leqslant x} f(x_p) = \int f\, \dd\mu
+	\lim_{N\to \infty} \frac{1}{\pi(N)} \sum_{p\leqslant N} f(x_p) = \int f\, \dd\mu
 \]
-for all $\mu$-equidistributed sequences $\{x_p\}$. 
+for all $\mu$-equidistributed sequences $\bx$. 
 \end{theorem}
 \begin{proof}
 This follows immediately from the proof of \cite[Th.~1]{mazzone-1995}
@@ -98,10 +98,8 @@ $S\subset \{1,\dots,d\}$, let
 \[
 	I_S = \{ t \in [0,y) : t_i < x_i \text{ for all }i\in S\} .
 \]
-The inclusion-exclusion principle for measures tells us that: 
-\[
-	\mu[x,y) = \sum_{S\subset \{1,\dots,d\}} (-1)^{\# S} \mu(I_S) ,
-\]
+Inclusion-exclusion principle tells us that: 
+$\mu[x,y) = \sum_{S\subset \{1,\dots,d\}} (-1)^{\# S} \mu(I_S)$, 
 and similarly for $\nu$. Since each of the $I_S$ are ``half-open boxes'' 
 we know that $|\mu(I_S) - \nu(I_S)| \leqslant \disc^\star(\mu,\nu)$. It 
 follows that 
@@ -112,11 +110,15 @@ For a discussion and related context, see
 \cite[Ch.~2 Ex.~1.2]{kuipers-niederreiter-1974}. 
 \end{proof}
 
+Since we are only interested in the asymptotics of discrepancy, we will 
+gloss over the distinction between discrepancy and star discrepancy, using 
+whichever makes a proof easier to follow. 
+
 We are usually interested in comparing empirical measures and their conjectured 
-distribution. Namely, let $\bx = \{x_p\}$ be a sequence in $[0,\infty)^d$ 
-indexed by the prime numbers, and $\mu$ a Borel measure on $[0\infty)^d$. For 
-any real number $N\geqslant 2$, we write $\bx^N$ for the empirical measure 
-given by 
+distribution. Namely, let $\bx = (x_2,x_3,x_5,\dots)$ be a sequence in 
+$[0,\infty)^d$ indexed by the rational primes, and $\mu$ a probability measure 
+on $[0,\infty)^d$. For any real number $N\geqslant 2$, we write $\bx^N$ for the 
+empirical measure given by 
 \[
 	\bx^N(S) = \frac{1}{\pi(N)} \sum_{p\leqslant N} \delta_{x_p}(S) = \frac{\# \{p\leqslant N : x_p\in S\}}{\pi(N)} .
 \]
@@ -129,10 +131,9 @@ context,
 
 If the measure $\nu$ is only defined on a subset of $[0,\infty)^d$, we will 
 tacitly extend it by zero. Moreover, if the sequence $\bx$ actually lies in a 
-torus $(\bR/a \bZ)^d$, we identify that torus with the 
-$[0,a)^d\subset [0,\infty)^d$. If $\nu$ is the Lebesgue measure (on 
-$[0,\infty)^d$) or the normalized Haar measure on the torus, we write 
-$\disc^\star(\bx^N)$ in place of $\disc^\star(\bx^N, \nu)$. 
+torus $(\bR/a \bZ)^d$, we identify that torus with  
+$[0,a)^d\subset [0,\infty)^d$. If $\nu$ is normalized Haar measure on the 
+torus, we write $\disc^\star(\bx^N)$ in place of $\disc^\star(\bx^N, \nu)$. 
 
 If the sequence $\bx$ lies in the space $G^\natural$ of conjugacy classes in a 
 compact Lie group $G$, choose a maximal torus $T\subset G$, and recall that 
@@ -160,27 +161,27 @@ $\pi(N)$ is replaced by $\#\{\textnormal{indices }\leqslant N\}$.
 
 \section{Statistical heuristics}
 
-Here we replace the Satake parameters $\theta_p$ of an elliptic curve with 
+Replace the Satake parameters $\theta_p$ of an elliptic curve with 
 a sequence $\{\theta_p\}$ of iid random variables with common distribution 
 $\mu = \frac{2}{\pi} \sin^2 \theta\, \dd\theta$ supported on $[0,\pi]$. Then 
-the discrepancy (in this context, it is known as the Kolmogorov--Smirnov 
-statistic) is 
+the discrepancy (known as the Kolmogorov--Smirnov statistic in this context) is 
+the random variable 
 \[
 	D_N = \sup_{x\in [0,\pi]} \left|\frac{1}{\pi(N)} \sum_{p\leqslant N} 1_{[0,x]}\circ \theta_p - \int 1_{[0,x]}\, \dd\mu\right| .
 \]
-This is a $\bR^+$-valued random variable. Kolmogorov and Smirnov proved that 
-the inside of the absolute value converges to zero. The Glivenko--Cantelli 
-Theorem says that $D_N \to 0$ almost surely, and even better that the 
-normalized discrepancy $\sqrt{\pi(N)} D_N$ approaches a limiting distribution 
-(supremum of the Brownian Bridge) which does not depend on $\mu$. The rate of 
-convergence of $\sqrt{\pi(N)} D_N$ to that distribution is quantified by the 
-Dvoretzky--Kiefer--Wolfowitz inequality, which tells us that 
+Kolmogorov and Smirnov proved that the inside of the absolute value converges 
+to zero. The Glivenko--Cantelli Theorem says that $D_N \to 0$ almost surely, 
+and even better that the normalized discrepancy $\sqrt{\pi(N)} D_N$ approaches 
+a limiting distribution $K$ (supremum of the Brownian Bridge) which does not 
+depend on $\mu$. The rate of convergence of $\sqrt{\pi(N)} D_N$ to that 
+distribution is quantified by the Dvoretzky--Kiefer--Wolfowitz inequality, 
+which tells us that 
 \[
 	\mathrm{P}\left(\sqrt{\pi(N)} D_N > z\right) \leqslant 2 e^{-2 z^2} .
 \]
-At the very least, these theorems suggest that for $E_{/\bQ}$ an elliptic 
-curve, the ``real'' discrepancy $\disc^\star(\btheta^N,\ST)$ should decay 
-like $\pi(N)^{-\frac 1 2}$, or at least $\pi(N)^{-\frac 1 2+\epsilon}$. 
+These theorems suggest that for $E_{/\bQ}$ an elliptic 
+curve, the ``true'' discrepancy $\disc(\btheta^N,\ST)$ should decay 
+like $\pi(N)^{-\frac 1 2}$, or at least $N^{-\frac 1 2+\epsilon}$. 
 Ideally, the normalized discrepancy $\sqrt{\pi(N)}\disc^\star(\btheta^N,\ST)$ 
 would also be equidistributed, but sadly numerical experiments suggest that 
 this is not the case. 
@@ -191,12 +192,12 @@ this is not the case.
 
 \section{Examples}
 
-One of the first examples of equidistributed sequences is translates of an 
-irrational quantity modulo one. 
+One of the first examples of equidistributed sequences is the set of translates  
+of an irrational number modulo one. 
 
 \begin{theorem}
 Let $a\in \bR$ be irrational. Then the sequence 
-$\bx=(a,2a\mod 1,3a\mod 1,\dots)$ is equidistributed in $[0,1]$. 
+$\bx=(a\mod 1,2a\mod 1,3a\mod 1,\dots)$ is equidistributed in $[0,1]$. 
 \end{theorem}
 \begin{proof}
 This follows from the more precise results of Chapter 
@@ -205,13 +206,13 @@ This follows from the more precise results of Chapter
 
 Sequences of this form will have discrepancy that decays like 
 $N^{-\alpha\pm \epsilon}$, for $\alpha\in (0,1/2)$. It can be useful to have a 
-sequence whose discrepancy decays faster. The best known decay is achieved by 
-the following sequence. 
+sequence whose discrepancy decays faster. The best known rate of decay is 
+achieved by the following sequence. 
 
 \begin{definition}
 The \emph{van der Corput sequence} is given by 
-$\{\frac 1 2,\frac 1 4,\frac 3 4,\dots\}$. More precisely, write $n$ in base 
-$2$ as $n = \sum a_i 2^i$. Then $v_n = \sum a_i 2^{-(i+1)}$. 
+$\bv = \left(\frac 1 2,\frac 1 4,\frac 3 4,\dots\right)$. More precisely, write 
+$n$ in base $2$ as $n = \sum a_i 2^i$. Then $v_n = \sum a_i 2^{-(i+1)}$. 
 \end{definition}
 
 The van der Corput sequence has generalizations to other bases and higher 
@@ -227,7 +228,7 @@ This is \cite[Ch.~2 Th.~3.5]{kuipers-niederreiter-1974}. In particular, we
 will use often that $\disc(\bv^N)\ll \frac{\log N}{N}$. 
 \end{proof}
 
-Now, the van der Corput sequence is uniformly distributed, but there is a 
+The van der Corput sequence is uniformly distributed, but there is a 
 convenient trick to construct sequences equidistributed with respect to more 
 general measures. 
 
@@ -244,22 +245,21 @@ Let $\mu$ be a good measure on a closed interval. Then there exists a sequence
 $\bx=(x_1,x_2,\dots)$ such that $\disc(\bx^N,\mu) \ll \frac{\log(N)}{N}$. 
 \end{theorem}
 \begin{proof}
-Since $\cdf_\mu$ is a continuous bijection and its domain is a compact set, 
-$\cdf_\mu$ is an order isomorphism. Then Lemma \ref{lem:push-discrepancy} tells 
-us that for $\bv$ the van der Corput sequence on $[0,1]$, we have 
-$\disc(\cdf_\mu^{-1}(\bv)^N, \mu) = \disc(\bv^N,\mu)$, which gives us the 
-desired result with $\bx = \cdf_\mu^{-1}(\bv)$. 
+Since $\mu$ is good, $\cdf_\mu$ is an order isomorphism. Then Lemma 
+\ref{lem:push-discrepancy} tells us that for $\bv$ the van der Corput sequence 
+on $[0,1]$, we have $\disc(\cdf_\mu^{-1}(\bv)^N, \mu) = \disc(\bv^N,\mu)$, 
+which gives us the desired result with $\bx = \cdf_\mu^{-1}(\bv)$. 
 \end{proof}
 
 \begin{theorem}\label{thm:discrepancy-arbitrary}
-Let $\mu$ be a good measure on a closed interval. Fix $\alpha\in (0,1)$. 
-Then there exists a sequence $\bx=(x_1,x_2,\dots)$ such that 
+Let $\mu$ be a good measure. Fix $\alpha\in (0,1)$. Then there exists a 
+sequence $\bx=(x_1,x_2,\dots)$ such that 
 $\disc^\star(\bx^N,\mu) = \Theta(N^{-\alpha})$. 
 \end{theorem}
 \begin{proof}
 If $\bx_{\leqslant N}$ is a sequence of length $N$, let 
-$\bx_{\leqslant N}:a_{\leqslant M}$ be the sequence $x_1,\dots,x_N,a,\dots,a$ 
-($M$ copies of $a$). Then 
+$\bx_{\leqslant N}:a^M$ be the sequence $(x_1,\dots,x_N,a,\dots,a)$ ($M$ copies 
+of $a$). Then 
 \[
 	\disc^\star(\bx^N:a^M,\mu)
 		\geqslant \left| \frac{\#\{ n\leqslant N+M : x_n = a\}}{N+M} - \mu\{a\}\right| 
@@ -276,8 +276,8 @@ which implies that
 $\disc^\star\left(\bx^N:a^M,\mu\right) \leqslant \disc^\star\left(\bx^N,\mu\right) + \frac{2 M}{M+N}$. 
 Let $\bv$ be the $\mu$-equidistributed van der Corput sequence of 
 Theorem \ref{thm:van-der-corput}, possibly transformed linearly to lie in 
-$[a,b]$. We know that $\disc(\bv^N, \mu) \ll N^{-\alpha}$, with the constant 
-in question depending only on $\alpha$. 
+$[a,b]$. We know that $\disc(\bv^N, \mu) \ll \frac{\log N}{N}$, which converges 
+to zero faster than $N^{-\alpha}$. 
 
 We construct the sequence $\bx$ via the following recipe. Start with 
 $(x_1 = v_1,x_2 = v_2,\dots)$ until, for some $N_1$, 
@@ -299,13 +299,16 @@ $\disc^\star(\bx^N:a^M,\mu)$ is at most $N^{-1}$ greater than $N^{-\alpha}$.
 
 Moreover, we know that $\disc^\star(\bx^N:a,\mu)$ is at most 
 $\frac{2}{N+1}$ away from $\disc^\star(\bx^N,\mu)$. So when adding van der 
-Corput elements to the end of the sequence, its' discrepancy cannot decay any 
+Corput elements to the end of the sequence, its discrepancy cannot decay any 
 faster than by $\frac{2}{N+1}$ per $a$ added. This yields 
 \[
 	\left|\disc^\star(\bx^N,\mu) - N^{-\alpha}\right| \ll N^{-1} , 
 \]
 which is even stronger than we need.
 \end{proof}
+
+In the remainder of this thesis, we will refer to the sequences constructed in 
+this theorem as ``$N^{-\alpha}$-decay van der Corput sequences.''
 
 
 
@@ -325,9 +328,10 @@ satisfied, then
 
 \begin{theorem}[Koksma--Hlawka]
 Let $\mu$ be a probability measure on $[0,\infty)^d$, $f$ a function of 
-bounded variation. Then for any sequence $\bx$ in $[0,\infty)^d$, we have 
+bounded variation. Then for any sequence $\bx = (x_1,x_2,\dots)$ in 
+$[0,\infty)^d$, we have 
 \[
-	\left| \frac{1}{\pi(x)} \sum_{p\leqslant x} f(x_p) - \int f\, \dd\mu \right| \leqslant \Var(f) \disc(\bx^N,\mu) .
+	\left| \frac{1}{N} \sum_{n\leqslant N} f(x_n) - \int f\, \dd\mu \right| \leqslant \Var(f) \disc(\bx^N,\mu) .
 \]
 \end{theorem}
 \begin{proof}
@@ -335,15 +339,15 @@ By our assumptions there is a Radon measure $\nu$ such that
 $f(y) - f(0) = \nu[0,y]$. What follows is essentially trivial, noting that 
 $1_{[0,x]}(y) = 1_{[y,\infty)^d}(x)$. 
 \begin{align*}
-	\frac{1}{\pi(x)} \sum_{p\leqslant x} f(x_p) - \int f\, \dd\mu 
-		&= \frac{1}{\pi(x)} \sum_{p\leqslant x} \left(f(x_p) - f(0)\right) - \int \left(f - f(0)\right)\, \dd\mu \\
-		&= \frac{1}{\pi(x)} \sum_{p\leqslant x} \int 1_{[y,\infty)^d}(x_p)\, \dd \nu(y) - \int \int 1_{[0,y]}\, \dd\nu \, \dd\mu(y) \\
-		&= \int \frac{1}{\pi(x)} \sum_{p\leqslant x} 1_{[y,\infty)^d}(x_p) - \int 1_{[y,\infty)^d}\, \dd\mu \, \dd\nu(y)
+	\frac{1}{N} \sum_{n\leqslant N} f(x_n) - \int f\, \dd\mu 
+		&= \frac{1}{N} \sum_{n\leqslant N} \left(f(x_n) - f(0)\right) - \int \left(f - f(0)\right)\, \dd\mu \\
+		&= \frac{1}{N} \sum_{n\leqslant N} \int 1_{[y,\infty)^d}(x_n)\, \dd \nu(y) - \int \int 1_{[0,y]}\, \dd\nu \, \dd\mu(y) \\
+		&= \int \frac{1}{N} \sum_{n\leqslant N} 1_{[y,\infty)^d}(x_n) - \int 1_{[y,\infty)^d}\, \dd\mu \, \dd\nu(y)
 \end{align*}
 It follows that 
 \[
-	\left| \frac{1}{\pi(x)} \sum_{p\leqslant x} f(x_p) - \int f\, \dd\mu \right|
-		\leqslant \sup_{y\in [0,\infty)} \left| \frac{1}{\pi(x)} \sum_{p\leqslant x} 1_{[y,\infty)}(x_p) - \int 1_{[y,\infty)}\, \dd\mu\right| \cdot |\nu| .
+	\left| \frac{1}{N} \sum_{n\leqslant N} f(x_n) - \int f\, \dd\mu \right|
+		\leqslant \sup_{y\in [0,\infty)} \left| \frac{1}{N} \sum_{n\leqslant N} 1_{[y,\infty)}(x_n) - \int 1_{[y,\infty)}\, \dd\mu\right| \cdot |\nu| .
 \]
 The supremum in question is clearly bounded above by $\disc(\bx^N,\mu)$, so the 
 proof is complete. 
@@ -351,10 +355,10 @@ proof is complete.
 
 This theorem is proved in a somewhat restrictive setting, and can be 
 generalized. For $f$ a function on $\bR^+$ that is bounded variation in 
-the traditional sense and $\mu$ a continuous probability measure, the 
-inequality 
+the traditional sense (for example, piecewise continuous) and $\mu$ a 
+continuous probability measure, the inequality 
 \[
-	\left| \frac{1}{\pi(N)} \sum_{p\leqslant N} f(x_p) - \int f\, \dd\mu\right| \leqslant \Var(f) \disc^\star(\bx^N,\mu) 
+	\left| \frac{1}{N} \sum_{n\leqslant N} f(x_n) - \int f\, \dd\mu\right| \leqslant \Var(f) \disc^\star(\bx^N,\mu) 
 \]
 holds \cite[Ch.~2, Th.~5.1]{kuipers-niederreiter-1974}. In particular, when 
 $\mu$ is the Sato--Tate measure and $f$ is piecewise continuous, we can apply 
@@ -382,7 +386,7 @@ $|x_n - y_n| \geqslant \epsilon$. It follows that
 \[
 	\by^N[0,t) \leqslant \bx^N[0,t+\epsilon) + \frac{\#\{ n\leqslant N : |x_n - y_n| \geqslant \epsilon\}}{N} .
 \]
-Moreover, we trivially have 
+Moreover, we have 
 $\left| \bx^N[0,t+\epsilon) - \nu[0,t+\epsilon)\right| \leqslant \disc^\star(\bx^N,\nu)$. Putting these together, we get: 
 \begin{align*}
 	\by^N[0,t) - \nu[0,t) 
