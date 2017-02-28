@@ -4,10 +4,10 @@
 	amsmath,
 	amssymb,
 	amsthm,
-	mathrsfs,     % \mathscr
-	stmaryrd,     % llbracket
-	thesis-style, % custom math commands
-	tikz-cd       % commutative diagrams
+	mathrsfs, % mathscr
+	stmaryrd, % llbracket
+	thesis,   % custom math commands
+	tikz-cd   % commutative diagrams
 }
 \usepackage[hidelinks]{hyperref}
 \usetikzlibrary{decorations.markings}
@@ -22,7 +22,7 @@
 
 \DeclareFieldFormat{postnote}{#1}
 \DeclareFieldFormat{multipostnote}{#1}
-\addbibresource{thesis-sources.bib}
+\addbibresource{thesis.bib}
 
 \title{Counterexamples related to the strong Sato--Tate conjecture}
 \author{Daniel Miller}
@@ -131,7 +131,6 @@ have done it without her.
 \input{06_constructing_Galois_representations}
 \input{07_counterexample_via_Diophantine_approximation}
 \input{08_direct_counterexample}
-%\input{09_computational_evidence}
 \input{10_concluding_remarks}
 
 
