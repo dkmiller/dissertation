@@ -402,6 +402,18 @@ acts faithfully on $\Rep^\square(\Gamma,\widehat G)$. Whether or not it does
 is governed by the action of $\Gamma$ on $\fg(k)$. Let 
 $\fz = \lie(\zentrum(G))$. 
 
+\begin{lemma}\label{lem:stab=H0}
+Let $A_1 \twoheadrightarrow A_0$ be a square-zero extension of artinian 
+$\Lambda$-algebras with kernel $I$. Let $\rho\in \Rep^\square(\Gamma,G)$. 
+Then $\stab_{\ker(G(A_1) \to G(A_0))}(\rho) = \exp(\h^0(\Gamma,\fg(I))$. 
+\end{lemma}
+\begin{proof}
+First, note that $\ker(G(A_1) \to G(A_0)) = \exp(\fg(I))$. For $X\in \fg(I)$, 
+$X\in \stab_{\ker(G(A_1) \to G(A_0))}(\rho)$ if and only if 
+$\exp(X) \rho \exp(-X) = \rho$, i.e.~$\rho^{-1} \exp(X) \rho = \exp(X)$, 
+which is clearly equivalent to $X\in \h^0(\Gamma,\fg(I))$. 
+\end{proof}
+
 \begin{theorem}
 Let $\Gamma,G,\bar\rho$ be as above. Assume $\h^0(\Gamma,\fg(k))=\fz(k)$. Then 
 $\Rep(\Gamma,G)_{\bar\rho}$ exists and, for $A$ a local $\Lambda$-algebra, 
@@ -418,25 +430,9 @@ $\widehat G^{\circ,\ad}$ is faithful if and only if, whenever $A$ is a local
 Artinian $\Lambda$-algebra and $\rho\colon \Gamma \to G(A)$ agrees with 
 $\bar\rho$ modulo $\fm_A$, and for $g\in G(A)$ with $g\equiv 1$ modulo 
 $\fm_A$, then if $g \rho g^{-1} = \rho$, we have $g = 1$. 
-
 Let $I\subset A$ be a square-zero ideal that is one-dimensional over $k$. By 
-induction, we may assume that in fact $g \equiv 1$ modulo $I$. There is the 
-exponential short exact sequence 
-\[
-\begin{tikzcd}
-	0 \ar[r]
-		& \fg^\ad(I) \ar[r, "\exp"] 
-		& \widehat G^{\circ,\ad}(A) \ar[r]
-		& \widehat G^{\circ,\ad}(A/I) \ar[r]
-		& 1
-\end{tikzcd}
-\]
-Since $g\equiv 1$ modulo $I$, we can write $g = \exp(X)$ for some 
-$X\in \fg^\ad(I)\simeq \fg^\ad(k)$. Our assumption $g \rho g^{-1}$ tells 
-us that for all $\gamma\in \Gamma$, 
-$\exp(X)\rho(\gamma) \exp(-X) = \rho(\gamma)$, i.e.~
-$[\exp(X),\rho(\gamma)] = 0$. From this, it follows that $X$ is fixed by all 
-$\Ad\rho(\gamma)$ acting on $\fg^\ad(I)$, so $X = 0$, i.e.~$g = 1$. 
+induction on the length of $A$, we may assume that $g \equiv 1$ modulo 
+$I$. Applying Lemma \ref{lem:stab=H0}, we see that $g = 1$. 
 
 Since the action of $\widehat G^{\circ,\ad}$ on 
 $\Rep^\square(\Gamma,\widehat G)_{\bar\rho}$ is faithful, we can apply 
