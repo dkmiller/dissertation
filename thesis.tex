@@ -1,4 +1,4 @@
-\documentclass[phd,cornellheadings]{cornell}
+\documentclass[phd,cornellheadings,tocprelim]{cornell}
 
 \usepackage{
 	amsmath,
@@ -18,6 +18,8 @@
 	style    = alphabetic % citations look like [Har77]
 ]{biblatex}
 
+\tolerance=9999
+
 \DeclareFieldFormat{postnote}{#1}
 \DeclareFieldFormat{multipostnote}{#1}
 \addbibresource{thesis-sources.bib}
@@ -25,6 +27,9 @@
 \title{Counterexamples related to the strong Sato--Tate conjecture}
 \author{Daniel Miller}
 \conferraldate{May}{2017}
+
+
+
 
 
 \begin{document}
@@ -36,40 +41,42 @@ Let $E_{/\bQ}$ be an elliptic curve. The Sato--Tate conjecture (now a theorem)
 tells us that the angles $\theta_p =\cos^{-1}\left(\frac{a_p}{2\sqrt p}\right)$ 
 are equidistributed in $[0,\pi]$ with respect to the measure 
 $\frac{2}{\pi}\sin^2\theta$ if $E$ is not CM, and uniformly distributed if 
-$E$ has CM over $\bQ$. Akiyama and Tanigawa conjecture that in fact, the 
-discrepancy 
+$E$ has CM over $\bQ$. Call $\ST$ the measure in question. Akiyama and 
+Tanigawa conjecture that in fact, the discrepancy 
 \[
-	D_N = \sup_{x\in [0,\pi]} \left| \frac{1}{\pi(N)} \sum_{p\leqslant N} 1_{[0,x]}(\theta_p) - \int_0^x \frac{2}{\pi} \sin^2\theta\, \dd\theta\right| 
+	D_N = \sup_{x\in [0,\pi]} \left| \frac{1}{\pi(N)} \sum_{p\leqslant N} 1_{[0,x]}(\theta_p) - \int 1_{[0,x]} \, \dd\mu\right| 
 \]
 decays as $D_N \ll N^{-\frac 1 2+\epsilon}$, as is suggested by computational 
-evidence and certain natural heuristics. This conjecture implies the Riemann 
+evidence and certain reasonable heuristics. When $E$ is non-CM, this implies 
+the Riemann 
 Hypothesis for all $L(\sym^k E,s)$. It is natural to assume that the converse 
 holds, as is suggested by analogy with the Riemann Hypothesis for Artin 
-$L$-functions. We show that at least when $E$ has CM over $\bQ$, there is no 
+$L$-functions. We show that when $E$ has CM over $\bQ$, there is no 
 reason to believe that the converse holds, as there are ``fake Satake 
 parameters'' yielding $L$-functions which satisfy the Generalized Riemann 
 Hypothesis, but for which the discrepancy decays like $N^{-\epsilon}$. 
 
-Returning to the non-CM case, we show that there are Galois representations 
+We also show that there are Galois representations 
 $\rho\colon \Gal(\overline \bQ /\bQ) \to \GL_2(\bZ_l)$, ramified at an 
-arbitrarily ``thin'' density-zero set of primes, whose ``Satake parameters'' 
-converge at any specified rate to any reasonable specified measure on 
-$[0,\pi]$. 
+arbitrarily thin set of primes, whose Satake parameters can be made to 
+converge at any specified rate to any reasonable measure on $[0,\pi]$. 
 \end{abstract}
 
 \begin{biosketch}
 Daniel Miller was born in St.~Paul, Minnesota. He completed his Bachelor of 
 Science at the University of Nebraska--Omaha, during which he attended 
 Cornell's Summer Mathematics Institute in 2011. He started his Ph.D.~at 
-Cornell planning on a career in academia, but halfway through had a change of 
-heart, and will be joining Microsoft's Analysis and Experimentation team as a 
-Data Scientist after graduation. 
+Cornell in 2012 planning on a career in academia, but halfway through had a 
+change of heart, and will be joining Microsoft's Analysis and Experimentation 
+team as a Data Scientist after graduation. He is happily married to Ivy 
+Lai Miller, and enjoys hiking, exploring new food, and martial arts. 
 \end{biosketch}
 
 \begin{dedication}
-This thesis is dedicated to my undergraduate thesis advisor, Griff Elder. 
-He is the reason I considered a career in math, his infectious enthusiasm for 
-number theory has inspired me more than I can say. 
+This thesis is dedicated to my undergraduate adviser, Griff Elder. 
+He is the reason I considered a career in mathematics in the first place, and 
+his infectious enthusiasm for number theory has inspired me more than I can 
+say. 
 \end{dedication}
 
 \begin{acknowledgements}
@@ -90,12 +97,12 @@ absurdities of academic life, and listening to my ramblings about number
 theory long after they'd stopped being interesting. 
 
 I owe a big debt of gratitude to the mathematics department at Cornell, where 
-so many professors were generous with their time and ideas. I especially 
+many professors were generous with their time and ideas. I especially 
 appreciate Yuri Berest, John Hubbard, Farbod Shokrieh, Birget Speh, and David 
 Zywina for letting me bounce ideas off them, helping me add rigor to 
 half-baked ideas, and pointing me in new and exciting directions. 
 
-I am especially thankful to my advisor Ravi. He kindled my first love for 
+I am especially thankful to my adviser Ravi. He kindled my first love for 
 number theory, and stayed supportive as my research bounced all over the place, 
 and kept me focused, grounded, and concrete when I needed to be. 
 
@@ -106,11 +113,11 @@ have done it without her.
 \end{acknowledgements}
 
 \contentspage
-
 \normalspacing
 \setcounter{page}{1}
 \pagenumbering{arabic}
 \pagestyle{cornell}
+\addtolength{\parskip}{0.5\baselineskip}
 
 
 
