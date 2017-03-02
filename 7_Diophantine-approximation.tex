@@ -85,12 +85,26 @@ However, for any $f\in C^\infty((\bR/\bZ)^d)$ with $\widehat f(0)=0$, the
 strange Dirichlet series  $L_f(\bx,s)$ satisfies the Riemann Hypothesis. 
 \end{theorem}
 
-Now, as the sequences in this theorem are uniformly distributed, not 
-equidistributed with respect to the Haar measure on $\SU(2)$ or any other 
-semisimple group, this example may not say too much about non-CM elliptic 
-curves. However, let $E_1,\dots,E_n$ be pairwise non-isogenous elliptic curves 
-with complex multiplication defined over $\bQ$. Then the Sato--Tate group of 
-the abelian variety $A = E_1\times \cdots \times E_n$ is 
-$\ST(A) = \SO(2)^n = (S^1)^n$. The theorem above shows that the truth of the 
-Generalized Riemann Hypothesis for $A$ says nothing about the rate of decay of 
-the discrepancy for the Satake parameters of $A$. 
+Let's apply this theorem to abelian varieties with complex multiplication. 
+Let $A_{/\bQ}$ be an $g$-dimensional abelian variety, $F/\bQ$ a number field 
+of degree $g$ with $F\simeq \End^\circ(A) = \End_\bQ(A)\otimes \bQ$. Let 
+$\cA_{/\bZ}$ be the N\'eron model of $A$. Then there is a natural map 
+$\End^\circ(A) \hookrightarrow \End^\circ(\cA_{\bF_p})$. If $A$ has good 
+reduction at $p$, the Frobenius of $\cA_{\bF_p}$ is an element of $F^\times$, 
+which is $p$-Weil of weight $1$. Write $\pi_p\in F^\times$ for this element. It 
+is easy to check that 
+$\det(1-\rho_{A,l}(\frob_p) t) = \prod_{\sigma\colon F\hookrightarrow \bC} (1 - \sigma(\pi_p) t)$. 
+Moreover, Shimura and Taniyama have proved that there exists a unique Hecke 
+character $\chi_\sigma\colon \bA^\times/\bQ^\times \to \bC^\times$, algebraic 
+of weight $1$, such that $\chi_\sigma((1,\dots,p,\dots,1)) = \sigma(\pi_p)$ 
+for each unramified prime $p$. It follows that 
+$L^\alg(A,s) = \prod_{\sigma\colon F\hookrightarrow \bC} L(s,\chi_\sigma)$. 
+Let $\Phi$ be the CM type of $F$. Then for $\sigma\in \Phi$, let 
+$\omega_\sigma = \chi_\sigma \|\cdot\|^{-1/2}$; this is a Hecke character of 
+weight $1/2$, and for $L(A,s) = L^\alg(A,s+1/2)$, 
+$L(A,s) = \prod_{\sigma\in\Phi} L(s,\omega_\sigma) L(s,\omega_\sigma^{-1})$. 
+Identify $\widehat{\ST(A)} = \bZ^\Phi$, and for $m\in \bZ^\Phi$, write 
+$\omega_m = \prod_{\sigma\in \Phi} \omega_\sigma^{m_\sigma}$. Then the 
+Akiyama--Tanigawa conjecture for $A$ implies the Riemann Hypothesis for all 
+$L(s,\omega_m)$, $m\in \bZ^\Phi\smallsetminus 0$. The above theorem shows that 
+the converse doesn't hold. 
