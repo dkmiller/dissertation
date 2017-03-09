@@ -28,11 +28,12 @@ Let $\mu$ be a continuous probability measure on $X$. The sequence $\bx$ is
 \end{definition}
 
 In other words, $\bx$ is $\mu$-equidistributed if the empirical measures 
-$P_N = \frac{1}{\pi(N)} \sum_{p\leqslant N} \delta_{x_p}$ converge to $\mu$ in 
-the weak topology. It is easy to see that $\bx$ is $\mu$-equidistributed if 
-and only if $\left| \sum_{p\leqslant N} f(x_p)\right| = o(N)$ for all 
-continuous $f$ having $\int f\, \dd\mu = 0$. In fact, one can restrict to a 
-set of $f$ which generate a dense subpace of $C(X)^{\mu = 0}$. 
+$P_{\bx,N} = \frac{1}{\pi(N)} \sum_{p\leqslant N} \delta_{x_p}$ converge to 
+$\mu$ in the weak topology. It is easy to see that $\bx$ is 
+$\mu$-equidistributed if and only if 
+$\left| \sum_{p\leqslant N} f(x_p)\right| = o(N)$ for all continuous $f$ having 
+$\int f\, \dd\mu = 0$. In fact, one can restrict to a set of $f$ which generate 
+a dense subpace of $C(X)^{\mu = 0}$. 
 
 In the discussion in \cite[A.1]{serre-1989}, $X$ is the space of conjugacy 
 classes in a compact Lie group, and $f$ is allowed to range over the characters 
@@ -66,7 +67,7 @@ This follows immediately from the proof of \cite[Th.~1]{mazzone-1995}
 
 We will define discrepancy for measures on the $d$-dimensional half-open box 
 $[0,\vinfty) = [0,\infty)^d\subset \bR^d$. For vectors 
-$\vx,\vy\in [0,\infty)^d$, we say $\vx<\vy$ if $x_1<y_1$,\dots,$x_d<y_d$, and 
+$\vx,\vy\in [0,\vinfty)$, we say $\vx<\vy$ if $x_1<y_1$,\dots,$x_d<y_d$, and 
 in that case write $[\vx,\vy)$ for the half-open box 
 $[x_1,y_1)\times \cdots \times [x_d,y_d)$. 
 
@@ -131,12 +132,12 @@ whichever makes a proof easier to follow.
 
 We are usually interested in comparing empirical measures and their conjectured 
 distribution. Namely, let $\bx = (\vx_1,\vx_2,\dots)$ be a sequence in 
-$[0,\vinfty)$, and $\mu$ a probability measure on $[0,\vinfty)^d$. For any real 
+$[0,\vinfty)$, and $\mu$ a probability measure on $[0,\vinfty)$. For any real 
 number $N\geqslant 2$, the empirical measure associated to the set 
 $\{\vx_n\}_{n\leqslant N}$ is 
-$\frac{1}{N} \sum_{n\leqslant N} \delta_{\vx_n}$. Write 
+$P_{\bx,N} = \frac{1}{N} \sum_{n\leqslant N} \delta_{\vx_n}$. Write 
 \[
-	\D_N(\bx,\mu) = \D_N\left( \frac{1}{N} \sum_{n\leqslant N} \delta_{\vx_n},\mu\right) ,
+	\D_N(\bx,\mu) = \D_N\left( P_{\bx,N},\mu\right) ,
 \]
 and likewise for the star discrepancy. Also, we write 
 $\bx_{\geqslant N}$ for the truncated sequence 
@@ -146,11 +147,11 @@ context,
 	\D^\star_N(\bx,\mu) = \sup_{\vy\in [0,\vinfty)} \left| \frac{\# \{n\leqslant N : \vx_n \in [0,\vy)\}}{N} - \int_{[0,\vy)} \, \dd\mu\right| .
 \]
 
-If the measure $\mu$ is only defined on a Borel subset of $[0,\vinfty)^d$, we w
+If the measure $\mu$ is only defined on a Borel subset of $[0,\vinfty)^d$, we 
 tacitly extend it to $\bR^d$ by zero. Moreover, if the sequence $\bx$ actually 
 lies in a torus $(\bR/a \bZ)^d$, we identify that torus with  
-$[0,a)^d\subset [0,\infty)^d$. If $\mu$ is normalized Haar measure on the 
-torus, we write $\D_N^\star(\bx)$ in place of $\D_N^\star(\bx, \mu)$. 
+$[0,a)^d\subset [0,\infty)^d$. If $\lambda$ is normalized Haar measure on the 
+torus, we write $\D_N(\bx)$ in place of $\D_N(\bx, \lambda)$. 
 
 If the sequence $\bx$ lies in the space $G^\natural$ of conjugacy classes in a 
 compact Lie group $G$, choose a maximal torus $T\subset G$, and recall that 
@@ -176,13 +177,14 @@ $\#\{\textnormal{indices }\leqslant N\}^{-1}$.
 
 \emph{Why half-open boxes?} The choice of sets of the form $[\vx,\vy)$ in the 
 definition of discrepancy seems rather arbitrary. It is. Discrepancy could just 
-as well be defined as a supremum over all open (or closed) balls---this 
+as well be defined as a supremum over all open (or closed) balls---that 
 definition generalizes to arbitrary metric spaces. There are more subtle 
-notions involving suprema over open or closed convex sets. See 
-\cite{kuipers-niederreiter-1974} for a discussion and comparison of these 
-differing definitions. In this thesis, we restrict to half-open boxes because 
-they're computationally tractable, fit well with diophantine approximation on 
-tori, and the theory is best developed in that context. 
+notions involving suprema over open or closed convex sets (isotropic 
+discrepancy). See \cite{kuipers-niederreiter-1974} for a discussion and 
+comparison of these differing definitions. In this thesis, we restrict to 
+half-open boxes because they're computationally tractable, fit well with 
+diophantine approximation on tori, and the theory is best developed in that 
+context. 
 
 
 
@@ -192,11 +194,12 @@ tori, and the theory is best developed in that context.
 
 Replace the Satake parameters $\theta_p$ of an elliptic curve with 
 a sequence $\{\theta_p\}$ of iid random variables with common distribution 
-$\ST = \frac{2}{\pi} \sin^2 \theta\, \dd\theta$ supported on $[0,\pi]$. Then 
-the discrepancy (known as the Kolmogorov--Smirnov statistic in this context) is 
-the random variable 
+$\mu$ (which we may take to be $\frac{2}{\pi} \sin^2 \theta\, \dd\theta$) 
+supported on $[0,\pi]$. Then the discrepancy (known as the 
+Kolmogorov--Smirnov statistic in this context) is the (function-valued) 
+random variable 
 \[
-	D_N = \sup_{x\in [0,\pi]} \left|\frac{1}{\pi(N)} \sum_{p\leqslant N} 1_{[0,x]}\circ \theta_p - \int 1_{[0,x]}\, \dd\ST\right| .
+	D_N = \sup_{x\in [0,\pi]} \left|\frac{1}{\pi(N)} \sum_{p\leqslant N} 1_{[0,x]}\circ \theta_p - \int 1_{[0,x]}\, \dd\mu\right| .
 \]
 Kolmogorov and Smirnov proved that the inside of the absolute value converges 
 to zero. The Glivenko--Cantelli Theorem says that $D_N \to 0$ almost surely, 
@@ -206,7 +209,7 @@ depend on $\mu$. The rate of convergence of $\sqrt{\pi(N)} D_N$ to that
 distribution is quantified by the Dvoretzky--Kiefer--Wolfowitz inequality, 
 which tells us that 
 \[
-	\mathrm{P}\left(\sqrt{\pi(N)} D_N > z\right) \leqslant 2 e^{-2 z^2} .
+	\mathrm{P}\left(\sqrt{\pi(N)} D_N > t\right) \leqslant 2 e^{-2 t^2} .
 \]
 These theorems suggest that for $E_{/\bQ}$ a non-CM elliptic 
 curve, the ``true'' discrepancy $\D_N(\btheta,\ST)$ should decay 
@@ -287,7 +290,7 @@ arbitrary. Then
 \]
 \end{lemma}
 \begin{proof}
-Let $\epsilon>0$ and $t\in [0,\infty)$ be arbitrary. In this proof, write 
+Let $\epsilon>0$ and $t\in [0,\infty)$ be arbitrary. Write 
 $P_{\bx,N} = \frac 1 N \sum_{n\leqslant N} x_n$ for the empirical measure 
 associated to $\bx$, and similarly for $\by$. For all $n\leqslant N$ 
 such that $y_n<t$, either $x_n < t+\epsilon$ or 

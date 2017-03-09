@@ -11,8 +11,8 @@
 Start with a problem central to the history of number theory---counting 
 prime numbers. As usual, let $\pi(x)$ be the number of rational primes 
 $\leqslant x$ and $\Li(x) = \int_2^x \frac{\dd t}{\log t}$ be the 
-logarithmic integral. For any $x\geqslant 2$, there is a (normalized) 
-empirical measure capturing the distribution of those primes $\leqslant x$: 
+Eulerian logarithmic integral. There is a normalized empirical measure 
+capturing the distribution of those primes $\leqslant x$: 
 \[
 	P_x = \frac{1}{\pi(x)} \sum_{p\leqslant x} \delta_{p/x} ,
 \]
@@ -20,8 +20,7 @@ which is supported on the unit interval $[0,1]$. The prime number theorem
 tells us that as $x\to \infty$, these empirical measures weakly converge to the 
 ``true'' measure $L_x = \frac{\Li(t x)}{\Li(x)}\, \dd t$. The standard approach 
 to proving the prime number theorem is by showing that the Riemann 
-$\zeta$-function has meromorphic continuation past $\Re = 1$, with no zeros 
-on that line. 
+$\zeta$-function has non-vanishing meromorphic continuation past $\Re = 1$.
 
 \begin{theorem}
 The function $\zeta(s)$ admits a non-vanishing meromorphic continuation past 
@@ -51,7 +50,7 @@ Of course, neither side of this equivalence is known for certain to be true!
 
 The above discussion finds a natural generalization in Artin $L$-functions. 
 Let $K/\bQ$ be a finite Galois extension with group $G=\Gal(K/\bQ)$. For any 
-rational prime $p$ at which $K$ is unramified, let $\fr_p$ be the conjugacy 
+rational prime $p$ at which $K$ is unramified, let $\frob_p$ be the conjugacy 
 class of the Frobenius at $p$ in $G$. For any irreducible representation 
 $\rho\colon G\to \GL_n(\bC)$, there is a corresponding $L$-function defined as 
 \[
@@ -60,11 +59,11 @@ $\rho\colon G\to \GL_n(\bC)$, there is a corresponding $L$-function defined as
 where here (and for the remainder of this thesis) we tacitly omit from the 
 product those primes at which $\rho$ is ramified. Given a cutoff $x$, there is 
 a natural empirical measure 
-$P_x = \frac{1}{\pi(x)} \sum_{p\leqslant x} \delta_{\frob_p}$. Let 
-\[
-	\D(P_x) = \sup_{S\subset G^\natural} \left| P_x(S) - \frac{\# S}{\# G^\natural}\right|,
-\]
-where $G^\natural$ is the set of conjugacy classes in $G$. 
+$P_x = \frac{1}{\pi(x)} \sum_{p\leqslant x} \delta_{\frob_p}$ on 
+$G^\natural$, the set of conjugacy classes in $G$. Let 
+$\D(P_x) = \sup_{S\subset G^\natural} \left| P_x(S) - \frac{\# S}{\# G^\natural}\right|$. 
+Then $P_x$ converges weakly to the uniform measure on $G^\natural$ if and 
+only if $\D(P_x) \to 0$. 
 
 \begin{theorem}
 The measure $P_x$ converge weakly to the uniform measure on $G^\natural$ if and 
@@ -94,13 +93,12 @@ Let $E_{/\bQ}$ be an elliptic curve. For any prime $l$, there is an
 $l$-adic Galois representation $\tate_l E$ associated to $E$, known as the 
 Tate module. This is a rank-$2$ $\bZ_l$-module with continuous $G_\bQ$-action, 
 so it induces a continuous representation 
-$\rho_{E,l} \colon G_\bQ \to \GL_2(\bZ_l)$. It is known 
-\cite[Th.~V.1.1]{silverman-2009} that the quantities 
+$\rho_{E,l} \colon G_\bQ \to \GL_2(\bZ_l)$. It is known that the quantities 
 $a_p(E) = \tr \rho_l(\frob_p)$ lie in $\bZ$ and satisfy the Hasse bound 
 $|a_p(E)| \leqslant 2\sqrt p$. Thus we can define, for each unramified prime 
 $p$, the corresponding Satake parameter for $E$: 
 \[
-	\theta_p(E) = \cos^{-1}\left(\frac{a_p(E)}{2\sqrt p}\right) \in [0,\pi) .
+	\theta_p(E) = \cos^{-1}\left(\frac{a_p(E)}{2\sqrt p}\right) \in [0,\pi] .
 \]
 The Satake parameters are packaged into an $L$-function as follows:
 \[
@@ -117,9 +115,7 @@ Numerical experiments suggest that the Satake parameters are distributed with
 respect to the Sato--Tate distribution 
 $\ST = \frac{2}{\pi} \sin^2\theta\, \dd\theta$. Indeed, for any cutoff $x$, let 
 $P_x$ be the empirical measure 
-\[
-	P_x = \frac{1}{\pi(x)} \sum_{p\leqslant x} \delta_{\theta_p} .
-\]
+$P_x = \frac{1}{\pi(x)} \sum_{p\leqslant x} \delta_{\theta_p}$. 
 The convergence of the $P_x$ to the Sato--Tate measure is closely related to 
 the analytic properties of the $L(\sym^k E,s)$. First, here is the famous 
 Sato--Tate Conjecture (now a theorem) in our notation. 
@@ -155,9 +151,10 @@ then all the functions $L(\sym^k E, s)$ satisfy the Riemann Hypothesis.
 \end{theorem}
 
 This discussion also makes sense when $E$ has complex multiplication (say, 
-defined over $\bQ$), but the Sato--Tate measure is instead the Haar measure 
-on $\SO(2)$, i.e.~the uniform measure on $[0,\pi]$. Instead of symmetric power 
-$L$-functions, one takes $L$-functions for each representation of $\SO(2)$. 
+defined over its field of definition), but the Sato--Tate measure is instead 
+the Haar measure on $\SO(2)$, i.e.~the uniform measure on $[0,\pi]$. Instead of 
+symmetric power $L$-functions, one takes $L$-functions for each representation 
+of $\SO(2)$. 
 
 It is natural to assume that the converse to the implication 
 ``Akiyama--Tanigawa implies General Riemann Hypothesis'' holds. David Zywina 
@@ -185,8 +182,8 @@ such that $C_1 g \leqslant f \leqslant C_2 f$.
 If $\mu$ is a measure on $\bR$, then $\mu[a,b] = \mu([a,b])$ and similarly 
 for $[a,b)$, $(a,b])$, etc. 
 
-If $\mu$ is a measure on $\bR$, then \emph{cumulative distribution function of 
-$\mu$} is given by $\cdf_\mu(x) = \mu[-\infty,x]$. 
+If $\mu$ is a measure on $\bR$, then \emph{cumulative distribution function 
+(cdf) of $\mu$} is given by $\cdf_\mu(x) = \mu[-\infty,x]$. 
 
 If $z\in \bC$, write $\Re z$ for the real part of $z$. 
 
@@ -196,3 +193,11 @@ numbers with real part $> \alpha$.
 We write $\bx = (x_1,x_2,\dots)$ for infinite sequences and 
 $\vx = (x_1,\dots,x_d)$ for vectors. Sometimes we will have a sequence of 
 vectors, written as $\bx = (\vx_1,\vx_2,\dots)$. 
+
+If $\bx=(x_1,x_2,\dots)$ is a sequence, write 
+$P_{\bx,N} = \frac{1}{N} \sum_{n\leqslant N} \delta_{x_n}$ for the 
+corresponding empirical measure. If $\bx$ is instead indexed by a some other 
+subset of $\bR^+$, write 
+\[
+	P_{\bx,N} = \frac{1}{\# \{\text{indices }\leqslant N\}}\sum_{\alpha \leqslant N} \delta_{x_\alpha} .
+\]
