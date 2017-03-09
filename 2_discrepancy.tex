@@ -14,7 +14,7 @@ applications in computer science and statistics, but here we will focus on only
 the basic properties, such as how discrepancy changes when sequences 
 are ``tweaked'' and combined. 
 
-First, recall that the discrepancy is a way of sharpening the ``soft'' 
+First, recall that discrepancy provides a way of sharpening the ``soft'' 
 convergence results of, say \cite[A.1]{serre-1989}. Let $X$ be a compact 
 topological space, $\bx = (x_2,x_3,x_5,\dots)$ a sequence of points in $X$ 
 indexed by the rational primes. 
@@ -65,9 +65,10 @@ This follows immediately from the proof of \cite[Th.~1]{mazzone-1995}
 \section{Definitions and first results}
 
 We will define discrepancy for measures on the $d$-dimensional half-open box 
-$[0,\vinfty) = [0,\infty)^d$. For vectors $\vx,\vy\in [0,\infty)^d$, 
-we say $\vx<\vy$ if $x_1<y_1$,\dots,$x_d<y_d$, and in that case write 
-$[\vx,\vy)$ for the half-open box $[x_1,y_1)\times \cdots \times [x_d,y_d)$. 
+$[0,\vinfty) = [0,\infty)^d\subset \bR^d$. For vectors 
+$\vx,\vy\in [0,\infty)^d$, we say $\vx<\vy$ if $x_1<y_1$,\dots,$x_d<y_d$, and 
+in that case write $[\vx,\vy)$ for the half-open box 
+$[x_1,y_1)\times \cdots \times [x_d,y_d)$. 
 
 \begin{definition}
 Let $\mu, \nu$ be probability measures on $[0,\vinfty)$. The 
@@ -173,6 +174,16 @@ keeping in mind that the set $\{\vx_\alpha : \alpha \leqslant N\}$ is involved,
 and that in formulas $\frac{1}{N}$ is replaced by 
 $\#\{\textnormal{indices }\leqslant N\}^{-1}$. 
 
+\emph{Why half-open boxes?} The choice of sets of the form $[\vx,\vy)$ in the 
+definition of discrepancy seems rather arbitrary. It is. Discrepancy could just 
+as well be defined as a supremum over all open (or closed) balls---this 
+definition generalizes to arbitrary metric spaces. There are more subtle 
+notions involving suprema over open or closed convex sets. See 
+\cite{kuipers-niederreiter-1974} for a discussion and comparison of these 
+differing definitions. In this thesis, we restrict to half-open boxes because 
+they're computationally tractable, fit well with diophantine approximation on 
+tori, and the theory is best developed in that context. 
+
 
 
 
@@ -181,11 +192,11 @@ $\#\{\textnormal{indices }\leqslant N\}^{-1}$.
 
 Replace the Satake parameters $\theta_p$ of an elliptic curve with 
 a sequence $\{\theta_p\}$ of iid random variables with common distribution 
-$\mu = \frac{2}{\pi} \sin^2 \theta\, \dd\theta$ supported on $[0,\pi]$. Then 
+$\ST = \frac{2}{\pi} \sin^2 \theta\, \dd\theta$ supported on $[0,\pi]$. Then 
 the discrepancy (known as the Kolmogorov--Smirnov statistic in this context) is 
 the random variable 
 \[
-	D_N = \sup_{x\in [0,\pi]} \left|\frac{1}{\pi(N)} \sum_{p\leqslant N} 1_{[0,x]}\circ \theta_p - \int 1_{[0,x]}\, \dd\mu\right| .
+	D_N = \sup_{x\in [0,\pi]} \left|\frac{1}{\pi(N)} \sum_{p\leqslant N} 1_{[0,x]}\circ \theta_p - \int 1_{[0,x]}\, \dd\ST\right| .
 \]
 Kolmogorov and Smirnov proved that the inside of the absolute value converges 
 to zero. The Glivenko--Cantelli Theorem says that $D_N \to 0$ almost surely, 
@@ -211,39 +222,39 @@ this is not the case.
 \section{The Koksma--Hlawka inequality}
 
 Here we summarize the results of the paper \cite{okten-1999}, generalizing them 
-as needed for our context. Recall that a function $f$ on $[0,\infty)^d$ is 
-said to be of \emph{bounded variation} if there is a finite Radon measure $\nu$ 
-such that $f(x) - f(0) = \nu[0,x]$. In such a case we write 
-$\Var(f) = |\nu|$. If the appropriate differentiability conditions are 
-satisfied, then 
+as needed for our context. Recall that a function $f$ on 
+$[0,\vinfty)\subset \bR^d$ is said to be of \emph{bounded variation} (in the 
+measure-theoretic sense) if there is a finite Radon measure $\nu$ such that 
+$f(\vx) - f(0) = \nu[0,\vx]$. In such a case we write $\Var(f) = |\nu|$. If 
+the appropriate differentiability conditions are satisfied, then 
 \[
-	\Var(f) = \int_{[0,\infty)^d} \left|\frac{\dd^d f}{\dd x_1 \dots \dd x_d} \right|.
+	\Var(f) = \int_{[0,\vinfty)} \left|\frac{\dd^d f}{\dd t_1 \dots \dd t_d} \right|.
 \]
 
 \begin{theorem}[Koksma--Hlawka]
-Let $\mu$ be a probability measure on $[0,\infty)^d$, $f$ a function of 
-bounded variation. Then for any sequence $\bx = (x_1,x_2,\dots)$ in 
-$[0,\infty)^d$, we have 
+Let $\mu$ be a probability measure on $[0,\vinfty)$, $f$ a function of 
+bounded variation. Then for any sequence $\bx = (\vx_1,\vx_2,\dots)$ in 
+$[0,\vinfty)$, we have 
 \[
-	\left| \frac{1}{N} \sum_{n\leqslant N} f(x_n) - \int f\, \dd\mu \right| \leqslant \Var(f) \D(\bx^N,\mu) .
+	\left| \frac{1}{N} \sum_{n\leqslant N} f(\vx_n) - \int f\, \dd\mu \right| \leqslant \Var(f) \D_N(\bx,\mu) .
 \]
 \end{theorem}
 \begin{proof}
-By our assumptions there is a Radon measure $\nu$ such that 
-$f(y) - f(0) = \nu[0,y]$. What follows is essentially trivial, noting that 
-$1_{[0,x]}(y) = 1_{[y,\infty)^d}(x)$. 
+By our assumptions there is a finite Radon measure $\nu$ such that 
+$f(\vy) - f(0) = \nu[0,\vy]$. What follows is essentially trivial, noting that 
+$1_{[0,\vx]}(\vy) = 1_{[\vy,\vinfty)}(\vx)$. 
 \begin{align*}
-	\frac{1}{N} \sum_{n\leqslant N} f(x_n) - \int f\, \dd\mu 
-		&= \frac{1}{N} \sum_{n\leqslant N} \left(f(x_n) - f(0)\right) - \int \left(f - f(0)\right)\, \dd\mu \\
-		&= \frac{1}{N} \sum_{n\leqslant N} \int 1_{[y,\infty)^d}(x_n)\, \dd \nu(y) - \int \int 1_{[0,y]}\, \dd\nu \, \dd\mu(y) \\
-		&= \int \frac{1}{N} \sum_{n\leqslant N} 1_{[y,\infty)^d}(x_n) - \int 1_{[y,\infty)^d}\, \dd\mu \, \dd\nu(y)
+	\frac{1}{N} \sum_{n\leqslant N} f(\vx_n) - \int f\, \dd\mu 
+		&= \frac{1}{N} \sum_{n\leqslant N} \left(f(\vx_n) - f(0)\right) - \int \left(f(\vy) - f(0)\right)\, \dd\mu(\vy) \\
+		&= \frac{1}{N} \sum_{n\leqslant N} \int 1_{[\vy,\vinfty)}(\vx_n)\, \dd \nu(\vy) - \int \int 1_{[0,\vy]}\, \dd\nu \, \dd\mu(\vy) \\
+		&= \int \left(\frac{1}{N} \sum_{n\leqslant N} 1_{[\vy,\vinfty)}(\vx_n) - \int 1_{[\vy,\vinfty)}\, \dd\mu \right) \dd\nu(\vy) .
 \end{align*}
 It follows that 
 \[
-	\left| \frac{1}{N} \sum_{n\leqslant N} f(x_n) - \int f\, \dd\mu \right|
-		\leqslant \sup_{y\in [0,\infty)} \left| \frac{1}{N} \sum_{n\leqslant N} 1_{[y,\infty)}(x_n) - \int 1_{[y,\infty)}\, \dd\mu\right| \cdot |\nu| .
+	\left| \frac{1}{N} \sum_{n\leqslant N} f(\vx_n) - \int f\, \dd\mu \right|
+		\leqslant \sup_{\vy\in [0,\infty)} \left| \frac{1}{N} \sum_{n\leqslant N} 1_{[\vy,\vinfty)}(\vx_n) - \int 1_{[\vy,\vinfty)}\, \dd\mu\right| \cdot |\nu| .
 \]
-The supremum in question is clearly bounded above by $\D(\bx^N,\mu)$, so the 
+The supremum in question is clearly bounded above by $\D_N(\bx,\mu)$, so the 
 proof is complete. 
 \end{proof}
 
@@ -252,7 +263,7 @@ generalized. For $f$ a function on $\bR^+$ that is bounded variation in
 the traditional sense (for example, piecewise continuous) and $\mu$ a 
 continuous probability measure, the inequality 
 \[
-	\left| \frac{1}{N} \sum_{n\leqslant N} f(x_n) - \int f\, \dd\mu\right| \leqslant \Var(f) \D^\star(\bx^N,\mu) 
+	\left| \frac{1}{N} \sum_{n\leqslant N} f(x_n) - \int f\, \dd\mu\right| \leqslant \Var(f) \D_N^\star(\bx,\mu) 
 \]
 holds \cite[Ch.~2, Th.~5.1]{kuipers-niederreiter-1974}. In particular, when 
 $\mu$ is the Sato--Tate measure and $f$ is piecewise continuous, we can apply 
@@ -262,36 +273,38 @@ this inequality.
 
 
 
-\section{Comparing sequences}
+\section{Comparing and combining sequences}
+
+Throughout this section, $\lambda$ is the Lebesgue measure. 
 
 \begin{lemma}\label{lem:disc-of-two-seq}
 Let $\bx$ and $\by$ be sequences in $[0,\infty)$. Suppose $\mu$ is an 
-absolutely continuous probability measure on $[0,\infty)$ with continuous 
-bounded Radon--Nikodym derivative $\frac{\dd \mu}{\dd\lambda}$, where 
-$\lambda$ is the Lebesgue measure. Then 
+absolutely continuous probability measure on $[0,\infty)$ with bounded 
+Radon--Nikodym derivative $\frac{\dd \mu}{\dd\lambda}$. Let $\epsilon>0$ be 
+arbitrary. Then 
 \[
-	\left|\D^\star(\bx^N, \nu) - \D^\star(\by^N,\nu)\right| \leqslant \left\|\frac{\dd\mu}{\dd\lambda}\right\|_\infty \epsilon + \frac{\#\{ n\leqslant N : |x_n - y_n| \geqslant \epsilon\}}{N} .
+	\left|\D_N^\star(\bx, \nu) - \D_N^\star(\by,\nu)\right| \leqslant \left\|\frac{\dd\mu}{\dd\lambda}\right\|_\infty \epsilon + \frac{\#\{ n\leqslant N : |x_n - y_n| \geqslant \epsilon\}}{N} .
 \]
 \end{lemma}
 \begin{proof}
-Let $\epsilon>0$ and $t\in [0,\infty)$ be arbitrary. For all $n\leqslant N$ 
+Let $\epsilon>0$ and $t\in [0,\infty)$ be arbitrary. In this proof, write 
+$P_{\bx,N} = \frac 1 N \sum_{n\leqslant N} x_n$ for the empirical measure 
+associated to $\bx$, and similarly for $\by$. For all $n\leqslant N$ 
 such that $y_n<t$, either $x_n < t+\epsilon$ or 
 $|x_n - y_n| \geqslant \epsilon$. It follows that 
 \[
-	\by^N[0,t) \leqslant \bx^N[0,t+\epsilon) + \frac{\#\{ n\leqslant N : |x_n - y_n| \geqslant \epsilon\}}{N} .
+	P_{\by,N}[0,t) \leqslant P_{\bx,N}[0,t+\epsilon) + \frac{\#\{ n\leqslant N : |x_n - y_n| \geqslant \epsilon\}}{N} .
 \]
 Moreover, we have 
-$\left| \bx^N[0,t+\epsilon) - \nu[0,t+\epsilon)\right| \leqslant \D^\star(\bx^N,\nu)$. Putting these together, we get: 
+$\left| P_{\bx,N}[0,t+\epsilon) - \nu[0,t+\epsilon)\right| \leqslant \D_N^\star(\bx,\nu)$. Putting these together, we get: 
 \begin{align*}
-	\by^N[0,t) - \nu[0,t) 
-		&\leqslant \bx^N[0,t+\epsilon) - \nu[0,t) + \frac{\#\{ n\leqslant N : |x_n - y_n| \geqslant \epsilon\}}{N} \\
-		&\leqslant \nu[t,t+\epsilon) + \D^\star(\bx^N,\nu) + \frac{\#\{ n\leqslant N : |x_n - y_n| \geqslant \epsilon\}}{N} \\
-		&\leqslant \left\|\frac{\dd\mu}{\dd\lambda}\right\|_\infty \epsilon + \D^\star(\bx^N,\nu) + \frac{\#\{ n\leqslant N : |x_n - y_n| \geqslant \epsilon\}}{N} 
+	P_{\by,N}[0,t) - \nu[0,t) 
+		&\leqslant P_{\bx,N}[0,t+\epsilon) - \nu[0,t) + \frac{\#\{ n\leqslant N : |x_n - y_n| \geqslant \epsilon\}}{N} \\
+		&\leqslant \nu[t,t+\epsilon) + \D_N^\star(\bx,\nu) + \frac{\#\{ n\leqslant N : |x_n - y_n| \geqslant \epsilon\}}{N} \\
+		&\leqslant \left\|\frac{\dd\mu}{\dd\lambda}\right\|_\infty \epsilon + \D_N^\star(\bx,\nu) + \frac{\#\{ n\leqslant N : |x_n - y_n| \geqslant \epsilon\}}{N} 
 \end{align*}
 This tells us that 
-\[
-	\D^\star(\by^N,\nu) \leqslant \left\|\frac{\dd\mu}{\dd\lambda}\right\|_\infty \epsilon + \D^\star(\bx^N,\nu) + \frac{\#\{ n\leqslant N : |x_n - y_n| \geqslant \epsilon\}}{N} .
-\]
+$\D_N^\star(\by,\nu) \leqslant \left\|\frac{\dd\mu}{\dd\lambda}\right\|_\infty \epsilon + \D_N^\star(\bx,\nu) + \frac{\#\{ n\leqslant N : |x_n - y_n| \geqslant \epsilon\}}{N}$. 
 Reversing the roles of $\bx$ and $\by$, we obtain the desired result. 
 \end{proof}
 
@@ -301,7 +314,7 @@ such that $\sigma(\bx)$ is also in $[0,\infty)$. Let $\nu$ be an absolutely
 continuous measure on $[0,\infty)$ such that $\sigma_\ast \nu$ is also 
 supported on $[0,\infty)$. Then 
 \[
-	\left|\D(\bx^N, \nu) - \D(\sigma_\ast \bx^N, \sigma_\ast \nu)\right| \leqslant \frac{2}{\pi(N)} .
+	\left|\D_N(\bx, \nu) - \D_N(\sigma_\ast \bx, \sigma_\ast \nu)\right| \leqslant \frac{2}{N} .
 \]
 \end{lemma}
 \begin{proof}
@@ -309,97 +322,81 @@ Every isometry of $\bR$ is a combination of translations and reflections.
 The statement is clear with translations (the two discrepancies are equal). So, 
 suppose $\sigma(t) = a - t$ for some $a>0$. Since $\nu$ is absolutely 
 continuous, $\nu\{t\}=0$ for all $t\geqslant 0$. In particular, 
-$\nu[s,t) = \nu(s,t]$. In contrast, $\bx^N\{t\}\leqslant \pi(N)^{-1}$. For any 
+$\nu[s,t) = \nu(s,t]$. As before, write $P_{\bx,N}$ for empirical measures. By 
+definition, $P_{\bx,N}\{t\}\leqslant N^{-1}$. For any 
 interval $[s,t)$ in $[0,\infty)$, we know that 
+$\left| P_{\bx,N}[s,t) - P_{\bx,N}(s,t]\right| \leqslant \frac{2}{N}$, hence 
 \[
-	\left| \bx^N[s,t) - \bx^N(s,t]\right| \leqslant \frac{2}{\pi(N)}  ,
-\]
-hence 
-\[
-	\left| \bx^N[s,t) - \nu[s,t) - (\sigma_\ast \bx^N)[a-t,a-s) - (\sigma_\ast \nu)[a-t,a-s)\right| \leqslant \frac{2}{\pi(N)} .
+	\left| P_{\bx,N}[s,t) - \nu[s,t) - P_{\sigma_\ast \bx,N}[a-t,a-s) - \sigma_\ast \nu[a-t,a-s)\right| \leqslant \frac{2}{N} .
 \]
 This proves the result. 
 \end{proof}
 
-A trick we will use throughout this thesis involves comparing the discrepancy 
-of a sequence with the discrepancy of a pushforward sequence, with respect to 
-the pushforward measure. 
+A technique we will use throughout this thesis involves comparing the 
+discrepancy of a sequence with the discrepancy of a pushforward sequence, 
+with respect to the pushforward measure. 
 
 \begin{lemma}\label{lem:push-discrepancy}
-Let $f$ be an order isomorphism $f\colon [a,b] \to [c,d]$. If 
-$\bx$ is a sequence on $[a,b]$ and $\mu$ is a probability measure on 
-$[a,b]$, then 
-$\D(\bx^N, \mu) = \D(f(\bx)^N, f_\ast \mu)$, 
-and likewise for star discrepancy. 
+Let $I$, $J$ be closed connected intervals and $f\colon I\twoheadrightarrow J$ 
+a continuous monotonic map. If $\bx$ is a sequence in $I$ and $\mu$ is an 
+absolutely continuous probability measure on $I$, then 
+$\left|\D_N(\bx,\mu) - \D_N(f_\ast \bx,f_\ast\mu)\right| \leqslant \frac 4 N$.
 \end{lemma}
 \begin{proof}
-This is a simple computation, which we only check for star discrepancy: 
-\begin{align*}
-	\D^\star(f(\bx)^N, f_\ast \mu)
-		&= \sup_{t\in [c,d]} \left| \frac{\#\{n\leqslant N : f(x_n) \leqslant t\}}{N} - (f_\ast \mu)[a,t]\right| \\
-		&= \sup_{t\in [a,b]} \left| \frac{\#\{n\leqslant N : x_n \leqslant f^{-1}(t)\}}{N} - \mu[a,f^{-1}(t)]\right| \\
-		&= \D(\bx^N, \mu) .
-\end{align*}
+Because $f$ is continuous and monotonic, given $[u,v)\subset I$, there exists 
+$[x,y)\subset J$ such that $f[u,v)$ differs from $[x,y)$ by at most two 
+elements. Similarly, if $[x,y)\subset J$, there exists $[u,v)\subset I$ such 
+that $f^{-1}[x,y)$ differs from $[u,v)$ by at most two elements. Writing 
+$P_{\bx,N}$ as usual for the empirical measure, we compute (in the first 
+case):
+\[
+	\left| P_{f_\ast\bx,N}[x,y) - f_\ast\mu[x,y) - \left(P_{\bx,N}[u,v) - \mu[u,v)\right)\right| \leqslant \frac 4 N ,
+\]
+equality $f_\ast\mu[u,v) = \mu[x,y)$ following from the continuity of $\mu$. 
+It follows that 
+$\D_N(\bx,\mu) \leqslant \D_N(f_\ast \bx,f_\ast\mu) + \frac 4 N$. Reversing 
+the roles of $\bx$ and $f_\ast \bx$, the result follows. 
 \end{proof}
 
-\begin{lemma}\label{lem:pushforward-reverse}
-Let $f$ be an order anti-automorphism $[a,b] \to [c,d]$. If $\bx$ is a 
-sequence on $[a,b]$ and $\mu$ is a probability measure on $[a,b]$, then 
-$\D(\bx^N,\mu) ?$. 
-\end{lemma}
-\begin{proof}
-Repeat the proof of Lemma \ref{lem:push-discrepancy}, except we have 
-$s\leqslant f(x_n) \leqslant t$ if and only if 
-$f^{-1}(t) \leqslant f(x_n) \leqslant f^{-1}(s)$, and likewise 
-$(f_\ast\mu)[s,t] = \mu[f^{-1}(t),f^{-1}(s)]$. 
-\end{proof}
-
-
-
-
-
-\section{Combining sequences}
+Now we show that the discrepancy behaves as expected when two sequences are 
+interleaved. 
 
 \begin{definition}
-Let $\bx$ and $\by$ be sequences in $[0,\infty)^d$. We write $\bx\wr\by$ for 
-the interleaved sequence 
-\[
-	(x_2,y_2,x_3,y_3,x_5,y_5,\dots,x_p,y_p,\dots) .
-\]
+Let $\bx$ and $\by$ be sequences in $[0,\vinfty)\subset \bR^d$. We write 
+$\bx\wr\by$ for the interleaved sequence $(x_1,y_1,x_2,y_2,x_3,y_3,\dots)$. 
 \end{definition}
 
-For the interleaved sequence $\bx\wr\by$, we write $(\bx\wr\by)^N$ for the 
-empirical measure 
-\[
-	(\bx\wr\by)^N = \frac{1}{2\pi(N)} \sum_{p\leqslant N} \delta_{x_p} + \delta_{y_p} .
-\]
+Write 
+$P_{\bx\wr\by,N} = \frac{1}{2N} \sum_{n\leqslant N} \left(\delta_{x_n} + \delta_{y_n}\right)$
+for the combined empirical measure of the interleaved sequence $\bx\wr\by$. 
 
 \begin{theorem}\label{thm:wreath-seq}
-Let $I$ and $J$ be disjoint open boxes in $[0,\infty)^d$, and let $\mu$, 
+Let $I$ and $J$ be disjoint open boxes in $[0,\vinfty)$, and let $\mu$, 
 $\nu$ be absolutely continuous probability measures on $I$ and $J$, 
 respectively. Let $\bx$ be a sequence in $I$ and $\by$ be a sequence in $J$. 
 Then 
 \[
-	\max\{\D(\bx^N,\mu),\D(\by^N,\nu)\} \leqslant \D((\bx\wr\by)^N, \mu+\nu) \leqslant \D(\bx^N,\mu) + \D(\by^N,\nu)
+	\max\{\D_N(\bx,\mu),\D_N(\by,\nu)\} \leqslant \D_N(\bx\wr\by, \mu+\nu) \leqslant \D_N(\bx,\mu) + \D(\by,\nu)
 \]
 \end{theorem}
 \begin{proof}
-Any half-open box in $[0,\infty)^d$ can be split by a coordinate 
-hyperplane into two disjoint half-open boxes $[a,b)\sqcup [s,t)$, each of which 
-intersects at most one of $I$ and $J$. We may assume that 
-$[a,b)\cap J=\varnothing$ and $[s,t)\cap I = \varnothing$. Then 
+Any half-open box in $[0,\vinfty)$ can be split by a coordinate 
+hyperplane into two disjoint half-open boxes $[\va,\vb)\sqcup [\vs,\vt)$, each 
+of which intersects at most one of $I$ and $J$. We may assume that 
+$[\va,\vb)\cap J=\varnothing$ and $[\vs,\vt)\cap I = \varnothing$. Then 
 \begin{align*}
-	\left| (\bx\wr\by)^N([a,b)\sqcup [s,t)) - (\mu+\nu)([a,b)\sqcup[s,t))\right| 
-		&\leqslant |\bx^N[a,b) - \mu[a,b)| + |\by^N[s,t) - \nu[s,t)| \\
-		&\leqslant \D(\bx^N,\mu) + \D(\by^N,\nu) .
+	\left| P_{\bx\wr\by,N}([\va,\vb)\sqcup [\vs,\vt)) - (\mu+\nu)([\va,\vb)\sqcup[\vs,\vt))\right| 
+		&\leqslant |P_{\bx,N}[\va,\vb) - \mu[\va,\vb)| + |P_{\by,N}[\vs,\vt) - \nu[\vs,\vt)| \\
+		&\leqslant \D_N(\bx,\mu) + \D_N(\by,\nu) .
 \end{align*}
 This yields the second inequality in the statement of the theorem. To see the 
-first, assume that the maximum discrepancy is $\D(\bx^N,\mu)$, and let 
-$[s,t)$ be a half-open box such that $|\bx^N[s,t) - \mu[s,t)|$ is within an 
-arbitrary $\epsilon$ of $\D(\bx^N,\mu)$. We can assume that $[s,t)$ does not 
-intersect $J$, and thus 
+first, assume that the maximum discrepancy is $\D_N(\bx,\mu)$, and let 
+$[\vs,\vt)$ be a half-open box such that $|P_{\bx,N}[\vs,\vt) - \mu[\vs,\vt)|$ 
+is within some arbitrary $\epsilon$ of $\D_N(\bx,\mu)$. We can replace 
+$[\vs,\vt)$ with a smaller box to ensure it does not intersect $J$. Assuming 
+$[\vs,\vt)\cap J=\varnothing$, we have
 \[
-	\left|(\bx\wr\by)^N[s,t) - (\mu+\nu)[s,t)\right| = |\bx^N[s,t) - \mu[s,t)| ,
+	\left|P_{\bx\wr\by,N}[\vs,\vt) - (\mu+\nu)[\vs,\vt)\right| = |P_{\bx,N}[\vs,\vt) - \mu[\vs,\vt)| ,
 \]
 which yields the result. 
 \end{proof}
@@ -410,27 +407,24 @@ which yields the result.
 
 \section{Examples}
 
-One of the first examples of equidistributed sequences is the set of translates  
-of an irrational number modulo one. 
+Historically, one of the first interesting examples of an equidistributed 
+sequence is the set of translates  of an irrational number modulo one. 
 
 \begin{theorem}
 Let $a\in \bR$ be irrational. Then the sequence 
 $\bx=(a\mod 1,2a\mod 1,3a\mod 1,\dots)$ is equidistributed in $[0,1]$. 
 \end{theorem}
-\begin{proof}
-This follows from the more precise results of Chapter 
-\ref{chapter:irrationality-exponent}. 
-\end{proof}
 
-Sequences of this form will have discrepancy that decays like 
-$N^{-\alpha\pm \epsilon}$, for $\alpha\in (0,1/2)$. It can be useful to have a 
-sequence whose discrepancy decays faster. The best known rate of decay is 
-achieved by the following sequence. 
+We will prove this result (originally due to Weyl) in Chapter \ref{chapter:irrationality-exponent}. It is known that sequences of this form 
+have discrepancy which decays like $N^{-\alpha\pm \epsilon}$, for 
+$\alpha\in (0,1/2)$. It can be useful to have a sequence whose discrepancy 
+decays faster. The best known rate of decay is achieved by the following 
+sequence. 
 
 \begin{definition}
-The \emph{van der Corput sequence} is given by 
-$\bv = \left(\frac 1 2,\frac 1 4,\frac 3 4,\dots\right)$. More precisely, write 
-$n$ in base $2$ as $n = \sum a_i 2^i$. Then $v_n = \sum a_i 2^{-(i+1)}$. 
+The \emph{van der Corput sequence} is 
+$\bv = \left(\frac 1 2,\frac 1 4,\frac 3 4,\dots\right)$. More precisely, 
+write $n$ in base $2$ as $n = \sum a_i 2^i$. Then $v_n = \sum a_i 2^{-(i+1)}$. 
 \end{definition}
 
 The van der Corput sequence has generalizations to other bases and higher 
@@ -438,60 +432,55 @@ dimensions. It is well-known for being ``very equidistributed''---i.e., its
 discrepancy has extremely fast convergence to zero. 
 
 \begin{lemma}
-Let $\bv=\{v_n\}$ be the van der Corput sequence. Then
-$\D(\bv^N) \leqslant \frac{\log(N+1)}{N\log 2}$. 
+Let $\bv$ be the van der Corput sequence. Then
+$\D_N(\bv) \leqslant \frac{\log(N+1)}{N\log 2}$. 
 \end{lemma}
 \begin{proof}
 This is \cite[Ch.~2 Th.~3.5]{kuipers-niederreiter-1974}. In particular, we 
-will use often that $\D(\bv^N)\ll \frac{\log N}{N}$. 
+will use often that $\D_N(\bv)\ll \frac{\log N}{N}$. 
 \end{proof}
 
-The van der Corput sequence is uniformly distributed, but there is a 
-convenient trick to construct sequences equidistributed with respect to more 
+The van der Corput sequence is uniformly distributed, but we will use the 
+``almost-invariance of discrepancy under transform'' results of the previous 
+section to construct sequences equidistributed with respect to more 
 general measures. 
 
-\begin{definition}
-Let $\mu$ be a probability measure on $[a,b]$. We call $\mu$ \emph{good} if 
-$\cdf_\mu$ is continuous, strictly increasing, and sends $a\mapsto 0$. 
-\end{definition}
-
-Note that if $\mu$ is a good measure, then $\cdf_\mu$ is an order isomorphism 
-from $[a,b]$ to $[0,1]$. 
-
 \begin{theorem}\label{thm:van-der-corput}
-Let $\mu$ be a good measure on a closed interval. Then there exists a sequence 
-$\bx=(x_1,x_2,\dots)$ such that $\D(\bx^N,\mu) \ll \frac{\log(N)}{N}$. 
+Let $\mu$ be an absolutely continuous probability measure on an interval $I$  
+whose cdf is strictly increasing on $I$. Then there exists a sequence 
+$\bx=(x_1,x_2,\dots)$ in $I$ such that $\D_N(\bx,\mu) \ll \frac{\log(N)}{N}$. 
 \end{theorem}
 \begin{proof}
-Since $\mu$ is good, $\cdf_\mu$ is an order isomorphism. Then Lemma 
-\ref{lem:push-discrepancy} tells us that for $\bv$ the van der Corput sequence 
-on $[0,1]$, we have $\D(\cdf_\mu^{-1}(\bv)^N, \mu) = \D(\bv^N,\mu)$, 
+Lemma \ref{lem:push-discrepancy} tells us that for $\bv$ the van der Corput 
+sequence on $[0,1]$, we have 
+$\left|\D_N(\cdf_\mu^{-1}(\bv), \mu) - \D_N(\bv,\mu)\right| \ll N^{-1}$, 
 which gives us the desired result with $\bx = \cdf_\mu^{-1}(\bv)$. 
 \end{proof}
 
 \begin{theorem}\label{thm:discrepancy-arbitrary}
-Let $\mu$ be a good measure. Fix $\alpha\in (0,1)$. Then there exists a 
-sequence $\bx=(x_1,x_2,\dots)$ such that 
-$\D^\star(\bx^N,\mu) = \Theta(N^{-\alpha})$. 
+Let $\mu$ be an absolutely continuous probability measure, supported on $I$, 
+whose cdf is strictly increasing on $I$. Fix $\alpha\in (0,1)$. Then there 
+exists a sequence $\bx=(x_1,x_2,\dots)$ such that 
+$\D_N(\bx,\mu) = \Theta(N^{-\alpha})$. 
 \end{theorem}
 \begin{proof}
-If $\bx_{\leqslant N}$ is a sequence of length $N$, let 
+Let $I = [a,b]$. If $\bx_{\leqslant N}$ is a sequence of length $N$, let 
 $\bx_{\leqslant N}:a^M$ be the sequence $(x_1,\dots,x_N,a,\dots,a)$ ($M$ copies 
 of $a$). Then 
 \[
-	\D^\star(\bx^N:a^M,\mu)
+	\D(\bx_{\leqslant N}:a^M,\mu)
 		\geqslant \left| \frac{\#\{ n\leqslant N+M : x_n = a\}}{N+M} - \mu\{a\}\right| 
 		\geqslant \frac{M}{N+M} .
 \]
 On the other hand, 
 \begin{align*}
-	\left| \cdf_{N,M}(t) - \cdf_N(t)\right| 
-		&\leqslant \frac{\left|\#\{n\leqslant N : x_n\leqslant t\} + M - \frac{M+N}{N}\#\{n\leqslant N : x_n\leqslant t\}\right|}{M+N} \\
+	\left| P_{N,M}[s,t) - P_N[s,t)\right| 
+		&\leqslant \frac{\left|\#\{n\leqslant N : s\leqslant x_n< t\} + M - \frac{M+N}{N}\#\{n\leqslant N : s\leqslant x_n < t\}\right|}{M+N} \\
 %		&\leqslant \frac{\left|M - \frac{M}{N} \#\{n\leqslant N : x_n \leqslant t\} \right|}{M+N} \\
 		&\leqslant \frac{2M}{M+N} ,
 \end{align*}
 which implies that 
-$\D^\star\left(\bx^N:a^M,\mu\right) \leqslant \D^\star\left(\bx^N,\mu\right) + \frac{2 M}{M+N}$. 
+$\D\left(\bx_{\leqslant N}:a^M,\mu\right) \leqslant \D\left(\bx^N,\mu\right) + \frac{2 M}{M+N}$. 
 Let $\bv$ be the $\mu$-equidistributed van der Corput sequence of 
 Theorem \ref{thm:van-der-corput}, possibly transformed linearly to lie in 
 $[a,b]$. We know that $\D(\bv^N, \mu) \ll \frac{\log N}{N}$, which converges 
@@ -499,28 +488,28 @@ to zero faster than $N^{-\alpha}$.
 
 We construct the sequence $\bx$ via the following recipe. Start with 
 $(x_1 = v_1,x_2 = v_2,\dots)$ until, for some $N_1$, 
-$\D^\star(\bx^{N_1},\mu) < N_1^{-\alpha}$. Then set $x_{N_1+1} = a$, 
+$\D_{N_1}(\bx,\mu) < N_1^{-\alpha}$. Then set $x_{N_1+1} = a$, 
 $x_{N_1+2} = a$, \dots, until 
-$\D^\star(\bx^{N_1+M_1},\mu) > (N_1+M_1)^{-\alpha}$. Then set 
+$\D_{N_1+M_1}(\bx,\mu) > (N_1+M_1)^{-\alpha}$. Then set 
 $x_{N_1+M_1+1} = v_{N_1+1}$, $x_{N_1+M_1+2} = v_{N_1+2}$, \dots, 
 until once again 
-$\D^\star(\bx^{N_1+M_1+N_2},\mu) < (N_1+M_1+N_2)^{-\alpha}$. Repeat 
+$\D_{N_1+M_1+N_2}(\bx,\mu) < (N_1+M_1+N_2)^{-\alpha}$. Repeat 
 indefinitely. We will show first, that the two steps are possible, and that 
-nowhere does $\D^\star(\bx^N,\mu)$ differ by too much from 
-$N^{-\alpha}$. 
+nowhere does $\D_N(\bx,\mu)$ differ by too much from $N^{-\alpha}$. 
 
 Note that $\frac{M+1}{N+M+1} - \frac{M}{N+M} \leqslant N^{-1}$. This tells 
 us that when we are adding $a$'s at the end of $\bx^N$, the discrepancy of 
 $\bx_{\leqslant N}:a_{\leqslant M}$ increases by at most $N^{-1}$ at each 
-step. So if $\D^\star(\bx^N,\mu) < N^{-\alpha}$, we can ensure that 
-$\D^\star(\bx^N:a^M,\mu)$ is at most $N^{-1}$ greater than $N^{-\alpha}$. 
+step. So if $\D_N(\bx,\mu) < N^{-\alpha}$, we can ensure that 
+$\D_N(\bx_{\leqslant N}:a^M,\mu)$ is at most $N^{-1}$ greater than 
+$N^{-\alpha}$. 
 
-Moreover, we know that $\D^\star(\bx^N:a,\mu)$ is at most 
-$\frac{2}{N+1}$ away from $\D^\star(\bx^N,\mu)$. So when adding van der 
+Moreover, we know that $\D_N(\bx:a,\mu)$ is at most 
+$\frac{2}{N+1}$ away from $\D_N(\bx,\mu)$. So when adding van der 
 Corput elements to the end of the sequence, its discrepancy cannot decay any 
 faster than by $\frac{2}{N+1}$ per $a$ added. This yields 
 \[
-	\left|\D^\star(\bx^N,\mu) - N^{-\alpha}\right| \ll N^{-1} , 
+	\left|\D_N(\bx,\mu) - N^{-\alpha}\right| \ll N^{-1} , 
 \]
 which is even stronger than we need.
 \end{proof}

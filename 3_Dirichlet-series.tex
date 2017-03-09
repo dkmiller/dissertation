@@ -35,7 +35,7 @@ Let $\bx$ be a sequence with $\|\bx\|_\infty \leqslant 1$. Then $L(\bx,s)$
 defines a holomorphic function on the region $\Re > 1$. Moreover, on that 
 region, 
 \[
-	\log L(\bx,s) = \sum_{p^r} \frac{x_p^n}{n p^{n s}} .
+	\log L(\bx,s) = \sum_{p^r} \frac{x_p^r}{r p^{r s}} .
 \]
 \end{lemma}
 \begin{proof}
@@ -160,19 +160,19 @@ an estimate $|\sum_{p\leqslant N} x_p| \ll N^{\frac 1 2 + \epsilon}$.
 \begin{theorem}
 Let $(X,\mu)$ be a probability space in which discrepancy makes sense, and let 
 $\bx=(x_2,x_3,x_5,\dots)$ be a sequence in $X$ with 
-$\disc(\bx^N,\mu) \ll N^{-\frac 1 2+\epsilon}$. Then for any function $f$ on 
+$\D_N(\bx,\mu) \ll N^{-\frac 1 2+\epsilon}$. Then for any function $f$ on 
 $X$ of bounded variation, the strange Dirichlet series $L_f(\bx,s)$ satisfies 
 the Riemann Hypothesis. 
 \end{theorem}
 \begin{proof}
 The bound on discrepancy yields (by the Koksma--Hlawka inequality) the estimate 
 \[
-	\left| \sum_{p\leqslant N} f(x_p)\right| \ll N^{-\frac 1 2+\epsilon} .
+	\left| \sum_{p\leqslant N} f(x_p)\right| \ll N^{\frac 1 2+\epsilon} .
 \]
 By Theorem \ref{thm:AT->RH}, the Riemann Hypothesis holds for $L_f(\bx,s)$. 
 \end{proof}
 
-The same proof shows that if $\disc(\bx^N,\mu)\ll N^{-\alpha+\epsilon}$, then 
+The same proof shows that if $\D_N(\bx,\mu)\ll N^{-\alpha+\epsilon}$, then 
 $\log L(\bx,s)$ conditionally converges to a holomorphic function on 
 $\Re > 1 - \alpha$. 
 
@@ -192,7 +192,7 @@ For function fields, the best estimate on discrepancy is found in
 by applying a generalization of the Koksma--Hlawka inequality to 
 $\SU(2)^\natural$. Namely, for any odd $r$, we have 
 \[
-	\disc(\btheta^x,\ST) \ll \frac 1 r + \sum_{k=1}^{2 r -1} \frac 1 k \left| \frac{1}{\pi_F(x)} \sum_{\N(\fp)\leqslant x} U_k(\btheta_\fp)\right| .
+	\D(\btheta^x,\ST) \ll \frac 1 r + \sum_{k=1}^{2 r -1} \frac 1 k \left| \frac{1}{\pi_F(x)} \sum_{\N(\fp)\leqslant x} U_k(\btheta_\fp)\right| .
 \]
 Using the above estimate on $\sum U_k(\btheta_\fp)$, he is able to derive 
 $D_N \ll N^{-1/4}$. This fits the results of 
