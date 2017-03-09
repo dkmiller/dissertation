@@ -1,6 +1,6 @@
 % !TEX root = Daniel-Miller-thesis.tex
 
-\chapter{Strange Dirichlet series}
+\chapter{Dirichlet series with Euler product}
 
 
 
@@ -8,11 +8,10 @@
 
 \section{Definitions}
 
-We start by considering a very general class of Dirichlet series. In fact, they 
-are all Dirichlet series that admit a product formula with degree-1 factors, 
-but in this thesis they will be called strange Dirichlet series. The motivating 
-example was suggested to the author by Ravi Ramakrishna. Let $E_{/\bQ}$ be an 
-elliptic curve and let 
+We start by considering a very general class of Dirichlet series, namely all 
+Dirichlet series that admit a product formula with degree-1 factors. The 
+motivating example was suggested to the author by Ravi Ramakrishna. Let 
+$E_{/\bQ}$ be an elliptic curve and let 
 \[
 	L_{\sgn}(E,s) = \prod_p \frac{1}{1-\sgn(a_p) p^{-s}} .
 \]
@@ -21,67 +20,67 @@ admit analytic continuation past $\Re = 1$? Can the rank of $E$ be found from
 $L_{\sgn}(E,s)$?
 
 \begin{definition}
-Let $\bz=(z_2,z_3,z_5,\dots)$ be a sequence of complex numbers indexed by the 
-primes. The associated \emph{strange Dirichlet series} is 
+Let $\bx=(x_2,x_3,x_5,\dots)$ be a sequence of complex numbers indexed by the 
+primes. The associated Dirichlet series is 
 \[
-	L(\bz,s) = \prod_p \frac{1}{1- z_p p^{-s}} .
+	L(\bx,s) = \prod_p \frac{1}{1- x_p p^{-s}} .
 \]
 \end{definition}
 
-If $z_p$ is only defined for all but finitely many primes, then we tacitly set 
-$\bz_p = 0$ for all primes for which $z_p$ is not defined. 
+If $x_p$ is defined only for a subset of the primes, we tacitly set $x_p = 0$ 
+(so the Euler factor is $1$) at all pries for which $x_p$ is not defined. 
 
 \begin{lemma}
-Let $\bz$ be a sequence with $\|\bz\|_\infty \leqslant 1$. Then $L(\bz,s)$ 
-defines a holomorphic function on the region $\{\Re s>1\}$. Moreover, on that 
+Let $\bx$ be a sequence with $\|\bx\|_\infty \leqslant 1$. Then $L(\bx,s)$ 
+defines a holomorphic function on the region $\Re > 1$. Moreover, on that 
 region, 
 \[
-	\log L(\bz,s) = \sum_{p^r} \frac{z_p^n}{n p^{n s}} .
+	\log L(\bx,s) = \sum_{p^r} \frac{x_p^n}{n p^{n s}} .
 \]
 \end{lemma}
 \begin{proof}
-Expanding the product for $L(\bz,s)$ formally, we have 
+Expanding the product for $L(\bx,s)$ formally, we have 
 \[
-	L(\bz,s) = \sum_{n\geqslant 1} \frac{\prod_p z_p^{v_p(n)}}{n^s} .
+	L(\bx,s) = \sum_{n\geqslant 1} \frac{\prod_p x_p^{v_p(n)}}{n^s} .
 \]
 An easy comparison with the Riemann zeta function tells us that this sum 
-is holomorphic on $\{\Re s>1\}$. By \cite[Th.~11.7]{apostol-1976}, the 
-product formula holds in the same region. The formula for $\log L(\bz,s)$ 
+is holomorphic on $\Re > 1$. By \cite[Th.~11.7]{apostol-1976}, the 
+product formula holds in the same region. The formula for $\log L(\bx,s)$ 
 comes from \cite[11.9 Ex.2]{apostol-1976}. 
 \end{proof}
 
 \begin{lemma}[Abel summation]\label{lem:abel-sum}
-Let $\bz=(z_2,z_3,z_5,\dots)$ be a sequence of complex numbers, $f$ a smooth 
+Let $\bx=(x_2,x_3,x_5,\dots)$ be a sequence of complex numbers, $f$ a smooth 
 complex-valued function on $\bR$. Then 
 \[
-	\sum_{p\leqslant N} f(p) z_p = f(N) \sum_{p\leqslant N} z_p - \int_2^N f'(x) \sum_{p\leqslant x} z_p\, \dd x .
+	\sum_{p\leqslant N} f(p) x_p = f(N) \sum_{p\leqslant N} x_p - \int_2^N f'(t) \sum_{p\leqslant t} x_p\, \dd t .
 \]
 \end{lemma}
 \begin{proof}
 Simply note that if $p_1,\dots,p_n$ is an enumeration of the primes 
 $\leqslant N$, we have 
 \begin{align*}
-	\int_2^N f'(x) \sum_{p\leqslant x} z_p\, \dd x 
-		&= \sum_{p\leqslant N} z_p \int_{p_n}^N f' + \sum_{i=1}^{n-1} \sum_{p\leqslant p_{i+1}} z_p \int_{p_i}^{p_{i+1}} f' \\
-		&= (f(N) - f(p_n)) \sum_{p\leqslant N} z_p + \sum_{i=1}^{n-1} (f(p_{i+1}) - f(p_i)) \sum_{p\leqslant p_{i+1}} z_p \\
-		&= f(N) \sum_{p\leqslant N} z_p - \sum_{p\leqslant N} f(p) z_p ,
+	\int_2^N f'(t) \sum_{p\leqslant t} x_p\, \dd t 
+		&= \sum_{p\leqslant N} x_p \int_{p_n}^N f'(t)\, \dd t + \sum_{i=1}^{n-1} \sum_{p\leqslant p_{i+1}} x_p \int_{p_i}^{p_{i+1}} f'(t)\, \dd t \\
+		&= \left(f(N) - f(p_n)\right) \sum_{p\leqslant N} x_p + \sum_{i=1}^{n-1} \left(f(p_{i+1}) - f(p_i)\right) \sum_{p\leqslant p_{i+1}} x_p \\
+		&= f(N) \sum_{p\leqslant N} x_p - \sum_{p\leqslant N} f(p) x_p ,
 \end{align*}
 as desired. 
 \end{proof}
 
 \begin{theorem}\label{thm:AT->RH}
-Assume $|\sum_{p\leqslant x} z_p| \ll x^{\alpha+\epsilon}$ for some 
-$\alpha\in [\frac 1 2,1]$. Then the series for $\log L(\bz,s)$ converges to a 
-holomorphic function on the region $\{\Re s>\alpha\}$. 
+Assume $|\sum_{p\leqslant N} x_p| \ll N^{\alpha+\epsilon}$ for some 
+$\alpha\in [\frac 1 2,1]$. Then the series for $\log L(\bx,s)$ converges 
+conditionally to a holomorphic function on the region $\Re > \alpha$. 
 \end{theorem}
 \begin{proof}
-Formally split the sum for $\log L(\bz,s)$ into two pieces: 
+Formally split the sum for $\log L(\bx,s)$ into two pieces: 
 \[
-	\log L(\bz,s) = \sum_p \frac{z_p}{p^s} + \sum_p \sum_{r\geqslant 2} \frac{z_p^r}{r p^{r s}} .
+	\log L(\bx,s) = \sum_p \frac{x_p}{p^s} + \sum_p \sum_{r\geqslant 2} \frac{x_p^r}{r p^{r s}} .
 \]
 For each $p$, we have 
 \[
-	\left| \sum_{r\geqslant 2} \frac{z_p^r}{r p^{r s}}\right| \leqslant \sum_{r\geqslant 2} p^{- r \Re s} = p^{-2 \Re s} \frac{1}{1-p^{-\Re s}} .
+	\left| \sum_{r\geqslant 2} \frac{x_p^r}{r p^{r s}}\right| \leqslant \sum_{r\geqslant 2} p^{- r \Re s} = p^{-2 \Re s} \frac{1}{1-p^{-\Re s}} .
 \]
 Elementary analysis gives 
 \[
@@ -90,14 +89,14 @@ Elementary analysis gives
 so the second piece of $\log L(\bz,s)$ converges absolutely when 
 $\Re s>\frac 1 2$. We could simply cite \cite[II.1 Th.~10]{tenenbaum-1995} to 
 finish the proof; 
-instead we prove directly that $\sum \frac{z_p}{p^s}$ converges absolutely 
-to a holomorphic function on the region $\{\Re s>\alpha\}$. 
+instead we prove directly that $\sum \frac{x_p}{p^s}$ converges absolutely 
+to a holomorphic function on the region $\Re > \alpha$. 
 
-By Lemma \ref{lem:abel-sum} with $f(x) = x^{-s}$, we have 
+By Lemma \ref{lem:abel-sum} with $f(t) = t^{-s}$, we have 
 \begin{align*}
-	\sum_{p\leqslant N} \frac{z_p}{p^s}
-		&= N^{-s} \sum_{p\leqslant N} z_p + s \int_2^N \sum_{p\leqslant x} z_p\, \frac{\dd x}{x^{s+1}} \\
-		&\ll N^{-\Re s + \alpha + \epsilon} + s \int_2^N x^{\alpha+\epsilon} \frac{\dd x}{x^{s+1}} .
+	\sum_{p\leqslant N} \frac{x_p}{p^s}
+		&= N^{-s} \sum_{p\leqslant N} x_p + s \int_2^N \sum_{p\leqslant t} x_p\, \frac{\dd t}{t^{s+1}} \\
+		&\ll N^{-\Re s + \alpha + \epsilon} + s \int_2^N t^{\alpha+\epsilon} \frac{\dd t}{t^{\Re s+1}} .
 \end{align*}
 Since $\alpha-\Re s < 0$, the first term is bounded. Since 
 $\Re s+1-\alpha > 1$ and 
@@ -105,85 +104,19 @@ $\epsilon$ is arbitrary, the integral converges absolutely, and the proof is
 complete. 
 \end{proof}
 
-\begin{theorem}\label{thm:RH->bound}
-Let $\bz=(z_2,z_3,\dots)$ be a sequence with $\|\bz\|_\infty\leqslant 1$, and 
-assume $\log L(\bz,s)$ has analytic continuation to $\{\Re s>\alpha\}$ for some 
-$\alpha\in \left[\frac 1 2,1\right]$, and that for $\sigma>\alpha$, we have 
-$|\log L(\bz,\sigma+i t)| \ll |t|^{1-\epsilon}$. Then 
-$|\sum_{p\leqslant N} z_p| \ll N^{\alpha+\epsilon}$. 
-\end{theorem}
-\begin{proof}
-Recall that we can write 
+Note that the proof of Theorem \ref{thm:AT->RH} actually gives an absolutely 
+convergent expression for $\log L(\bx,s)$ on the region $\Re >\alpha$. Namely, 
 \[
-	\log L(\bz,s) = \sum_p \frac{z_p}{p^s} + \sum_p \sum_{r\geqslant 2} \frac{z_p^r}{r p^{r s}} = \sum_p \frac{z_p}{p^s} + O(\zeta(2 \Re s)) .
+	\log L(\bx,s) = s \int_2^\infty t^{-s-1}\sum_{p\leqslant t} x_p \dd t + \sum_p \sum_{r\geqslant 2} \frac{x_p^r}{r p^{r s}} . 
 \]
-Thus, for any $\epsilon>0$, analytic continuation and the bound on 
-$|\log L(\bz,\sigma+i t)|$ implies the same analytic continuation and bound for 
-$\sum \frac{z_p}{p^s}$ on $\{\Re s>\alpha+\epsilon\}$. 
-
-For any $T>0$, let 
-$\gamma_T = \gamma_{1,T} + \gamma_{2,T} + \gamma_{3,T} + \gamma_{4,T}$ be the 
-following contour: 
-\begin{align*}
-	\gamma_{1,T}(t) &= (\alpha+\epsilon)+i t\qquad t\in [-T,T] \\
-	\gamma_{2,T}(t) &= t+i T \qquad t\in [\alpha+\epsilon,1+\epsilon] \\
-	\gamma_{3,T}(t) &= (1+\epsilon) + i t \qquad t\in [T,-T] \\
-	\gamma_{4,T}(t) &= t - i T \qquad t\in [1+\epsilon,\alpha+\epsilon] .
-\end{align*}
-As a picture, $\gamma_T$ looks like this: 
-\begin{center}
-\begin{tikzpicture}[
-	decoration={%
-		markings,
-		mark=at position 2cm with {\arrow[line width=1pt]{>}},
-		}]
-	\draw [help lines,->] (-1,0) -- (4,0) coordinate (xaxis);
-	\draw [help lines,->] (0,-4) -- (0,4) coordinate (yaxis);
-	\node [below] at (xaxis) {$\bR$};
-	\node [left] at (yaxis) {$i\bR$};
-	\node at (0.6,1) {$\gamma_{1,T}$};
-	\node at (2, 2.5) {$\gamma_{2,T}$};
-	\node at (3.6, 1) {$\gamma_{3,T}$};
-	\node at (2, -2.5) {$\gamma_{4,T}$};
-	\path[draw,postaction=decorate] 
-		(1,-3) node[below] {$\alpha+\epsilon - i T$} -- 
-		(1,3) node[above] {$\alpha+\epsilon + i T$} -- 
-		(3,3) node[above] {$1+\epsilon + i T$} -- 
-		(3,-3) node[below] {$1+\epsilon - i T$} --
-		(1,-3);
-\end{tikzpicture}
-\end{center}
-By Perron's formula \cite[Th.~11.18]{apostol-1976}, 
-\[
-	\lim_{T\to \infty} \frac{1}{2\pi i} \int_{-\gamma_{3,T}} \sum_p \frac{z_p}{p^s} N^z\, \frac{\dd z}{z} = \frac 1 2 \sum_{p\leqslant N} z_p .
-\]
-for $N\in \bZ$, and the same without the $\frac 1 2$ on the right-hand side 
-when $N\notin \bZ$. 
-
-Let $h(s)$ be the analytic continuation of $\sum z_p p^{-s}$ to 
-$\{\Re s>\alpha\}$. Since $\int_{\gamma_T} h(s)\, \frac{\dd s}{s}=0$, we obtain 
-\[
-	\left|\sum_{p\leqslant N} z_p\right| 
-		\ll \lim_{T\to \infty} \left(\left| \int_{\gamma_{1,T}} h(s) N^s\frac{\dd s}{s}\right| + \left|\int_{\gamma_{2,T}} h(s) N^s \frac{\dd s}{s}\right| + \left|\int_{\gamma_{4,T}} h(s) N^s \frac{\dd s}{s}\right| \right).
-\]
-We know that $|h(\sigma+i t)| \ll |t|^{1-\epsilon}$, so we can bound 
-\[
-	\left| \int_{\gamma_{2,T}} h(s)N^s \frac{\dd s}{s}\right| = \left| \int_{\alpha+\epsilon}^{1+\epsilon} \frac{h(t+i T) N^{t+i T}}{t+i T}\, \dd t\right| \ll \frac{N^{1+\alpha}}{T^\epsilon} ,
-\]
-and similarly for $\gamma_{4,T}$. Finally, note that 
-\[
-	\left| \int_{\gamma_{1,T}} h(s) N^s\, \frac{\dd s}{s}\right| \ll \int_{-T}^T |t|^{1-\epsilon} \frac{N^{\alpha+\epsilon}}{(\alpha+\epsilon)^2 + t^2} \, \dd t \ll N^{\alpha+\epsilon} .
-\]
-Letting $T\to \infty$ we obtain the desired result. 
-\end{proof}
 
 Let $X$ be a space, $f\colon X\to \bC$ a function with 
 $\|f\|_\infty\leqslant 1$, and $\bx=(x_2,x_3,\dots)$ a sequence in $X$. Write 
 \[
 	L_f(\bx,s) = \prod_p \frac{1}{1-f(x_p) p^{-s}} ,
 \]
-for the associated strange Dirichlet series. In the remainder, we will 
-exclusively focus on strange Dirichlet series of this form. 
+for the associated Dirichlet series. In the remainder, we will 
+exclusively focus on strange Dirichlet series of this type. 
 
 
 
@@ -216,14 +149,13 @@ formula will include a copy (possibly several) of $\zeta(s)$.
 \section{Discrepancy of sequences and the Riemann Hypothesis}
 
 \begin{definition}
-Let $L(s)$ be a Dirichlet series with full product formula. Then the Riemann 
-Hypothesis for $L$ holds if $\log L$ admits analytic continuation 
-to $\{\Re > 1/2\}$. 
+We say the \emph{Riemann Hypothesis} for $L(\bx,s)$ holds if the function 
+$\log L(\bx,s)$ admits analytic continuation to $\Re > \frac 1 2$. 
 \end{definition}
 
-In effect, Theorem \ref{thm:RH->bound} says that under reasonable analytic 
-hypotheses, the Riemann Hypothesis for $L(\bz,s)$ implies the estimate 
-$|\sum_{p\leqslant N} z_p| \ll N^{-\frac 1 2+\epsilon}$. 
+Under reasonable analytic hypotheses, namely conditional convergence of 
+$\log L(\bx,s)$ on $\Re > \frac 1 2$, \cite[II.1 Th.~10]{tenenbaum-1995} gives 
+an estimate $|\sum_{p\leqslant N} x_p| \ll N^{\frac 1 2 + \epsilon}$. 
 
 \begin{theorem}
 Let $(X,\mu)$ be a probability space in which discrepancy makes sense, and let 
@@ -239,6 +171,10 @@ The bound on discrepancy yields (by the Koksma--Hlawka inequality) the estimate
 \]
 By Theorem \ref{thm:AT->RH}, the Riemann Hypothesis holds for $L_f(\bx,s)$. 
 \end{proof}
+
+The same proof shows that if $\disc(\bx^N,\mu)\ll N^{-\alpha+\epsilon}$, then 
+$\log L(\bx,s)$ conditionally converges to a holomorphic function on 
+$\Re > 1 - \alpha$. 
 
 Let $F = \bF_q(t)$ be a function field, $E_{/F}$ a generic elliptic curve. 
 There is, for every prime $\fp$ of $F$, a Satake parameter 

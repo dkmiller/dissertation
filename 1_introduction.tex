@@ -17,17 +17,19 @@ empirical measure capturing the distribution of those primes $\leqslant x$:
 	P_x = \frac{1}{\pi(x)} \sum_{p\leqslant x} \delta_{p/x} ,
 \]
 which is supported on the unit interval $[0,1]$. The prime number theorem 
-tells us that as $x\to \infty$, these empirical measures approach the 
-``true'' measure $L_x = \frac{\Li(t x)}{\Li(x)}\, \dd t$. The standare approach 
+tells us that as $x\to \infty$, these empirical measures weakly converge to the 
+``true'' measure $L_x = \frac{\Li(t x)}{\Li(x)}\, \dd t$. The standard approach 
 to proving the prime number theorem is by showing that the Riemann 
-$\zeta$-function has meromorphic continuation past $\Re = 1$. 
+$\zeta$-function has meromorphic continuation past $\Re = 1$, with no zeros 
+on that line. 
 
 \begin{theorem}
-The function $\zeta(s)$ admits a meromorphic continuation past $\Re =1$ with 
-at most a simple pole at $s=1$, if and only if $P_x \to L_x$ in the weak sense. 
+The function $\zeta(s)$ admits a meromorphic continuation past $\Re = 1$ with 
+at most a simple pole at $s=1$ and no zeros on $\Re = 1$, if and only if 
+$P_x \to L_x$ weakly. 
 \end{theorem}
 
-Since $\zeta(s)$ does have such a meromorphic continuation, the prime number 
+Since $\zeta(s)$ does have the desired properties, the prime number 
 theorem holds. 
 It is natural to try to quantify the rate of converge of $P_x$ to $L_x$. One 
 way to do this is via the (star) discrepancy 
@@ -191,4 +193,14 @@ such that $C_1 g \leqslant f \leqslant C_2 f$.
 If $\mu$ is a measure on $\bR$, then $\mu[a,b] = \mu([a,b])$ and similarly 
 for $[a,b)$, $(a,b])$, etc. 
 
-If $\mu$ is a measure on $\bR$, then $\cdf_\mu(x) = \mu[-\infty,x]$. 
+If $\mu$ is a measure on $\bR$, then \emph{cumulative distribution function of 
+$\mu$} is given by $\cdf_\mu(x) = \mu[-\infty,x]$. 
+
+If $z\in \bC$, write $\Re z$ for the real part of $z$. 
+
+If $\alpha\in \bR$, we write $\Re > \alpha$ for the half-plane of complex 
+numbers with real part $> \alpha$. 
+
+We write $\bx = (x_1,x_2,\dots)$ for infinite sequences and 
+$\vx = (x_1,\dots,x_d)$ for vectors. Sometimes we will have a sequence of 
+vectors, written as $\bx = (\vx_1,\vx_2,\dots)$. 
