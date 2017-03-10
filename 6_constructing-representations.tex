@@ -262,3 +262,164 @@ there exists an $h^\ast$-bounded lifting datum
 $(\rho_{n+1},R_{n+1},U_{n+1},\{\rho_p\})$ extending and lifting 
 $(\rho_n,R_n,U_n,\{\rho_p\})$. This completes the inductive step.  
 \end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Discrepancy and Riemann Hypothesis}
+
+For $k\geqslant 1$, let 
+\[
+	U_k(\theta) = \tr\sym^k\smat{e^{i\theta}}{}{}{e^{- i \theta}} = \frac{\sin((k+1)\theta)}{\sin\theta} .
+\]
+Then $U_k(\cos^{-1} t)$ is the $k$-th Chebyshev polynomial of the 2nd kind. 
+Moreover, $\{U_k\}$ forms an orthonormal basis for 
+$L^2([0,\pi],\ST) = L^2(\SU(2)^\natural)$. 
+
+This section has two parts. First, for any reasonable measure $\mu$ on 
+$[0,\pi]$ invariant under the same ``flip'' automorphism as the Sato--Tate 
+measure, there is a sequence $\{a_p\}$ of integers satisfying the Hasse 
+bound $|a_p|\leqslant 2\sqrt p$, such that for 
+$\theta_p = \cos^{-1}\left(\frac{a_p}{2\sqrt p}\right)$, the discrepancy 
+$\D_N(\btheta,\mu)$ behaves like $\pi(N)^{-\alpha}$ for predetermined 
+$\alpha\in \left(0,\frac 1 2\right]$, while for any odd $k$, the strange 
+Dirichlet series $L_{U_k}(\btheta,s)$, which we will write 
+$L(\sym^k \btheta,s)$, satisfies the Riemann Hypothesis. 
+In the second part of this section, we associate (infinitely ramified) Galois 
+representations to the fake Satake parameters above. 
+
+\begin{definition}
+Let $\mu = f(t)\, \dd t$ be an absolutely continuous measure with continuous 
+cdf on $[0,\pi]$. If $f(t) \ll \sin(t)$, then $\mu$ is a \emph{Sato--Tate compatible measure}. 
+\end{definition}
+
+The key facts about Sato--Tate compatible measures are that $\cos_\ast\mu$ 
+satisfies the hypotheses of Theorem \ref{thm:discrepancy-arbitrary}, so 
+there are ``$N^{-\alpha}$-decaying van der Corput sequences'' for 
+$\cos_\ast\mu$, and also that since $\cos\colon [0,\pi] \to [-1,1]$ is an 
+strictly decreasing, we know that for any sequence $\bx$ on $[-1,1]$, 
+$\D_N(\bx,\cos_\ast\mu) \approx \D_N(\cos^{-1}\bx,\mu)$. 
+
+
+\begin{theorem}\label{thm:integral-a_p-alpha}
+Let $\mu$ be a Sato--Tate compatible measure, and fix 
+$\alpha\in \left(0,\frac a 1 2\right)$. 
+Then there exists a sequence of integers $a_p$ satisfying the Hasse bound, 
+such that if we set $\theta_p = \cos^{-1}\left(\frac{a_p}{2\sqrt p}\right)$, 
+then $\D_N(\btheta,\mu) = \Theta(\pi(N)^{-\alpha})$. 
+\end{theorem}
+\begin{proof}
+Apply Theorem \ref{thm:discrepancy-arbitrary} to find a sequence $\bx$ such 
+that $\D_N(\bx,\cos_\ast \mu) = \Theta(\pi(N)^{-\alpha})$. For each prime 
+$p$, there exists an integer $a_p$ such that $|a_p|\leqslant 2\sqrt p$ and 
+$\left| \frac{a_p}{2\sqrt p} - x_p\right| \leqslant p^{-1/2}$. Let 
+$y_p = \frac{a_p}{2\sqrt p}$. Now apply 
+Lemma \ref{lem:disc-of-two-seq} with $\epsilon = N^{-1/2}$. We obtain 
+\[
+	\left| \D_N(\bx,\cos_\ast \mu) - \D_N(\by, \cos_\ast \mu)\right| \ll  N^{-1/2} + \frac{\pi(N^{1/2})}{\pi(N)} ,
+\]
+which tells us that $\D_N(\by,\cos_\ast\mu) = \Theta(\pi(N)^{-\alpha})$. 
+Now let $\btheta = \cos^{-1}(\by)$. Apply Lemma \ref{lem:push-discrepancy} to 
+$\btheta = \cos^{-1}(\by)$, and we see that 
+$\D_N(\btheta,\mu) = \Theta(\pi(N)^{-\alpha})$. 
+\end{proof}
+
+We can improve this example by controlling the behavior of sums of the form 
+$\sum_{p\leqslant N} U_k(\theta_p)$ for odd $k$. Let $\sigma$ be 
+the involution of $[0,\pi]$ given by $\sigma(\theta) = \pi-\theta$. Note that 
+$\sigma_\ast \ST = \ST$. Moreover, note that for any odd $k$, 
+$U_k\circ\sigma = - U_k$, so $\int U_k\, \dd\ST = 0$. (Of course, 
+$\int U_k \,\dd\ST = 0$ for the reason that $U_k$ is the trace of a 
+non-trivial unitary representation, but we will directly use the ``oddness'' 
+of $U_k$ in what follows.)
+
+\begin{theorem}\label{thm:int-flip-seq}
+Let $\mu$ be a $\sigma$-invariant Sato--Tate compatible measure. Fix 
+$\alpha\in \left(0,\frac 1 2\right)$. Then there is a sequence of integers 
+$a_p$, satisfying the Hasse bound, such that for 
+$\theta_p =\cos^{-1}\left( \frac{a_p}{2\sqrt p}\right)$, we have
+\begin{enumerate}
+\item
+$\D_N(\btheta,\mu) = \Theta(\pi(N)^{-\alpha})$. 
+
+\item
+For all odd $k$, 
+$\left| \sum_{k\leqslant N} U_k(\theta_p)\right| \ll \pi(N)^{1/2}$. 
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+The basic ideas is as follows. Enumerate the primes 
+\[
+	p_1 = 2, q_1 = 3, p_2 = 5, q_2 = 7, p_3 = 11, q_3 = 13, \dots .
+\]
+Consider the measure $\left.\mu\right|_{[0,\pi/2)}$. An argument 
+nearly identical to the proof of Theorem \ref{thm:integral-a_p-alpha} shows 
+that we can choose $a_{p_i}$ satisfying the Hasse bound so that 
+\[
+	\D_N\left( \left\{\theta_{p_i}\right\},\left.\mu\right|_{[0,\pi/2)}\right) = \Theta(N^{-\alpha}) .
+\]
+We can also choose the $a_{q_i}\in [\pi/2,\pi]$ so that 
+\[
+	\left| \frac{a_{p_i}}{2\sqrt{p_i}} + \frac{a_{q_i}}{2\sqrt{q_i}}\right| \ll \frac{1}{\sqrt{p_i}} .
+\]
+If $\bx$ is the sequence of the $\frac{a_{p_i}}{2\sqrt{p_i}}$ and $\by$ is 
+the similar sequence with the $q_i$-s, then Lemma \ref{lem:flip-discrepancy}, 
+Lemma \ref{lem:disc-of-two-seq}, and Theorem \ref{thm:wreath-seq} tell us 
+that $\D_N(\bx\wr\by,\mu) = \Theta(N^{-\alpha})$. 
+
+Moreover, $U_k(\cos^{-1} t)$ is an odd polynomial in $t$, so if 
+$|x_i - (-y_i)| \ll p_i^{-1/2}$, then 
+$|U_k(\theta_{p_i}) + U_k(\theta_{q_i})| \ll p_i^{-1/2}$. We can then bound 
+\[
+	\left| \sum_{i\leqslant N} \left(U_k(\theta_{p_i}) + U_k(\theta_{q_i})\right)\right| \ll \sum_{p\leqslant N} p^{-1/2} \ll \pi(N)^{1/2} .
+\]
+\end{proof}
+
+Now we obtain a ``beefed-up'' version of Theorem \ref{thm:int-flip-seq}. 
+
+\begin{theorem}\label{thm:bad-Galois}
+Let $\mu$ be a Sato--Tate compatible $\sigma$-invariant measure on $[0,\pi]$. 
+Fix $\alpha\in \left(0,\frac 1 2\right)$ and a good residual representation 
+$\rho\colon G_\bQ \to \GL_2(\bF_l)$. Then there exists a weight-$2$ lift 
+$\rho\colon G_\bQ \to \GL_2(\bZ_l)$ of $\bar\rho$ such that 
+\begin{enumerate}
+\item
+$\pi_{\ram(\rho)}(x) \ll e^{-x}\pi(x)$. 
+
+\item
+For each unramified prime $p$, $a_p = \tr\rho(\frob_p)\in \bZ$ and satisfies 
+the Hasse bound. 
+
+\item
+If, for unramified $p$ we set 
+$\theta_p = \cos^{-1}\left(\frac{a_p}{2\sqrt p}\right)$, then 
+$\D_N(\btheta,\mu) = \Theta(\pi(N)^{-\alpha})$. 
+
+\item
+For each odd $k$, the function $L(\sym^k \rho,s)$ satisfies the Riemann 
+Hypothesis. 
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+Let $\bx$ be an $N^{-\alpha}$-decay van der Corput sequence for 
+$\cos_\ast \left.\mu\right|_{[0,\pi/2)}$. Let $\by = -\bx$. Then 
+$\D_N(\bx\wr\by,\cos_\ast\mu) = \Theta(N^{-\alpha})$. Set $h(x) = e^{-x}$ 
+and $b(x) = \log(x)$. By Theorem \ref{thm:master-Galois}, there is a 
+$\rho\colon G_\bQ \to \GL_2(\bZ_l)$ lifting $\bar\rho$ such that parts 
+1 and 2 of the theorem hold. The discrepancy estimate comes from Lemma 
+\ref{lem:flip-discrepancy}, Lemma \ref{lem:disc-of-two-seq}, and Theorem 
+\ref{thm:wreath-seq} as above, while the Riemann Hypothesis for odd symmetric 
+powers follows from the proof of Theorem \ref{thm:int-flip-seq}. 
+\end{proof}
+

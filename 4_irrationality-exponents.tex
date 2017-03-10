@@ -219,3 +219,126 @@ the discrepancy at $N$ is bounded below by
 		= 2^{-d\left(1+\frac{1}{\omega_0(\vx)}\right)-\epsilon} N^{-\frac{d}{\omega_0(x)}-\epsilon} .
 \]
 \end{proof}
+
+
+
+
+
+
+\section{Pathological Satake parameters for CM abelian varieties}
+
+Give $(\bR/\bZ)^d$ the natural Haar measure normalized to have total mass one. 
+Recall that for any $f\in L^1((\bR/\bZ)^d)$, the Fourier coefficients of $f$ 
+are, for $\vm\in \bZ^d$ 
+\[
+	\widehat f(\vm) = \int_{(\bR/\bZ)^d} e^{2\pi i \langle \vm,\vx\rangle} \, \dd \vx ,
+\]
+where $\langle \vm,\vx\rangle = m_1 x_1 + \cdots + m_d x_d$ is the usual inner 
+product. 
+
+\begin{theorem}
+Fix $\vx\in (\bR/\bZ)^d$ with $\omega_{d-1}(\vx)$ finite. Then 
+\[
+	\left| \sum_{n\leqslant N} e^{2\pi i \langle \vm, n \vx\rangle}\right| \ll |\vm|_\infty^{\omega_{d-1}(\vx) + \epsilon} 
+\]
+as $\vm$ ranges over $\bZ^d\smallsetminus 0$. 
+\end{theorem}
+\begin{proof}
+From Lemma \ref{lem:bound-exp-sum} we know that 
+\[
+	\left| \sum_{n\leqslant N} e^{2\pi i \langle \vm, n \vx\rangle}\right| \ll \frac{1}{\dd(\langle \vm, \vx\rangle,\bZ)} ,
+\]
+and from Lemma \ref{lem:bound-distance}, we know that 
+$\dd(\langle \vm,\vx\rangle, \bZ)^{-1} \ll |\vm|_\infty^{\omega_{d-1}(x)+\epsilon}$. 
+The result follows. 
+\end{proof}
+
+\begin{theorem}
+Let $\vx\in \bR^d$ with $\omega_{d-1}(\vx)$ finite. Then let 
+$f\in L^1((\bR/\bZ)^d)$ with $\widehat f(0)=0$ and suppose the Fourier 
+coefficients of $f$ satisfy the bound 
+$|\widehat f(\vm)| \ll |\vm|_\infty^{-\frac{1}{d-1} - \omega_{d-1}(\vx)-\epsilon}$. 
+Then 
+\[
+	\left| \sum_{n\leqslant N} f(n \vx)\right| \ll 1. 
+\]
+\end{theorem}
+\begin{proof}
+Write $f$ as a Fourier series:
+\[
+	f(x) = \sum_{\vm\in \bZ^d} \widehat f(\vm) e^{2\pi i \langle \vm,\vx\rangle} .
+\]
+Since $\widehat f(0)=0$, we can compute:
+\begin{align*}
+	\left| \sum_{n\leqslant N} f(n \vx)\right| 
+		&= \left| \sum_{n\leqslant N} \sum_{\vm\in \bZ^d\smallsetminus 0} \widehat f(\vm) e^{2\pi i \langle \vm,\vx\rangle}\right| \\
+		&\leqslant \sum_{\vm\in \bZ^d\smallsetminus 0} |\widehat f(\vm)| \left| \sum_{n\leqslant N} e^{2\pi i n \langle \vm,\vx\rangle}\right| \\
+		&\ll \sum_{\vm\in \bZ^d\smallsetminus 0} |\vm|_\infty^{-\frac{1}{d-1} - \omega_{d-1}(\vx) - \epsilon} |m|^{\omega_{d-1}(\vx) + \epsilon/2} \\
+		&\ll \sum_{\vm\in \bZ^d\smallsetminus 0} |\vm|_\infty^{-\frac{1}{d-1} - \epsilon/2} .
+\end{align*}
+The sum converges since the exponent is less than $-\frac{1}{d-1}$, and it 
+doesn't depend on $N$, hence the result. 
+\end{proof}
+
+
+Let $p_1 = 2, p_2 = 3, p_3 = 5, \dots$ be an enumeration of the prime numbers. 
+Let $\vy\in \bR^d$ with $y_1,\dots,y_d$ linearly independent over $\bQ$. The 
+associated sequence of ``fake Satake parameters'' is 
+\[
+	\bx = (\vy, 2\vy, 3 \vy, 4 \vy, \dots) ,
+\]
+where we put $\vx_{p_n} = n \vy\mod \bZ^d$. By Theorem \ref{thm:jarnik}, we can 
+arrange for $\omega_0(\vy) = w$ and $\omega_{d-1}(\vy) = d w + d - 1$. 
+
+\begin{theorem}
+The sequence $\bx$ is equidistributed in $(\bR/\bZ)^d$, with discrepancy 
+decaying as 
+\[
+	\D_N(\bx) \ll N^{-\frac{1}{d w+d} + \epsilon} 
+\]
+and for which 
+\[
+	\D_N(\bx) = \Omega\left(N^{-\frac{d}{w} - \epsilon}\right) .
+\]
+However, for any $f\in C^\infty((\bR/\bZ)^d)$ with $\widehat f(0)=0$, the 
+Dirichlet series  $L_f(\bx,s)$ satisfies the Riemann Hypothesis. 
+\end{theorem}
+
+Let's apply this theorem to abelian varieties with complex multiplication. Let 
+$K/\bQ$ be a finite Galois extension, $A_{/K}$ an abelian variety with complex 
+multiplication by $F$, defined over $K$. Let $\fa = \lie(A)$ be the Lie algebra 
+of $A$; this is a $K$-vector space with natural $F$-action. The determinant of 
+this action gives a homomorphism 
+$\det_\fa\colon \R_{K/\bQ}\Gm \to \R_{F/\bQ}\Gm$; the image of this map is 
+the motivic Galois group $G_A$ \cite{yu-2015}. Let 
+$\N_{F/\bQ}\colon \R_{F/\bQ}\Gm \to \Gm$ be the norm map; then 
+$G_A^1 = \im(\det_\fa)^{\N_{F/\bQ} = 1}$, and $\ST(A)$ is a maximal compact 
+subgroup of $G_A^1(\bC)$. Every unitary representation of $\ST(A)$ is the 
+restriction of a character of $G_A$; in fact it is the restriction of a 
+character of $\R_{F/\bQ} \Gm$. 
+
+Fix a rational prime $l$; then the Galois representation associated to $A$ is 
+$\rho_l\colon G_\bQ \to G_A(\bQ_l)\subset (F\otimes\bQ_l)^\times$. For 
+$\sigma\colon F\hookrightarrow \bC$, also 
+write $\sigma$ for the corresponding character of $\R_{F/\bQ}\Gm$. Shimura and 
+Taniyama proved \cite{serre-tate-1968} that there exists a Hecke character 
+$\chi_\sigma\colon \bA_K^\times / K^\times \to \bC^\times$ such that 
+$L^\alg(\sigma\circ \rho_l,s) = L(s,\chi_\sigma)$. The analytic $L$-function of 
+$A$ is normalized as $L(A,s) = \prod_\sigma L^\alg(\sigma\circ \rho_l,s+1/2)$, 
+so for $\omega_\sigma = \chi_\sigma \|\cdot\|^{-1/2}$, we have 
+\[
+	L(A,s) = \prod_{\sigma\colon F\hookrightarrow \bC} L(s,\omega_\sigma) .
+\]
+A character $r$ of $\R_{F/\bQ} \Gm$ is of the form $r = \sum a_\sigma \sigma$ 
+with $a\in \bZ$. Write $\omega_r = \prod \omega_\sigma^{a_\sigma}$. Then 
+\[
+	L(r_\ast \rho_l,s) = L(s,\omega_r) .
+\]
+The Riemann Hypothesis holds for all $L(r_\ast \rho_l,s)$ if and only if it 
+holds for each $L(\sigma \circ \rho_l,s) = L(s,\omega_\sigma)$. Since we 
+already know analytic continuation of $\log L(s,\omega_\sigma)$ past 
+$\Re = 1$, the Sato--Tate conjecture holds for $A$. However, the above theorem 
+shows that even if each $L(r_\ast \rho_l,s)$ satisfies the Riemann Hypothesis, 
+we may not immediately conclude that the Akiyama--Tanigawa conjecture holds for 
+$A$. 
+
