@@ -15,12 +15,12 @@ are $\bQ$-linearly independent.
 \begin{definition}\label{def:approx-exp}
 Let $\omega_0(\vx)$ (resp.~$\omega_{d-1}(\vx)$) be the supremum of the set of 
 real numbers $\omega$ for which there exist infinitely many 
-$\vm=(m_0,\dots,m_d)\in \bZ^{d+1}$ such that 
+$(n,\vm)\in \bZ^{d+1}$ such that 
 \begin{align*}
-	\max\{|m_0 x_i - m_i|\} 
-		&\leqslant \|\vm\|_\infty^{-\omega}  \qquad\text{(resp.} \\
-	|m_0 + m_1 x_1 + \dots + m_d x_d| 
-		&\leqslant \|\vm\|_\infty^{-\omega} \text{).}
+	|n \vx - \vm|_\infty 
+		&\leqslant |(n,\vm)|_\infty^{-\omega}  \qquad\text{(resp.} \\
+	|n +\langle \vm,\vx\rangle| 
+		&\leqslant |(n,\vm)|_\infty^{-\omega} \text{).}
 \end{align*}
 \end{definition}
 
@@ -43,21 +43,19 @@ irrationality measure of $x$.
 So Roth's Theorem tells us that for $x$ an algebraic irrational, 
 $\omega_0(x) = 1$. 
 
-Now, fix a norm $|\cdot|$ on $\bR^d$. All norms on finite-dimensional Banach 
-spaces are equivalent, so any two norms are bounded by scalar multiples of 
-each other. Given $\vx\in \bR^d$, we write 
-$\dd(\vx,\bZ^d)=\min_{\vm\in \bZ^d} |\vx-\vm|$. Note that $\dd(\vx,\bZ^d)=0$ 
-if and only if $\vx\in \bZ^d$. Moreover, $\dd(\cdot,\bZ^d)$ is well-defined 
-for elements of $(\bR/\bZ)^d$. 
+Given $\vx\in \bR^d$, we write 
+$\dd(\vx,\bZ^d)=\min_{\vm\in \bZ^d} |\vx-\vm|_\infty$. Note that 
+$\dd(\vx,\bZ^d)=0$ if and only if $\vx\in \bZ^d$. Moreover, $\dd(\cdot,\bZ^d)$ 
+is well-defined for elements of $(\bR/\bZ)^d$. 
 
 \begin{lemma}\label{lem:bound-distance}
-Let $\vx\in \bR^d$ with $\|\vx\|_\infty\leqslant 1$ and $\omega_0(\vx)$ 
+Let $\vx\in \bR^d$ with $|\vx|_\infty\leqslant 1$ and $\omega_0(\vx)$ 
 (resp.~$\omega_{d-1}(\vx)$) finite. Then 
 \begin{align*}
 	\frac{1}{\dd(n \vx,\bZ^d)} 
 		&\ll |n|^{\omega_0(\vx)+\epsilon}\qquad \text{ for $n\in \bZ$ (resp.} \\
 	\frac{1}{\dd\left(\langle \vm,\vx\rangle, \bZ\right)} 
-		&\ll |\vm|^{\omega_{d-1}(\vx)+\epsilon} \qquad\text{ for $\vm\in \bZ^d$).}
+		&\ll |\vm|_\infty^{\omega_{d-1}(\vx)+\epsilon} \qquad\text{ for $\vm\in \bZ^d$).}
 \end{align*}
 \end{lemma}
 \begin{proof}
@@ -67,44 +65,34 @@ Let $\epsilon>0$. Then there are only finitely many $n\in \bZ$
 (resp.~$\omega_{d-1}(\vx)+\epsilon$). In other words, there exist constants 
 $C_0, C_{d-1}>0$ such that 
 \begin{align*}
-	\max\{|m_0 x_i - m_i|\} 
-		&\geqslant C_0 \|\vm\|_\infty^{-\omega_0(\vx)-\epsilon} ,\\
-	|m_0 + m_1 x_1 + \cdots + m_d x_d| 
-		&\geqslant C_{d-1} \|\vm\|_\infty^{-\omega_{d-1}(\vx)-\epsilon} 
+	|n \vx - \vm|_\infty 
+		&\geqslant C_0 |(n,\vm)|_\infty^{-\omega_0(\vx)-\epsilon} ,\\
+	|n + \langle \vm,\vx\rangle| 
+		&\geqslant C_{d-1} |(n,\vm)|_\infty^{-\omega_{d-1}(\vx)-\epsilon} 
 \end{align*}
-for all $\vm\ne 0$. 
+for all $(n,\vm)\ne 0$ in $\bZ^{d+1}$. 
 
-Start with the first inequality in the statement of the result. By modifying 
-$C_0$, we may assume that $|\cdot| = \|\cdot\|_\infty$ in the definition of 
-$\dd(n \vx,\bZ^d)$. Let $\vm=(m_1,\dots,m_d)$ be the lattice point achieving 
-the minimum $|n \vx - \vm|$. Then we know that 
-\[
-	\dd(n \vx,\bZ^d) \geqslant C_0 \|(m_1,\dots,m_d)\|_\infty^{-\omega_0(\vx)-\epsilon} .
-\]
-Moreover, since $\|n \vx - \vm\|_\infty<1$, there exists a constant $C_0'$ 
-such that 
-\[
-	\dd(n \vx,\bZ^d) \geqslant C_0' |n|^{-\omega_0(\vx)-\epsilon} .
-\]
-It follows that 
-\[
-	\frac{1}{\dd(n \vx,\bZ^d)} \ll |n|^{\omega_0(\vx)+\epsilon} ,
-\]
-the implied constant depending on $x$, $\epsilon$, and the choice of norm 
-$|\cdot|$. 
+Start with the first inequality in the statement of the result. Let 
+$\vm$ be the lattice point achieving the minimum $|n \vx - \vm|_\infty$; 
+then 
+$\dd(n \vx,\bZ^d) \geqslant C_0 |(n,\vm)|_\infty^{-\omega_0(\vx)-\epsilon}$. 
+Since $|n\vx - \vm|_\infty < 1$, 
+$|n| \geqslant \frac{|\vm|_\infty}{|\vx|_\infty}-1$ , which gives 
+$\dd(n \vx,\bZ^d) \geqslant C_0' |n|^{-\omega_0(\vx)-\epsilon}$ for $C_0'$ 
+depending on $\vx$. It follows that 
+$\frac{1}{\dd(n \vx,\bZ^d)} \ll |n|^{\omega_0(\vx)+\epsilon}$, the 
+implied constant depending on $x$ and $\epsilon$.
 
 Now let's consider the second inequality in the statement of the result. Note 
-that $\dd(m_1 x_1 + \dots + m_d x_d,\bZ) = |m_0 + m_1x_1 + \cdots + m_d x_d|$ 
-for some $m_0$ with $|m_0| \leqslant \|(m_1,\dots,m_d)\|_2 \|x\|_2 + 1$. Thus 
-$\|(m_1,\dots,m_d)\|_\infty \ll \|x\|_2 \|(m_1,\dots,m_d)\|_2$, which gives us 
-\[
-	\dd(m_1 x_1 + \cdots + m_d x_d,\bZ) \geqslant C_{d-1} \|(m_1,\dots,m_d)\|_2^{-\omega_{d-1}(\vx)-\epsilon} .
-\]
-This implies 
+that $\dd(\langle \vm,\vx\rangle,\bZ) = |n + \langle \vm,\vx\rangle|$ for 
+some $n$ with $|n| \leqslant \|\vm\|_2 \|\vx\|_2 + 1$. Thus 
+$|(n,\vm)|_\infty \ll |\vm|_2 \ll |\vm|_\infty$ (any two norms on a 
+finite-dimensional Banach space are equivalent), which gives us 
+$\dd(\langle\vm,\vx\rangle,\bZ) \geqslant C_{d-1}' |\vm|^{-\omega_{d-1}(\vx)-\epsilon}$, for some constant $C_{d-1}'$. This implies 
 \[
 	\frac{1}{d(\langle \vm,\vx\rangle,\bZ)} \ll |\vm|^{\omega_{d-1}(\vx)+\epsilon} ,
 \]
-the implied constant depending on $\vx$, $\epsilon$, and the choice of $|\cdot|$. 
+the implied constant depending on $\vx$ and $\epsilon$.
 \end{proof}
 
 
@@ -120,7 +108,7 @@ $(\bR/\bZ)^d$.
 \begin{theorem}[Erd\"os--Tur\'an--Koksma]
 Let $\bx$ be a sequence in $\bR^d$ and $h$ an arbitrary integer. Then 
 \[
-	\disc(\bx^N) \ll \frac 1 h + \sum_{0\leqslant \|\vm\|_\infty \leqslant h} \frac{1}{r(\vm)} \left| \frac 1 N \sum_{n\leqslant N} e^{2\pi i \langle \vm,\vx_n\rangle}\right| ,
+	\D(\bx^N) \ll \frac 1 h + \sum_{0\leqslant \|\vm\|_\infty \leqslant h} \frac{1}{r(\vm)} \left| \frac 1 N \sum_{n\leqslant N} e^{2\pi i \langle \vm,\vx_n\rangle}\right| ,
 \]
 where the first sum ranges over $\vm\in \bZ^d$, 
 $r(\vm) = \prod \max\{1,|m_i|\}$, and the implied constant depends only on $d$. 
@@ -132,15 +120,15 @@ This is \cite[Th.~1.21]{drmota-tichy-1997}.
 \begin{lemma}\label{lem:bound-exp-sum}
 Let $x\in \bR$. Then 
 \[
-	\left| \sum_{n\leqslant N} e^{2\pi i n x}\right| \ll \frac{1}{\dd(x, \bZ)} .
+	\left| \sum_{n\leqslant N} e^{2\pi i n x}\right| \leqslant \frac{2}{\dd(x, \bZ)} .
 \]
 \end{lemma}
 \begin{proof}
 We begin with an easy bound: 
 \[
-	\left| \sum_{n\leqslant N} e^{2\pi i n x}\right| = \frac{|e^{2\pi i (N+1) x} - 1|}{|e^{2\pi i x} - 1|} \leqslant \frac{2}{|e^{2\pi i x} - 1|} .
+	\left| \sum_{n\leqslant N} e^{2\pi i n x}\right| = \frac{|e^{2\pi i (N+1) x} - e^{2\pi i x}|}{|e^{2\pi i x} - 1|} \leqslant \frac{2}{|e^{2\pi i x} - 1|} .
 \]
-Since $|e^{2\pi i m x} - 1| = \sqrt{2-2\cos(2\pi x)}$ and 
+Since $|e^{2\pi i x} - 1| = \sqrt{2-2\cos(2\pi x)}$ and 
 $\cos(2\theta) = 1-2\sin^2\theta$, we obtain 
 \[
 	\left|\sum_{n\leqslant N} e^{2\pi i n x}\right| \leqslant \frac{1}{|\sin(\pi x)|} .
@@ -152,7 +140,7 @@ It is easy to check that $|\sin(\pi x)| \geqslant \dd(x,\bZ)$, whence the result
 Let $\vx\in (\bR/\bZ)^d$ with $(x_1,\dots,x_d)$ linearly independent over $\bQ$. 
 Then for $\bx=(\vx,2\vx,3\vx,\dots)$, we have 
 \[
-	\disc_N(\bx) \ll \frac 1 h + \frac 1 N \sum_{0<\|\vm\|_\infty \leqslant h} \frac{1}{r(\vm) \dd(\langle \vm,\vx\rangle,\bZ)} 
+	\D_N(\bx) \ll \frac 1 h + \frac 1 N \sum_{0<|\vm|_\infty \leqslant h} \frac{1}{r(\vm) \dd(\langle \vm,\vx\rangle,\bZ)} 
 \]
 for any integer $h$, with the implied constant depending only on $d$. 
 \end{corollary}
@@ -164,38 +152,33 @@ using Lemma \ref{lem:bound-exp-sum}.
 \begin{theorem}
 Let $\bx=(\vx,2\vx,3\vx,\dots)$ in $(\bR/\bZ)^d$. Then 
 \[
-	\disc_N(\bx) \ll N^{-\frac{1}{\omega_{d-1}(\vx)+1}+\epsilon} .
+	\D_N(\bx) \ll N^{-\frac{1}{\omega_{d-1}(\vx)+1}+\epsilon} .
 \]
 \end{theorem}
 \begin{proof}
 Choose $\delta>0$ such that 
 $\frac{1}{\omega_{d-1}(\vx)+1+\delta} = \frac{1}{\omega_{d-1}(\vx)+1} - \epsilon$. 
-
 By Corollary \ref{cor:bound-disc-distance}, we know that 
 \[
-	\disc_N(\bx) \ll \frac 1 h + \frac 1 N \sum_{0<\|\vm\|_\infty \leqslant h} \frac{1}{r(\vm) \dd(\langle \vm,\vx\rangle,\bZ)} ,
+	\D_N(\bx) \ll \frac 1 h + \frac 1 N \sum_{0<|\vm|_\infty \leqslant h} \frac{1}{r(\vm) \dd(\langle \vm,\vx\rangle,\bZ)} ,
 \]
 and by Lemma \ref{lem:bound-distance}, we know that 
 $\dd(\langle \vm,\vx\rangle,\bZ)^{-1} \ll |\vm|^{\omega_{d-1}(\vx)+\delta}$. 
 It follows that 
 \[
-	\disc_N(\bx) \ll \frac 1 h + \frac 1 N \sum_{0 < \|\vm\|_\infty \leqslant h} \frac{|\vm|^{\omega_{d-1}(\vx)+\delta}}{r(\vm)} .
+	\D_N(\bx) \ll \frac 1 h + \frac 1 N \sum_{0 < |\vm|_\infty \leqslant h} \frac{|\vm|^{\omega_{d-1}(\vx)+\delta}}{r(\vm)} .
 \]
 All that remains is to bound the sum. 
 \begin{align*}
-	\sum_{0< \|\vm\|_\infty \leqslant h} \frac{|\vm|_\infty^{\omega_{d-1}(\vx)+\delta}}{r(m)} 
+	\sum_{0< |\vm|_\infty \leqslant h} \frac{|\vm|_\infty^{\omega_{d-1}(\vx)+\delta}}{r(m)} 
 		&\ll \int_1^h \int_1^{t_d} \dots \int_1^{t_2} \frac{t_d^{\omega_{d-1}(\vx)+\delta}}{t_1 \dots t_d}\, \dd t_1 \dots \dd t_d \\
 		&\ll \int_1^h t^{\omega_{d-1}(\vx)+\delta-1}\, \dd t \prod_{j=1}^{d-1} \int_1^h \frac{\dd t}{t} \\
 		&\ll (\log h)^{d-1} h^{\omega_{d-1}(\vx)+\delta} .
 \end{align*}
 It follows that 
-\[
-	\disc(\bx^N) \ll \frac 1 h + \frac 1 N (\log h)^{d-1} h^{\omega_{d-1}(\vx)+\delta} .
-\]
+$\D_N(\bx) \ll \frac 1 h + \frac 1 N (\log h)^{d-1} h^{\omega_{d-1}(\vx)+\delta}$. 
 Setting $h\approx N^{\frac{1}{1+\omega_{d-1}(\vx)+\delta}}$, we see that 
-\[
-	D_N(\bx) \ll N^{-\frac{1}{\omega_{d-1}(\vx)+1+\delta}} = N^{-\frac{1}{\omega_{d-1}(\vx)+1} + \epsilon} .
-\]
+$D_N(\bx) \ll N^{-\frac{1}{\omega_{d-1}(\vx)+1+\delta}} = N^{-\frac{1}{\omega_{d-1}(\vx)+1} + \epsilon}$. 
 
 For a slightly different proof of a similar result (given as a sequence of 
 exercises), see  \cite[Ch.~2, Ex.~3.15, 16, 17]{kuipers-niederreiter-1974}. 
@@ -205,7 +188,7 @@ exercises), see  \cite[Ch.~2, Ex.~3.15, 16, 17]{kuipers-niederreiter-1974}.
 Let $\vx\in \bR^d$ be such that $x_1,\dots,x_d$ are linearly independent over 
 $\bQ$, and let $\bx=(\vx,2\vx,3\vx,\dots)$ in $(\bR/\bZ)^d$. Then 
 \[
-	\disc_N(\bx) = \Omega\left(N^{-\frac{d}{\omega_0(\vx)}-\epsilon} \right).
+	\D_N(\bx) = \Omega\left(N^{-\frac{d}{\omega_0(\vx)}-\epsilon} \right).
 \]
 \end{theorem}
 \begin{proof}
@@ -215,17 +198,15 @@ $\epsilon>0$, there exists $\delta>0$ such that
 $\frac{d}{\omega_0(\vx)-\delta} = \frac{d}{\omega_0(\vx)} + \epsilon$. 
 
 By the definition of $\omega_0(\vx)$, there exist infinitely many 
-$(q,m_1,\dots,m_d)$ with $q>0$ such that 
-\[
-	\|q \vx - \vm\|_\infty \leqslant \|(q,m_1,\dots,m_d)\|_\infty^{-\omega_0(\vx)+\delta/2} .
-\]
-Since $\|(q,m_1,\dots,m_d)\|_\infty \geqslant q$, we derive the stronger 
+$(q,\vm)$ with $q>0$ such that 
+$|q \vx - \vm|_\infty \leqslant |(q,\vm)|_\infty^{-\omega_0(\vx)+\delta/2}$. 
+Since $|(q,\vm)|_\infty \geqslant q$, we derive the stronger 
 statement that for infinitely many $q\to \infty$, there exists 
-$\vm=(m_1,\dots,m_d)\in \bZ^d$ such that 
-$\|q \vx-\vm\|_\infty \leqslant q^{-\omega_0(\vx)+\delta/2}$ or, equivalently, 
+$\vm\in \bZ^d$ such that 
+$|q \vx-\vm|_\infty \leqslant q^{-\omega_0(\vx)+\delta/2}$ or, equivalently, 
 $|\vx-q^{-1}\vm| \leqslant q^{-1-\omega_0(\vx)+\delta/2}$. Pick such a $q$, and 
 let $N=\lfloor q^{\omega_0(\vx)-\delta}\rfloor$. Then for each $n\leqslant N$, we 
-have $\|n \vx - \frac n q \vm\|_\infty \leqslant q^{-1-\delta/2}$. Thus, for each 
+have $|n \vx - \frac n q \vm|_\infty \leqslant q^{-1-\delta/2}$. Thus, for each 
 $n\leqslant N$, each $n \vx$ is within $q^{-1-\delta/2}$ of the grid 
 $\frac 1 q \bZ^d\subset (\bR/\bZ)^d$. Thus, they miss a box with side lengths 
 $q^{-1} - 2 q^{-1-\delta/2}$. For $q$ sufficiently large, 
