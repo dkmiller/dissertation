@@ -19,15 +19,14 @@ finite-length $\Lambda$-modules. The ring $\Lambda$ is pseudocompact if it
 is pseudocompact as a module over itself. 
 \end{definition}
 
-Let $\Lambda$ be a topological ring. Given a pseudocompact $\Lambda$-algebra 
-$A$, write $\Art_\Lambda$ for the opposite 
-of the category of $\Lambda$-algebras which have finite length as 
+Let $\Lambda$ be a pseudocompact ring, and write $\Art_\Lambda$ for the 
+opposite of the category of $\Lambda$-algebras which have finite length as 
 $\Lambda$-modules. Given such a $\Lambda$-algebra $A$, write $X=\spf(A)$ for 
-the corresponding object of $\Art_\Lambda$, and we put $A=\sO(X)$. 
+the corresponding object of $\Art_\Lambda$, and put $A=\sO(X)$. 
 
 \begin{lemma}
-Let $\Lambda$ be a pseudocompact ring, $\Art_\Lambda$ as above. Then 
-$\Art_\Lambda$ is closed under finite limits and colimits. 
+Let $\Lambda$ be a pseudocompact ring. Then $\Art_\Lambda$ is closed under 
+finite limits and colimits. 
 \end{lemma}
 \begin{proof}
 That $\Art_\Lambda$ is closed under finite colimits follows from the fact that 
@@ -56,7 +55,8 @@ finite \'etale $\Lambda/\fm$-algebras.
 \end{enumerate}
 \end{lemma}
 \begin{proof}
-The conditions are equivalent by \cite[18.5.11]{ega4-4}. Recall that 
+The conditions are equivalent by \cite[18.5.11]{ega4-4}, so we only prove 
+that the first holds. Recall that 
 $\Lambda = \varprojlim \Lambda/\fa$, where $\fa$ ranges over closed ideals of 
 finite index. Let $A$ be a pseudocompact $\Lambda$-algebra. For any 
 ideal $\fa\subset \Lambda$, the ring $\Lambda/\fa$ is henselian by 
@@ -70,42 +70,33 @@ $\Lambda$-algebras.
 Following Grothendieck, if $\cC$ is an arbitrary category, we write 
 $\widehat\cC=\hom(\cC^\circ,\sets)$ for the category of contravariant functors 
 $\cC\to \sets$. We regard $\cC$ as a full subcategory of $\widehat\cC$ via the 
-Yoneda embedding, so for $X,Y\in \cC$, we write $X(Y) = \hom_\cC(Y,X)$. With 
+Yoneda embedding: for $X,Y\in \cC$, write $X(Y) = \hom_\cC(Y,X)$. With 
 this notation, the Yoneda Lemma states that $\hom_{\widehat\cC}(X,P) = P(X)$ 
 for all $X\in \cC$. 
 
-\begin{lemma}\label{thm:ind-object-def}
+\begin{lemma}[{\cite[6.1]{kashiwara-schapira-2006}}]\label{thm:ind-object-def}
 Let $\cX\in\widehat{\Art_\Lambda}$. Then $\cX$ is left exact if and only 
 if there exists a filtered system $\{X_i\}_{i\in I}$ in $\cC_\Lambda$ together 
-with a natural isomorphism $\cX(\cdot)\simeq \varinjlim X_i(\cdot)$. Write 
+with a natural isomorphism $\cX\simeq \varinjlim X_i$. Write 
 $\Ind(\Art_\Lambda)$ for the category of such functors. Then 
 $\Ind(\Art_\Lambda)$ is closed under colimits, and the 
 Yoneda embedding $\Art_\Lambda\monic\Ind(\Art_\Lambda)$ 
 preserves filtered colimits.
 \end{lemma}
-\begin{proof}
-This follows from the results of \cite[6.1]{kashiwara-schapira-2006}. 
-\end{proof}
 
-\begin{lemma}\label{lem:ind-cat-left-exact}
+\begin{lemma}[{\cite[6.1.17]{kashiwara-schapira-2006}}]\label{lem:ind-cat-left-exact}
 The functors $\Art_\Lambda \to \Ind(\Art_\Lambda) \to \widehat{\Art_\Lambda}$ 
 are left exact.
 \end{lemma}
-\begin{proof}
-This is \cite[6.1.17]{kashiwara-schapira-2006}. 
-\end{proof}
 
 If $R$ is a pseudocompact $\Lambda$-algebra, write $\spf(R)$ for the object of 
 $\widehat{\Art_\Lambda}$ defined by $\spf(R)(A)=\hom_{\cts/\Lambda}(R,A)$, 
 the set of continuous $\Lambda$-algebra homomorphisms. 
 
-\begin{lemma}
+\begin{lemma}[{\cite[VII\textsubscript{B} 0.4.2 Prop.]{sga3-1}}]
 The funtor $\spf$ induces an (anti-)equivalence between the category of 
 pseudocompact $\Lambda$-algebras and $\Ind(\Art_\Lambda)$. 
 \end{lemma}
-\begin{proof}
-This is \cite[VII\textsubscript{B} 0.4.2 Prop.]{sga3-1}. 
-\end{proof}
 
 So $\Ind(\Art_\Lambda)$ is the category of pro-representable 
 functors on finite length $\Lambda$-algebras. \emph{Warning}: in many papers, 
@@ -124,8 +115,8 @@ $P\in \widehat{\Art_\Lambda}$. Then the functor $\cX^P$ defined by
 	\cX^P(S) = \hom_{\widehat{\Art_\Lambda}_{/S}}(P_{/S},\cX_{/S}) 
 \]
 is also in $\Ind(\Art_\Lambda)$. Given the characterization of 
-$\Ind(\Art_\Lambda)$ as left exact functors, this is easy to 
-prove, see e.g.~\cite[4.2.3]{johnstone-2002}. 
+$\Ind(\Art_\Lambda)$ as left exact functors, this is follows directly from 
+\cite[4.2.3]{johnstone-2002}. 
 \end{proof}
 
 If $\cC$ is a category, we write $\Gp(\cC)$ for the category of group 
@@ -182,7 +173,7 @@ all the rings are finite length.
 Let $\Sh_\fl(\Art_\Lambda)$ be the category of sheaves (of sets) on 
 $\Art_\Lambda$ with respect to the flat topology. Then a presheaf 
 $P\in \widehat{\Art_\Lambda}$ lies in $\Sh_\fl(\Art_\Lambda)$ if 
-and only if $P(\coprod U_i) = \prod P(U_i)$ and moreover, whenever 
+and only if $P(\coprod U_i) = \prod P(U_i)$ and whenever 
 $U \to X$ is a flat cover where $\sO(U)$ and $\sO(X)$ are local rings, the 
 sequence 
 \[
@@ -197,7 +188,7 @@ $\Ind(\Art_\Lambda)\subset \Sh_\fl(\Art_\Lambda)$.
 \end{lemma}
 \begin{proof}
 The first claim is the content of \cite[IV 6.3.1(ii)]{sga3-1}. For the second, 
-note that any $\cX\in \Ind(\Art_\Lambda)$ will, by 
+note that any $\cX\in \Ind(\Art_\Lambda)$ will, by Lemma 
 \ref{thm:ind-object-def}, convert (arbitrary) colimits into limits. Thus 
 $\cX(\coprod U_i) = \prod \cX(U_i)$. If $U\to X$ is a flat cover, then by (loc.~cit.), $U\times_X U\rightrightarrows U\to X$ is a coequalizer diagram in 
 $\Art_\Lambda$, hence 
@@ -205,7 +196,7 @@ $\cX(X)\to \cX(U)\rightrightarrows \cX(U\times_X U)$ is an equalizer.
 \end{proof}
 
 Our main reason for introducing the category $\Sh_\fl(\Art_\Lambda)$ 
-is that, as a (Grothendieck) topos, it is closed under arbitrary colimits. 
+is that, as a Grothendieck topos, it is closed under arbitrary colimits. 
 Recall that in an \emph{equivalence relation} in $\widehat{\Art_\Lambda}$ 
 is a morphism $R\to X\times X$ such that, for all $S$, the map 
 $R(S)\to X(S)\times X(S)$ is an injection whose image is an equivalence 
@@ -270,7 +261,7 @@ residue field. From the diagram
 		& k ,
 \end{tikzcd}
 \]
-the definition of (formal) smoothness, and a limiting argument involving the 
+the definition of formal smoothness, and a limiting argument involving the 
 finite length quotients $R/\fa$, we obtain the result. 
 \end{proof}
 
@@ -354,7 +345,7 @@ Here we elaborate on (and correct some mistakes in) the arguments in
 Let $\Gamma\in \Gp(\widehat{\Art_\Lambda})$ and $G_{/\Lambda}$ be a smooth 
 group scheme of finite type. Write $\widehat G$ for the group object in 
 $\Ind(\Art_\Lambda)$ given by $\widehat G(\spf A) = G(\spec A)$. By 
-\ref{thm:framed-deformation}, the functor 
+Corollary \ref{thm:framed-deformation}, the functor 
 \[
   \Rep^\square(\Gamma,\widehat G)(S) = \hom_{\Gp/S}(\Gamma_S,\widehat G_S) = \hom_{\Gp}(\Gamma(S), G(S)) 
 \]
@@ -362,7 +353,8 @@ is in $\Ind(\Art_\Lambda)$. We would like to define an ind-scheme
 $\Rep(\Gamma,\cG)$ as ``$\Rep^\square(\Gamma,\cG)$ modulo conjugation,'' but 
 this requires some care. The conjugation action of $\cG$ on 
 $\Rep^\square(\Gamma,\cG)$ will have fixed points, so the quotient will be 
-badly behaved. We loosely follow \cite[Ch.~2--3]{tilouine-1996}. 
+badly behaved. We loosely follow \cite[Ch.~2--3]{tilouine-1996} in dealing with 
+this potential problem. 
 
 Assume $\Lambda$ is local, with maximal ideal $\fm$ and residue field $k$. 
 Fix $\bar\rho\in \Rep^\square(\Gamma,\widehat G)(k)$, i.e.~a residual 
@@ -372,7 +364,7 @@ $\bar\rho$ in $\Rep^\square(\Gamma,\widehat G)$. Assume
 that $G$ and $\zentrum(G)$ are smooth; then the quotient 
 $\widehat{G}^{\circ,\ad}=\widehat G^\circ/\zentrum(\widehat G^\circ)$ is also 
 smooth, where $(-)^\circ$ denotes ``connected component of identity.'' 
-Since $\zentrum(\widehat G^\circ)$ is also smooth, the quotient sheaf 
+Since $\zentrum(\widehat G^\circ)$ is smooth, the quotient sheaf 
 $\widehat G^{\circ,\ad}$ is the same as the quotient presheaf. 
 
 \begin{theorem}
@@ -385,7 +377,7 @@ We are reduced to proving the following result from commutative algebra: if
 $R,S$ are local pro-artinian $\Lambda$-algebras and $R$ has residue field 
 $\kk$, then $R\widehat\otimes_\Lambda S$ is local. Since 
 $R\widehat\otimes_\Lambda S = \varprojlim (R/\fr)\otimes_\Lambda (S/\fs)$, 
-$\fr$ (resp.~$\fs$) ranges over all open ideals in $R$ (resp.~$S$), we may 
+$\fr$ (resp.~$\fs$) ranging over all open ideals in $R$ (resp.~$S$), we may 
 assume that both $R$ and $S$ are artinian. The rings $R$ and $S$ are 
 henselian, so $R\otimes S$ is local if and only if 
 $(R/\fm_R)\otimes (S/\fm_S) = S/\fm_S$ is local, which it is. 
@@ -397,9 +389,9 @@ preserves $\Rep^\square(\Gamma,\cG)_{\bar\rho}$. Thus we may put
 \[
 	\Rep(\Gamma,G)_{\bar\rho} = \Rep^\square(\Gamma,\widehat G)_{\bar\rho} / \widehat G^{\circ,\ad} .
 \]
-Obviously, that quotient will only be well-behaved if $\widehat G^{\circ,\ad}$ 
-acts faithfully on $\Rep^\square(\Gamma,\widehat G)$. Whether or not it does 
-is governed by the action of $\Gamma$ on $\fg(k)$. Let 
+This quotient will only be well-behaved if $\widehat G^{\circ,\ad}$ 
+acts faithfully on $\Rep^\square(\Gamma,\widehat G)$. That faithfulness (or 
+lack thereof) is governed by the action of $\Gamma$ on $\fg(k)$. Let 
 $\fz = \lie(\zentrum(G))$. 
 
 \begin{lemma}\label{lem:stab=H0}
@@ -482,10 +474,9 @@ is the pullback by $\rho_0$:
 		& \fg(I) \ar[r]
 		& \cG(S) \ar[r] 
 		& \cG(S_0) \ar[r] 
-		& 1
+		& 1 .
 \end{tikzcd}
 \]
-Computing explicitly, we see the result. 
 
 \begin{proposition}
 Let $f\colon G\to H$ be a morphism of profinite groups. Suppose $M$ is a 
