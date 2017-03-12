@@ -41,46 +41,48 @@
 Let $E_{/\bQ}$ be an elliptic curve. The Sato--Tate conjecture (now a theorem) 
 tells us that the angles $\theta_p =\cos^{-1}\left(\frac{a_p}{2\sqrt p}\right)$ 
 are equidistributed in $[0,\pi]$ with respect to the measure 
-$\frac{2}{\pi}\sin^2\theta$ 
-(resp.~$\frac{1}{2\pi} \dd \theta + \frac 1 2 \delta_{\pi/2}$) if $E$ is non-CM 
-(resp.~CM). Call $\mu$ the measure in question. Akiyama and Tanigawa conjecture 
-that in fact, the discrepancy 
+$\frac{2}{\pi}\sin^2\theta$ if $E$ is non-CM
+(resp.~$\frac{1}{2\pi} \dd \theta + \frac 1 2 \delta_{\pi/2}$ if $E$ is CM). 
+Call $\mu$ the measure in question. Akiyama and Tanigawa conjecture that the 
+discrepancy 
 \[
 	D_N = \sup_{x\in [0,\pi]} \left| \frac{1}{\pi(N)} \sum_{p\leqslant N} 1_{[0,x]}(\theta_p) - \int 1_{[0,x]} \, \dd\mu\right| 
 \]
-decays as $D_N \ll N^{-\frac 1 2+\epsilon}$, as is suggested by computational 
-evidence and certain reasonable heuristics. This implies the Riemann Hypothesis 
+asymptotically decays like $N^{-\frac 1 2+\epsilon}$, as is suggested by computational 
+evidence and certain reasonable heuristics on the Kolmogorov--Smirnov 
+statistic. This conjecture implies the Riemann Hypothesis 
 for all $L$-functions associated with $E$. It is natural to assume that the 
-converse holds, as is suggested by analogy with the Riemann Hypothesis for 
-Artin $L$-functions. We show that when $E$ has CM, there is no 
-reason to believe that the converse holds, as there are ``fake Satake 
-parameters'' yielding $L$-functions which satisfy the Generalized Riemann 
-Hypothesis, but for which the discrepancy decays like $N^{-\epsilon}$. 
+converse (``Riemann Hypothesis implies discrepancy estimate'') holds, as is 
+suggested by analogy with Artin $L$-functions. We show that when $E$ has CM,
+there is no reason to believe that the converse holds, as there are ``fake 
+Satake parameters'' yielding $L$-functions which satisfy the Generalized 
+Riemann Hypothesis, but for which the discrepancy decays like $N^{-\epsilon}$. 
 
 We also show that there are Galois representations 
 $\rho\colon \Gal(\overline \bQ /\bQ) \to \GL_2(\bZ_l)$, ramified at an 
 arbitrarily thin set of primes, whose Satake parameters can be made to 
-converge at any specified rate to any reasonable measure on $[0,\pi]$. 
+converge at any specified rate to any fixed measure $\mu$ on $[0,\pi]$ for 
+which $\cos_\ast\mu$ is absolutely continuous. 
 \end{abstract}
 
 \begin{biosketch}
 Daniel Miller was born in St.~Paul, Minnesota. He completed his Bachelor of 
-Science at the University of Nebraska--Omaha, during which he attended 
-Cornell's Summer Mathematics Institute in 2011. He started his Ph.D.~at 
-Cornell in 2012 planning on a career in academia. Halfway through he had a 
+Science at the University of Nebraska--Omaha, during which he played the piano 
+competitively and attended Cornell's Summer Mathematics Institute. He started 
+his Ph.D.~at Cornell planning on a career in academia. Halfway through he had a 
 change of heart, and will be joining Microsoft's Analysis and Experimentation 
 team as a data scientist after graduation. He is happily married to Ivy 
-Lai Miller. 
+Lai Miller, and has a cute but grumpy cat named Socrates. 
 \end{biosketch}
 
 \begin{dedication}
 This thesis is dedicated to my undergraduate adviser, Griff Elder. He is the 
-reason I considered a career in mathematics in the first place, and his 
-infectious enthusiasm for number theory has inspired me more than I can say. 
+reason I ever considered a career in mathematics, and his infectious enthusiasm 
+for number theory has inspired me more than I can say. 
 \end{dedication}
 
 \begin{acknowledgements}
-For starters, I'd like to thank my parents Jay and Cindy for noticing and 
+I'll like to begin by thanking my parents Jay and Cindy for noticing and 
 fostering my mathematical interests early on, and for being unfailingly loving 
 and supportive. I'd also like to thank my undergraduate thesis advisor, 
 Griffith Elder, without whose encouragement and inspiration I probably never 
@@ -91,10 +93,10 @@ Institute in 2011, Jason Boynton for teaching a fantastic algebra class, and
 Anthony Weston for introducing me to the world of nonlinear functional 
 analysis. 
 
-Thanks go to my graduate student friends Sasha Patotski and Bal\'azs Elek for 
-sharing my early love of algebraic geometry, laughing with me at the many 
-absurdities of academic life, and listening to my ramblings about number 
-theory. 
+Thanks go to fellow graduate students Sasha Patotski, Bal\'azs Elek, and 
+Sergio Da Silva for sharing my early love of algebraic geometry, laughing with 
+me at the absurdities of academic life, and listening to my ramblings 
+about number theory. 
 
 I owe a big debt of gratitude to the mathematics department at Cornell, where 
 many professors were generous with their time and ideas. I appreciate Yuri 
@@ -102,9 +104,9 @@ Berest, John Hubbard, Farbod Shokrieh, Birget Speh, and David Zywina for
 letting me bounce ideas off them, helping me add rigor to half-baked ideas, 
 and pointing me in new and interesting directions of research. 
 
-I am especially thankful to my adviser Ravi. He kindled my first love for 
-number theory, stayed supportive as my research bounced all over the place, 
-and kept me focused, grounded, and concrete when I needed to be. 
+I am especially thankful to my adviser Ravi Ramakrishna. He kindled my first 
+love for number theory, stayed supportive as my research bounced all over the 
+place, and kept me focused, grounded, and concrete when I needed to be. 
 
 Most importantly, I thank my loving wife Ivy for being there for me 
 through the highs and the lows, both when I (prematurely) thought my thesis was 

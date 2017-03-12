@@ -14,8 +14,8 @@ applications in computer science and statistics, but here we will focus on only
 the basic properties, such as how discrepancy changes when sequences 
 are ``tweaked'' and combined. 
 
-First, recall that discrepancy provides a way of sharpening the ``soft'' 
-convergence results of, say \cite[A.1]{serre-1989}. Let $X$ be a compact 
+First, recall that discrepancy provides a way of sharpening the soft 
+convergence results of \cite[A.1]{serre-1989}. Let $X$ be a compact 
 topological space, $\bx = (x_2,x_3,x_5,\dots)$ a sequence of points in $X$ 
 indexed by the rational primes. 
 
@@ -23,7 +23,7 @@ indexed by the rational primes.
 Let $\mu$ be a continuous probability measure on $X$. The sequence $\bx$ is 
 \emph{equidistributed} with respect to $\mu$ if for all $f\in C(X)$, we have 
 \[
-	\lim_{N\to \infty} \frac{1}{\pi(N)} \sum_{p\leqslant N} f(x_p) \to \int f\, \dd \mu .
+	\lim_{N\to \infty} \frac{1}{\pi(N)} \sum_{p\leqslant N} f(x_p) = \int f\, \dd \mu .
 \]
 \end{definition}
 
@@ -37,15 +37,15 @@ generate a dense subpace of $C(X)^{\mu = 0}$.
 
 In the discussion in \cite[A.1]{serre-1989}, $X$ is the space of conjugacy 
 classes in a compact Lie group, and $f$ is allowed to range over the characters 
-of irreducible, nontrivial representations of the group. That entire 
-discussion can be generalized to a much broader class of Dirichlet series, 
+of irreducible, nontrivial, unitary representations of the group. Serre's 
+results can be generalized to a much broader class of Dirichlet series, 
 which are of the form 
 \[
 	L_f(\bx,s) = \prod_p \frac{1}{1-f(x_p)p^{-s}} .
 \]
 In fact, in light of the following theorem, we can consider functions $f$ 
-which are only only continuous almost everywhere. This allows us to consider, 
-e.g.~$-1_{[0,\pi/2)} + 1_{(\pi/2,\pi]}$ on $[0,\pi]$. 
+which are only only continuous almost everywhere. This allows us to consider 
+step functions like $-1_{[0,\pi/2)} + 1_{(\pi/2,\pi]}$ on $[0,\pi]$. 
 
 \begin{theorem}
 Let $X$ be a compact separable metric space with no isolated points. Let $\mu$ 
@@ -57,7 +57,7 @@ Then $f$ is continuous almost everywhere if and only if
 for all $\mu$-equidistributed sequences $\bx$. 
 \end{theorem}
 \begin{proof}
-This follows immediately from the proof of \cite[Th.~1]{mazzone-1995}
+This follows immediately from the proof of \cite[Th.~1]{mazzone-1995}. 
 \end{proof}
 
 
@@ -68,33 +68,26 @@ This follows immediately from the proof of \cite[Th.~1]{mazzone-1995}
 
 We will define discrepancy for measures on the $d$-dimensional half-open box 
 $[0,\vinfty) = [0,\infty)^d\subset \bR^d$. For vectors 
-$\vx,\vy\in [0,\vinfty)$, we say $\vx<\vy$ if $x_1<y_1$,\dots,$x_d<y_d$, and 
+$\vx,\vy\in [0,\vinfty)$, we say $\vx<\vy$ if $x_i<y_i\,\forall i$, and 
 in that case write $[\vx,\vy)$ for the half-open box 
 $[x_1,y_1)\times \cdots \times [x_d,y_d)$. 
 
 \begin{definition}
 Let $\mu, \nu$ be probability measures on $[0,\vinfty)$. The 
 \emph{discrepancy} of $\mu$ with respect to $\nu$ is 
-\[
-	\D(\mu,\nu) = \sup_{\vx < \vy} \left| \mu[\vx,\vy) - \nu[\vx,\vy)\right| ,
-\]
+$\D(\mu,\nu) = \sup_{\vx < \vy} \left| \mu[\vx,\vy) - \nu[\vx,\vy)\right|$, 
 where $\vx<\vy$ range over $[0,\vinfty)$.
-
 The \emph{star discrepancy} of $\mu$ with respect to $\nu$ is 
-\[
-	\D^\star(\mu,\nu) = \sup_{0<\vy} \left| \mu[0,\vy) - \nu[0,\vy)\right| ,
-\]
+$\D^\star(\mu,\nu) = \sup_{0\leqslant \vy} \left| \mu[0,\vy) - \nu[0,\vy)\right|$, 
 where $\vy$ ranges over $[0,\vinfty)$. 
 \end{definition}
 
 \begin{lemma}
 Let $\mu,\nu$ be Borel measures on $\bR^d$. Then 
-\[
-	\D^\star(\mu,\nu) \leqslant \D(\mu,\nu) \leqslant 2^d \D^\star(\mu,\nu) .
-\]
+$\D^\star(\mu,\nu) \leqslant \D(\mu,\nu) \leqslant 2^d \D^\star(\mu,\nu)$. 
 \end{lemma}
 \begin{proof}
-The first inequality holds because the supremum defining the discrepancy is 
+The first inequality holds because the supremum defining discrepancy is 
 taken over a larger set than that defining star discrepancy. To prove the 
 second inequality, let $\vx<\vy$ be in $[0,\vinfty)$. For 
 $S\subset \{1,\dots,d\}$, let 
@@ -132,18 +125,13 @@ sometimes gloss over the distinction between discrepancy and star discrepancy,
 using whichever makes a proof easier to follow. 
 
 We are usually interested in comparing empirical measures and their conjectured 
-distribution. Namely, let $\bx = (\vx_1,\vx_2,\dots)$ be a sequence in 
+asymptotic distribution. Let $\bx = (\vx_1,\vx_2,\dots)$ be a sequence in 
 $[0,\vinfty)$, and $\mu$ a probability measure on $[0,\vinfty)$. For any real 
-number $N\geqslant 1$, the empirical measure associated to the set 
-$\{\vx_n\}_{n\leqslant N}$ is 
+number $N\geqslant 1$, the empirical measure associated to the truncated 
+sequence $\bx_{\leqslant N} = (\vx_n)_{n\leqslant N}$ is 
 $P_{\bx,N} = \frac{1}{N} \sum_{n\leqslant N} \delta_{\vx_n}$. Write 
-\[
-	\D_N(\bx,\mu) = \D_N\left( P_{\bx,N},\mu\right) ,
-\]
-and likewise for the star discrepancy. Also, we write 
-$\bx_{\geqslant N}$ for the truncated sequence 
-$(\vx_n)_{n\geqslant N}$, and similarly for $\bx_{\leqslant N}$, etc. In this 
-context, 
+$\D_N(\bx,\mu) = \D_N\left( P_{\bx,N},\mu\right)$, and likewise for the star 
+discrepancy. In this context, 
 \[
 	\D^\star_N(\bx,\mu) = \sup_{\vy\in [0,\vinfty)} \left| \frac{\# \{n\leqslant N : \vx_n \in [0,\vy)\}}{N} - \int_{[0,\vy)} \, \dd\mu\right| .
 \]
@@ -156,8 +144,8 @@ place of $\D_N(\bx, \lambda)$.
 
 If the sequence $\bx$ lies in the space $G^\natural$ of conjugacy classes in a 
 compact Lie group $G$, choose a maximal torus $T\subset G$, and recall that 
-$G^\natural = T/W$, where $W$ is the Weyl group of $T$. There is a ``half-open 
-box'' in $\ft = \lie(T)$ which maps bijectively to $T$ under the exponential 
+$G^\natural = T/W$, where $W$ is the Weyl group of $T$. There is a half-open 
+box in $\ft = \lie(T)$ which maps bijectively to $T$ under the exponential 
 map. Choose a ``half-open'' polyhedral set $Q$ that maps bijectively to $T/W$. 
 Then $Q\subset \ft$ and, if we choose a basis for $\ft$ mapping to zero in 
 $T$, then it makes sense to talk about the discrepancy of a sequence in 
@@ -171,7 +159,9 @@ $\SU(2)$, we do not explore this further.
 
 Sometimes the sequence $\bx$ will not be indexed by the natural numbers, but 
 by the rational primes, or some other discrete subset of $\bR^+$. In that case 
-we will still use the notations $\D_N(\bx,\mu)$, $\bx_{\geqslant N}$, etc., 
+we will still use the notations $\D_N(\bx,\mu)$, 
+$\bx_{\leqslant N} = (\vx_1,\dots,\vx_N)$, 
+$\bx_{\geqslant N} = (\vx_N,\vx_{N+1},\dots)$, etc., 
 keeping in mind that the set $\{\vx_\alpha : \alpha \leqslant N\}$ is involved, 
 and that in formulas $\frac{1}{N}$ is replaced by 
 $\#\{\textnormal{indices }\leqslant N\}^{-1}$. 
@@ -184,8 +174,8 @@ definitions involving suprema over open or closed convex sets (isotropic
 discrepancy). See \cite{kuipers-niederreiter-1974} for a discussion and 
 comparison of these differing definitions. In this thesis, we restrict to 
 half-open boxes because they are computationally tractable, fit well with 
-Diophantine approximation on tori, and the theory is most developed in that 
-context. 
+Diophantine approximation on tori, and the theory is most developed for this 
+definition. 
 
 
 
@@ -194,11 +184,12 @@ context.
 \section{Statistical heuristics}
 
 Replace the Satake parameters $\theta_p$ of an elliptic curve with 
-a sequence $\{\theta_p\}$ of iid random variables with common distribution 
-$\mu$ (which we may take to be $\frac{2}{\pi} \sin^2 \theta\, \dd\theta$) 
+a sequence $\{\theta_p\}$ of iid random variables with continuous common 
+distribution 
+$\mu$, which we may take to be $\frac{2}{\pi} \sin^2 \theta\, \dd\theta$, 
 supported on $[0,\pi]$. Then the discrepancy (known as the 
-Kolmogorov--Smirnov statistic in this context) is the (function-valued) 
-random variable 
+Kolmogorov--Smirnov statistic in this context) is the function-valued random 
+variable 
 \[
 	D_N = \sup_{x\in [0,\pi]} \left|\frac{1}{\pi(N)} \sum_{p\leqslant N} 1_{[0,x]}\circ \theta_p - \int 1_{[0,x]}\, \dd\mu\right| .
 \]
@@ -209,9 +200,7 @@ a limiting distribution $K$ (supremum of the Brownian Bridge) which does not
 depend on $\mu$. The rate of convergence of $\sqrt{\pi(N)} D_N$ to that 
 distribution is quantified by the Dvoretzky--Kiefer--Wolfowitz inequality, 
 which tells us that 
-\[
-	\mathrm{P}\left(\sqrt{\pi(N)} D_N > t\right) \leqslant 2 e^{-2 t^2} .
-\]
+$\mathrm{P}\left(\sqrt{\pi(N)} D_N > t\right) \leqslant 2 e^{-2 t^2}$. 
 These theorems suggest that for $E_{/\bQ}$ a non-CM elliptic 
 curve, the ``true'' discrepancy $\D_N(\btheta,\ST)$ should decay 
 like $\pi(N)^{-\frac 1 2}$, or at least $N^{-\frac 1 2+\epsilon}$. Similarly 
@@ -232,9 +221,7 @@ $[0,\vinfty)\subset \bR^d$ is said to be of \emph{bounded variation} (in the
 measure-theoretic sense) if there is a finite Radon measure $\nu$ such that 
 $f(\vx) - f(0) = \nu[0,\vx]$. In such a case we write $\Var(f) = |\nu|$. If 
 the appropriate differentiability conditions are satisfied, then 
-\[
-	\Var(f) = \int_{[0,\vinfty)} \left|\frac{\dd^d f}{\dd t_1 \dots \dd t_d} \right|.
-\]
+$\Var(f) = \int_{[0,\vinfty)} \left|\frac{\dd^d f}{\dd t_1 \dots \dd t_d} \right|$. 
 
 \begin{theorem}[Koksma--Hlawka]
 Let $\mu$ be a probability measure on $[0,\vinfty)$, $f$ of bounded variation. 
@@ -244,7 +231,7 @@ For any sequence $\bx = (\vx_1,\vx_2,\dots)$ in $[0,\vinfty)$, we have
 \]
 \end{theorem}
 \begin{proof}
-By our assumptions there is a finite Radon measure $\nu$ such that 
+By assumption, there is a finite Radon measure $\nu$ such that 
 $f(\vy) - f(0) = \nu[0,\vy]$. What follows relies on the fact 
 that $1_{[0,\vx]}(\vy) = 1_{[\vy,\vinfty)}(\vx)$. 
 \begin{align*}
@@ -258,8 +245,7 @@ It follows that
 	\left| \frac{1}{N} \sum_{n\leqslant N} f(\vx_n) - \int f\, \dd\mu \right|
 		\leqslant \sup_{\vy\in [0,\vinfty)} \left| \frac{1}{N} \sum_{n\leqslant N} 1_{[\vy,\vinfty)}(\vx_n) - \int 1_{[\vy,\vinfty)}\, \dd\mu\right| \cdot |\nu| .
 \]
-The supremum in question is clearly bounded above by $\D_N(\bx,\mu)$, so the 
-proof is complete. 
+The supremum is bounded above by $\D_N(\bx,\mu)$, so the proof is complete. 
 \end{proof}
 
 This theorem is proved in a somewhat restrictive setting, and can be 
@@ -313,11 +299,9 @@ Reversing the roles of $\bx$ and $\by$, we obtain the desired result.
 \begin{lemma}\label{lem:flip-discrepancy}
 Let $\sigma$ be an isometry of $\bR$, and $\bx$ a sequence in $[0,\infty)$ 
 such that $\sigma(\bx)$ is also in $[0,\infty)$. Let $\nu$ be an absolutely 
-continuous measure on $[0,\infty)$ such that $\sigma_\ast \nu$ is also 
-supported on $[0,\infty)$. Then 
-\[
-	\left|\D_N(\bx, \nu) - \D_N(\sigma_\ast \bx, \sigma_\ast \nu)\right| \leqslant \frac{2}{N} .
-\]
+continuous measure on $[0,\infty)$ such that $\sigma_\ast \nu$ is contained in 
+$[0,\infty)$. Then 
+$\left|\D_N(\bx, \nu) - \D_N(\sigma_\ast \bx, \sigma_\ast \nu)\right| \leqslant \frac{2}{N}$. 
 \end{lemma}
 \begin{proof}
 Every isometry of $\bR$ is a combination of translations and reflections. 

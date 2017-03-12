@@ -9,15 +9,12 @@
 \section{Motivation from classical analytic number theory}
 
 Start with an old problem central to number theory---counting 
-prime numbers. As usual, let $\pi(x)$ be the number of rational primes 
-$\leqslant x$ and $\Li(x) = \int_2^x \frac{\dd t}{\log t}$ be the 
-Eulerian logarithmic integral. There is a normalized empirical measure 
-capturing the distribution of those primes $\leqslant x$: 
-\[
-	P_x = \frac{1}{\pi(x)} \sum_{p\leqslant x} \delta_{p/x} ,
-\]
-which is supported on the unit interval $[0,1]$. The prime number theorem 
-tells us that as $x\to \infty$, these empirical measures converge weakly to the 
+prime numbers. As usual, let $\pi(x)$ be the prime counting function and 
+$\Li(x) = \int_2^x \frac{\dd t}{\log t}$ be the Eulerian logarithmic integral. 
+There is a normalized empirical measure 
+$P_x = \frac{1}{\pi(x)} \sum_{p\leqslant x} \delta_{p/x}$, capturing the 
+distribution of the set of primes $\leqslant x$. The prime number theorem 
+tells us that as $x\to \infty$, this empirical measure converges weakly to the 
 ``true'' measure $L_x = \frac{\Li(t x)}{\Li(x)}\, \dd t$. The standard approach 
 to proving the prime number theorem is by showing that the Riemann 
 $\zeta$-function has non-vanishing meromorphic continuation past $\Re = 1$.
@@ -46,7 +43,7 @@ The Riemann Hypothesis is true if and only if
 $\D^\star(P_x,L_x) \ll x^{-\frac 1 2+\epsilon}$. 
 \end{theorem}
 
-Of course, neither side of this equivalence is known for certain to be true! 
+Neither side of this equivalence is known for certain to be true! 
 
 The above discussion finds a natural generalization in Artin $L$-functions. 
 Let $K/\bQ$ be a finite Galois extension with group $G=\Gal(K/\bQ)$. For any 
@@ -107,8 +104,8 @@ $L$-function:
 	L(\sym^k E, s) = \prod_p \prod_{j=0}^k \frac{1}{1 - e^{i (k - 2j) \theta_p} p^{-s}} = \prod_p \frac{1}{\det\left(1-\sym^k \smat{e^{i\theta_p}}{}{}{e^{-i \theta_p}}p^{-s}\right)}.
 \]
 
-Numerical experiments suggest that the Satake parameters are distributed with 
-respect to the Sato--Tate distribution 
+Numerical experiments suggest that the Satake parameters are equidistributed 
+with respect to the Sato--Tate distribution 
 $\ST = \frac{2}{\pi} \sin^2\theta\, \dd\theta$. Indeed, for any cutoff $x$, let 
 $P_x$ be the empirical measure 
 $P_x = \frac{1}{\pi(x)} \sum_{p\leqslant x} \delta_{\theta_p}$. 
@@ -130,14 +127,14 @@ The stunning recent proof of the Sato--Tate conjecture
 in fact showed that the functions $L(\sym^k E,s)$ were potentially automorphic, 
 which gives the desired analytic continuation. 
 
-The ``usual'' Riemann Hypothesis, and its generalization to Artin 
-$L$-functions, have a natural generalization to elliptic curves. In this 
-context, the discrepancy of the set $\{\theta_p\}_{p\leqslant x}$ is 
+The Riemann Hypothesis, and its analogue for Artin $L$-functions, has a natural 
+generalization to elliptic curves. In this context, the discrepancy of the set 
+$\{\theta_p\}_{p\leqslant x}$ is 
 \[
 	\D\left(\{\theta_p\}_{p\leqslant x},\ST\right) = \sup_{t\in [0,\pi]} \left| P_x[0,t] - \ST[0,t]\right| .
 \]
 The following conjecture is first made in \cite{akiyama-tanigawa-1999}: for 
-$E_{/\bQ}$ a non-CM elliptic curve, the bound 
+$E_{/\bQ}$ a non-CM elliptic curve, the estimate 
 $\D\left(\{\theta_p\}_{p\leqslant x},\ST\right)\ll x^{-\frac 1 2+\epsilon}$ 
 holds. The authors go on to prove a special case of the following theorem, 
 proved in full generality in \cite{mazur-2008}. 
@@ -149,9 +146,10 @@ then all the functions $L(\sym^k E, s)$ satisfy the Riemann Hypothesis.
 
 This discussion also makes sense when $E$ has complex multiplication (for 
 simplicity, we consider $E_{/F}$ where $F$ is the field of definition of the 
-CM). The Sato--Tate measure for $E$ is instead the Haar measure on $\SO(2)$, 
-i.e.~the uniform measure on $[0,\pi]$. Instead of symmetric power 
-$L$-functions, one takes $L$-functions for each character of $\SO(2)$. 
+complex multiplication). The Sato--Tate measure for such $E$ is the Haar 
+measure on $\SO(2)$, i.e.~the uniform measure on $[0,\pi]$. Instead of 
+symmetric power $L$-functions, there is an $L$-function for each character of 
+$\SO(2)$. Once again, ``Akiyama--Tanigawa implies Riemann Hypothesis'' holds. 
 
 It is natural to assume that the converse to the implication 
 ``Akiyama--Tanigawa implies General Riemann Hypothesis'' holds. David Zywina 
@@ -168,22 +166,20 @@ Galois representations with arbitrary Sato--Tate distributions!
 
 \section{Notation conventions}
 
-Throughout, whenever $l$ is mentioned it is a rational prime $\geqslant 7$. 
+Whenever $l$ is mentioned it is a rational prime $\geqslant 7$. 
 
-Write $f\ll g$ if $f = O(g)$, i.e.~there is a constant $C$ such that 
+Write $f\ll g$ if $f = O(g)$, i.e.~there is a constant $C>0$ such that 
 $f \leqslant C g$. 
 
-The symbol $f=\Omega(g)$ (in the convention of Hardy--Littlewood) means 
-the negation of $f \ll g$. In other words, $f = \Omega(g)$ if and only 
-if $\limsup \frac f g > 0$. 
+Write $f=\Omega(g)$ (in the convention of Hardy--Littlewood) if 
+$\limsup \frac f g > 0$. 
 
-The symbol $f = \Theta(g)$ means there exist non-zero constants $0<C_1<C_2$
-such that $C_1 g \leqslant f \leqslant C_2 g$. Equivalently, 
-$g \ll f$ and $f \ll g$. 
+The symbol $f = \Theta(g)$ means there exist constants $0<C_1<C_2$ such that 
+$C_1 g \leqslant f \leqslant C_2 g$. Equivalently, $g \ll f$ and $f \ll g$. 
 
 If $\mu$ is a measure on $\bR$, then write $\mu[a,b]$ for $\mu([a,b])$, and 
 similarly for $[a,b)$, $(a,b]$, etc. In general, whenever it simplifies the 
-notation, we will write $\mu S$ for $\mu(S)$ whenever $\mu$ is a measure and 
+notation, we will write $\mu S$ for $\mu(S)$ if $\mu$ is a measure and 
 $S$ is a measurable set. 
 
 If $\mu$ is a measure on $\bR$, then \emph{cumulative distribution function 
@@ -207,3 +203,6 @@ some other (discrete) subset of $\bR^+$, write
 \[
 	P_{\bx,N} = \frac{1}{\# \{\text{indices }\leqslant N\}}\sum_{\alpha \leqslant N} \delta_{x_\alpha} .
 \]
+
+Omitted entries in matrices are zero, i.e.~$\smat{a}{}{}{b}$ means 
+$\smat{a}{0}{0}{b}$. 
