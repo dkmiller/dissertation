@@ -24,7 +24,7 @@ $(n,\vm)\in \bZ^{d+1}$ such that
 \end{align*}
 \end{definition}
 
-These two quantities are related by Khintchine's Transference Principle, namely 
+These two quantities are related by Khintchine's transference principle, namely 
 \[
 	\frac{\omega_{d-1}(\vx)}{(d-1) \omega_{d-1}(\vx)+d} \leqslant \omega_0(\vx) \leqslant \frac{\omega_{d-1}(\vx)-d+1}{d} .
 \]
@@ -40,12 +40,14 @@ If $d=1$, then $\omega_0(x) = \mu-1$, where $\mu$ is the traditional
 irrationality measure of $x$. 
 \end{theorem}
 
-So Roth's Theorem tells us that for $x$ an algebraic irrational, 
+\begin{theorem}[Roth]
+Let $x\in (\overline\bQ\cap \bR)\smallsetminus \bQ$. Then 
 $\omega_0(x) = 1$. 
+\end{theorem}
 
-Given $\vx\in \bR^d$, we write 
+Given $\vx\in \bR^d$, write 
 $\dd(\vx,\bZ^d)=\min_{\vm\in \bZ^d} |\vx-\vm|_\infty$. Note that 
-$\dd(\vx,\bZ^d)=0$ if and only if $\vx\in \bZ^d$. Moreover, $\dd(\cdot,\bZ^d)$ 
+$\dd(\vx,\bZ^d)=0$ if and only if $\vx\in \bZ^d$. Moreover, $\dd(-,\bZ^d)$ 
 is well-defined for elements of $(\bR/\bZ)^d$. 
 
 \begin{lemma}\label{lem:bound-distance}
@@ -72,9 +74,8 @@ $C_0, C_{d-1}>0$ such that
 \end{align*}
 for all $(n,\vm)\ne 0$ in $\bZ^{d+1}$. 
 
-Start with the first inequality in the statement of the result. Let 
-$\vm$ be the lattice point achieving the minimum $|n \vx - \vm|_\infty$; 
-then 
+Start with the first inequality. Let $\vm$ be the lattice point achieving the 
+minimum $|n \vx - \vm|_\infty$; then 
 $\dd(n \vx,\bZ^d) \geqslant C_0 |(n,\vm)|_\infty^{-\omega_0(\vx)-\epsilon}$. 
 Since $|n\vx - \vm|_\infty < 1$, 
 $|n| \geqslant \frac{|\vm|_\infty}{|\vx|_\infty}-1$ , which gives 
@@ -83,7 +84,7 @@ depending on $\vx$. It follows that
 $\frac{1}{\dd(n \vx,\bZ^d)} \ll |n|^{\omega_0(\vx)+\epsilon}$, the 
 implied constant depending on $x$ and $\epsilon$.
 
-Now let's consider the second inequality in the statement of the result. Note 
+Now we consider the second inequality. Note 
 that $\dd(\langle \vm,\vx\rangle,\bZ) = |n + \langle \vm,\vx\rangle|$ for 
 some $n$ with $|n| \leqslant \|\vm\|_2 \|\vx\|_2 + 1$. Thus 
 $|(n,\vm)|_\infty \ll |\vm|_2 \ll |\vm|_\infty$ (any two norms on a 
@@ -101,14 +102,14 @@ the implied constant depending on $\vx$ and $\epsilon$.
 
 \section{Irrationality exponents and discrepancy}
 
-Let $x\in \bR^d$ with $x_1,\dots,x_d$ linearly independent over $\bQ$. We wish 
-to control the discrepancy of the sequence $\{x,2x,3x,\dots\}$ in 
-$(\bR/\bZ)^d$. 
+Let $\vx\in (\bR/\bZ)^d$ with $x_1,\dots,x_d$ linearly independent over $\bQ$ 
+(this condition makes sense for elements of $(\bR/\bZ)^d$). 
+We wish to control the discrepancy of the sequence $(x,2x,3x,\dots)$. 
 
 \begin{theorem}[Erd\"os--Tur\'an--Koksma]
-Let $\bx$ be a sequence in $\bR^d$ and $h$ an arbitrary integer. Then 
+Let $\bx$ be a sequence in $(\bR/\bZ)^d$ and $h$ an arbitrary integer. Then 
 \[
-	\D(\bx^N) \ll \frac 1 h + \sum_{0\leqslant \|\vm\|_\infty \leqslant h} \frac{1}{r(\vm)} \left| \frac 1 N \sum_{n\leqslant N} e^{2\pi i \langle \vm,\vx_n\rangle}\right| ,
+	\D_N(\bx) \ll \frac 1 h + \sum_{0\leqslant |\vm|_\infty \leqslant h} \frac{1}{r(\vm)} \left| \frac 1 N \sum_{n\leqslant N} e^{2\pi i \langle \vm,\vx_n\rangle}\right| ,
 \]
 where the first sum ranges over $\vm\in \bZ^d$, 
 $r(\vm) = \prod \max\{1,|m_i|\}$, and the implied constant depends only on $d$. 
@@ -145,7 +146,7 @@ Then for $\bx=(\vx,2\vx,3\vx,\dots)$, we have
 for any integer $h$, with the implied constant depending only on $d$. 
 \end{corollary}
 \begin{proof}
-Apply the Erd\"os--Tur\'an--Koksma inequality and bound the exponential sums 
+Apply the Erd\"os--Tur\'an--Koksma inequality, and bound the exponential sums 
 using Lemma \ref{lem:bound-exp-sum}. 
 \end{proof}
 
@@ -166,7 +167,7 @@ and by Lemma \ref{lem:bound-distance}, we know that
 $\dd(\langle \vm,\vx\rangle,\bZ)^{-1} \ll |\vm|^{\omega_{d-1}(\vx)+\delta}$. 
 It follows that 
 \[
-	\D_N(\bx) \ll \frac 1 h + \frac 1 N \sum_{0 < |\vm|_\infty \leqslant h} \frac{|\vm|^{\omega_{d-1}(\vx)+\delta}}{r(\vm)} .
+	\D_N(\bx) \ll \frac 1 h + \frac 1 N \sum_{0 < |\vm|_\infty \leqslant h} \frac{|\vm|_\infty^{\omega_{d-1}(\vx)+\delta}}{r(\vm)} .
 \]
 All that remains is to bound the sum. 
 \begin{align*}
@@ -180,21 +181,19 @@ $\D_N(\bx) \ll \frac 1 h + \frac 1 N (\log h)^{d-1} h^{\omega_{d-1}(\vx)+\delta}
 Setting $h\approx N^{\frac{1}{1+\omega_{d-1}(\vx)+\delta}}$, we see that 
 $D_N(\bx) \ll N^{-\frac{1}{\omega_{d-1}(\vx)+1+\delta}} = N^{-\frac{1}{\omega_{d-1}(\vx)+1} + \epsilon}$. 
 
-For a slightly different proof of a similar result (given as a sequence of 
-exercises), see  \cite[Ch.~2, Ex.~3.15, 16, 17]{kuipers-niederreiter-1974}. 
+For a slightly different proof of a similar result, given as a sequence of 
+exercises, see  \cite[Ch.~2, Ex.~3.15, 16, 17]{kuipers-niederreiter-1974}. 
 \end{proof}
 
 \begin{theorem}
 Let $\vx\in \bR^d$ be such that $x_1,\dots,x_d$ are linearly independent over 
 $\bQ$, and let $\bx=(\vx,2\vx,3\vx,\dots)$ in $(\bR/\bZ)^d$. Then 
-\[
-	\D_N(\bx) = \Omega\left(N^{-\frac{d}{\omega_0(\vx)}-\epsilon} \right).
-\]
+$\D_N(\bx) = \Omega\left(N^{-\frac{d}{\omega_0(\vx)}-\epsilon} \right)$. 
 \end{theorem}
 \begin{proof}
-Here $f=\Omega(g)$ in the sense of Hardy, namely that $\limsup \frac f g>0$. We 
-follow the proof of \cite[Ch.~2, Th.~3.3]{kuipers-niederreiter-1974}. Given 
-$\epsilon>0$, there exists $\delta>0$ such that 
+We follow the proof of \cite[Ch.~2, Th.~3.3]{kuipers-niederreiter-1974}, 
+modifying it as needed for our context. Given $\epsilon>0$, there exists 
+$\delta>0$ such that 
 $\frac{d}{\omega_0(\vx)-\delta} = \frac{d}{\omega_0(\vx)} + \epsilon$. 
 
 By the definition of $\omega_0(\vx)$, there exist infinitely many 
@@ -204,20 +203,22 @@ Since $|(q,\vm)|_\infty \geqslant q$, we derive the stronger
 statement that for infinitely many $q\to \infty$, there exists 
 $\vm\in \bZ^d$ such that 
 $|q \vx-\vm|_\infty \leqslant q^{-\omega_0(\vx)+\delta/2}$ or, equivalently, 
-$|\vx-q^{-1}\vm| \leqslant q^{-1-\omega_0(\vx)+\delta/2}$. Pick such a $q$, and 
-let $N=\lfloor q^{\omega_0(\vx)-\delta}\rfloor$. Then for each $n\leqslant N$, we 
-have $|n \vx - \frac n q \vm|_\infty \leqslant q^{-1-\delta/2}$. Thus, for each 
-$n\leqslant N$, each $n \vx$ is within $q^{-1-\delta/2}$ of the grid 
+$|\vx-q^{-1}\vm| \leqslant q^{-1-\omega_0(\vx)+\delta/2}$. Fix one such $q$, 
+and let $N=\lfloor q^{\omega_0(\vx)-\delta}\rfloor$. For each $n\leqslant N$, 
+we have $|n \vx - \frac n q \vm|_\infty \leqslant q^{-1-\delta/2}$. For each 
+$n\leqslant N$, $n \vx$ is within $q^{-1-\delta/2}$ of the grid 
 $\frac 1 q \bZ^d\subset (\bR/\bZ)^d$. Thus, they miss a box with side lengths 
 $q^{-1} - 2 q^{-1-\delta/2}$. For $q$ sufficiently large, 
 $q^{-1} - 2 q^{-1-\delta/2} \geqslant 1/2q$, so the discrepancy is 
 bounded below by $2^{-d} q^{-d}$. Since $q^{\omega_0(\vx)-\delta} \leqslant 2 N$, 
 the discrepancy at $N$ is bounded below by 
 \[
-	2^{-d} \left( (2 N)^{-\frac{1}{\omega_0(\vx)+\delta}}\right)^{-d} 
+	2^{-d} \left( (2 N)^{\frac{1}{\omega_0(\vx)+\delta}}\right)^{-d} 
 		= 2^{-d-\frac{d}{\omega_0(\vx)+\delta}} N^{-\frac{d}{\omega_0(\vx)+\delta}}
-		= 2^{-d\left(1+\frac{1}{\omega_0(\vx)}\right)-\epsilon} N^{-\frac{d}{\omega_0(x)}-\epsilon} .
+		= 2^{-d\left(1+\frac{1}{\omega_0(\vx)}\right)-\epsilon} N^{-\frac{d}{\omega_0(\vx)}-\epsilon} .
 \]
+Since $\D_N(\bx)$ can, for $N\to \infty$, be bounded below by a constant 
+multiple of $N^{-\frac{d}{\omega_0(\vx)}}$, the proof is complete.
 \end{proof}
 
 
@@ -229,7 +230,7 @@ the discrepancy at $N$ is bounded below by
 
 Give $(\bR/\bZ)^d$ the natural Haar measure normalized to have total mass one. 
 Recall that for any $f\in L^1((\bR/\bZ)^d)$, the Fourier coefficients of $f$ 
-are, for $\vm\in \bZ^d$ 
+are, for $\vm\in \bZ^d$: 
 \[
 	\widehat f(\vm) = \int_{(\bR/\bZ)^d} e^{2\pi i \langle \vm,\vx\rangle} \, \dd \vx ,
 \]
@@ -245,23 +246,18 @@ as $\vm$ ranges over $\bZ^d\smallsetminus 0$.
 \end{theorem}
 \begin{proof}
 From Lemma \ref{lem:bound-exp-sum} we know that 
-\[
-	\left| \sum_{n\leqslant N} e^{2\pi i \langle \vm, n \vx\rangle}\right| \ll \frac{1}{\dd(\langle \vm, \vx\rangle,\bZ)} ,
-\]
+$\left| \sum_{n\leqslant N} e^{2\pi i \langle \vm, n \vx\rangle}\right| \ll \dd(\langle \vm, \vx\rangle,\bZ)^{-1}$, 
 and from Lemma \ref{lem:bound-distance}, we know that 
 $\dd(\langle \vm,\vx\rangle, \bZ)^{-1} \ll |\vm|_\infty^{\omega_{d-1}(x)+\epsilon}$. 
 The result follows. 
 \end{proof}
 
 \begin{theorem}
-Let $\vx\in \bR^d$ with $\omega_{d-1}(\vx)$ finite. Then let 
+Let $\vx\in \bR^d$ with $\omega_{d-1}(\vx)$ finite. Fix 
 $f\in L^1((\bR/\bZ)^d)$ with $\widehat f(0)=0$ and suppose the Fourier 
 coefficients of $f$ satisfy the bound 
 $|\widehat f(\vm)| \ll |\vm|_\infty^{-\frac{1}{d-1} - \omega_{d-1}(\vx)-\epsilon}$. 
-Then 
-\[
-	\left| \sum_{n\leqslant N} f(n \vx)\right| \ll 1. 
-\]
+Then $\left| \sum_{n\leqslant N} f(n \vx)\right| \ll 1$. 
 \end{theorem}
 \begin{proof}
 Write $f$ as a Fourier series:
@@ -273,7 +269,7 @@ Since $\widehat f(0)=0$, we can compute:
 	\left| \sum_{n\leqslant N} f(n \vx)\right| 
 		&= \left| \sum_{n\leqslant N} \sum_{\vm\in \bZ^d\smallsetminus 0} \widehat f(\vm) e^{2\pi i \langle \vm,\vx\rangle}\right| \\
 		&\leqslant \sum_{\vm\in \bZ^d\smallsetminus 0} |\widehat f(\vm)| \left| \sum_{n\leqslant N} e^{2\pi i n \langle \vm,\vx\rangle}\right| \\
-		&\ll \sum_{\vm\in \bZ^d\smallsetminus 0} |\vm|_\infty^{-\frac{1}{d-1} - \omega_{d-1}(\vx) - \epsilon} |m|^{\omega_{d-1}(\vx) + \epsilon/2} \\
+		&\ll \sum_{\vm\in \bZ^d\smallsetminus 0} |\vm|_\infty^{-\frac{1}{d-1} - \omega_{d-1}(\vx) - \epsilon} |m|_\infty^{\omega_{d-1}(\vx) + \epsilon/2} \\
 		&\ll \sum_{\vm\in \bZ^d\smallsetminus 0} |\vm|_\infty^{-\frac{1}{d-1} - \epsilon/2} .
 \end{align*}
 The sum converges since the exponent is less than $-\frac{1}{d-1}$, and it 
@@ -284,22 +280,14 @@ doesn't depend on $N$, hence the result.
 Let $p_1 = 2, p_2 = 3, p_3 = 5, \dots$ be an enumeration of the prime numbers. 
 Let $\vy\in \bR^d$ with $y_1,\dots,y_d$ linearly independent over $\bQ$. The 
 associated sequence of ``fake Satake parameters'' is 
-\[
-	\bx = (\vy, 2\vy, 3 \vy, 4 \vy, \dots) ,
-\]
+$\bx = (\vy, 2\vy, 3 \vy, 4 \vy, \dots)$, 
 where we put $\vx_{p_n} = n \vy\mod \bZ^d$. By Theorem \ref{thm:jarnik}, we can 
 arrange for $\omega_0(\vy) = w$ and $\omega_{d-1}(\vy) = d w + d - 1$. 
 
 \begin{theorem}
 The sequence $\bx$ is equidistributed in $(\bR/\bZ)^d$, with discrepancy 
-decaying as 
-\[
-	\D_N(\bx) \ll N^{-\frac{1}{d w+d} + \epsilon} 
-\]
-and for which 
-\[
-	\D_N(\bx) = \Omega\left(N^{-\frac{d}{w} - \epsilon}\right) .
-\]
+decaying as $\D_N(\bx) \ll N^{-\frac{1}{d w+d} + \epsilon}$, and for which 
+$\D_N(\bx) = \Omega\left(N^{-\frac{d}{w} - \epsilon}\right)$. 
 However, for any $f\in C^\infty((\bR/\bZ)^d)$ with $\widehat f(0)=0$, the 
 Dirichlet series  $L_f(\bx,s)$ satisfies the Riemann Hypothesis. 
 \end{theorem}
@@ -309,15 +297,16 @@ $K/\bQ$ be a finite Galois extension, $A_{/K}$ an abelian variety with complex
 multiplication by $F$, defined over $K$. Let $\fa = \lie(A)$ be the Lie algebra 
 of $A$; this is a $K$-vector space with natural $F$-action. The determinant of 
 this action gives a homomorphism 
-$\det_\fa\colon \R_{K/\bQ}\Gm \to \R_{F/\bQ}\Gm$; the image of this map is 
-the motivic Galois group $G_A$ \cite{yu-2015}. Let 
-$\N_{F/\bQ}\colon \R_{F/\bQ}\Gm \to \Gm$ be the norm map; then 
-$G_A^1 = \im(\det_\fa)^{\N_{F/\bQ} = 1}$, and $\ST(A)$ is a maximal compact 
-subgroup of $G_A^1(\bC)$. Every unitary representation of $\ST(A)$ is the 
-restriction of a character of $G_A$; in fact it is the restriction of a 
-character of $\R_{F/\bQ} \Gm$. 
+$\det_\fa\colon \R_{K/\bQ}\Gm \to \R_{F/\bQ}\Gm$, whose image is the motivic 
+Galois group $G_A$ \cite{yu-2015}. Let 
+$\N_{F/\bQ}\colon \R_{F/\bQ}\Gm \to \Gm$ be the norm map; then in the notation 
+of \cite{serre-1994}, $G_A^1 = \im(\det_\fa)^{\N_{F/\bQ} = 1}$, and $\ST(A)$ is 
+the maximal compact subgroup of $G_A^1(\bC)$. Every unitary representation of 
+$\ST(A)$ is the restriction of a character of $G_A$. Since characters always 
+extend from subtori, any unitary representation of $\ST(A)$ is the restriction 
+of a character of $\R_{F/\bQ} \Gm$. 
 
-Fix a rational prime $l$; then the Galois representation associated to $A$ is 
+Fix a rational prime $l$. The Galois representation associated to $A$ is 
 $\rho_l\colon G_\bQ \to G_A(\bQ_l)\subset (F\otimes\bQ_l)^\times$. For 
 $\sigma\colon F\hookrightarrow \bC$, also 
 write $\sigma$ for the corresponding character of $\R_{F/\bQ}\Gm$. Shimura and 

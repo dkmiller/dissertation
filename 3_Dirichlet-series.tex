@@ -28,10 +28,10 @@ primes. The associated Dirichlet series is
 \end{definition}
 
 If $x_p$ is defined only for a subset of the primes, we tacitly set $x_p = 0$ 
-(so the Euler factor is $1$) at all pries for which $x_p$ is not defined. 
+(so the Euler factor is $1$) at all primes for which $x_p$ is not defined. 
 
 \begin{lemma}
-Let $\bx$ be a sequence with $\|\bx\|_\infty \leqslant 1$. Then $L(\bx,s)$ 
+Let $\bx$ be a sequence with $|\bx|_\infty \leqslant 1$. Then $L(\bx,s)$ 
 defines a holomorphic function on the region $\Re > 1$. Moreover, on that 
 region, 
 \[
@@ -46,7 +46,7 @@ Expanding the product for $L(\bx,s)$ formally, we have
 An easy comparison with the Riemann zeta function tells us that this sum 
 is holomorphic on $\Re > 1$. By \cite[Th.~11.7]{apostol-1976}, the 
 product formula holds in the same region. The formula for $\log L(\bx,s)$ 
-comes from \cite[11.9 Ex.2]{apostol-1976}. 
+comes from \cite[11.9 Ex.~2]{apostol-1976}. 
 \end{proof}
 
 \begin{lemma}[Abel summation]\label{lem:abel-sum}
@@ -57,12 +57,11 @@ complex-valued function on $\bR$. Then
 \]
 \end{lemma}
 \begin{proof}
-Simply note that if $p_1,\dots,p_n$ is an enumeration of the primes 
-$\leqslant N$, we have 
+If $p_1,\dots,p_n$ is an enumeration of the primes $\leqslant N$, we have 
 \begin{align*}
 	\int_2^N f'(t) \sum_{p\leqslant t} x_p\, \dd t 
-		&= \sum_{p\leqslant N} x_p \int_{p_n}^N f'(t)\, \dd t + \sum_{i=1}^{n-1} \sum_{p\leqslant p_{i+1}} x_p \int_{p_i}^{p_{i+1}} f'(t)\, \dd t \\
-		&= \left(f(N) - f(p_n)\right) \sum_{p\leqslant N} x_p + \sum_{i=1}^{n-1} \left(f(p_{i+1}) - f(p_i)\right) \sum_{p\leqslant p_{i+1}} x_p \\
+		&= \sum_{p\leqslant N} x_p \int_{p_n}^N f'(t)\, \dd t + \sum_{i=1}^{n-1} \sum_{p\leqslant p_i} x_p \int_{p_i}^{p_{i+1}} f'(t)\, \dd t \\
+		&= \left(f(N) - f(p_n)\right) \sum_{p\leqslant N} x_p + \sum_{i=1}^{n-1} \left(f(p_{i+1}) - f(p_i)\right) \sum_{p\leqslant p_i} x_p \\
 		&= f(N) \sum_{p\leqslant N} x_p - \sum_{p\leqslant N} f(p) x_p ,
 \end{align*}
 as desired. 
@@ -83,14 +82,11 @@ For each $p$, we have
 	\left| \sum_{r\geqslant 2} \frac{x_p^r}{r p^{r s}}\right| \leqslant \sum_{r\geqslant 2} p^{- r \Re s} = p^{-2 \Re s} \frac{1}{1-p^{-\Re s}} .
 \]
 Elementary analysis gives 
-\[
-	1 \leqslant \frac{1}{1-p^{-\Re s}} \leqslant 2 + 2\sqrt 2 ,
-\]
-so the second piece of $\log L(\bz,s)$ converges absolutely when 
-$\Re s>\frac 1 2$. We could simply cite \cite[II.1 Th.~10]{tenenbaum-1995} to 
-finish the proof; 
-instead we prove directly that $\sum \frac{x_p}{p^s}$ converges absolutely 
-to a holomorphic function on the region $\Re > \alpha$. 
+$1 \leqslant \frac{1}{1-p^{-\Re s}} \leqslant 2 + 2\sqrt 2$, so the second 
+piece of $\log L(\bx,s)$ converges absolutely on $\Re >\frac 1 2$. We could 
+simply cite \cite[II.1 Th.~10]{tenenbaum-1995} to finish the proof; instead we 
+prove directly that $\sum \frac{x_p}{p^s}$ converges absolutely to a 
+holomorphic function on the region $\Re > \alpha$. 
 
 By Lemma \ref{lem:abel-sum} with $f(t) = t^{-s}$, we have 
 \begin{align*}
@@ -104,19 +100,19 @@ $\epsilon$ is arbitrary, the integral converges absolutely, and the proof is
 complete. 
 \end{proof}
 
-Note that the proof of Theorem \ref{thm:AT->RH} actually gives an absolutely 
+The proof of Theorem \ref{thm:AT->RH} actually gives an absolutely 
 convergent expression for $\log L(\bx,s)$ on the region $\Re >\alpha$. Namely, 
 \[
-	\log L(\bx,s) = s \int_2^\infty t^{-s-1}\sum_{p\leqslant t} x_p \dd t + \sum_p \sum_{r\geqslant 2} \frac{x_p^r}{r p^{r s}} . 
+	\log L(\bx,s) = s \int_2^\infty t^{-s-1}\left(\sum_{p\leqslant t} x_p\right) \dd t + \sum_p \sum_{r\geqslant 2} \frac{x_p^r}{r p^{r s}} . 
 \]
 
 Let $X$ be a space, $f\colon X\to \bC$ a function with 
-$\|f\|_\infty\leqslant 1$, and $\bx=(x_2,x_3,\dots)$ a sequence in $X$. Write 
+$|f|_\infty\leqslant 1$, and $\bx=(x_2,x_3,\dots)$ a sequence in $X$. Write 
 \[
 	L_f(\bx,s) = \prod_p \frac{1}{1-f(x_p) p^{-s}} ,
 \]
 for the associated Dirichlet series. In the remainder, we will 
-exclusively focus on strange Dirichlet series of this type. 
+exclusively focus on Dirichlet series of this type. 
 
 
 
@@ -140,7 +136,9 @@ $W$-invariant. We may regard the $x_p$ as lying in $T/W$, so we have
 	L(\rho(\bx),s) = \prod_\chi L(\chi(\bx),s)^{m_\chi} .
 \]
 If the trivial representation appears in $\left.\rho\right|_T$, this product 
-formula will include a copy (possibly several) of $\zeta(s)$. 
+formula will include a copy (possibly several) of $\zeta(s)$. Since 
+$\chi(x_p) \in S^1$, the above formula decomposes $L(\rho(\bx),s)$ into a 
+product of Dirichlet series of the type considered above. 
 
 
 
@@ -160,8 +158,8 @@ an estimate $|\sum_{p\leqslant N} x_p| \ll N^{\frac 1 2 + \epsilon}$.
 \begin{theorem}
 Let $(X,\mu)$ be a probability space in which discrepancy makes sense, and let 
 $\bx=(x_2,x_3,x_5,\dots)$ be a sequence in $X$ with 
-$\D_N(\bx,\mu) \ll N^{-\frac 1 2+\epsilon}$. Then for any function $f$ on 
-$X$ of bounded variation, the strange Dirichlet series $L_f(\bx,s)$ satisfies 
+$\D_N(\bx,\mu) \ll N^{-\frac 1 2+\epsilon}$. For any function $f$ on $X$ of 
+bounded variation with $\int f\, \dd\mu = 0$, $L_f(\bx,s)$ satisfies 
 the Riemann Hypothesis. 
 \end{theorem}
 \begin{proof}
@@ -181,21 +179,21 @@ There is, for every prime $\fp$ of $F$, a Satake parameter
 $\theta_\fp \in [0,\pi]$, defined in the usual way. It is known 
 \cite[Ch.~3]{katz-1988} that
 \[
-	\left|\sum_{\N(\fp) \leqslant x} U_k(\theta_\fp) \right| \ll k \sqrt{x} .
+	\left|\sum_{\N(\fp) \leqslant x} \tr\sym^k\smat{e^{i \theta_\fp}}{}{}{e^{- i \theta_\fp}} \right| \ll k \sqrt{x} .
 \]
-This tells us that for any $f\in C(\SU(2))$ with 
+This tells us that for any $f\in C(\SU(2)^\natural)$ with 
 $\sum_{k\geqslant 1} |\widehat f(\sym^k)|<\infty$, the strange Dirichlet 
 series $L_f(\btheta,s)$ satisfies the Riemann Hypothesis. 
 
-For function fields, the best estimate on discrepancy is found in 
+However, the best estimate on discrepancy is found in 
 \cite{niederreiter-1991}, where it is shown that $D_N \ll N^{-1/4}$ 
 by applying a generalization of the Koksma--Hlawka inequality to 
 $\SU(2)^\natural$. Namely, for any odd $r$, we have 
 \[
-	\D(\btheta^x,\ST) \ll \frac 1 r + \sum_{k=1}^{2 r -1} \frac 1 k \left| \frac{1}{\pi_F(x)} \sum_{\N(\fp)\leqslant x} U_k(\btheta_\fp)\right| .
+	\D_x(\btheta,\ST) \ll \frac 1 r + \sum_{k=1}^{2 r -1} \frac 1 k \left| \frac{1}{\pi_F(x)} \sum_{\N(\fp)\leqslant x} \tr\sym^k\smat{e^{i \theta_\fp}}{}{}{e^{- i \theta_\fp}}\right| .
 \]
-Using the above estimate on $\sum U_k(\btheta_\fp)$, he is able to derive 
-$D_N \ll N^{-1/4}$. This fits the results of 
+Using the above estimate on character sums, he is able to derive 
+$\D_x \ll x^{-1/4}$. This fits the results of 
 \cite{bucar-kedlaya-2015,rouse-thorner-2016}, both of which derive estimates 
-of the form $D_N \ll N^{-1/4+\epsilon}$ under GRH + functional equation for 
+of the form $\D_N \ll N^{-1/4+\epsilon}$ under GRH + functional equation for 
 the (non-CM) elliptic curve in question. 
