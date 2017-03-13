@@ -9,22 +9,20 @@
 \section{Definitions}
 
 We start by considering a very general class of Dirichlet series, namely all 
-Dirichlet series that admit a product formula with degree-1 factors. The 
+Dirichlet series that admit a product formula with degree 1 factors. The 
 motivating example was suggested to the author by Ravi Ramakrishna. Let 
 $E_{/\bQ}$ be an elliptic curve and let 
 \[
 	L_{\sgn}(E,s) = \prod_p \frac{1}{1-\sgn(a_p) p^{-s}} .
 \]
 How much can we say about the behavior of $L_{\sgn}(E,s)$? For example, does it 
-admit analytic continuation past $\Re = 1$? Can the rank of $E$ be found from 
-$L_{\sgn}(E,s)$?
+admit analytic continuation past $\Re = 1$? (Yes!) Can the rank of $E$ be 
+found from $L_{\sgn}(E,s)$? (Not so clear.)
 
 \begin{definition}
 Let $\bx=(x_2,x_3,x_5,\dots)$ be a sequence of complex numbers indexed by the 
 primes. The associated Dirichlet series is 
-\[
-	L(\bx,s) = \prod_p \frac{1}{1- x_p p^{-s}} .
-\]
+$L(\bx,s) = \prod_p \left(1- x_p p^{-s}\right)^{-1}$. 
 \end{definition}
 
 If $x_p$ is defined only for a subset of the primes, we tacitly set $x_p = 0$ 
@@ -32,11 +30,8 @@ If $x_p$ is defined only for a subset of the primes, we tacitly set $x_p = 0$
 
 \begin{lemma}
 Let $\bx$ be a sequence with $|\bx|_\infty \leqslant 1$. Then $L(\bx,s)$ 
-defines a holomorphic function on the region $\Re > 1$. Moreover, on that 
-region, 
-\[
-	\log L(\bx,s) = \sum_{p^r} \frac{x_p^r}{r p^{r s}} .
-\]
+defines a holomorphic function on the region $\Re > 1$. On that region, 
+$\log L(\bx,s) = \sum_{p^r} \frac{x_p^r}{r p^{r s}}$. 
 \end{lemma}
 \begin{proof}
 Expanding the product for $L(\bx,s)$ formally, we have 
@@ -70,7 +65,7 @@ as desired.
 \begin{theorem}\label{thm:AT->RH}
 Assume $|\sum_{p\leqslant N} x_p| \ll N^{\alpha+\epsilon}$ for some 
 $\alpha\in [\frac 1 2,1]$. Then the series for $\log L(\bx,s)$ converges 
-conditionally to a holomorphic function on the region $\Re > \alpha$. 
+conditionally to a holomorphic function on $\Re > \alpha$. 
 \end{theorem}
 \begin{proof}
 Formally split the sum for $\log L(\bx,s)$ into two pieces: 
@@ -88,11 +83,11 @@ simply cite \cite[II.1 Th.~10]{tenenbaum-1995} to finish the proof; instead we
 prove directly that $\sum \frac{x_p}{p^s}$ converges absolutely to a 
 holomorphic function on the region $\Re > \alpha$. 
 
-By Lemma \ref{lem:abel-sum} with $f(t) = t^{-s}$, we have 
+By Lemma \ref{lem:abel-sum} (Abel summation) with $f(t) = t^{-s}$, we have 
 \begin{align*}
 	\sum_{p\leqslant N} \frac{x_p}{p^s}
 		&= N^{-s} \sum_{p\leqslant N} x_p + s \int_2^N \sum_{p\leqslant t} x_p\, \frac{\dd t}{t^{s+1}} \\
-		&\ll N^{-\Re s + \alpha + \epsilon} + s \int_2^N t^{\alpha+\epsilon} \frac{\dd t}{t^{\Re s+1}} .
+		&\ll N^{-\Re s + \alpha + \epsilon} + |s| \int_2^N t^{\alpha+\epsilon} \frac{\dd t}{t^{\Re s+1}} .
 \end{align*}
 Since $\alpha-\Re s < 0$, the first term is bounded. Since 
 $\Re s+1-\alpha > 1$ and 
@@ -156,22 +151,20 @@ $\log L(\bx,s)$ on $\Re > \frac 1 2$, \cite[II.1 Th.~10]{tenenbaum-1995} gives
 an estimate $|\sum_{p\leqslant N} x_p| \ll N^{\frac 1 2 + \epsilon}$. 
 
 \begin{theorem}
-Let $(X,\mu)$ be a probability space in which discrepancy makes sense, and let 
-$\bx=(x_2,x_3,x_5,\dots)$ be a sequence in $X$ with 
+Let $(X,\mu)$ be a probability space in which discrepancy and Koksma--Hlawka 
+make sense, and let $\bx=(x_2,x_3,x_5,\dots)$ be a sequence in $X$ with 
 $\D_N(\bx,\mu) \ll N^{-\frac 1 2+\epsilon}$. For any function $f$ on $X$ of 
 bounded variation with $\int f\, \dd\mu = 0$, $L_f(\bx,s)$ satisfies 
 the Riemann Hypothesis. 
 \end{theorem}
 \begin{proof}
-The bound on discrepancy yields (by the Koksma--Hlawka inequality) the estimate 
-\[
-	\left| \sum_{p\leqslant N} f(x_p)\right| \ll N^{\frac 1 2+\epsilon} .
-\]
+By the Koksma--Hlawka inequality, the bound on discrepancy yields the estimate 
+$\left| \sum_{p\leqslant N} f(x_p)\right| \ll N^{\frac 1 2+\epsilon}$. 
 By Theorem \ref{thm:AT->RH}, the Riemann Hypothesis holds for $L_f(\bx,s)$. 
 \end{proof}
 
 The same proof shows that if $\D_N(\bx,\mu)\ll N^{-\alpha+\epsilon}$, then 
-$\log L(\bx,s)$ conditionally converges to a holomorphic function on 
+$\log L_f(\bx,s)$ conditionally converges to a holomorphic function on 
 $\Re > 1 - \alpha$. 
 
 Let $F = \bF_q(t)$ be a function field, $E_{/F}$ a generic elliptic curve. 
@@ -182,18 +175,18 @@ $\theta_\fp \in [0,\pi]$, defined in the usual way. It is known
 	\left|\sum_{\N(\fp) \leqslant x} \tr\sym^k\smat{e^{i \theta_\fp}}{}{}{e^{- i \theta_\fp}} \right| \ll k \sqrt{x} .
 \]
 This tells us that for any $f\in C(\SU(2)^\natural)$ with 
-$\sum_{k\geqslant 1} |\widehat f(\sym^k)|<\infty$, the strange Dirichlet 
-series $L_f(\btheta,s)$ satisfies the Riemann Hypothesis. 
+$\sum_{k\geqslant 1} |\widehat f(\sym^k)|<\infty$ and $\widehat f(1) = 0$, 
+the strange Dirichlet series $L_f(\btheta,s)$ satisfies the Riemann Hypothesis. 
 
-However, the best estimate on discrepancy is found in 
-\cite{niederreiter-1991}, where it is shown that $D_N \ll N^{-1/4}$ 
+The best estimate on discrepancy is found in 
+\cite{niederreiter-1991}, where it is shown that $D_N \ll N^{-\frac 1 4}$ 
 by applying a generalization of the Koksma--Hlawka inequality to 
 $\SU(2)^\natural$. Namely, for any odd $r$, we have 
 \[
 	\D_x(\btheta,\ST) \ll \frac 1 r + \sum_{k=1}^{2 r -1} \frac 1 k \left| \frac{1}{\pi_F(x)} \sum_{\N(\fp)\leqslant x} \tr\sym^k\smat{e^{i \theta_\fp}}{}{}{e^{- i \theta_\fp}}\right| .
 \]
-Using the above estimate on character sums, he is able to derive 
-$\D_x \ll x^{-1/4}$. This fits the results of 
+Using the above estimate on character sums, Niederreiter is able to derive 
+$\D_x \ll x^{-\frac 1 4}$. This fits the results of 
 \cite{bucar-kedlaya-2015,rouse-thorner-2016}, both of which derive estimates 
-of the form $\D_N \ll N^{-1/4+\epsilon}$ under GRH + functional equation for 
-the (non-CM) elliptic curve in question. 
+of the form $\D_N \ll N^{-\frac 1 4+\epsilon}$ under GRH + functional equation 
+for the (non-CM) elliptic curve in question. 

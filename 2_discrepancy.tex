@@ -352,8 +352,8 @@ $\bx\wr\by$ for the interleaved sequence $(x_1,y_1,x_2,y_2,x_3,y_3,\dots)$.
 \end{definition}
 
 Write 
-$P_{\bx\wr\by,N} = \frac{1}{2N} \sum_{n\leqslant N} \left(\delta_{x_n} + \delta_{y_n}\right)$
-for the combined empirical measure of the interleaved sequence $\bx\wr\by$. 
+$P_{\bx\wr\by,N} = \frac{1}{2} \left( P_{\bx,N} + P_{\by,N}\right)$ for the 
+combined empirical measure of the interleaved sequence $\bx\wr\by$. 
 
 \begin{theorem}\label{thm:wreath-seq}
 Let $I$ and $J$ be disjoint open boxes in $[0,\vinfty)$, and let $\mu$, 
@@ -380,9 +380,7 @@ $[\vs,\vt)$ be a half-open box such that $|P_{\bx,N}[\vs,\vt) - \mu[\vs,\vt)|$
 is within some arbitrary $\epsilon$ of $\D_N(\bx,\mu)$. We can replace 
 $[\vs,\vt)$ with a smaller box to ensure it does not intersect $J$. Assuming 
 $[\vs,\vt)\cap J=\varnothing$, we have
-\[
-	\left|P_{\bx\wr\by,N}[\vs,\vt) - (\mu+\nu)[\vs,\vt)\right| = |P_{\bx,N}[\vs,\vt) - \mu[\vs,\vt)| ,
-\]
+$\left|P_{\bx\wr\by,N}[\vs,\vt) - (\mu+\nu)[\vs,\vt)\right| = |P_{\bx,N}[\vs,\vt) - \mu[\vs,\vt)|$, 
 which yields the result. 
 \end{proof}
 
@@ -400,23 +398,23 @@ Let $a\in \bR$ be irrational. Then the sequence
 $\bx=(a\mod 1,2a\mod 1,3a\mod 1,\dots)$ is equidistributed in $[0,1]$. 
 \end{theorem}
 
-We will prove this result (originally due to Weyl) in Chapter \ref{chapter:irrationality-exponent}. It is known that sequences of this form 
-have discrepancy which decays like $N^{-\alpha\pm \epsilon}$, for 
-$\alpha\in \left(0,\frac 1 2\right)$. It can be useful to have a sequence 
-whose discrepancy decays faster. The best known rate of decay is achieved by 
-the following sequence. 
+We will prove this result (originally due to Weyl) in Chapter \ref{chapter:irrationality-exponent}. It is known, and we will prove, that 
+sequences of this form have discrepancy which decays like 
+$N^{-\alpha\pm \epsilon}$, for $\alpha\in \left(0,\frac 1 2\right)$. It can be 
+useful to have a sequence whose discrepancy decays faster. The best known rate 
+of decay is achieved by the following example. 
 
 \begin{definition}
 The \emph{van der Corput sequence} is 
 $\bv = \left(\frac 1 2,\frac 1 4,\frac 3 4,\dots\right)$. More precisely, 
-write $n$ in base $2$ as $n = \sum a_i 2^i$. Then $v_n = \sum a_i 2^{-(i+1)}$. 
+write $n$ in base $2$ as $n = \sum a_i 2^i$; then $v_n = \sum a_i 2^{-(i+1)}$. 
 \end{definition}
 
 The van der Corput sequence has generalizations to other bases and higher 
-dimensions. Its discrepancy has extremely fast convergence to zero. 
+dimensions, but we will not use these. Its discrepancy has extremely fast 
+convergence to zero. 
 
 \begin{lemma}[{\cite[Ch.~2 Th.~3.5]{kuipers-niederreiter-1974}}]
-Let $\bv$ be the van der Corput sequence. Then
 $\D_N(\bv) \leqslant \frac{\log(N+1)}{N\log 2}$. 
 \end{lemma}
 
@@ -431,9 +429,9 @@ whose cdf is strictly increasing on $I$. Then there exists a sequence
 $\bx=(x_1,x_2,\dots)$ in $I$ such that $\D_N(\bx,\mu) \ll \frac{\log(N)}{N}$. 
 \end{theorem}
 \begin{proof}
-Lemma \ref{lem:push-discrepancy} tells us that for $\bv$ the van der Corput 
-sequence on $[0,1]$, we have 
-$\left|\D_N(\cdf_\mu^{-1}(\bv), \mu) - \D_N(\bv,\mu)\right| \ll N^{-1}$, 
+Since $\left(\cdf_\mu\right)_\ast\mu$ is the uniform measure, Lemma 
+\ref{lem:push-discrepancy} tells us that 
+$\left|\D_N(\cdf_\mu^{-1}(\bv), \mu) - \D_N(\bv)\right| \ll N^{-1}$, 
 which gives us the desired result with $\bx = \cdf_\mu^{-1}(\bv)$. 
 \end{proof}
 
@@ -445,22 +443,22 @@ $\D_N(\bx,\mu) = \Theta(N^{-\alpha})$.
 \end{theorem}
 \begin{proof}
 Let $I = [a,b]$. If $\bx_{\leqslant N}$ is a sequence of length $N$, let 
-$\bx_{\leqslant N}:a^M$ be the sequence $(x_1,\dots,x_N,a,\dots,a)$ ($M$ copies 
+$\bx_{\leqslant N}:^M a$ be the sequence $(x_1,\dots,x_N,a,\dots,a)$ ($M$ copies 
 of $a$). Then 
 \[
-	\D(\bx_{\leqslant N}:a^M,\mu)
+	\D(\bx_{\leqslant N}:^M a,\mu)
 		\geqslant \left| \frac{\#\{ n\leqslant N+M : x_n = a\}}{N+M} - \mu\{a\}\right| 
 		\geqslant \frac{M}{N+M} .
 \]
 On the other hand for $J = [s,t)\subset I$, 
 \begin{align*}
-	\left| P_{\bx_{\leqslant N}:a^M}(J) - P_{\bx_{\leqslant N}}(J)\right| 
+	\left| P_{\bx_{\leqslant N}:^M a}(J) - P_{\bx_{\leqslant N}}(J)\right| 
 		&\leqslant \frac{\left|\#\{n\leqslant N : x_n\in J\} + M - \frac{M+N}{N}\#\{n\leqslant N : x_n\in J\}\right|}{M+N} \\
 %		&\leqslant \frac{\left|M - \frac{M}{N} \#\{n\leqslant N : x_n \leqslant t\} \right|}{M+N} \\
 		&\leqslant \frac{2M}{M+N} ,
 \end{align*}
 which implies that 
-$\D\left(\bx_{\leqslant N}:a^M,\mu\right) \leqslant \D\left(\bx^N,\mu\right) + \frac{2 M}{M+N}$. 
+$\D\left(\bx_{\leqslant N}:^M a,\mu\right) \leqslant \D\left(\bx^N,\mu\right) + \frac{2 M}{M+N}$. 
 Let $\bv$ be the $\mu$-equidistributed van der Corput sequence of 
 Theorem \ref{thm:van-der-corput}, possibly transformed linearly to lie in 
 $[a,b]$. We know that $\D(\bv^N, \mu) \ll \frac{\log N}{N}$, which converges 
@@ -480,11 +478,10 @@ nowhere does $\D_N(\bx,\mu)$ differ by too much from $N^{-\alpha}$.
 Note that $\frac{M+1}{N+M+1} - \frac{M}{N+M} \leqslant N^{-1}$. This tells 
 us that when we are adding $a$'s at the end of $\bx_{\leqslant N}$, the 
 discrepancy of 
-$\bx_{\leqslant N}:a_{\leqslant M}$ increases by at most $N^{-1}$ at each 
+$\bx_{\leqslant N}:^M a$ increases by at most $N^{-1}$ at each 
 step. So if $\D(\bx_{\leqslant N},\mu) < N^{-\alpha}$, we can ensure that 
-$\D(\bx_{\leqslant N}:a^M,\mu)$ is at most $N^{-1}$ greater than 
+$\D(\bx_{\leqslant N}:^M a,\mu)$ is at most $N^{-1}$ greater than 
 $N^{-\alpha}$. 
-
 Moreover, we know that $\D(\bx_{\leqslant N}:a,\mu)$ is at most 
 $\frac{2}{N+1}$ away from $\D(\bx_{\leqslant N},\mu)$. So when adding van der 
 Corput elements to the end of the sequence, its discrepancy cannot decay any 
@@ -494,7 +491,3 @@ faster than by $\frac{2}{N+1}$ per $a$ added. This yields
 \]
 which is even stronger than we need.
 \end{proof}
-
-In the remainder of this thesis, we will refer to the sequences constructed in 
-this theorem as ``$N^{-\alpha}$-decay van der Corput sequences.''
-
