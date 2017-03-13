@@ -10,17 +10,17 @@
 
 We follow the notation of \cite{laurent-2009}. Fix a dimension 
 $d\geqslant 1$, and let $\vx=(x_1,\dots,x_d)\in \bR^d$ be such that the $x_i$ 
-are $\bQ$-linearly independent. 
+are linearly independent over $\bQ$.  
 
 \begin{definition}\label{def:approx-exp}
 Let $\omega_0(\vx)$ (resp.~$\omega_{d-1}(\vx)$) be the supremum of the set of 
-real numbers $\omega$ for which there exist infinitely many 
-$(n,\vm)\in \bZ^{d+1}$ such that 
+real numbers $w$ for which there exist infinitely many 
+$(n,\vm)\in \bZ\times\bZ^d$ such that 
 \begin{align*}
 	|n \vx - \vm|_\infty 
-		&\leqslant |(n,\vm)|_\infty^{-\omega}  \qquad\text{(resp.} \\
+		&\leqslant |(n,\vm)|_\infty^{-w}  \qquad\text{(resp.} \\
 	|n +\langle \vm,\vx\rangle| 
-		&\leqslant |(n,\vm)|_\infty^{-\omega} \text{).}
+		&\leqslant |(n,\vm)|_\infty^{-w} \text{).}
 \end{align*}
 \end{definition}
 
@@ -28,7 +28,7 @@ These two quantities are related by Khintchine's transference principle, namely
 \[
 	\frac{\omega_{d-1}(\vx)}{(d-1) \omega_{d-1}(\vx)+d} \leqslant \omega_0(\vx) \leqslant \frac{\omega_{d-1}(\vx)-d+1}{d} .
 \]
-Moreover, these inequalities are sharp in a very strong sense. 
+Moreover, the second of these inequalities is sharp in a very strong sense. 
 
 \begin{theorem}[Jarn\'ik]\label{thm:jarnik}
 Let $w\geqslant 1/d$. Then there exists $\vx\in \bR^d$ such that 
@@ -51,7 +51,7 @@ $\dd(\vx,\bZ^d)=0$ if and only if $\vx\in \bZ^d$. Moreover, $\dd(-,\bZ^d)$
 is well-defined for elements of $(\bR/\bZ)^d$. 
 
 \begin{lemma}\label{lem:bound-distance}
-Let $\vx\in \bR^d$ with $|\vx|_\infty\leqslant 1$ and $\omega_0(\vx)$ 
+Let $\vx\in \bR^d$ with $|\vx|_\infty< 1$ and $\omega_0(\vx)$ 
 (resp.~$\omega_{d-1}(\vx)$) finite. Then 
 \begin{align*}
 	\frac{1}{\dd(n \vx,\bZ^d)} 
@@ -63,8 +63,8 @@ Let $\vx\in \bR^d$ with $|\vx|_\infty\leqslant 1$ and $\omega_0(\vx)$
 \begin{proof}
 Let $\epsilon>0$. Then there are only finitely many $n\in \bZ$ 
 (resp.~$\vm\in \bZ^d$) such that the inequalities in Definition 
-\ref{def:approx-exp} hold with $\omega_0(x)+\epsilon$ 
-(resp.~$\omega_{d-1}(\vx)+\epsilon$). In other words, there exist constants 
+\ref{def:approx-exp} hold with $w = \omega_0(x)+\epsilon$ 
+(resp.~$w = \omega_{d-1}(\vx)+\epsilon$). In other words, there exist constants 
 $C_0, C_{d-1}>0$ such that 
 \begin{align*}
 	|n \vx - \vm|_\infty 
@@ -72,10 +72,10 @@ $C_0, C_{d-1}>0$ such that
 	|n + \langle \vm,\vx\rangle| 
 		&\geqslant C_{d-1} |(n,\vm)|_\infty^{-\omega_{d-1}(\vx)-\epsilon} 
 \end{align*}
-for all $(n,\vm)\ne 0$ in $\bZ^{d+1}$. 
+for all $(n,\vm)\ne 0$ in $\bZ\times\bZ^d$. 
 
-Start with the first inequality. Let $\vm$ be the lattice point achieving the 
-minimum $|n \vx - \vm|_\infty$; then 
+Start with the first inequality. Fix $n$, and let $\vm$ be the lattice point 
+achieving the minimum $|n \vx - \vm|_\infty$; then 
 $\dd(n \vx,\bZ^d) \geqslant C_0 |(n,\vm)|_\infty^{-\omega_0(\vx)-\epsilon}$. 
 Since $|n\vx - \vm|_\infty < 1$, 
 $|n| \geqslant \frac{|\vm|_\infty}{|\vx|_\infty}-1$ , which gives 
@@ -104,7 +104,8 @@ the implied constant depending on $\vx$ and $\epsilon$.
 
 Let $\vx\in (\bR/\bZ)^d$ with $x_1,\dots,x_d$ linearly independent over $\bQ$ 
 (this condition makes sense for elements of $(\bR/\bZ)^d$). 
-We wish to control the discrepancy of the sequence $(x,2x,3x,\dots)$. 
+We wish to control the discrepancy of the sequence $(x,2x,3x,\dots)$ with 
+respect to the Haar measure of $(\bR/\bZ)^d$. 
 
 \begin{theorem}[Erd\"os--Tur\'an--Koksma]
 Let $\bx$ be a sequence in $(\bR/\bZ)^d$ and $h$ an arbitrary integer. Then 
@@ -150,14 +151,14 @@ Apply the Erd\"os--Tur\'an--Koksma inequality, and bound the exponential sums
 using Lemma \ref{lem:bound-exp-sum}. 
 \end{proof}
 
-\begin{theorem}
+\begin{theorem}\label{thm:disc-upper-bound}
 Let $\bx=(\vx,2\vx,3\vx,\dots)$ in $(\bR/\bZ)^d$. Then 
 \[
 	\D_N(\bx) \ll N^{-\frac{1}{\omega_{d-1}(\vx)+1}+\epsilon} .
 \]
 \end{theorem}
 \begin{proof}
-Choose $\delta>0$ such that 
+Fix $\epsilon>0$, and choose $\delta>0$ such that 
 $\frac{1}{\omega_{d-1}(\vx)+1+\delta} = \frac{1}{\omega_{d-1}(\vx)+1} - \epsilon$. 
 By Corollary \ref{cor:bound-disc-distance}, we know that 
 \[
@@ -185,7 +186,7 @@ For a slightly different proof of a similar result, given as a sequence of
 exercises, see  \cite[Ch.~2, Ex.~3.15, 16, 17]{kuipers-niederreiter-1974}. 
 \end{proof}
 
-\begin{theorem}
+\begin{theorem}\label{thm:disc-lower-bound}
 Let $\vx\in \bR^d$ be such that $x_1,\dots,x_d$ are linearly independent over 
 $\bQ$, and let $\bx=(\vx,2\vx,3\vx,\dots)$ in $(\bR/\bZ)^d$. Then 
 $\D_N(\bx) = \Omega\left(N^{-\frac{d}{\omega_0(\vx)}-\epsilon} \right)$. 
@@ -228,7 +229,7 @@ multiple of $N^{-\frac{d}{\omega_0(\vx)}}$, the proof is complete.
 
 \section{Pathological Satake parameters for CM abelian varieties}
 
-Give $(\bR/\bZ)^d$ the natural Haar measure normalized to have total mass one. 
+Give $(\bR/\bZ)^d$ the Haar measure normalized to have total mass one. 
 Recall that for any $f\in L^1((\bR/\bZ)^d)$, the Fourier coefficients of $f$ 
 are, for $\vm\in \bZ^d$: 
 \[
@@ -252,7 +253,7 @@ $\dd(\langle \vm,\vx\rangle, \bZ)^{-1} \ll |\vm|_\infty^{\omega_{d-1}(x)+\epsilo
 The result follows. 
 \end{proof}
 
-\begin{theorem}
+\begin{theorem}\label{thm:translates-bound-sum}
 Let $\vx\in \bR^d$ with $\omega_{d-1}(\vx)$ finite. Fix 
 $f\in L^1((\bR/\bZ)^d)$ with $\widehat f(0)=0$ and suppose the Fourier 
 coefficients of $f$ satisfy the bound 
@@ -261,23 +262,21 @@ Then $\left| \sum_{n\leqslant N} f(n \vx)\right| \ll 1$.
 \end{theorem}
 \begin{proof}
 Write $f$ as a Fourier series:
-\[
-	f(x) = \sum_{\vm\in \bZ^d} \widehat f(\vm) e^{2\pi i \langle \vm,\vx\rangle} .
-\]
+$f(\vx) = \sum_{\vm\in \bZ^d} \widehat f(\vm) e^{2\pi i \langle \vm,\vx\rangle}$. 
 Since $\widehat f(0)=0$, we can compute:
 \begin{align*}
 	\left| \sum_{n\leqslant N} f(n \vx)\right| 
-		&= \left| \sum_{n\leqslant N} \sum_{\vm\in \bZ^d\smallsetminus 0} \widehat f(\vm) e^{2\pi i \langle \vm,\vx\rangle}\right| \\
+		&= \left| \sum_{n\leqslant N} \sum_{\vm\in \bZ^d\smallsetminus 0} \widehat f(\vm) e^{2\pi i n \langle \vm,\vx\rangle}\right| \\
 		&\leqslant \sum_{\vm\in \bZ^d\smallsetminus 0} |\widehat f(\vm)| \left| \sum_{n\leqslant N} e^{2\pi i n \langle \vm,\vx\rangle}\right| \\
 		&\ll \sum_{\vm\in \bZ^d\smallsetminus 0} |\vm|_\infty^{-\frac{1}{d-1} - \omega_{d-1}(\vx) - \epsilon} |m|_\infty^{\omega_{d-1}(\vx) + \epsilon/2} \\
 		&\ll \sum_{\vm\in \bZ^d\smallsetminus 0} |\vm|_\infty^{-\frac{1}{d-1} - \epsilon/2} .
 \end{align*}
-The sum converges since the exponent is less than $-\frac{1}{d-1}$, and it 
-doesn't depend on $N$, hence the result. 
+The sum converges since the exponent is less than $-\frac{1}{d-1}$, hence the 
+result. 
 \end{proof}
 
 
-Let $p_1 = 2, p_2 = 3, p_3 = 5, \dots$ be an enumeration of the prime numbers. 
+Let $p_1 = 2, p_2 = 3, p_3 = 5, \dots$ be an enumeration of the rational primes. 
 Let $\vy\in \bR^d$ with $y_1,\dots,y_d$ linearly independent over $\bQ$. The 
 associated sequence of ``fake Satake parameters'' is 
 $\bx = (\vy, 2\vy, 3 \vy, 4 \vy, \dots)$, 
@@ -291,6 +290,13 @@ $\D_N(\bx) = \Omega\left(N^{-\frac{d}{w} - \epsilon}\right)$.
 However, for any $f\in C^\infty((\bR/\bZ)^d)$ with $\widehat f(0)=0$, the 
 Dirichlet series  $L_f(\bx,s)$ satisfies the Riemann Hypothesis. 
 \end{theorem}
+\begin{proof}
+The upper bound on discrepancy is Theorem \ref{thm:disc-upper-bound}, and 
+the lower bound is Theorem \ref{thm:disc-lower-bound}. For the functions $f$ in 
+question, Theorem \ref{thm:translates-bound-sum} gives an estimate (stronger 
+than) $\left| \sum_{p\leqslant N} f(\vx_p)\right|\ll N^{\frac 1 2}$, and 
+Theorem \ref{thm:AT->RH} tells us this estimate implies the Riemann Hypothesis. 
+\end{proof}
 
 Let's apply this theorem to abelian varieties with complex multiplication. Let 
 $K/\bQ$ be a finite Galois extension, $A_{/K}$ an abelian variety with complex 
