@@ -8,13 +8,14 @@
 
 \section{Notation and necessary results}
 
-In this chapter we loosely summarize and adapt the results of 
-\cite{khare-larsen-ramakrishna-2005,pande-2011}. Throughout, if $F$ is a field, 
-$M$ a $G_F$-module, we write $\h^\bullet(F,M)$ in place of $\h^\bullet(G_F,M)$. 
-All Galois representations will take values in $\GL_2(\bZ/l^n)$ or 
-$\GL_2(\bZ_l)$ for $l$ a (fixed) rational prime, and all deformations will 
-have fixed determinant. So we consider the cohomology of $\Ad^0\bar\rho$, 
-the induced representation on trace-zero matrices by conjugation. 
+In this section we loosely summarize and adapt the results of 
+\cite{khare-larsen-ramakrishna-2005,pande-2011}. Throughout, if $F$ is a field 
+and $M$ a $G_F$-module, we write $\h^\bullet(F,M)$ in place of 
+$\h^\bullet(G_F,M)$. All Galois representations will take values in 
+$\GL_2(\bZ/l^n)$ or $\GL_2(\bZ_l)$ for $l$ a (fixed) rational prime, and 
+all deformations will have fixed determinant. So we consider the cohomology of 
+$\Ad^0\bar\rho$, the induced representation on trace-zero matrices by 
+conjugation. 
 
 If $S$ is a set of rational primes, $\bQ_S$ denotes the largest extension of 
 $\bQ$ unramified outside $S$. So $\h^i(\bQ_S,-)$ is what is usually written as 
@@ -27,7 +28,9 @@ If $l$ is a rational prime and $S$ a finite set of primes containing $l$, then
 for any $\bF_l[G_{\bQ_S}]$-module $M$, write $M^\vee=\hom_{\bF_l}(M,\bF_l)$ 
 with the obvious $G_{\bQ_S}$-action, and write $M^\ast = M^\vee(1)$ for the 
 Cartier dual of $M^\vee$. By \cite[Th.~8.6.7]{neukirch-schmidt-winberg-2008}, 
-there is an isomorphism $\sha^1_S(M^\ast) = \sha_S^2(M)^\vee$. 
+there is an isomorphism $\sha^1_S(M^\ast) = \sha_S^2(M)^\vee$. As a result, if 
+$\sha_S^1(M) = \sha_S^2(M) = 0$ and $S\subset T$, then 
+$\sha_T^1(M) = \sha_T^2(M) = 0$. 
 
 \begin{definition}
 A \emph{good residual representation} is an odd, absolutely irreducible, 
@@ -42,7 +45,7 @@ results of Khare--Wintenberger.
 \begin{theorem}\label{thm:always-can-lift}
 Let $\bar\rho\colon G_\bQ \to \GL_2(\bF_l)$ be a good residual 
 representation. Then there exists a weight-$2$ lift of $\bar\rho$ to $\bZ_l$, 
-ramified at the same set of primes. 
+ramified at the same set of primes as $\bar\rho$. 
 \end{theorem}
 \begin{proof}
 This is \cite[Th.~1]{ramakrishna-2002}, taking into account that the paper in 
@@ -120,10 +123,6 @@ $h$-bounded lift $(\rho_{n+1},R',U',\{\rho_p\})$ of
 $(\rho_n,R,U,\{\rho_p\})$. 
 \end{theorem}
 \begin{proof}
-Note that we do not bound the size of $R'\smallsetminus R$. It is possible that 
-this can be done, using unpublished results of Ramakrishna, but that is not 
-necessary for the results that follow. 
-
 By \cite[Lem.~8]{khare-larsen-ramakrishna-2005}, there exists a finite set 
 $N$ of nice primes such that the map 
 \begin{equation}\label{eq:h1-isom}
@@ -142,7 +141,7 @@ transitively on lifts of $\left.\rho_n\right|_{G_{\bQ_p}}$ to $\bZ/l^{n+1}$. In
 particular, there are cohomology classes $f_p\in \h^1(\bQ_p,\Ad^0\bar\rho)$ 
 such that $f_p\cdot \rho^\ast \equiv \rho_p\pmod{l^{n+1}}$ for all 
 $p\in R\cup U'$. Moreover, for all $p\in U'$, the class $f_p$ is unramified. 
-Since the map in \eqref{eq:h1-isom} is an isomorphism, there exists 
+Since the map \eqref{eq:h1-isom} is an isomorphism, there exists 
 $f\in \h^1(\bQ_{R\cup N},\Ad^0\bar\rho)$ such that 
 $\left.f\cdot \rho^\ast\right|_{G_{\bQ_p}}\equiv \rho_p\pmod{l^{n+1}}$ for all 
 $p\in R\cup U'$. 
@@ -156,8 +155,8 @@ $(g+f)\cdot \rho^\ast$ still agrees with $\rho_p$ for $p\in R\cup U'$, and
 $(g+f)\cdot \rho^\ast$ is nice for all $p\in N'$. As above, the primes in $N'$ 
 are chosen one at a time from Chebotarev sets, so we can continue to ensure the 
 bound $\pi_{R\cup N'}(x)\leqslant h(x) \pi(x)$ and also that all primes in $N'$ 
-are larger than $\max U'$. Let $\rho_{n+1} = (g+f) \cdot \rho^\ast$. Let 
-$R' = \{p\in R\cup N' : \rho_{n+1}\text{ is ramified at }p\}$. For each 
+are larger than those in $U'$. Let $\rho_{n+1} = (g+f) \cdot \rho^\ast$. Let 
+$R' = R\cup \{p\in N' : \rho_{n+1}\text{ is ramified at }p\}$. For each 
 $p\in R'\smallsetminus R$, choose a lift $\rho_p$ of 
 $\left. \rho_{n+1}\right|_{G_{\bQ_p}}$ to $\bZ_l$. 
 
@@ -217,52 +216,87 @@ $\left| \frac{a_p}{2\sqrt p} - x_p\right| \leqslant \frac{l b(p)}{2\sqrt p}$.
 Begin with $\rho_1= \bar\rho$. By \cite[Lem.~6]{khare-larsen-ramakrishna-2005}, 
 there exists a finite set $R$, containing the set of primes at which $\bar\rho$ 
 ramifies, such that $\sha_R^1(\Ad^0\bar\rho) = \sha_R^2(\Ad^0\bar\rho) = 0$. 
-Let $R_2$ be the union of $R$ and all primes $p$ with 
-$\frac{l}{2\sqrt p} > 2$. For all $p\notin R_2$ and any $a\in \bF_l$, there 
+Let $R_1$ be the union of $R$ and all primes $p$ with 
+$\frac{l}{2\sqrt p} > 2$. For all $p\notin R_1$ and any $a\in \bF_l$, there 
 exists $a_p\in \bZ$ satisfying the Hasse bound with $a_p\equiv a\pmod l$. In 
 fact, given any $x_p\in [-1,1]$, there exists $a_p\in \bZ$ satisfying the Hasse 
 bound such that 
 $\left| \frac{a_p}{2\sqrt p} - x_p\right| \leqslant \frac{l}{2\sqrt p}$.
-Choose, for all primes $p\in R_2$, a ramified 
-lift $\rho_p$ of $\left. \rho_1\right|_{G_{\bQ_p}}$. Let $U_2$ be the set of 
-primes not in $R_2$ such that 
+Choose, for all primes $p\in R_1$, a ramified 
+lift $\rho_p$ of $\left. \rho_1\right|_{G_{\bQ_p}}$. Let $U_1$ be the set of 
+primes not in $R_1$ such that 
 $\frac{l^2}{2\sqrt p} > \min\left(2, \frac{l b(p)}{2\sqrt p}\right)$. 
-For each $p\in U_2$, there exists $a_p\in \bZ$, satisfying the 
+For each $p\in U_1$, there exists $a_p\in \bZ$, satisfying the 
 Hasse bound, such that 
 \[
 	\left| \frac{a_p}{2\sqrt p} - x_p\right| \leqslant \frac{l}{2\sqrt p} \leqslant \frac{l b(p)}{2\sqrt p} ,
 \]
-and moreover $a_p\equiv \tr\bar\rho(\frob_p)\pmod l$. For each $p\in U_2$, let 
+and moreover $a_p\equiv \tr\bar\rho(\frob_p)\pmod l$. For each $p\in U_1$, let 
 $\rho_p$ be an unramified lift of $\left.\bar\rho\right|_{G_{\bQ_p}}$ with 
 $\tr\rho_p$ being the desired $a_p$. It may not be that 
-$\pi_{R_2}(x) \leqslant h(x) \pi(x)$ for all $x$, but there is a scalar 
-multiple $h^\ast$ of $h$ so that $\pi_{R_2}(x) \leqslant h^\ast(x) \pi(x)$ for 
+$\pi_{R_1}(x) \leqslant h(x) \pi(x)$ for all $x$, but there is a scalar 
+multiple $h^\ast$ of $h$ so that $\pi_{R_1}(x) \leqslant h^\ast(x) \pi(x)$ for 
 all $x$. 
 
 We have constructed our first $h^\ast$-bounded lifting datum 
-$(\rho_1,R_2,U_2,\{\rho_p\})$. We proceed to construct 
+$(\rho_1,R_1,U_1,\{\rho_p\})$. We proceed to construct 
 $\rho = \varprojlim \rho_n$ inductively, by constructing a new $h^\ast$-bounded 
 lifting datum for each $n$. We ensure that $U_n$ contains all primes for which 
-$\frac{l^n}{2\sqrt p} > \min\left(2, \frac{l b(p)}{2\sqrt p}\right)$, so there 
-are always integral $a_p$ satisfying the Hasse bound which satisfy any 
-mod-$l^n$ constraint, and that can always choose these $a_p$ so as to preserve 
-statement 2 in the theorem. 
+$\frac{l^{n+1}}{2\sqrt p} > \min\left(2, \frac{l b(p)}{2\sqrt p}\right)$, so 
+there are always integral $a_p$ satisfying the Hasse bound which satisfy any 
+mod-$l^{n+1}$ constraint, and that can always choose these $a_p$ so as to 
+preserve statement 2 in the theorem. 
 
 The base case is already complete, so suppose we are given 
-$(\rho_{n-1},R_n,U_n,\{\rho_p\})$. We may assume that $U_n$ contains all 
-primes for 
+$(\rho_{n-1},R_{n-1},U_{n-1},\{\rho_p\})$. We may assume that $U_{n-1}$ 
+contains all primes for 
 which $\frac{l^n}{2\sqrt p} > \min\left(2, \frac{l b(p)}{2\sqrt p}\right)$. Let 
-$U_{n+1}$ be the set of all primes not in $R_n$ such that 
+$U_n$ be the set of all primes not in $R_{n-1}$ such that 
 $\frac{l^{n+1}}{2\sqrt p} > \min\left(2, \frac{l b(p)}{2\sqrt p}\right)$. For 
-each $p\in U_{n+1}\smallsetminus U_n$, there is an integer $a_p$, satisfying 
+each $p\in U_n\smallsetminus U_{n-1}$, there is an integer $a_p$, satisfying 
 the Hasse bound, such that $a_p\equiv \rho_n(\frob_p)\pmod{l^n}$, and moreover 
 $\left|\frac{a_p}{2\sqrt p} - x_p\right| \leqslant \frac{l b(p)}{2\sqrt p}$. 
 For such $p$, let $\rho_p$ be an unramified lift of 
 $\left. \rho_n\right|_{G_{\bQ_p}}$ such that $\tr\rho_n(\frob_p)$ is the 
 desired $a_p$. By Theorem \ref{thm:lifting-datum}, there exists an 
-$h^\ast$-bounded lifting datum 
-$(\rho_{n+1},R_{n+1},U_{n+1},\{\rho_p\})$ extending and lifting 
-$(\rho_n,R_n,U_n,\{\rho_p\})$. This completes the inductive step.  
+$h^\ast$-bounded lifting datum $(\rho_n,R_n,U_n,\{\rho_p\})$ extending and 
+lifting $(\rho_{n-1},R_{n-1},U_{n-1},\{\rho_p\})$. This completes the inductive 
+step.  
+\end{proof}
+
+We will apply this theorem to construct Galois representations with specified 
+Sato--Tate distributions in the next section, but for now here is a small 
+consequence, which addresses the results in \cite{sarnak-2007}. Sarnak remarks 
+that for $E_{/\bQ}$ a non-CM elliptic curve with rank $r$, the partial sums 
+$\frac{\log x}{\sqrt x} \sum_{p\leqslant x} \frac{a_p}{\sqrt p}$ approach a 
+limiting distribution with mean $1 - 2 r$. 
+
+\begin{corollary}
+Let $L \in [-\infty,\infty]$ and $\epsilon>0$ be given. Then there exists a 
+weight 2 Galois representation $\rho\colon G\to \GL_2(\bZ_l)$, such that 
+each $a_p = \tr\rho(\frob_p)\in \bZ$ satisfies the Hasse bound, 
+\[
+	L = \lim_{N\to \infty} \frac{\log N}{\sqrt N}\sum_p \frac{a_p}{\sqrt p} 
+\]
+and $\pi_{\ram(\rho)}(x) \ll e^{-x}$. 
+\end{corollary}
+\begin{proof}
+Begin with a sequence $(x_p)$ in $[-1,1]$ such that 
+$\lim_{N\to \infty} \frac{\log N}{\sqrt N}\sum_{p\leqslant N} x_p = L$. If 
+$L=\pm \infty$, we can choose $x_p = \pm 1$. By Theorem 
+\ref{thm:master-Galois}, there exists $\rho\colon G_\bQ \to \GL_2(\bZ_l)$ with 
+$\pi_{\ram(\rho)}(x) \ll e^{-x}$, and such that for each unramified $p$, 
+$a_p = \tr\rho(\frob_p)\in \bZ$, satisfies the Hasse bound, has 
+$\left| \frac{a_p}{2\sqrt p} - b_p\right| < \frac{l \log p}{\sqrt p}$, and by 
+looking at the proof, we can even ensure that 
+$\sum \left(\frac{a_p}{2\sqrt p} - b_p\right)$ converges conditionally. Note 
+that
+\[
+	\left|\frac{\log N}{\sqrt N}\sum_{p\leqslant N} \frac{a_p}{2\sqrt p} - \frac{\log N}{\sqrt N} \sum_{p\leqslant N} x_p\right| 
+		\leqslant \frac{\log N}{\sqrt N} \left(\pi_{\ram(\rho)}(N) + \sum_{p\leqslant N} \left(\frac{a_p}{2 \sqrt p} - x_p\right)\right) \to 0 .
+\]
+When $L\ne \pm\infty$, this shows that the limit in question exists and is $L$. 
+When $L=\pm \infty$, this shows that the the sums in question diverge to $L$. 
 \end{proof}
 
 
@@ -285,11 +319,11 @@ measure, there is a sequence $(a_p)$ of integers satisfying the Hasse
 bound $|a_p|\leqslant 2\sqrt p$, such that for 
 $\theta_p = \cos^{-1}\left(\frac{a_p}{2\sqrt p}\right)$, the discrepancy 
 $\D_N(\btheta,\mu)$ behaves like $\pi(N)^{-\alpha}$ for predetermined 
-$\alpha\in \left(0,\frac 1 2\right]$, while for any odd $k$, the strange 
-Dirichlet series $L_{U_k}(\btheta,s)$, which we will write 
-$L(\sym^k \btheta,s)$, satisfies the Riemann Hypothesis. 
-In the second part of this section, we associate (infinitely ramified) Galois 
-representations to these fake Satake parameters. 
+$\alpha\in \left(0,\frac 1 2\right)$, while for any odd $k$, the strange 
+Dirichlet series $L_{U_k}(\btheta,s)$, which we will write as 
+$L(\sym^k \btheta,s)$, satisfies the Riemann Hypothesis. In the second part of 
+this section, we associate Galois representations to these fake Satake 
+parameters. 
 
 \begin{definition}
 Let $\mu = f(t)\, \dd t$ be an absolutely continuous measure with continuous 
@@ -327,7 +361,7 @@ $\btheta = \cos^{-1}(\by)$, and we see that
 $\D_N(\btheta,\mu) = \Theta(\pi(N)^{-\alpha})$. 
 \end{proof}
 
-We can improve this example by controlling the behavior of sums of the form 
+We can improve this example by controlling the behavior of the sums 
 $\sum_{p\leqslant N} U_k(\theta_p)$ for odd $k$. Let $\sigma$ be 
 the involution of $[0,\pi]$ given by $\sigma(\theta) = \pi-\theta$. Note that 
 $\sigma_\ast \ST = \ST$. Moreover, note that for any odd $k$, 
@@ -411,3 +445,12 @@ $\rho\colon G_\bQ \to \GL_2(\bZ_l)$ lifting $\bar\rho$ such that parts
 powers follows from the proof of Theorem \ref{thm:int-flip-seq}. 
 \end{proof}
 
+This entire discussion also works with absolutely continuous measure $\mu$, 
+supported on a proper subinterval of $[0,\pi]$, so long as their cdf is 
+strictly increasing on that interval. For example, fix $\epsilon>0$, and let 
+$\mu_\epsilon = B(t) \, \dd t$, where $B$ is a bump function on 
+$\left[ \frac \pi 2 - \epsilon,\frac \pi 2 + \epsilon\right]$, normalized to 
+have total mass one. Then Theorem \ref{thm:bad-Galois} gives Galois 
+representations with empirical Sato--Tate distribution converging at any 
+specified rate to $\mu_\epsilon$. This is a strictly stronger result than 
+\cite[Th.~5.2]{pande-2011}. 
