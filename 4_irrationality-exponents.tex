@@ -10,7 +10,15 @@
 
 We follow the notation of \cite{laurent-2009}. Fix a dimension 
 $d\geqslant 1$, and let $\vx=(x_1,\dots,x_d)\in \bR^d$ be such that the $x_i$ 
-are linearly independent over $\bQ$.  
+are linearly independent over $\bQ$. If $d = 1$, the \emph{irrationality 
+exponent} of $x\in \bR$ is the supremum of the set of $w\in \bR^+$ such that 
+there infinitely many rational numbers $\frac p q$ with 
+$\left| x - \frac p q\right| \leqslant q^{-w}$. If $x$ is rational, then it has 
+irrationality exponent $1$. If $x$ is an algebraic irrational, then Roth's 
+theorem tells us its irrationality exponent is $2$. Liouiville constructed 
+transcendental numbers with arbitrarily large irrationality exponent. When 
+$d\geqslant 1$, there are a range of measures of irrationality---we will 
+consider only two. 
 
 \begin{definition}\label{def:approx-exp}
 Let $\omega_0(\vx)$ (resp.~$\omega_{d-1}(\vx)$) be the supremum of the set of 
@@ -86,7 +94,7 @@ implied constant depending on $x$ and $\epsilon$.
 
 Now we consider the second inequality. Note 
 that $\dd(\langle \vm,\vx\rangle,\bZ) = |n + \langle \vm,\vx\rangle|$ for 
-some $n$ with $|n| \leqslant \|\vm\|_2 \|\vx\|_2 + 1$. Thus 
+some $n$ with $|n| \leqslant |\vm|_2\cdot |\vx|_2 + 1$. Thus 
 $|(n,\vm)|_\infty \ll |\vm|_2 \ll |\vm|_\infty$ (any two norms on a 
 finite-dimensional Banach space are equivalent), which gives us 
 $\dd(\langle\vm,\vx\rangle,\bZ) \geqslant C_{d-1}' |\vm|^{-\omega_{d-1}(\vx)-\epsilon}$, for some constant $C_{d-1}'$. This implies 
@@ -102,10 +110,14 @@ the implied constant depending on $\vx$ and $\epsilon$.
 
 \section{Irrationality exponents and discrepancy}
 
-Let $\vx\in (\bR/\bZ)^d$ with $x_1,\dots,x_d$ linearly independent over $\bQ$ 
-(this condition makes sense for elements of $(\bR/\bZ)^d$). 
-We wish to control the discrepancy of the sequence $(x,2x,3x,\dots)$ with 
-respect to the Haar measure of $(\bR/\bZ)^d$. 
+Let $\vx\in (\bR/\bZ)^d$. The sequence $(\vx,2\vx,3\vx,\dots)$ will be 
+equidistributed in a subtorus of $(\bR/\bZ)^d$ whose rank is equal to the 
+dimension of the $\bQ$-vector space spanned by any lifts of the $x_i$ to 
+$\bR$. We are interested in the case where this sequence is equidistributed in 
+the whole torus $(\bR/\bZ)^d$, so assume $x_1,\dots,x_d$ are linearly 
+independent over $\bQ$ (this condition makes sense for elements of 
+$(\bR/\bZ)^d$). We wish to control the discrepancy of the sequence 
+$(x,2x,3x,\dots)$ with respect to the Haar measure of $(\bR/\bZ)^d$. 
 
 \begin{theorem}[Erd\"os--Tur\'an--Koksma]
 Let $\bx$ be a sequence in $(\bR/\bZ)^d$ and $h$ an arbitrary integer. Then 
@@ -184,6 +196,9 @@ $D_N(\bx) \ll N^{-\frac{1}{\omega_{d-1}(\vx)+1+\delta}} = N^{-\frac{1}{\omega_{d
 
 For a slightly different proof of a similar result, given as a sequence of 
 exercises, see  \cite[Ch.~2, Ex.~3.15, 16, 17]{kuipers-niederreiter-1974}. 
+Also, this estimate is quite coarse, but a better one would only have a smaller 
+leading coefficient, which would no doubt be useful for computational 
+purposes, but does not strengthen any of the results in this thesis.  
 \end{proof}
 
 \begin{theorem}\label{thm:disc-lower-bound}
@@ -255,10 +270,8 @@ The result follows.
 
 \begin{theorem}\label{thm:translates-bound-sum}
 Let $\vx\in \bR^d$ with $\omega_{d-1}(\vx)$ finite. Fix 
-$f\in L^1((\bR/\bZ)^d)$ with $\widehat f(0)=0$ and suppose the Fourier 
-coefficients of $f$ satisfy the bound 
-$|\widehat f(\vm)| \ll |\vm|_\infty^{-\frac{1}{d-1} - \omega_{d-1}(\vx)-\epsilon}$. 
-Then $\left| \sum_{n\leqslant N} f(n \vx)\right| \ll 1$. 
+$f\in C^\infty((\bR/\bZ)^d)$ with $\widehat f(0)=0$. Then 
+$\left| \sum_{n\leqslant N} f(n \vx)\right| \ll 1$. 
 \end{theorem}
 \begin{proof}
 Write $f$ as a Fourier series:
@@ -267,13 +280,17 @@ Since $\widehat f(0)=0$, we can compute:
 \begin{align*}
 	\left| \sum_{n\leqslant N} f(n \vx)\right| 
 		&= \left| \sum_{n\leqslant N} \sum_{\vm\in \bZ^d\smallsetminus 0} \widehat f(\vm) e^{2\pi i n \langle \vm,\vx\rangle}\right| \\
-		&\leqslant \sum_{\vm\in \bZ^d\smallsetminus 0} |\widehat f(\vm)| \left| \sum_{n\leqslant N} e^{2\pi i n \langle \vm,\vx\rangle}\right| \\
-		&\ll \sum_{\vm\in \bZ^d\smallsetminus 0} |\vm|_\infty^{-\frac{1}{d-1} - \omega_{d-1}(\vx) - \epsilon} |m|_\infty^{\omega_{d-1}(\vx) + \epsilon/2} \\
-		&\ll \sum_{\vm\in \bZ^d\smallsetminus 0} |\vm|_\infty^{-\frac{1}{d-1} - \epsilon/2} .
+		&\leqslant \sum_{\vm\in \bZ^d\smallsetminus 0} \left|\widehat f(\vm)\right|\cdot \left| \sum_{n\leqslant N} e^{2\pi i n \langle \vm,\vx\rangle}\right| \\
+		&\ll \sum_{\vm\in \bZ^d\smallsetminus 0} \left|\widehat f(\vm)\right|\cdot |\vm|_\infty^{\omega_{d-1}(\vx) + \epsilon/2} .
 \end{align*}
-The sum converges since the exponent is less than $-\frac{1}{d-1}$, hence the 
-result. 
+The sum converges since the Fourier coefficients $\widehat f(\vm)$ converge to 
+zero faster than the reciprocal of any polynomial. 
 \end{proof}
+
+The function $f$ does not need to be smooth---so long as its Fourier 
+coefficients decay sufficiently rapidly so as to force 
+$\sum |\widehat f(\vm)| \cdot |\vm|_\infty^{\omega_{d-1}(\vx)+\epsilon}$ to 
+converge, the proof works. 
 
 
 Let $p_1 = 2, p_2 = 3, p_3 = 5, \dots$ be an enumeration of the rational primes. 

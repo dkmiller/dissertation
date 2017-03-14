@@ -59,6 +59,9 @@ $\Ad^0\bar\rho\simeq \bF_l \oplus \bF_l(1)\oplus \bF_l(-1)$, i.e.~if the
 eigenvalues of $\bar\rho(\frob_p)$ have ratio $p$. 
 \end{definition}
 
+Taylor allows $p\equiv -1\pmod l$, but the results of \cite{pande-2011} 
+require $p\not\equiv -1\pmod l$. 
+
 \begin{theorem}[Ramakrishna]
 Let $\bar\rho$ be a good residual representation and $p$ a nice prime. Then 
 any deformation of $\left.\bar\rho\right|_{G_{\bQ_p}}$ is induced by 
@@ -95,7 +98,7 @@ which $\rho_n$ ramifies.
 $\pi_R(x)\leqslant h(x)\pi(x)$ for all $x$. 
 
 \item
-$\sha_R^1(\Ad^0\bar\rho) = \sha_R^2(\Ad^0\bar\rho) = 0$. 
+$\sha_R^1(\Ad^0\bar\rho)$ and $\sha_R^2(\Ad^0\bar\rho)$ are trivial. 
 
 \item
 For all $p\in R\cup U$, 
@@ -192,7 +195,12 @@ specified values (the ``closeness'' again controlled by a parameter function
 $b$). 
 
 Given any deformation $\rho$, write $\pi_{\ram(\rho)}(x)$ for the function 
-which counts $\rho_n$-ramified primes $\leqslant x$. 
+which counts $\rho_n$-ramified primes $\leqslant x$. Since we will have 
+$\pi_{\ram(\rho)}(x)\ll h(x) \pi(x)$ and bounds of this form are only helpful 
+if $h(x) = o(\pi(x))$, we will usually assume $h(x) = e^{-x}$ or some other 
+rapidly decreasing function. Similarly, we will assume $b(x)$ grows very 
+slowly, e.g.~$b(x) = \log x$. If $b(x)$ grows rapidly, the theorem is still 
+true but the results are not interesting. 
 
 \begin{theorem}\label{thm:master-Galois}
 Let $l$, $\bar\rho$, $\bx$ be as above. Fix functions 
@@ -217,7 +225,8 @@ Begin with $\rho_1= \bar\rho$. By \cite[Lem.~6]{khare-larsen-ramakrishna-2005},
 there exists a finite set $R$, containing the set of primes at which $\bar\rho$ 
 ramifies, such that $\sha_R^1(\Ad^0\bar\rho) = \sha_R^2(\Ad^0\bar\rho) = 0$. 
 Let $R_1$ be the union of $R$ and all primes $p$ with 
-$\frac{l}{2\sqrt p} > 2$. For all $p\notin R_1$ and any $a\in \bF_l$, there 
+$\frac{l}{2\sqrt p} > 2$. Since $\frac{l}{2\sqrt p} \to 0$ as $p\to \infty$, 
+the set $R_1$ is finite. For all $p\notin R_1$ and any $a\in \bF_l$, there 
 exists $a_p\in \bZ$ satisfying the Hasse bound with $a_p\equiv a\pmod l$. In 
 fact, given any $x_p\in [-1,1]$, there exists $a_p\in \bZ$ satisfying the Hasse 
 bound such that 
@@ -234,9 +243,11 @@ Hasse bound, such that
 and moreover $a_p\equiv \tr\bar\rho(\frob_p)\pmod l$. For each $p\in U_1$, let 
 $\rho_p$ be an unramified lift of $\left.\bar\rho\right|_{G_{\bQ_p}}$ with 
 $\tr\rho_p$ being the desired $a_p$. It may not be that 
-$\pi_{R_1}(x) \leqslant h(x) \pi(x)$ for all $x$, but there is a scalar 
-multiple $h^\ast$ of $h$ so that $\pi_{R_1}(x) \leqslant h^\ast(x) \pi(x)$ for 
-all $x$. 
+$\pi_{R_1}(x) \leqslant h(x) \pi(x)$ for all $x$. Let 
+$C = \max\left\{\frac{\pi_{R_1}(x)}{\pi(x)}\right\}$; this is finite because 
+$R_1$ is and $\pi_{R_1}(x)$ is constant past the largest prime in $R_1$. Then 
+for $h^\ast = C h$, we have $\pi_{R_1}(x) \leqslant h^\ast(x) \pi(x)$ for all 
+$x$. 
 
 We have constructed our first $h^\ast$-bounded lifting datum 
 $(\rho_1,R_1,U_1,\{\rho_p\})$. We proceed to construct 
