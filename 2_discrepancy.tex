@@ -11,13 +11,13 @@
 Discrepancy (also known as the Kolmogorov--Smirnov statistic) is a way of 
 measuring how closely sample data fits a predicted distribution. It has many 
 applications in computer science and statistics, but here we will focus on only 
-the basic properties, such as how discrepancy changes when sequences 
+its basic properties, such as how discrepancy changes when sequences 
 are ``tweaked'' and combined. 
 
 First, recall that discrepancy provides a way of sharpening the soft 
 convergence results of \cite[A.1]{serre-1989}. Let $X$ be a compact 
-topological space, $\bx = (x_2,x_3,x_5,\dots)$ a sequence of points in $X$ 
-indexed by the rational primes. 
+topological space, $\bx = (x_2,x_3,x_5,\dots)$ a sequence in $X$ indexed by 
+the rational primes. 
 
 \begin{definition}
 Let $\mu$ be a continuous probability measure on $X$. The sequence $\bx$ is 
@@ -32,8 +32,8 @@ $P_{\bx,N} = \frac{1}{\pi(N)} \sum_{p\leqslant N} \delta_{x_p}$ converge to
 $\mu$ in the weak topology. It is easy to see that $\bx$ is 
 $\mu$-equidistributed if and only if 
 $\left| \sum_{p\leqslant N} f(x_p)\right| = o(\pi(N))$ for all $f$ having 
-$\int f\, \dd\mu = 0$. In fact, one can restrict to a set of $f$ which 
-generate a dense subpace of $C(X)^{\mu = 0}$. 
+$\int f\, \dd\mu = 0$. One can restrict to any set of functions which 
+generates a dense subpace of $C(X)^{\mu = 0}$. 
 
 In the discussion in \cite[A.1]{serre-1989}, $X$ is the space of conjugacy 
 classes in a compact Lie group, and $f$ is allowed to range over the characters 
@@ -44,7 +44,7 @@ which are of the form
 	L_f(\bx,s) = \prod_p \frac{1}{1-f(x_p)p^{-s}} .
 \]
 In fact, in light of the following theorem, we can consider functions $f$ 
-which are only only continuous almost everywhere. This allows us to consider 
+which are only continuous almost everywhere. This allows us to consider 
 step functions like $-1_{[0,\pi/2)} + 1_{(\pi/2,\pi]}$ on $[0,\pi]$. 
 
 \begin{theorem}
@@ -76,14 +76,13 @@ $[x_1,y_1)\times \cdots \times [x_d,y_d)$.
 Let $\mu, \nu$ be probability measures on $[0,\vinfty)$. The 
 \emph{discrepancy} of $\mu$ with respect to $\nu$ is 
 $\D(\mu,\nu) = \sup_{\vx < \vy} \left| \mu[\vx,\vy) - \nu[\vx,\vy)\right|$, 
-where $\vx<\vy$ range over $[0,\vinfty)$.
+where $\vx$ and $\vy$ range over $[0,\vinfty)$.
 The \emph{star discrepancy} of $\mu$ with respect to $\nu$ is 
 $\D^\star(\mu,\nu) = \sup_{0\leqslant \vy} \left| \mu[0,\vy) - \nu[0,\vy)\right|$, 
 where $\vy$ ranges over $[0,\vinfty)$. 
 \end{definition}
 
 \begin{lemma}
-Let $\mu,\nu$ be Borel measures on $\bR^d$. Then 
 $\D^\star(\mu,\nu) \leqslant \D(\mu,\nu) \leqslant 2^d \D^\star(\mu,\nu)$. 
 \end{lemma}
 \begin{proof}
@@ -93,8 +92,7 @@ second inequality, let $\vx<\vy$ be in $[0,\vinfty)$. For
 $S\subset \{1,\dots,d\}$, let 
 $I_S = \{ \vt \in [0,\vy) : t_i < x_i \,\forall\,i\in S\}$.
 \begin{figure}[h]
-\caption{The sets $I_{\{1\}}$ and $I_{\{2\}}$ when $d = 2$. $I_\varnothing$ is 
-the large square and $I_{\{1,2\}}$ is the small square.}
+\caption{The sets $I_{\{1\}}$ and $I_{\{2\}}$ when $d = 2$.}
 \centering
 \begin{tikzpicture}
 \draw (1,1) rectangle (4,4);
@@ -126,11 +124,11 @@ using whichever makes a proof easier to follow.
 
 We are usually interested in comparing empirical measures and their conjectured 
 asymptotic distribution. Let $\bx = (\vx_1,\vx_2,\dots)$ be a sequence in 
-$[0,\vinfty)$, and $\mu$ a probability measure on $[0,\vinfty)$. For any real 
-number $N\geqslant 1$, the empirical measure associated to the truncated 
+$[0,\vinfty)$, and $\mu$ a probability measure on $[0,\vinfty)$. For any 
+$N\geqslant 1$, the empirical measure associated to the truncated 
 sequence $\bx_{\leqslant N} = (\vx_n)_{n\leqslant N}$ is 
 $P_{\bx,N} = \frac{1}{N} \sum_{n\leqslant N} \delta_{\vx_n}$. Write 
-$\D_N(\bx,\mu) = \D_N\left( P_{\bx,N},\mu\right)$, and likewise for the star 
+$\D_N(\bx,\mu) = \D_N\left( P_{\bx,N},\mu\right)$, and similarly for star 
 discrepancy. In this context, 
 \[
 	\D^\star_N(\bx,\mu) = \sup_{\vy\in [0,\vinfty)} \left| \frac{\# \{n\leqslant N : \vx_n \in [0,\vy)\}}{N} - \int_{[0,\vy)} \, \dd\mu\right| .
@@ -144,11 +142,11 @@ place of $\D_N(\bx, \lambda)$.
 
 If the sequence $\bx$ lies in the space $G^\natural$ of conjugacy classes in a 
 compact Lie group $G$, choose a maximal torus $T\subset G$, and recall that 
-$G^\natural = T/W$, where $W$ is the Weyl group of $T$. There is a half-open 
+$G^\natural = T/W$, for $W$ the Weyl group of $T$. There is a half-open 
 box in $\ft = \lie(T)$ which maps bijectively to $T$ under the exponential 
 map. Choose a ``half-open'' polyhedral set $Q$ that maps bijectively to $T/W$. 
 Then $Q\subset \ft$ and, if we choose a basis for $\ft$ mapping to zero in 
-$T$, then it makes sense to talk about the discrepancy of a sequence in 
+$T$, it makes sense to talk about the discrepancy of a sequence in 
 $G^\natural$ with respect to the Haar measure. The paper 
 \cite{rosengarten-2013} has a different definition of discrepancy which only 
 works for semisimple simply-connected groups, but also proves an 
@@ -167,12 +165,12 @@ and that in formulas $\frac{1}{N}$ is replaced by
 $\#\{\textnormal{indices }\leqslant N\}^{-1}$. 
 
 \emph{Why half-open boxes?} The choice of sets of the form $[\vx,\vy)$ in the 
-definition of discrepancy seems rather arbitrary. It is. Discrepancy can easily 
-be defined as a supremum over all open (or closed) balls---and in fact those  
-definitions generalize to arbitrary metric spaces. There are also more subtle 
-definitions involving suprema over open or closed convex sets (isotropic 
-discrepancy). See \cite{kuipers-niederreiter-1974} for a discussion and 
-comparison of these differing definitions. In this thesis, we restrict to 
+definition of discrepancy seems rather arbitrary, and it is. Discrepancy can 
+easily be defined as a supremum over all open (or closed) balls---and in fact 
+those  definitions generalize to arbitrary metric spaces. There are also more 
+subtle definitions involving suprema over open or closed convex sets 
+(isotropic discrepancy). See \cite{kuipers-niederreiter-1974} for a discussion 
+and comparison of these differing definitions. In this thesis, we restrict to 
 half-open boxes because they are computationally tractable, fit well with 
 Diophantine approximation on tori, and the theory is most developed for this 
 definition. 
@@ -188,22 +186,21 @@ a sequence $\{\theta_p\}$ of iid random variables with continuous common
 distribution 
 $\mu$, which we may take to be $\frac{2}{\pi} \sin^2 \theta\, \dd\theta$, 
 supported on $[0,\pi]$. Then the discrepancy (known as the 
-Kolmogorov--Smirnov statistic in this context) is the function-valued random 
-variable 
+Kolmogorov--Smirnov statistic in this context) is the random variable 
 \[
 	D_N = \sup_{x\in [0,\pi]} \left|\frac{1}{\pi(N)} \sum_{p\leqslant N} 1_{[0,x]}\circ \theta_p - \int 1_{[0,x]}\, \dd\mu\right| .
 \]
 Kolmogorov and Smirnov proved that the inside of the absolute value converges 
 to zero. The Glivenko--Cantelli Theorem says that $D_N \to 0$ almost surely, 
 and even better, the normalized discrepancy $\sqrt{\pi(N)} D_N$ approaches 
-a limiting distribution $K$ (supremum of the Brownian Bridge) which does not 
+a limiting distribution (supremum of the Brownian bridge) which does not 
 depend on $\mu$. The rate of convergence of $\sqrt{\pi(N)} D_N$ to that 
 distribution is quantified by the Dvoretzky--Kiefer--Wolfowitz inequality, 
 which tells us that 
 $\mathrm{P}\left(\sqrt{\pi(N)} D_N > t\right) \leqslant 2 e^{-2 t^2}$. 
 These theorems suggest that for $E_{/\bQ}$ a non-CM elliptic 
-curve, the ``true'' discrepancy $\D_N(\btheta,\ST)$ should decay 
-like $\pi(N)^{-\frac 1 2}$, or at least $N^{-\frac 1 2+\epsilon}$. Similarly 
+curve, the discrepancy $\D_N(\btheta,\ST)$ should decay like 
+$\pi(N)^{-\frac 1 2}$, or at least $N^{-\frac 1 2+\epsilon}$. Similarly 
 for $E$ a CM elliptic curve and the Sato--Tate measure. Ideally, the 
 normalized discrepancy $\sqrt{\pi(N)}\D_N^\star(\btheta,\ST)$ would also 
 be equidistributed, but sadly, numerical experiments suggest this is not the 
@@ -236,8 +233,8 @@ $f(\vy) - f(0) = \nu[0,\vy]$. What follows relies on the fact
 that $1_{[0,\vx]}(\vy) = 1_{[\vy,\vinfty)}(\vx)$. 
 \begin{align*}
 	\frac{1}{N} \sum_{n\leqslant N} f(\vx_n) - \int f\, \dd\mu 
-		&= \frac{1}{N} \sum_{n\leqslant N} \left(f(\vx_n) - f(0)\right) - \int \left(f(\vy) - f(0)\right)\, \dd\mu(\vy) \\
-		&= \frac{1}{N} \sum_{n\leqslant N} \int 1_{[\vy,\vinfty)}(\vx_n)\, \dd \nu(\vy) - \int \int 1_{[0,\vy]}\, \dd\nu \, \dd\mu(\vy) \\
+		&= \frac{1}{N} \sum_{n\leqslant N} \left(f(\vx_n) - f(0)\right) - \int \left(f(\vx) - f(0)\right)\, \dd\mu(\vx) \\
+		&= \frac{1}{N} \sum_{n\leqslant N} \int 1_{[0,\vx_n]}(\vy)\, \dd \nu(\vy) - \int \int 1_{[0,\vx]}(\vy)\, \dd\nu(\vy) \, \dd\mu(\vx) \\
 		&= \int \left(\frac{1}{N} \sum_{n\leqslant N} 1_{[\vy,\vinfty)}(\vx_n) - \int 1_{[\vy,\vinfty)}\, \dd\mu \right) \dd\nu(\vy) .
 \end{align*}
 It follows that 
@@ -248,16 +245,18 @@ It follows that
 The supremum is bounded above by $\D_N(\bx,\mu)$, so the proof is complete. 
 \end{proof}
 
-This theorem is proved in a somewhat restrictive setting, and can be 
-generalized. For $f$ a function on $\bR^+$ that is bounded variation in 
-the traditional sense (for example, piecewise continuous) and $\mu$ a 
-continuous probability measure, the inequality 
+This theorem is proved in a somewhat restrictive setting, and there are more 
+general versions for less restrictive notions of bounded variation. For 
+example,  $f$ a function on $\bR^+$ that is bounded variation in the 
+traditional sense (for example, piecewise continuous) and $\mu$ a continuous 
+probability measure, the inequality 
 \[
 	\left| \frac{1}{N} \sum_{n\leqslant N} f(x_n) - \int f\, \dd\mu\right| \leqslant \Var(f) \D_N^\star(\bx,\mu) 
 \]
-holds \cite[Ch.~2, Th.~5.1]{kuipers-niederreiter-1974}. In particular, when 
-$\mu$ is the Sato--Tate measure and $f$ is piecewise continuous, we can apply 
-this inequality. 
+still holds \cite[Ch.~2, Th.~5.1]{kuipers-niederreiter-1974}. In particular, 
+when $\mu$ is the Sato--Tate measure and $f$ is piecewise continuous, we can 
+apply this inequality. When $d>1$, the definition of variation is much more 
+complicated. 
 
 
 
@@ -273,7 +272,7 @@ absolutely continuous probability measure on $[0,\infty)$ with bounded
 Radon--Nikodym derivative $\frac{\dd \mu}{\dd\lambda}$. Let $\epsilon>0$ be 
 arbitrary. Then 
 \[
-	\left|\D_N^\star(\bx, \nu) - \D_N^\star(\by,\nu)\right| \leqslant \left\|\frac{\dd\mu}{\dd\lambda}\right\|_\infty \epsilon + \frac{\#\{ n\leqslant N : |x_n - y_n| \geqslant \epsilon\}}{N} .
+	\left|\D_N^\star(\bx, \mu) - \D_N^\star(\by,\mu)\right| \leqslant \left\|\frac{\dd\mu}{\dd\lambda}\right\|_\infty \epsilon + \frac{\#\{ n\leqslant N : |x_n - y_n| \geqslant \epsilon\}}{N} .
 \]
 \end{lemma}
 \begin{proof}
@@ -284,35 +283,36 @@ $|x_n - y_n| \geqslant \epsilon$. It follows that
 	P_{\by,N}[0,t) \leqslant P_{\bx,N}[0,t+\epsilon) + \frac{\#\{ n\leqslant N : |x_n - y_n| \geqslant \epsilon\}}{N} .
 \]
 Moreover, we have 
-$\left| P_{\bx,N}[0,t+\epsilon) - \nu[0,t+\epsilon)\right| \leqslant \D_N^\star(\bx,\nu)$. Putting these together, we get: 
+$\left| P_{\bx,N}[0,t+\epsilon) - \mu[0,t+\epsilon)\right| \leqslant \D_N^\star(\bx,\mu)$. Putting these together, we get: 
 \begin{align*}
-	P_{\by,N}[0,t) - \nu[0,t) 
-		&\leqslant P_{\bx,N}[0,t+\epsilon) - \nu[0,t) + \frac{\#\{ n\leqslant N : |x_n - y_n| \geqslant \epsilon\}}{N} \\
-		&\leqslant \nu[t,t+\epsilon) + \D_N^\star(\bx,\nu) + \frac{\#\{ n\leqslant N : |x_n - y_n| \geqslant \epsilon\}}{N} \\
-		&\leqslant \left\|\frac{\dd\mu}{\dd\lambda}\right\|_\infty \epsilon + \D_N^\star(\bx,\nu) + \frac{\#\{ n\leqslant N : |x_n - y_n| \geqslant \epsilon\}}{N} 
+	P_{\by,N}[0,t) - \mu[0,t) 
+		&\leqslant P_{\bx,N}[0,t+\epsilon) - \mu[0,t) + \frac{\#\{ n\leqslant N : |x_n - y_n| \geqslant \epsilon\}}{N} \\
+		&\leqslant \mu[t,t+\epsilon) + \D_N^\star(\bx,\mu) + \frac{\#\{ n\leqslant N : |x_n - y_n| \geqslant \epsilon\}}{N} \\
+		&\leqslant \left\|\frac{\dd\mu}{\dd\lambda}\right\|_\infty \epsilon + \D_N^\star(\bx,\mu) + \frac{\#\{ n\leqslant N : |x_n - y_n| \geqslant \epsilon\}}{N} 
 \end{align*}
 This tells us that 
-$\D_N^\star(\by,\nu) \leqslant \left\|\frac{\dd\mu}{\dd\lambda}\right\|_\infty \epsilon + \D_N^\star(\bx,\nu) + \frac{\#\{ n\leqslant N : |x_n - y_n| \geqslant \epsilon\}}{N}$. 
+$\D_N^\star(\by,\mu) \leqslant \left\|\frac{\dd\mu}{\dd\lambda}\right\|_\infty \epsilon + \D_N^\star(\bx,\mu) + \frac{\#\{ n\leqslant N : |x_n - y_n| \geqslant \epsilon\}}{N}$. 
 Reversing the roles of $\bx$ and $\by$, we obtain the desired result. 
 \end{proof}
 
 \begin{lemma}\label{lem:flip-discrepancy}
 Let $\sigma$ be an isometry of $\bR$, and $\bx$ a sequence in $[0,\infty)$ 
-such that $\sigma(\bx)$ is also in $[0,\infty)$. Let $\nu$ be an absolutely 
-continuous measure on $[0,\infty)$ such that $\sigma_\ast \nu$ is supported on 
+such that $\sigma(\bx)$ is also in $[0,\infty)$. Let $\mu$ be an absolutely 
+continuous measure on $[0,\infty)$ such that $\sigma_\ast \mu$ is supported on 
 $[0,\infty)$. Then 
-$\left|\D_N(\bx, \nu) - \D_N(\sigma_\ast \bx, \sigma_\ast \nu)\right| \leqslant \frac{2}{N}$. 
+$\left|\D_N(\bx, \mu) - \D_N(\sigma_\ast \bx, \sigma_\ast \mu)\right| \leqslant \frac{2}{N}$. 
 \end{lemma}
 \begin{proof}
-Every isometry of $\bR$ is a combination of translations and reflections. 
-The statement is clear with translations (the two discrepancies are equal). So, 
-suppose $\sigma(t) = a - t$ for some $a>0$. Since $\nu$ is absolutely 
-continuous, $\nu\{t\}=0$ for all $t\geqslant 0$. In particular, 
-$\nu[s,t) = \nu(s,t]$. By definition, $P_{\bx,N}\{t\}\leqslant N^{-1}$. For 
-any interval $[s,t)$ in $[0,\infty)$, we know that 
+Every isometry of $\bR$ is a composition of translations and reflections. 
+The statement is clear if $\sigma$ is a translation, as then the two 
+discrepancies are equal. So, suppose $\sigma(t) = a - t$ for some $a>0$. Since 
+$\mu$ is absolutely continuous, $\mu\{t\}=0$ for all $t\geqslant 0$. In 
+particular, $\mu[s,t) = \mu(s,t]$. By definition, 
+$P_{\bx,N}\{t\}\leqslant N^{-1}$. For any interval $[s,t)$ in $[0,\infty)$, we 
+know that 
 $\left| P_{\bx,N}[s,t) - P_{\bx,N}(s,t]\right| \leqslant \frac{2}{N}$, hence 
 \[
-	\left| P_{\bx,N}[s,t) - \nu[s,t) - P_{\sigma_\ast \bx,N}[a-t,a-s) - \sigma_\ast \nu[a-t,a-s)\right| \leqslant \frac{2}{N} .
+	\left| P_{\bx,N}[s,t) - \mu[s,t) - \left(P_{\sigma_\ast \bx,N}[a-t,a-s) - \sigma_\ast \mu[a-t,a-s)\right)\right| \leqslant \frac{2}{N} .
 \]
 This proves the result. 
 \end{proof}
@@ -331,9 +331,8 @@ $\left|\D_N(\bx,\mu) - \D_N(f_\ast \bx,f_\ast\mu)\right| \leqslant \frac 4 N$.
 Because $f$ is continuous and monotonic, given $[u,v)\subset I$, there exists 
 $[x,y)\subset J$ such that $f[u,v)$ differs from $[x,y)$ by at most two 
 elements. Similarly, if $[x,y)\subset J$, there exists $[u,v)\subset I$ such 
-that $f^{-1}[x,y)$ differs from $[u,v)$ by at most two elements. Writing 
-$P_{\bx,N}$ as usual for the empirical measure, we compute (in the first 
-case):
+that $f^{-1}[x,y)$ differs from $[u,v)$ by at most two elements. In the first 
+case, we compute:
 \[
 	\left| P_{f_\ast\bx,N}[x,y) - f_\ast\mu[x,y) - \left(P_{\bx,N}[u,v) - \mu[u,v)\right)\right| \leqslant \frac 4 N ,
 \]
@@ -398,7 +397,7 @@ Let $a\in \bR$ be irrational. Then the sequence
 $\bx=(a\mod 1,2a\mod 1,3a\mod 1,\dots)$ is equidistributed in $[0,1]$. 
 \end{theorem}
 
-We will prove this result (originally due to Weyl) in Chapter \ref{chapter:irrationality-exponent}. It is known, and we will prove, that 
+We will prove this result, originally due to Weyl, in Chapter \ref{chapter:irrationality-exponent}. It is known, and we will prove, that 
 sequences of this form have discrepancy which decays roughly like 
 $N^{-\alpha}$, for some $\alpha\in \left(0,\frac 1 2\right)$ which controls the 
 ``goodness'' of rational approximations of $x$. It is useful to have a sequence 

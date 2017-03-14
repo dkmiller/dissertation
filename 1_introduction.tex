@@ -8,7 +8,7 @@
 
 \section{Motivation from classical analytic number theory}
 
-Start with an old problem central to number theory---counting 
+Start with an old problem central to number theory: counting 
 prime numbers. As usual, let $\pi(x)$ be the prime counting function and 
 $\Li(x) = \int_2^x \frac{\dd t}{\log t}$ be the Eulerian logarithmic integral. 
 There is a normalized empirical measure 
@@ -26,9 +26,8 @@ $P_x \to L_x$ in the weak topology as $x\to \infty$.
 \end{theorem}
 
 Since $\zeta(s)$ does have the desired properties, the prime number 
-theorem holds. 
-It is natural to try to quantify the rate of converge of $P_x$ to $L_x$. One 
-way to do this is via the (star) discrepancy 
+theorem is true. It is natural to try to quantify the rate of converge of $P_x$ 
+to $L_x$. One way to do this is via the (star) discrepancy 
 \[
 	\D^\star(P_x,L_x) 
 		= \sup_{t\in [0,1]} \left| P_x[0,t] - L_x[0,t]\right|
@@ -45,11 +44,11 @@ $\D^\star(P_x,L_x) \ll x^{-\frac 1 2+\epsilon}$.
 
 Neither side of this equivalence is known for certain to be true! 
 
-The above discussion finds a natural generalization in Artin $L$-functions. 
+The above discussion generalizes naturally to Artin $L$-functions. 
 Let $K/\bQ$ be a finite Galois extension with group $G=\Gal(K/\bQ)$. For any 
 rational prime $p$ at which $K$ is unramified, let $\frob_p$ be the conjugacy 
 class of the Frobenius at $p$ in $G$. For any irreducible representation 
-$\rho\colon G\to \GL_n(\bC)$, there is a corresponding $L$-function defined as 
+$\rho$ of $G$, there is a corresponding $L$-function defined as 
 \[
 	L(\rho,s) = \prod_p \frac{1}{\det(1-\rho(\frob_p) p^{-s})} ,
 \]
@@ -58,7 +57,7 @@ product those primes at which $\rho$ is ramified. Given a cutoff $x$, there is
 a natural empirical measure 
 $P_x = \frac{1}{\pi(x)} \sum_{p\leqslant x} \delta_{\frob_p}$ on 
 $G^\natural$, the set of conjugacy classes in $G$. Let 
-$\D(P_x) = \sup_{S\subset G^\natural} \left| P_x(S) - \frac{\# S}{\# G^\natural}\right|$. 
+$\D(P_x) = \max_{S\subset G^\natural} \left| P_x(S) - \frac{\# S}{\# G^\natural}\right|$. 
 Then $P_x$ converges weakly to the uniform measure on $G^\natural$ if and 
 only if $\D(P_x) \to 0$. 
 
@@ -97,9 +96,8 @@ These parameters are packaged into an $L$-function as follows:
 \[
 	L(E,s) = \prod_p \frac{1}{(1 - e^{i \theta_p} p^{-s})(1- e^{-i \theta_p} p^{-s})} = \prod_p \frac{1}{\det\left(1 - \smat{e^{i\theta_p}}{}{}{e^{-i \theta_p}}p^{-s}\right)}.
 \]
-More generally we have, for each irreducible representation of $\SU(2)$, which 
-will be $\sym^k$ for some $k\geqslant 1$, the $k$-th symmetric power 
-$L$-function: 
+More generally we have, for each irreducible representation $\sym^k$ of 
+$\SU(2)$, the $k$-th symmetric power $L$-function: 
 \[
 	L(\sym^k E, s) = \prod_p \prod_{j=0}^k \frac{1}{1 - e^{i (k - 2j) \theta_p} p^{-s}} = \prod_p \frac{1}{\det\left(1-\sym^k \smat{e^{i\theta_p}}{}{}{e^{-i \theta_p}}p^{-s}\right)}.
 \]
@@ -108,10 +106,10 @@ Numerical experiments suggest that the Satake parameters are equidistributed
 with respect to the Sato--Tate distribution 
 $\ST = \frac{2}{\pi} \sin^2\theta\, \dd\theta$. Indeed, for any cutoff $x$, let 
 $P_x$ be the empirical measure 
-$P_x = \frac{1}{\pi(x)} \sum_{p\leqslant x} \delta_{\theta_p}$. 
+$\frac{1}{\pi(x)} \sum_{p\leqslant x} \delta_{\theta_p}$. 
 The convergence of the $P_x$ to the Sato--Tate measure is closely related to 
 the analytic properties of the $L(\sym^k E,s)$. First, here is the famous 
-Sato--Tate Conjecture (now a theorem) in our notation. 
+Sato--Tate conjecture (now a theorem) in our notation. 
 
 \begin{theorem}[Taylor et.~al.]
 If $E$ is non-CM, the measures $P_x$ converge weakly to $\ST$. 
@@ -124,7 +122,7 @@ the functions $L(\sym^k E,s)$ have analytic continuation past $\Re = 1$.
 
 The stunning recent proof of the Sato--Tate conjecture 
 \cite{clozel-harris-taylor-2008,taylor-2008,harris-shepherd-barron-taylor-2010} 
-in fact showed that the functions $L(\sym^k E,s)$ were potentially automorphic, 
+showed that the functions $L(\sym^k E,s)$ were potentially automorphic, 
 which gives the desired analytic continuation. 
 
 The Riemann Hypothesis, and its analogue for Artin $L$-functions, has a natural 
@@ -136,8 +134,8 @@ $\{\theta_p\}_{p\leqslant x}$ is
 The following conjecture is first made in \cite{akiyama-tanigawa-1999}: for 
 $E_{/\bQ}$ a non-CM elliptic curve, the estimate 
 $\D\left(\{\theta_p\}_{p\leqslant x},\ST\right)\ll x^{-\frac 1 2+\epsilon}$ 
-holds. The authors go on to prove a special case of the following theorem, 
-proved in full generality in \cite{mazur-2008}. 
+holds. Akiyama and Tanigawa go on to prove a special case of the following 
+theorem, proved in full generality in \cite{mazur-2008}. 
 
 \begin{theorem}[Mazur]
 If $\D\left(\{\theta_p\}_{p\leqslant x},\ST\right)\ll x^{-\frac 1 2+\epsilon}$, 
@@ -149,13 +147,14 @@ simplicity, we consider $E_{/F}$ where $F$ is the field of definition of the
 complex multiplication). The Sato--Tate measure for such $E$ is the Haar 
 measure on $\SO(2)$, i.e.~the uniform measure on $[0,\pi]$. Instead of 
 symmetric power $L$-functions, there is an $L$-function for each character of 
-$\SO(2)$. Once again, ``Akiyama--Tanigawa implies Riemann Hypothesis'' holds. 
+$\SO(2)$. Once again, there is a theorem ``Akiyama--Tanigawa implies Riemann 
+Hypothesis.''
 
 It is natural to assume that the converse to the implication 
-``Akiyama--Tanigawa implies General Riemann Hypothesis'' holds. David Zywina 
+``Akiyama--Tanigawa implies Riemann Hypothesis'' holds. David Zywina 
 first suggested to the author that it might not. In this thesis, we construct a 
-range of counterexamples to the implication ``Strong Sato--Tate implies 
-Riemann Hypothesis'' for the case of CM abelian varieties Moreover, we 
+range of counterexamples to the implication ``Akiyama--Tanigawa implies 
+Riemann Hypothesis'' for the case of CM abelian varieties. Moreover, we 
 generalize the results of \cite{pande-2011} to show that there can be no 
 purely Galois-theoretic proof of the Sato--Tate conjecture, for there are 
 Galois representations with arbitrary Sato--Tate distributions! We also show 
@@ -168,6 +167,8 @@ Galois representations.
 
 
 \section{Notation conventions}
+
+If $S$ is a set, $1_S$ is the characteristic function of $S$. 
 
 Whenever $l$ is mentioned it is a rational prime $\geqslant 7$. 
 

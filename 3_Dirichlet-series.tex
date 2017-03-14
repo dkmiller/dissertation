@@ -8,10 +8,10 @@
 
 \section{Definitions}
 
-We start by considering a very general class of Dirichlet series, namely all 
-Dirichlet series that admit a product formula with degree 1 factors. The 
-motivating example was suggested to the author by Ravi Ramakrishna. Let 
-$E_{/\bQ}$ be an elliptic curve and let 
+We start by considering a very general class of Dirichlet series: those that 
+admit a product formula with degree 1 factors. The motivating example was 
+suggested to the author by Ravi Ramakrishna. Let $E_{/\bQ}$ be an elliptic 
+curve and let 
 \[
 	L_{\sgn}(E,s) = \prod_p \frac{1}{1-\sgn(a_p) p^{-s}} .
 \]
@@ -35,9 +35,7 @@ $\log L(\bx,s) = \sum_{p^r} \frac{x_p^r}{r p^{r s}}$.
 \end{lemma}
 \begin{proof}
 Expanding the product for $L(\bx,s)$ formally, we have 
-\[
-	L(\bx,s) = \sum_{n\geqslant 1} \frac{\prod_p x_p^{v_p(n)}}{n^s} .
-\]
+$L(\bx,s) = \sum_{n\geqslant 1} \frac{\prod_p x_p^{v_p(n)}}{n^s}$. 
 An easy comparison with the Riemann zeta function tells us that this sum 
 is holomorphic on $\Re > 1$. By \cite[Th.~11.7]{apostol-1976}, the 
 product formula holds in the same region. The formula for $\log L(\bx,s)$ 
@@ -46,7 +44,7 @@ comes from \cite[11.9 Ex.~2]{apostol-1976}.
 
 \begin{lemma}[Abel summation]\label{lem:abel-sum}
 Let $\bx=(x_2,x_3,x_5,\dots)$ be a sequence of complex numbers, $f$ a smooth 
-complex-valued function on $\bR$. Then 
+$\bC$-valued function on $\bR$. Then 
 \[
 	\sum_{p\leqslant N} f(p) x_p = f(N) \sum_{p\leqslant N} x_p - \int_2^N f'(t) \sum_{p\leqslant t} x_p\, \dd t .
 \]
@@ -165,7 +163,11 @@ By Theorem \ref{thm:AT->RH}, the Riemann Hypothesis holds for $L_f(\bx,s)$.
 
 The same proof shows that if $\D_N(\bx,\mu)\ll N^{-\alpha+\epsilon}$, then 
 $\log L_f(\bx,s)$ conditionally converges to a holomorphic function on 
-$\Re > 1 - \alpha$. 
+$\Re > 1 - \alpha$. This theorem applied to the function $L_{\sgn}(E,s)$ shows 
+that the Akiyama--Tanigawa conjecture implies the Riemann Hypothesis for 
+$L_{\sgn}(E,s)$. The author is unaware of any results, conditional or 
+otherwise, that suggest $L_{\sgn}(E,s)$ has analytic continuation past 
+$\Re = \frac 1 2$ or has any kind of functional equation. 
 
 Let $F = \bF_q(t)$ be a function field, $E_{/F}$ a generic elliptic curve. 
 There is, for every prime $\fp$ of $F$, a Satake parameter 
