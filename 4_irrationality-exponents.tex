@@ -16,9 +16,10 @@ there infinitely many rational numbers $\frac p q$ with
 $\left| x - \frac p q\right| \leqslant q^{-w}$. If $x$ is rational, then it has 
 irrationality exponent $1$. If $x$ is an algebraic irrational, then Roth's 
 theorem tells us its irrationality exponent is $2$. Liouiville constructed 
-transcendental numbers with arbitrarily large irrationality exponent. When 
-$d\geqslant 1$, there are a range of measures of irrationality---we will 
-consider only two. 
+transcendental numbers with arbitrarily large irrationality exponent. In fact, 
+a measure-zero set of reals have infinite irrationality exponent, but we will 
+avoid those in the results below. When $d\geqslant 1$, there are a $d$ natural 
+measures of irrationality, but we will use only two of them. 
 
 \begin{definition}\label{def:approx-exp}
 Let $\omega_0(\vx)$ (resp.~$\omega_{d-1}(\vx)$) be the supremum of the set of 
@@ -32,7 +33,9 @@ $(n,\vm)\in \bZ\times\bZ^d$ such that
 \end{align*}
 \end{definition}
 
-These two quantities are related by Khintchine's transference principle, namely 
+It is easy to see that both $\omega_0(\vx)$ and $\omega_{d-1}(\vx)$ are 
+nonnegative. These two quantities are related by Khintchine's transference 
+principle, namely 
 \[
 	\frac{\omega_{d-1}(\vx)}{(d-1) \omega_{d-1}(\vx)+d} \leqslant \omega_0(\vx) \leqslant \frac{\omega_{d-1}(\vx)-d+1}{d} .
 \]
@@ -110,14 +113,15 @@ the implied constant depending on $\vx$ and $\epsilon$.
 
 \section{Irrationality exponents and discrepancy}
 
-Let $\vx\in (\bR/\bZ)^d$. The sequence $(\vx,2\vx,3\vx,\dots)$ will be 
-equidistributed in a subtorus of $(\bR/\bZ)^d$ whose rank is equal to the 
-dimension of the $\bQ$-vector space spanned by any lifts of the $x_i$ to 
-$\bR$. We are interested in the case where this sequence is equidistributed in 
-the whole torus $(\bR/\bZ)^d$, so assume $x_1,\dots,x_d$ are linearly 
-independent over $\bQ$ (this condition makes sense for elements of 
-$(\bR/\bZ)^d$). We wish to control the discrepancy of the sequence 
-$(x,2x,3x,\dots)$ with respect to the Haar measure of $(\bR/\bZ)^d$. 
+Let $\vx=(x_1,\dots,x_d)\in \bR^d$. The sequence 
+$(\vx\mod \bZ^d,2\vx\mod\bZ^d,\dots)$ will be equidistributed in a subtorus of 
+$(\bR/\bZ)^d$ whose rank is equal to the dimension of the $\bQ$-vector space 
+spanned by $\{x_1,\dots,x_d\}$. We are interested in the case where this 
+sequence is equidistributed in the whole torus $(\bR/\bZ)^d$, so assume 
+$x_1,\dots,x_d$ are linearly independent over $\bQ$ (this condition also 
+makes sense for elements of $(\bR/\bZ)^d$). For $\vx\in (\bR/\bZ)^d$, wish 
+to control the discrepancy of the sequence $(\vx,2\vx,3\vx,\dots)$ with respect 
+to the Haar measure of $(\bR/\bZ)^d$. 
 
 \begin{theorem}[Erd\"os--Tur\'an--Koksma]
 Let $\bx$ be a sequence in $(\bR/\bZ)^d$ and $h$ an arbitrary integer. Then 
@@ -251,7 +255,9 @@ are, for $\vm\in \bZ^d$:
 	\widehat f(\vm) = \int_{(\bR/\bZ)^d} e^{2\pi i \langle \vm,\vx\rangle} \, \dd \vx ,
 \]
 where $\langle \vm,\vx\rangle = m_1 x_1 + \cdots + m_d x_d$ is the usual inner 
-product. 
+product. Typically, if $f$ is a function on $(\bR/\bZ)^d$, sums of the form 
+$\sum_{n\leqslant N} f(n \vx)$ will be $o(N)$. When $f$ is a character of the 
+torus, there is a much stronger bound. 
 
 \begin{theorem}
 Fix $\vx\in (\bR/\bZ)^d$ with $\omega_{d-1}(\vx)$ finite. Then 

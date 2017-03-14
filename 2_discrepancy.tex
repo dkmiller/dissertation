@@ -299,7 +299,7 @@ Reversing the roles of $\bx$ and $\by$, we obtain the desired result.
 \begin{lemma}\label{lem:flip-discrepancy}
 Let $\sigma$ be an isometry of $\bR$, and $\bx$ a sequence in $[0,\infty)$ 
 such that $\sigma(\bx)$ is also in $[0,\infty)$. Let $\nu$ be an absolutely 
-continuous measure on $[0,\infty)$ such that $\sigma_\ast \nu$ is contained in 
+continuous measure on $[0,\infty)$ such that $\sigma_\ast \nu$ is supported on 
 $[0,\infty)$. Then 
 $\left|\D_N(\bx, \nu) - \D_N(\sigma_\ast \bx, \sigma_\ast \nu)\right| \leqslant \frac{2}{N}$. 
 \end{lemma}
@@ -399,10 +399,11 @@ $\bx=(a\mod 1,2a\mod 1,3a\mod 1,\dots)$ is equidistributed in $[0,1]$.
 \end{theorem}
 
 We will prove this result (originally due to Weyl) in Chapter \ref{chapter:irrationality-exponent}. It is known, and we will prove, that 
-sequences of this form have discrepancy which decays like 
-$N^{-\alpha\pm \epsilon}$, for $\alpha\in \left(0,\frac 1 2\right)$. It can be 
-useful to have a sequence whose discrepancy decays faster. The best known rate 
-of decay is achieved by the following example. 
+sequences of this form have discrepancy which decays roughly like 
+$N^{-\alpha}$, for some $\alpha\in \left(0,\frac 1 2\right)$ which controls the 
+``goodness'' of rational approximations of $x$. It is useful to have a sequence 
+whose discrepancy decays faster. The best known rate of decay is achieved by 
+the following example. 
 
 \begin{definition}
 The \emph{van der Corput sequence} is 
