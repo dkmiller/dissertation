@@ -83,8 +83,8 @@ for $p$ in some set of primes. The necessary constraints are captured in the
 following definition. 
 
 \begin{definition}
-Let $\bar\rho$ be a good residual representation, $h\colon \bR^+ \to \bR^+$ a 
-function decreasing to zero. An \emph{$h$-bounded lifting datum} is a tuple 
+Let $\bar\rho$ be a good residual representation, $h\colon \bR^+ \to \bR^+$ an 
+increasing function. An \emph{$h$-bounded lifting datum} is a tuple 
 $(\rho_n,R,U,\{\rho_p\}_{p\in R\cup U})$, where 
 \begin{enumerate}
 \item
@@ -95,7 +95,7 @@ $R$ and $U$ are finite sets of primes, $R$ containing $l$ and all primes at
 which $\rho_n$ ramifies. 
 
 \item
-$\pi_R(x)\leqslant h(x)\pi(x)$ for all $x$. 
+$\pi_R(x)\leqslant h(x)$ for all $x$. 
 
 \item
 $\sha_R^1(\Ad^0\bar\rho)$ and $\sha_R^2(\Ad^0\bar\rho)$ are trivial. 
@@ -135,7 +135,7 @@ is an isomorphism. In fact,
 $\# N = \dim\h^1(\bQ_{R\cup N},\Ad^0\bar\rho^\ast)$, and the primes in $N$ are 
 chosen, one at a time, from Chebotarev sets. This means we can force them to 
 be large enough to ensure that the bound 
-$\pi_{R\cup N}(x) \leqslant h(x) \pi(x)$ continues to hold. We also choose the 
+$\pi_{R\cup N}(x) \leqslant h(x)$ continues to hold. We also choose the 
 primes in $N$ to be larger than any prime in $U'$. 
 
 By our hypothesis, $\rho_n$ admits a lift to $\bZ/l^{n+1}$; call one such lift 
@@ -157,7 +157,7 @@ $g\in \h^1(\bQ_{R\cup N'},\Ad^0\bar\rho)$ such that
 $(g+f)\cdot \rho^\ast$ still agrees with $\rho_p$ for $p\in R\cup U'$, and 
 $(g+f)\cdot \rho^\ast$ is nice for all $p\in N'$. As above, the primes in $N'$ 
 are chosen one at a time from Chebotarev sets, so we can continue to ensure the 
-bound $\pi_{R\cup N'}(x)\leqslant h(x) \pi(x)$ and also that all primes in $N'$ 
+bound $\pi_{R\cup N'}(x)\leqslant h(x)$ and also that all primes in $N'$ 
 are larger than those in $U'$. Let $\rho_{n+1} = (g+f) \cdot \rho^\ast$. Let 
 $R' = R\cup \{p\in N' : \rho_{n+1}\text{ is ramified at }p\}$. For each 
 $p\in R'\smallsetminus R$, choose a lift $\rho_p$ of 
@@ -191,25 +191,21 @@ for all unramified primes $p$, $\tr\rho(\frob_p)\in \bZ$, satisfies the Hasse
 bound, and has $\tr\rho(\frob_p) \approx x_p$. Moreover, we can ensure that the 
 set of ramified primes has density zero in a very strong sense (controlled by a 
 parameter function $h$) and that our trace of Frobenii are very close to 
-specified values (the ``closeness'' again controlled by a parameter function 
-$b$). 
+specified values. 
 
 Given any deformation $\rho$, write $\pi_{\ram(\rho)}(x)$ for the function 
 which counts $\rho_n$-ramified primes $\leqslant x$. Since we will have 
-$\pi_{\ram(\rho)}(x)\ll h(x) \pi(x)$ and bounds of this form are only helpful 
-if $h(x) = o(\pi(x))$, we will usually assume $h(x) = e^{-x}$ or some other 
-rapidly decreasing function. Similarly, we will assume $b(x)$ grows very 
-slowly, e.g.~$b(x) = \log x$. If $b(x)$ grows rapidly, the theorem is still 
-true but the results are not interesting. 
+$\pi_{\ram(\rho)}(x)\ll h(x)$ and bounds of this form are only helpful 
+if $h(x) = o(\pi(x))$, we will usually assume $h(x) = \log x$ 
+or something similar (for example, the inverse of the Ackerman function). 
 
 \begin{theorem}\label{thm:master-Galois}
-Let $l$, $\bar\rho$, $\bx$ be as above. Fix functions 
-$h\colon \bR^+\to \bR^+$ (resp.~$b\colon \bR^+ \to \bR_{\geqslant 1}$) which 
-decrease to zero (resp.~increase to infinity). Then there exists a weight-$2$ 
-deformation $\rho$ of $\bar\rho$, such that: 
+Let $l$, $\bar\rho$, $\bx$ be as above. Fix a function 
+$h\colon \bR^+ \to \bR_{\geqslant 1}$ which increases to infinity. Then there 
+exists a weight-$2$ deformation $\rho$ of $\bar\rho$, such that: 
 \begin{enumerate}
 \item
-$\pi_{\ram(\rho)}(x) \ll h(x) \pi(x)$. 
+$\pi_{\ram(\rho)}(x) \ll h(x)$. 
 
 \item
 For each unramified prime $p$, $a_p=\tr\rho(\frob_p)\in \bZ$ and satisfies the 
@@ -217,7 +213,7 @@ Hasse bound.
 
 \item
 For each unramified prime $p$, 
-$\left| \frac{a_p}{2\sqrt p} - x_p\right| \leqslant \frac{l b(p)}{2\sqrt p}$. 
+$\left| \frac{a_p}{2\sqrt p} - x_p\right| \leqslant \frac{l h(p)}{2\sqrt p}$. 
 \end{enumerate}
 \end{theorem}
 \begin{proof}
@@ -234,26 +230,25 @@ $\left| \frac{a_p}{2\sqrt p} - x_p\right| \leqslant \frac{l}{2\sqrt p}$.
 Choose, for all primes $p\in R_1$, a ramified 
 lift $\rho_p$ of $\left. \rho_1\right|_{G_{\bQ_p}}$. Let $U_1$ be the set of 
 primes not in $R_1$ such that 
-$\frac{l^2}{2\sqrt p} > \min\left(2, \frac{l b(p)}{2\sqrt p}\right)$. 
+$\frac{l^2}{2\sqrt p} > \min\left(2, \frac{l h(p)}{2\sqrt p}\right)$. 
 For each $p\in U_1$, there exists $a_p\in \bZ$, satisfying the 
 Hasse bound, such that 
 \[
-	\left| \frac{a_p}{2\sqrt p} - x_p\right| \leqslant \frac{l}{2\sqrt p} \leqslant \frac{l b(p)}{2\sqrt p} ,
+	\left| \frac{a_p}{2\sqrt p} - x_p\right| \leqslant \frac{l}{2\sqrt p} \leqslant \frac{l h(p)}{2\sqrt p} ,
 \]
 and moreover $a_p\equiv \tr\bar\rho(\frob_p)\pmod l$. For each $p\in U_1$, let 
 $\rho_p$ be an unramified lift of $\left.\bar\rho\right|_{G_{\bQ_p}}$ with 
 $\tr\rho_p$ being the desired $a_p$. It may not be that 
-$\pi_{R_1}(x) \leqslant h(x) \pi(x)$ for all $x$. Let 
-$C = \max\left\{\frac{\pi_{R_1}(x)}{\pi(x)}\right\}$; this is finite because 
+$\pi_{R_1}(x) \leqslant h(x)$ for all $x$. Let 
+$C = \max\left\{\pi_{R_1}(x)\right\}$; this is finite because 
 $R_1$ is and $\pi_{R_1}(x)$ is constant past the largest prime in $R_1$. Then 
-for $h^\ast = C h$, we have $\pi_{R_1}(x) \leqslant h^\ast(x) \pi(x)$ for all 
-$x$. 
+for $h^\ast = C h$, we have $\pi_{R_1}(x) \leqslant h^\ast(x)$ for all $x$. 
 
 We have constructed our first $h^\ast$-bounded lifting datum 
 $(\rho_1,R_1,U_1,\{\rho_p\})$. We proceed to construct 
 $\rho = \varprojlim \rho_n$ inductively, by constructing a new $h^\ast$-bounded 
 lifting datum for each $n$. We ensure that $U_n$ contains all primes for which 
-$\frac{l^{n+1}}{2\sqrt p} > \min\left(2, \frac{l b(p)}{2\sqrt p}\right)$, so 
+$\frac{l^{n+1}}{2\sqrt p} > \min\left(2, \frac{l bhp)}{2\sqrt p}\right)$, so 
 there are always integral $a_p$ satisfying the Hasse bound which satisfy any 
 mod-$l^{n+1}$ constraint, and that can always choose these $a_p$ so as to 
 preserve statement 2 in the theorem. 
@@ -261,12 +256,12 @@ preserve statement 2 in the theorem.
 The base case is already complete, so suppose we are given 
 $(\rho_{n-1},R_{n-1},U_{n-1},\{\rho_p\})$. We may assume that $U_{n-1}$ 
 contains all primes for 
-which $\frac{l^n}{2\sqrt p} > \min\left(2, \frac{l b(p)}{2\sqrt p}\right)$. Let 
+which $\frac{l^n}{2\sqrt p} > \min\left(2, \frac{l h(p)}{2\sqrt p}\right)$. Let 
 $U_n$ be the set of all primes not in $R_{n-1}$ such that 
-$\frac{l^{n+1}}{2\sqrt p} > \min\left(2, \frac{l b(p)}{2\sqrt p}\right)$. For 
+$\frac{l^{n+1}}{2\sqrt p} > \min\left(2, \frac{l h(p)}{2\sqrt p}\right)$. For 
 each $p\in U_n\smallsetminus U_{n-1}$, there is an integer $a_p$, satisfying 
 the Hasse bound, such that $a_p\equiv \rho_n(\frob_p)\pmod{l^n}$, and moreover 
-$\left|\frac{a_p}{2\sqrt p} - x_p\right| \leqslant \frac{l b(p)}{2\sqrt p}$. 
+$\left|\frac{a_p}{2\sqrt p} - x_p\right| \leqslant \frac{l h(p)}{2\sqrt p}$. 
 For such $p$, let $\rho_p$ be an unramified lift of 
 $\left. \rho_n\right|_{G_{\bQ_p}}$ such that $\tr\rho_n(\frob_p)$ is the 
 desired $a_p$. By Theorem \ref{thm:lifting-datum}, there exists an 
@@ -289,17 +284,17 @@ each $a_p = \tr\rho(\frob_p)\in \bZ$ satisfies the Hasse bound,
 \[
 	L = \lim_{N\to \infty} \frac{\log N}{\sqrt N}\sum_p \frac{a_p}{\sqrt p} 
 \]
-and $\pi_{\ram(\rho)}(x) \ll e^{-x}$. 
+and $\pi_{\ram(\rho)}(x) \ll \log(x)$. 
 \end{corollary}
 \begin{proof}
 Begin with a sequence $(x_p)$ in $[-1,1]$ such that 
 $\lim_{N\to \infty} \frac{\log N}{\sqrt N}\sum_{p\leqslant N} x_p = L$. If 
 $L=\pm \infty$, we can choose $x_p = \pm 1$. By Theorem 
 \ref{thm:master-Galois}, there exists $\rho\colon G_\bQ \to \GL_2(\bZ_l)$ with 
-$\pi_{\ram(\rho)}(x) \ll e^{-x}$, and such that for each unramified $p$, 
+$\pi_{\ram(\rho)}(x) \ll \log(x)$, and such that for each unramified $p$, 
 $a_p = \tr\rho(\frob_p)\in \bZ$, satisfies the Hasse bound, has 
 $\left| \frac{a_p}{2\sqrt p} - b_p\right| < \frac{l \log p}{\sqrt p}$, and by 
-looking at the proof, we can even ensure that 
+inspecting the proof, we can even ensure that 
 $\sum \left(\frac{a_p}{2\sqrt p} - b_p\right)$ converges conditionally (make 
 sure the sign of $\frac{a_p}{2\sqrt p} - b_p$ alternates). Note that
 \[
@@ -428,7 +423,7 @@ $\bar\rho\colon G_\bQ \to \GL_2(\bF_l)$. Then there exists a weight-$2$ lift
 $\rho\colon G_\bQ \to \GL_2(\bZ_l)$ of $\bar\rho$ such that 
 \begin{enumerate}
 \item
-$\pi_{\ram(\rho)}(x) \ll e^{-x}\pi(x)$. 
+$\pi_{\ram(\rho)}(x) \ll \log(x)$. 
 
 \item
 For each unramified prime $p$, $a_p = \tr\rho(\frob_p)\in \bZ$ and satisfies 
@@ -447,8 +442,8 @@ Hypothesis.
 \begin{proof}
 Let $\bx$ be an $N^{-\alpha}$-decay van der Corput sequence for 
 $\cos_\ast \left.\mu\right|_{[0,\pi/2)}$. Let $\by = -\bx$. Then 
-$\D_N(\bx\wr\by,\cos_\ast\mu) = \Theta(N^{-\alpha})$. Set $h(x) = e^{-x}$ 
-and $b(x) = \log(x)$. By Theorem \ref{thm:master-Galois}, there is a 
+$\D_N(\bx\wr\by,\cos_\ast\mu) = \Theta(N^{-\alpha})$. Set $h(x) = \log(x)$. 
+By Theorem \ref{thm:master-Galois}, there is a 
 $\rho\colon G_\bQ \to \GL_2(\bZ_l)$ lifting $\bar\rho$ such that parts 
 1 and 2 of the theorem hold. The discrepancy estimate comes from Lemma 
 \ref{lem:flip-discrepancy}, Lemma \ref{lem:disc-of-two-seq}, and Theorem 
