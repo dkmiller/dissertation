@@ -12,28 +12,30 @@ Start with an old problem central to number theory: counting
 prime numbers. As usual, let $\pi(x)$ be the prime counting function and 
 $\Li(x) = \int_2^x \frac{\dd t}{\log t}$ be the Eulerian logarithmic integral. 
 There is a normalized empirical measure 
-$P_x = \frac{1}{\pi(x)} \sum_{p\leqslant x} \delta_{p/x}$, capturing the 
+$P_x = \frac{1}{\pi(x)} \sum_{p\leqslant x} \delta_{p}$, capturing the 
 distribution of the set of primes $\leqslant x$. The prime number theorem 
 tells us that as $x\to \infty$, this empirical measure converges weakly to the 
-``true'' measure $L_x = \frac{\Li(t x)}{\Li(x)}\, \dd t$. The standard approach 
+``true'' measure $L_x = \frac{1}{\Li(x)\log t}\, \dd t$. The standard approach 
 to proving the prime number theorem is by showing that the Riemann 
-$\zeta$-function has non-vanishing meromorphic continuation past $\Re = 1$.
+$\zeta$-function has non-vanishing meromorphic continuation to $\Re = 1$.
 
 \begin{theorem}
-The function $\zeta(s)$ admits a non-vanishing meromorphic continuation past 
+The function $\zeta(s)$ admits a non-vanishing meromorphic continuation to 
 $\Re = 1$ with at most a simple pole at $s=1$, if and only if 
 $P_x \to L_x$ in the weak topology as $x\to \infty$. 
 \end{theorem}
 
+Recall that a sequence $\{\mu_x\}$ converges to $\mu$ in the weak topology if 
+and only if $\mu_x(f) \to \mu(f)$ for all continuous, complex-valued $f$. 
 Since $\zeta(s)$ does have the desired properties, the prime number 
 theorem is true. It is natural to try to quantify the rate of converge of $P_x$ 
 to $L_x$. One way to do this is via the (star) discrepancy 
 \[
 	\D^\star(P_x,L_x) 
 		= \sup_{t\in [0,1]} \left| P_x[0,t] - L_x[0,t]\right|
-		= \sup_{t\in [0,1]} \left| \frac{\pi(t x)}{\pi(x)} - \frac{\int_2^{tx} \frac{\dd s}{\log s}}{\int_2^x \frac{\dd s}{\log s}}\right| .
+		= \sup_{t\in [0,1]} \left| \frac{\pi(t x)}{\pi(x)} - \frac{\Li(t x)}{\Li(x)}\right| .
 \]
-Numerical experiments suggest that 
+Numerical experiments conducted by the author suggest that 
 $\D^\star(P_x,L_x) \ll x^{-\frac 1 2+\epsilon}$, and in fact we have the 
 following result. 
 
@@ -41,6 +43,14 @@ following result.
 The Riemann Hypothesis is true if and only if 
 $\D^\star(P_x,L_x) \ll x^{-\frac 1 2+\epsilon}$. 
 \end{theorem}
+\begin{proof}
+Suppose the Riemann Hypothesis is true. Then 
+\cite[6.18]{rosser-schoenfeld-1976} tells us that 
+$|\pi(x) - \Li(x)| \ll \sqrt{x} \log x$. Easy algebra yields the bound on 
+$\D^\star(P_x,L_x)$ from this. 
+
+To-do: prove converse!
+\end{proof}
 
 Neither side of this equivalence is known for certain to be true! 
 
@@ -56,26 +66,31 @@ where here (and for the remainder of this thesis) we tacitly omit from the
 product those primes at which $\rho$ is ramified. Given a cutoff $x$, there is 
 a natural empirical measure 
 $P_x = \frac{1}{\pi(x)} \sum_{p\leqslant x} \delta_{\frob_p}$ on 
-$G^\natural$, the set of conjugacy classes in $G$. Let 
-$\D(P_x) = \max_{S\subset G^\natural} \left| P_x(S) - \frac{\# S}{\# G^\natural}\right|$. 
-Then $P_x$ converges weakly to the uniform measure on $G^\natural$ if and 
+$G^\natural$, the set of conjugacy classes in $G$. Let $\mu$ be the 
+(normalized) Haar measure on $G^\natural$, and let 
+$\D(P_x) = \max_{S\subset G^\natural} \left| P_x(S) - \mu(S)\right|$. 
+Then $P_x$ converges weakly to the Haar measure on $G^\natural$ if and 
 only if $\D(P_x) \to 0$. 
 
-\begin{theorem}
-The measure $P_x$ converge weakly to the uniform measure on $G^\natural$ if and 
+\begin{theorem}[{\cite[Th.~2 Cor., A.1]{serre-1989}}]
+The measure $P_x$ converge weakly to the Haar measure on $G^\natural$ if and 
 only if the function $L(\rho,s)$ admits a nonvanishing analytic continuation 
-past $\Re = 1$ for all nontrivial $\rho$. 
+to $\Re = 1$ for all nontrivial $\rho$. 
 \end{theorem}
 
 Both sides of this equivalence are true, and known as the Chebotarev density 
 theorem. Moreover, there is a version of the strong prime number theorem in 
-this context. 
+this context. In this thesis, the Riemann Hypothesis for a Dirichlet series 
+$L(s)$ is the statement that $L(s)$ admits a non-vanishing analytic 
+continuation to $\Re > \frac 1 2$. 
 
 \begin{theorem}
 The bound $\D(P_x) \ll x^{-\frac 1 2+\epsilon}$ holds if and only if each
 $L(\rho,s)$, $\rho$ nontrivial, satisfies the Riemann Hypothesis. 
 \end{theorem}
 
+The forward implication follows from the results of Chapter 
+\ref{ch:Dirichlet-series}, while the reverse direction is a result of Serre. 
 This whole discussion generalizes to a more complicated set of Galois 
 representations---those arising from elliptic curves and more general motives.  
 
@@ -85,6 +100,8 @@ representations---those arising from elliptic curves and more general motives.
 
 \section{Discrepancy and Riemann Hypothesis for elliptic curves}
 
+For background on Galois representations and $L$-functions associated to 
+elliptic curves, see \cite[III\S7, C\S17]{silverman-2009}. 
 Let $E_{/\bQ}$ be an elliptic curve. For any prime $l$, the $l$-adic Tate 
 module of $E$ induces a continuous representation 
 $\rho_l \colon G_\bQ \to \GL_2(\bZ_l)$. It is known that the quantities 
@@ -117,13 +134,17 @@ If $E$ is non-CM, the measures $P_x$ converge weakly to $\ST$.
 
 \begin{theorem}[Serre]
 The Sato--Tate conjecture holds for (a non-CM) $E$ if and only if each of 
-the functions $L(\sym^k E,s)$ have analytic continuation past $\Re = 1$. 
+the functions $L(\sym^k E,s)$ have analytic continuation to $\Re = 1$. 
 \end{theorem}
 
 The stunning recent proof of the Sato--Tate conjecture 
 \cite{clozel-harris-taylor-2008,taylor-2008,harris-shepherd-barron-taylor-2010} 
-showed that the functions $L(\sym^k E,s)$ were potentially automorphic, 
-which gives the desired analytic continuation. 
+showed that the functions $L(\sym^k E,s)$ have the desired analytic 
+continuation. In fact, they show that for all $k$, $L(\sym^k E,s)$ has 
+meromorphic continuation to the whole complex plane. Even better, when $k$ is 
+odd, the $L$-function is potentially automorphic. See Theorem 
+\ref{thm:bad-Galois} for a result in this thesis where more can be said about 
+odd symmetric power $L$-functions than even ones. 
 
 The Riemann Hypothesis, and its analogue for Artin $L$-functions, has a natural 
 generalization to elliptic curves. In this context, the discrepancy of the set 
@@ -148,7 +169,8 @@ complex multiplication). The Sato--Tate measure for such $E$ is the Haar
 measure on $\SO(2)$, i.e.~the uniform measure on $[0,\pi]$. Instead of 
 symmetric power $L$-functions, there is an $L$-function for each character of 
 $\SO(2)$. Once again, there is a theorem ``Akiyama--Tanigawa implies Riemann 
-Hypothesis.''
+Hypothesis.'' For a precise statement and proof, see the end of 
+Chapter \ref{chapter:irrationality-exponent}. 
 
 It is natural to assume that the converse to the implication 
 ``Akiyama--Tanigawa implies Riemann Hypothesis'' holds. David Zywina 
@@ -159,8 +181,8 @@ generalize the results of \cite{pande-2011} to show that there can be no
 purely Galois-theoretic proof of the Sato--Tate conjecture, for there are 
 Galois representations with arbitrary Sato--Tate distributions! We also show 
 that some of the results of \cite{sarnak-2007} about sums of the form 
-$\sum_{p\leqslant x} \frac{a_p}{\sqrt p}$ cannot be generalized to general 
-Galois representations. 
+$\sum_{p\leqslant x} \frac{a_p}{\sqrt p}$ cannot be generalized to 
+general---in particular, infinitely ramified---Galois representations. 
 
 
 
@@ -198,7 +220,7 @@ extends to $\Re > \alpha$.
 
 We write $\bx = (x_1,x_2,\dots)$ for infinite sequences and 
 $\vx = (x_1,\dots,x_d)$ for vectors. Sometimes we will have a sequence of 
-vectors, written as $\bx = (\vx_1,\vx_2,\dots)$. 
+vectors, written as $\bvx = (\vx_1,\vx_2,\dots)$. 
 
 If $\bx=(x_1,x_2,\dots)$ is a sequence, write 
 $P_{\bx,N} = \frac{1}{N} \sum_{n\leqslant N} \delta_{x_n}$ for the 
