@@ -11,46 +11,27 @@
 Start with an old problem central to number theory: counting 
 prime numbers. As usual, let $\pi(x)$ be the prime counting function and 
 $\Li(x) = \int_2^x \frac{\dd t}{\log t}$ be the Eulerian logarithmic integral. 
-There is a normalized empirical measure 
-$P_x = \frac{1}{\pi(x)} \sum_{p\leqslant x} \delta_{p}$, capturing the 
-distribution of the set of primes $\leqslant x$. The prime number theorem 
-tells us that as $x\to \infty$, this empirical measure converges weakly to the 
-``true'' measure $L_x = \frac{1}{\Li(x)\log t}\, \dd t$. The standard approach 
+The prime number theorem tells us that as $x\to \infty$, 
+$\frac{\pi(x)}{\Li(x)} \to 1$. The standard approach 
 to proving the prime number theorem is by showing that the Riemann 
 $\zeta$-function has non-vanishing meromorphic continuation to $\Re = 1$.
 
 \begin{theorem}
 The function $\zeta(s)$ admits a non-vanishing meromorphic continuation to 
 $\Re = 1$ with at most a simple pole at $s=1$, if and only if 
-$P_x \to L_x$ in the weak topology as $x\to \infty$. 
+$\lim_{x\to \infty} \frac{\pi(x)}{\Li(x)} = 1$. 
 \end{theorem}
 
-Recall that a sequence $\{\mu_x\}$ converges to $\mu$ in the weak topology if 
-and only if $\mu_x(f) \to \mu(f)$ for all continuous, complex-valued $f$. 
 Since $\zeta(s)$ does have the desired properties, the prime number 
-theorem is true. It is natural to try to quantify the rate of converge of $P_x$ 
-to $L_x$. One way to do this is via the (star) discrepancy 
-\[
-	\D^\star(P_x,L_x) 
-		= \sup_{t\in [0,1]} \left| P_x[0,t] - L_x[0,t]\right|
-		= \sup_{t\in [0,1]} \left| \frac{\pi(t x)}{\pi(x)} - \frac{\Li(t x)}{\Li(x)}\right| .
-\]
-Numerical experiments conducted by the author suggest that 
-$\D^\star(P_x,L_x) \ll x^{-\frac 1 2+\epsilon}$, and in fact we have the 
-following result. 
+theorem is true. It is natural to try to bound the difference 
+$\pi(x) - \Li(x)$. Numerical experiements going all the way back to Gauss 
+suggest that $|\pi(x) - \Li(x)| \ll x^{-\frac 1 2+\epsilon}$, and in fact we 
+have the following result. 
 
-\begin{theorem}
+\begin{theorem}[{\cite{rosser-schoenfeld-1976}}]
 The Riemann Hypothesis is true if and only if 
-$\D^\star(P_x,L_x) \ll x^{-\frac 1 2+\epsilon}$. 
+$|\pi(x) - \Li(x)| \ll x^{-\frac 1 2+\epsilon}$. 
 \end{theorem}
-\begin{proof}
-Suppose the Riemann Hypothesis is true. Then 
-\cite[6.18]{rosser-schoenfeld-1976} tells us that 
-$|\pi(x) - \Li(x)| \ll \sqrt{x} \log x$. Easy algebra yields the bound on 
-$\D^\star(P_x,L_x)$ from this. 
-
-To-do: prove converse!
-\end{proof}
 
 Neither side of this equivalence is known for certain to be true! 
 
@@ -70,7 +51,10 @@ $G^\natural$, the set of conjugacy classes in $G$. Let $\mu$ be the
 (normalized) Haar measure on $G^\natural$, and let 
 $\D(P_x) = \max_{S\subset G^\natural} \left| P_x(S) - \mu(S)\right|$. 
 Then $P_x$ converges weakly to the Haar measure on $G^\natural$ if and 
-only if $\D(P_x) \to 0$. 
+only if $\D(P_x) \to 0$. Recall that this weak convergence simply means 
+$\int f\, \dd P_x \to \int f$ for all continuous functions $f$ on $G^\natural$. 
+Since $G^\natural$ is a finite set, all functions are continuous, but later 
+on we will consider weak convergence on more general spaces.  
 
 \begin{theorem}[{\cite[Th.~2 Cor., A.1]{serre-1989}}]
 The measure $P_x$ converge weakly to the Haar measure on $G^\natural$ if and 
