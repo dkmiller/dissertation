@@ -12,14 +12,19 @@ We follow the notation of \cite{laurent-2009}. Fix a dimension
 $d\geqslant 1$, and let $\vx=(x_1,\dots,x_d)\in \bR^d$ be such that the $x_i$ 
 are linearly independent over $\bQ$. If $d = 1$, the \emph{irrationality 
 exponent} of $x\in \bR$ is the supremum of the set of $w\in \bR^+$ such that 
-there infinitely many rational numbers $\frac p q$ with 
+there infinitely many rational numbers $\frac p q$ ($p,q$ relatively prime) with 
 $\left| x - \frac p q\right| \leqslant q^{-w}$. If $x$ is rational, then it has 
 irrationality exponent $1$. If $x$ is an algebraic irrational, then Roth's 
 theorem tells us its irrationality exponent is $2$. Liouiville constructed 
 transcendental numbers with arbitrarily large irrationality exponent. In fact, 
-a measure-zero set of reals have infinite irrationality exponent, but we will 
-avoid those in the results below. When $d\geqslant 1$, there are a $d$ natural 
-measures of irrationality, but we will use only two of them. 
+a measure-zero set of reals have infinite irrationality exponent, for example 
+the Louiville number $\sum_{r\geqslant 1} 10^{-r!}$. In the results below, we 
+will only consider reals with finite irrationality constant. When 
+$d\geqslant 1$, there are a $d$ natural measures of irrationality, but we will 
+use only two of them. 
+
+For the remainder of this thesis, $\langle \cdot,\cdot\rangle$ is the standard 
+inner product on $\bR^d$. 
 
 \begin{definition}\label{def:approx-exp}
 Let $\omega_0(\vx)$ (resp.~$\omega_{d-1}(\vx)$) be the supremum of the set of 
@@ -35,23 +40,34 @@ $(n,\vm)\in \bZ\times\bZ^d$ such that
 
 It is easy to see that both $\omega_0(\vx)$ and $\omega_{d-1}(\vx)$ are 
 nonnegative. These two quantities are related by Khintchine's transference 
-principle, namely 
+principle \cite[Th.~2]{laurent-2009}, namely 
 \[
 	\frac{\omega_{d-1}(\vx)}{(d-1) \omega_{d-1}(\vx)+d} \leqslant \omega_0(\vx) \leqslant \frac{\omega_{d-1}(\vx)-d+1}{d} .
 \]
 Moreover, the second of these inequalities is sharp in a very strong sense. 
 
-\begin{theorem}[Jarn\'ik]\label{thm:jarnik}
+% For Jarnik's paper online
+% http://pldml.icm.edu.pl/pldml/element/bwmeta1.element.bwnjournal-article-aav2i1p1bwm
+\begin{theorem}[\cite{jarnik-1936}]\label{thm:jarnik}
 Let $w\geqslant 1/d$. Then there exists $\vx\in \bR^d$ such that 
 $\omega_0(\vx)=w$ and $\omega_{d-1}(\vx) = d w+d-1$. 
 \end{theorem}
 
 \begin{theorem}
-If $d=1$, then $\omega_0(x) = \mu-1$, where $\mu$ is the traditional 
-irrationality measure of $x$. 
+If $d=1$ and $x\in (0,1)$, then $\omega_0(x) = \mu-1$, where $\mu$ is the 
+traditional irrationality measure of $x$. 
 \end{theorem}
+\begin{proof}
+First we show that $\omega_0(x)\geqslant \mu-1$. Suppose there exist infinitely 
+many $p/q$ with $\left| x - \frac p q\right| \leqslant q^{-w}$. Since $x<1$ we 
+may assume that for infinitely many of the $p/q$, $p<q$. Then 
+$| q x - p| \leqslant q^{-w + 1} = \max(p,q)^{-w}$, which tells us that 
+$\omega_0(x) \geqslant \mu - 1$. 
 
-\begin{theorem}[Roth]
+To-do: complete proof.
+\end{proof}
+
+\begin{theorem}[\cite{roth-1955}]
 Let $x\in (\overline\bQ\cap \bR)\smallsetminus \bQ$. Then 
 $\omega_0(x) = 1$. 
 \end{theorem}
@@ -76,7 +92,7 @@ Let $\epsilon>0$. Then there are only finitely many $n\in \bZ$
 (resp.~$\vm\in \bZ^d$) such that the inequalities in Definition 
 \ref{def:approx-exp} hold with $w = \omega_0(x)+\epsilon$ 
 (resp.~$w = \omega_{d-1}(\vx)+\epsilon$). In other words, there exist constants 
-$C_0, C_{d-1}>0$ such that 
+$C_0, C_{d-1}>0$, depending on $\vx$ and $\epsilon$, such that 
 \begin{align*}
 	|n \vx - \vm|_\infty 
 		&\geqslant C_0 |(n,\vm)|_\infty^{-\omega_0(\vx)-\epsilon} ,\\
@@ -85,11 +101,12 @@ $C_0, C_{d-1}>0$ such that
 \end{align*}
 for all $(n,\vm)\ne 0$ in $\bZ\times\bZ^d$. 
 
-Start with the first inequality. Fix $n$, and let $\vm$ be the lattice point 
+Start with the first inequality. Fix $n$, and let $\vm$ be a lattice point 
 achieving the minimum $|n \vx - \vm|_\infty$; then 
 $\dd(n \vx,\bZ^d) \geqslant C_0 |(n,\vm)|_\infty^{-\omega_0(\vx)-\epsilon}$. 
-Since $|n\vx - \vm|_\infty < 1$, 
-$|n| \geqslant \frac{|\vm|_\infty}{|\vx|_\infty}-1$ , which gives 
+Since $|n\vx - \vm|_\infty < 1$, the reverse triangle inequality gives 
+$\left| |n| - \frac{|\vm|_\infty}{|\vx|_\infty}\right| \leqslant \frac{1}{|\vx|_\infty}$. So $|n|$ and $|\vm|$ are bounded above and below by scalar multiples 
+of each other, which tells us that 
 $\dd(n \vx,\bZ^d) \geqslant C_0' |n|^{-\omega_0(\vx)-\epsilon}$ for $C_0'$ 
 depending on $\vx$. It follows that 
 $\frac{1}{\dd(n \vx,\bZ^d)} \ll |n|^{\omega_0(\vx)+\epsilon}$, the 
@@ -98,11 +115,13 @@ implied constant depending on $x$ and $\epsilon$.
 Now we consider the second inequality. Note 
 that $\dd(\langle \vm,\vx\rangle,\bZ) = |n + \langle \vm,\vx\rangle|$ for 
 some $n$ with $|n| \leqslant |\vm|_2\cdot |\vx|_2 + 1$. Thus 
-$|(n,\vm)|_\infty \ll |\vm|_2 \ll |\vm|_\infty$ (any two norms on a 
-finite-dimensional Banach space are equivalent), which gives us 
-$\dd(\langle\vm,\vx\rangle,\bZ) \geqslant C_{d-1}' |\vm|^{-\omega_{d-1}(\vx)-\epsilon}$, for some constant $C_{d-1}'$. This implies 
+$|(n,\vm)|_\infty \ll |\vm|_2 \ll |\vm|_\infty$ with the implied constants 
+depending on $d$ and $x$, because any two norms on a 
+finite-dimensional Banach space are equivalent. This gives us 
+$\dd(\langle\vm,\vx\rangle,\bZ) \geqslant C_{d-1}' |\vm|_\infty^{-\omega_{d-1}(\vx)-\epsilon}$, 
+for some constant $C_{d-1}'$. This implies 
 \[
-	\frac{1}{d(\langle \vm,\vx\rangle,\bZ)} \ll |\vm|^{\omega_{d-1}(\vx)+\epsilon} ,
+	\frac{1}{d(\langle \vm,\vx\rangle,\bZ)} \ll |\vm|_\infty^{\omega_{d-1}(\vx)+\epsilon} ,
 \]
 the implied constant depending on $\vx$ and $\epsilon$.
 \end{proof}
@@ -119,14 +138,14 @@ $(\bR/\bZ)^d$ whose rank is equal to the dimension of the $\bQ$-vector space
 spanned by $\{x_1,\dots,x_d\}$. We are interested in the case where this 
 sequence is equidistributed in the whole torus $(\bR/\bZ)^d$, so assume 
 $x_1,\dots,x_d$ are linearly independent over $\bQ$ (this condition also 
-makes sense for elements of $(\bR/\bZ)^d$). For $\vx\in (\bR/\bZ)^d$, wish 
+makes sense for elements of $(\bR/\bZ)^d$). For $\vx\in (\bR/\bZ)^d$, we wish 
 to control the discrepancy of the sequence $(\vx,2\vx,3\vx,\dots)$ with respect 
 to the Haar measure of $(\bR/\bZ)^d$. 
 
 \begin{theorem}[Erd\"os--Tur\'an--Koksma]
-Let $\bx$ be a sequence in $(\bR/\bZ)^d$ and $h$ an arbitrary integer. Then 
+Let $\bvx$ be a sequence in $(\bR/\bZ)^d$ and $h$ an arbitrary integer. Then 
 \[
-	\D_N(\bx) \ll \frac 1 h + \sum_{0\leqslant |\vm|_\infty \leqslant h} \frac{1}{r(\vm)} \left| \frac 1 N \sum_{n\leqslant N} e^{2\pi i \langle \vm,\vx_n\rangle}\right| ,
+	\D_N(\bvx) \ll \frac 1 h + \sum_{0\leqslant |\vm|_\infty \leqslant h} \frac{1}{r(\vm)} \left| \frac 1 N \sum_{n\leqslant N} e^{2\pi i \langle \vm,\vx_n\rangle}\right| ,
 \]
 where the first sum ranges over $\vm\in \bZ^d$, 
 $r(\vm) = \prod \max\{1,|m_i|\}$, and the implied constant depends only on $d$. 
@@ -158,7 +177,7 @@ It is easy to check that $|\sin(\pi x)| \geqslant \dd(x,\bZ)$, whence the result
 Let $\vx\in (\bR/\bZ)^d$ with $(x_1,\dots,x_d)$ linearly independent over $\bQ$. 
 Then for $\bx=(\vx,2\vx,3\vx,\dots)$, we have 
 \[
-	\D_N(\bx) \ll \frac 1 h + \frac 1 N \sum_{0<|\vm|_\infty \leqslant h} \frac{1}{r(\vm) \dd(\langle \vm,\vx\rangle,\bZ)} 
+	\D_N(\bx) \ll \frac 1 h + \frac 1 N \sum_{0<|\vm|_\infty \leqslant h} \frac{2}{r(\vm) \dd(\langle \vm,\vx\rangle,\bZ)} 
 \]
 for any integer $h$, with the implied constant depending only on $d$. 
 \end{corollary}
@@ -174,7 +193,8 @@ Let $\bx=(\vx,2\vx,3\vx,\dots)$ in $(\bR/\bZ)^d$. Then
 \]
 \end{theorem}
 \begin{proof}
-Fix $\epsilon>0$, and choose $\delta>0$ such that 
+Fix $\epsilon>0$ smaller than $\frac{1}{\omega_{d-1}(\vx) - 1}$, and choose 
+$\delta>0$ such that 
 $\frac{1}{\omega_{d-1}(\vx)+1+\delta} = \frac{1}{\omega_{d-1}(\vx)+1} - \epsilon$. 
 By Corollary \ref{cor:bound-disc-distance}, we know that 
 \[
@@ -186,10 +206,17 @@ It follows that
 \[
 	\D_N(\bx) \ll \frac 1 h + \frac 1 N \sum_{0 < |\vm|_\infty \leqslant h} \frac{|\vm|_\infty^{\omega_{d-1}(\vx)+\delta}}{r(\vm)} .
 \]
-All that remains is to bound the sum. 
+All that remains is to bound the sum. Clearly 
+\[
+	\sum_{0 < |\vm|_\infty \leqslant h} \frac{|\vm|_\infty^{\omega_{d-1}(\vx) + \delta}}{r(m)} \ll \int_1^h \int_1^h \dots \int_1^h \frac{\max(|t_1|,\dots,|t_d|)^{\omega_{d-1}(\vx)+\delta}}{t_1 \dots t_d}\, \dd t_1 \dots \dd t_d .
+\]
+For each permutation $\sigma$ of $\{1,\dots,d\}$, call $I_\sigma$ the set of 
+all $(t_1,\dots,t_d)$ in $[1,\infty)^d$ with 
+$t_{\sigma(1)} < \dots < t_{\sigma(d)}$. Then 
+$[1,\infty)^d = \bigcup_{\sigma\in S_d} I_\sigma$, and each integral over 
+$I_\sigma$ is easy to bound. For example, the integral over $I_1$ is 
 \begin{align*}
-	\sum_{0< |\vm|_\infty \leqslant h} \frac{|\vm|_\infty^{\omega_{d-1}(\vx)+\delta}}{r(m)} 
-		&\ll \int_1^h \int_1^{t_d} \dots \int_1^{t_2} \frac{t_d^{\omega_{d-1}(\vx)+\delta}}{t_1 \dots t_d}\, \dd t_1 \dots \dd t_d \\
+	\int_1^h \int_1^{t_d} \dots \int_1^{t_2} \frac{t_d^{\omega_{d-1}(\vx)+\delta}}{t_1 \dots t_d}\, \dd t_1 \dots \dd t_d 
 		&\ll \int_1^h t^{\omega_{d-1}(\vx)+\delta-1}\, \dd t \prod_{j=1}^{d-1} \int_1^h \frac{\dd t}{t} \\
 		&\ll (\log h)^{d-1} h^{\omega_{d-1}(\vx)+\delta} .
 \end{align*}
@@ -220,25 +247,35 @@ By the definition of $\omega_0(\vx)$, there exist infinitely many
 $(q,\vm)$ with $q>0$ such that 
 $|q \vx - \vm|_\infty \leqslant |(q,\vm)|_\infty^{-\omega_0(\vx)+\delta/2}$. 
 Since $|(q,\vm)|_\infty \geqslant q$, we derive the stronger 
-statement that for infinitely many $q\to \infty$, there exists 
+statement that for infinitely many $q$, there exists 
 $\vm\in \bZ^d$ such that 
 $|q \vx-\vm|_\infty \leqslant q^{-\omega_0(\vx)+\delta/2}$ or, equivalently, 
 $|\vx-q^{-1}\vm| \leqslant q^{-1-\omega_0(\vx)+\delta/2}$. Fix one such $q$, 
 and let $N=\lfloor q^{\omega_0(\vx)-\delta}\rfloor$. For each $n\leqslant N$, 
-we have $|n \vx - \frac n q \vm|_\infty \leqslant q^{-1-\delta/2}$. For each 
-$n\leqslant N$, $n \vx$ is within $q^{-1-\delta/2}$ of the grid 
-$\frac 1 q \bZ^d\subset (\bR/\bZ)^d$. Thus, they miss a box with side lengths 
-$q^{-1} - 2 q^{-1-\delta/2}$. For $q$ sufficiently large, 
-$q^{-1} - 2 q^{-1-\delta/2} \geqslant 1/2q$, so the discrepancy is 
+we have 
+\[
+	\left|n \vx - n q^{-1} \vm\right|_\infty 
+		\leqslant n \left|\vx - q^{-1} \vm\right|_\infty
+		\leqslant n q^{-1-\omega_0(\vx)+\delta/2}
+		\leqslant q^{-1-\delta/2}. 
+\]
+Thus, for each $n\leqslant N$, $n \vx$ is within $q^{-1-\delta/2}$ of the 
+grid $\frac 1 q \bZ^d\subset (\bR/\bZ)^d$. So no element of 
+$\{\vx,\dots,N \vx\}$ lies any the half-open box 
+$I_q = \left[ q^{-1 - 2\delta / 3}, q^{-1} - q^{-1 - 2\delta / 3}\right)^d$. 
+Moreover, $I_q$ has volume $\left(q^{-1} - 2q^{-1 - 2\delta / 3}\right)^d$. 
+For $q$ sufficiently large, the volume of $I_q$ is bounded below by 
+$2^{-d} q^{-d}$, so the discrepancy $\D_N^\star(\bvx)$ is 
 bounded below by $2^{-d} q^{-d}$. Since $q^{\omega_0(\vx)-\delta} \leqslant 2 N$, 
-the discrepancy at $N$ is bounded below by 
+the discrepancy $\D_N^\star(\bvx)$ is bounded below by 
 \[
 	2^{-d} \left( (2 N)^{\frac{1}{\omega_0(\vx)+\delta}}\right)^{-d} 
 		= 2^{-d-\frac{d}{\omega_0(\vx)+\delta}} N^{-\frac{d}{\omega_0(\vx)+\delta}}
 		= 2^{-d\left(1+\frac{1}{\omega_0(\vx)}\right)-\epsilon} N^{-\frac{d}{\omega_0(\vx)}-\epsilon} .
 \]
-Since $\D_N(\bx)$ can, for $N\to \infty$, be bounded below by a constant 
-multiple of $N^{-\frac{d}{\omega_0(\vx)}}$, the proof is complete.
+Since $\D_N^\star(\bvx)$ can, for $N\to \infty$, be bounded below by a constant 
+multiple of $N^{-\frac{d}{\omega_0(\vx)}}$, the proof is complete after an 
+application of Lemma \cite{lem:star-reg-disc}. 
 \end{proof}
 
 
@@ -249,17 +286,20 @@ multiple of $N^{-\frac{d}{\omega_0(\vx)}}$, the proof is complete.
 \section{Pathological Satake parameters for CM abelian varieties}
 
 We apply the results of the previous sections to $L$-functions associated to 
-CM abelian varieties. Recall that for $E$ a non-CM elliptic curve, the 
+CM abelian varieties. For background, see 
+\cite{serre-tate-1968,serre-1994,yu-2015}. 
+Recall that for $E$ a non-CM elliptic curve, the 
 Akiyama--Tanigawa conjecture implies the Riemann Hypothesis for all 
 $L(\sym^k E,s)$, $k\geqslant 1$. The appearance of $\sym^k$ is dictated by the 
 classification of irreducible representations of $\SU(2)$, the Sato--Tate group 
 of $E$. If $A$ is a CM abelian variety, there should be an $L$-function (and 
-Galois representation) for each irreducible representation of $\ST(A)$. In the 
+Galois representation) for each irreducible representation of the Sato--Tate 
+group of $A$, which we denote by $\ST(A)$. In the 
 CM case, $\ST(A)$ is a real torus, so things can be described relatively 
 explicitly. 
 
 Let $K/\bQ$ be a finite Galois extension, $A_{/K}$ a $g$-dimensional abelian 
-variety with complex multiplication by $F$, defined over $K$. That is, 
+variety with complex multiplication by $F$, defined over $K$, that is, 
 $F = \End_K(A)_\bQ$. Since the action of $F$ commutes with 
 $\rho_l\colon G_\bQ \to \GL_{2g}(\bQ_l)$, the Galois representation coming 
 from the $l$-adic Tate module of $A$ takes values in $\R_{F/\bQ}\Gm(\bQ_l)$, 
@@ -366,7 +406,7 @@ The result follows.
 
 \begin{theorem}\label{thm:translates-bound-sum}
 Let $\vx\in \bR^d$ with $\omega_{d-1}(\vx)$ finite. Fix 
-$f\in C^\infty((\bR/\bZ)^d)$ with $\widehat f(0)=0$. Then 
+$f\in C^\infty((\bR/\bZ)^d)$ with $\widehat f(\vzero)=0$. Then 
 $\left| \sum_{n\leqslant N} f(n \vx)\right| \ll 1$. 
 \end{theorem}
 \begin{proof}
@@ -377,7 +417,7 @@ Since $\widehat f(0)=0$, we can compute:
 	\left| \sum_{n\leqslant N} f(n \vx)\right| 
 		&= \left| \sum_{n\leqslant N} \sum_{\vm\in \bZ^d\smallsetminus 0} \widehat f(\vm) e^{2\pi i n \langle \vm,\vx\rangle}\right| \\
 		&\leqslant \sum_{\vm\in \bZ^d\smallsetminus 0} \left|\widehat f(\vm)\right|\cdot \left| \sum_{n\leqslant N} e^{2\pi i n \langle \vm,\vx\rangle}\right| \\
-		&\ll \sum_{\vm\in \bZ^d\smallsetminus 0} \left|\widehat f(\vm)\right|\cdot |\vm|_\infty^{\omega_{d-1}(\vx) + \epsilon/2} .
+		&\ll \sum_{\vm\in \bZ^d\smallsetminus 0} \left|\widehat f(\vm)\right|\cdot |\vm|_\infty^{\omega_{d-1}(\vx) + \epsilon} .
 \end{align*}
 The sum converges since the Fourier coefficients $\widehat f(\vm)$ converge to 
 zero faster than the reciprocal of any polynomial. 
@@ -411,6 +451,9 @@ Theorem \ref{thm:AT->RH} tells us this estimate implies the Riemann Hypothesis.
 \end{proof}
 
 This shows that even if each $L(r_\ast \rho_l,s)$ satisfies the Riemann 
-Hypothesis, we may not immediately conclude that the Akiyama--Tanigawa 
-conjecture holds for $A$. 
-
+Hypothesis, we may not conclude that the Akiyama--Tanigawa 
+conjecture holds for $A$. Note also that Theorem \ref{thm:AT->RH} does 
+\emph{not} tell us that $L_f(\vx,s)$ has analytic continuation to $\Re > 0$, or 
+that there are no zeros in $\Re > 0$. For, the term 
+$\sum_\fp \sum_{r\geqslant 2} \frac{f(x_\fp^r}{r p^{r s}}$ will not converge 
+past $\Re > \frac 1 2$.

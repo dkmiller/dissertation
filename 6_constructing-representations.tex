@@ -28,9 +28,9 @@ If $l$ is a rational prime and $S$ a finite set of primes containing $l$, then
 for any $\bF_l[G_{\bQ_S}]$-module $M$, write $M^\vee=\hom_{\bF_l}(M,\bF_l)$ 
 with the obvious $G_{\bQ_S}$-action, and write $M^\ast = M^\vee(1)$ for the 
 Cartier dual of $M^\vee$. By \cite[Th.~8.6.7]{neukirch-schmidt-winberg-2008}, 
-there is an isomorphism $\sha^1_S(M^\ast) = \sha_S^2(M)^\vee$. As a result, if 
-$\sha_S^1(M) = \sha_S^2(M) = 0$ and $S\subset T$, then 
-$\sha_T^1(M) = \sha_T^2(M) = 0$. 
+there is an isomorphism $\sha^1_S(M^\ast) \simeq \sha_S^2(M)^\vee$. As a 
+result, if $\sha_S^1(M)$ and $\sha_S^2(M)$ are trivial, and $S\subset T$, then 
+$\sha_T^1(M)$ and $\sha_T^2(M)$ are also trivial. 
 
 \begin{definition}
 A \emph{good residual representation} is an odd, absolutely irreducible, 
@@ -38,6 +38,9 @@ weight-$2$ representation $\bar\rho\colon G_{\bQ_S} \to \GL_2(\bF_l)$, where
 $l\geqslant 7$ is a rational prime. 
 \end{definition}
 
+Recall that $\bar\rho$ is weight-$2$ if $\det\bar\rho$ is the mod-$l$ 
+cyclotomic character. Similarly, $\rho\colon G_\bQ \to \GL_2(\bZ_l)$ is 
+weight-$2$ if $\det\rho$ is the $l$-adic cyclotomic character. 
 Roughly, ``good residual representations'' have enough properties that we can 
 prove meaningful theorems about their lifts without assuming the modularity 
 results of Khare--Wintenberger. 
@@ -119,7 +122,7 @@ $p\in R\cup U$, the two possible $\rho_p$ agree.
 
 \begin{theorem}\label{thm:lifting-datum}
 Let $\bar\rho$ be a good residual representation, $h\colon \bR^+ \to \bR^+$ 
-decreasing to zero. If $(\rho_n,R,U,\{\rho_p\})$ is an $h$-bounded lifting 
+increasing to infinity. If $(\rho_n,R,U,\{\rho_p\})$ is an $h$-bounded lifting 
 datum, $U'\supset U$ is a finite set of primes disjoint from $R$, and 
 $\{\rho_p\}_{p\in U'}$ extends $\{\rho_p\}_{p\in U}$, then there exists an 
 $h$-bounded lift $(\rho_{n+1},R',U',\{\rho_p\})$ of 
@@ -139,7 +142,7 @@ $\pi_{R\cup N}(x) \leqslant h(x)$ continues to hold. We also choose the
 primes in $N$ to be larger than any prime in $U'$. 
 
 By our hypothesis, $\rho_n$ admits a lift to $\bZ/l^{n+1}$; call one such lift 
-$\rho^\ast$. For each $p\in R\cup U'$, $\h^1(\bQ_p,\Ad^0\bar\rho)$ acts simply 
+$\rho^\ast$. For each $p\in R\cup U'$, $\h^1(\bQ_p,\Ad^0\bar\rho)$ acts 
 transitively on lifts of $\left.\rho_n\right|_{G_{\bQ_p}}$ to $\bZ/l^{n+1}$. In 
 particular, there are cohomology classes $f_p\in \h^1(\bQ_p,\Ad^0\bar\rho)$ 
 such that $f_p\cdot \rho^\ast \equiv \rho_p\pmod{l^{n+1}}$ for all 
@@ -219,7 +222,8 @@ $\left| \frac{a_p}{2\sqrt p} - x_p\right| \leqslant \frac{l h(p)}{2\sqrt p}$.
 \begin{proof}
 Begin with $\rho_1= \bar\rho$. By \cite[Lem.~6]{khare-larsen-ramakrishna-2005}, 
 there exists a finite set $R$, containing the set of primes at which $\bar\rho$ 
-ramifies, such that $\sha_R^1(\Ad^0\bar\rho) = \sha_R^2(\Ad^0\bar\rho) = 0$. 
+ramifies, such that $\sha_R^1(\Ad^0\bar\rho)$ and $\sha_R^2(\Ad^0\bar\rho)$ are 
+trivial. 
 Let $R_1$ be the union of $R$ and all primes $p$ with 
 $\frac{l}{2\sqrt p} > 2$. Since $\frac{l}{2\sqrt p} \to 0$ as $p\to \infty$, 
 the set $R_1$ is finite. For all $p\notin R_1$ and any $a\in \bF_l$, there 
@@ -295,14 +299,16 @@ $L=\pm \infty$, we can choose $x_p = \pm 1$. By Theorem
 \ref{thm:master-Galois}, there exists $\rho\colon G_\bQ \to \GL_2(\bZ_l)$ with 
 $\pi_{\ram(\rho)}(x) \ll \log(x)$, and such that for each unramified $p$, 
 $a_p = \tr\rho(\frob_p)\in \bZ$, satisfies the Hasse bound, has 
-$\left| \frac{a_p}{2\sqrt p} - b_p\right| < \frac{l \log p}{\sqrt p}$, and by 
+$\left| \frac{a_p}{2\sqrt p} - x_p\right| < \frac{l \log p}{\sqrt p}$, and by 
 inspecting the proof, we can even ensure that 
-$\sum \left(\frac{a_p}{2\sqrt p} - b_p\right)$ converges conditionally (make 
+$\sum \left(\frac{a_p}{2\sqrt p} - x_p\right)$ converges conditionally (make 
 sure the sign of $\frac{a_p}{2\sqrt p} - b_p$ alternates). Note that
-\[
+\begin{align*}
 	\left|\frac{\log N}{\sqrt N}\sum_{p\leqslant N} \frac{a_p}{2\sqrt p} - \frac{\log N}{\sqrt N} \sum_{p\leqslant N} x_p\right| 
-		\leqslant \frac{\log N}{\sqrt N} \left(\pi_{\ram(\rho)}(N) + \sum_{p\leqslant N} \left(\frac{a_p}{2 \sqrt p} - x_p\right)\right) \to 0 .
-\]
+		&\leqslant \frac{\log N}{\sqrt N}\left|\sum_{\substack{p\leqslant N \\ p\text{ ramified}}} \left(\frac{a_p}{2 \sqrt p} - x_p\right) + \sum_{\substack{p\leqslant N \\ p\text{ unramified}}} \left(\frac{a_p}{2 \sqrt p} - x_p\right) \right|  \\
+		&\ll \frac{\log N}{\sqrt N} \left(\pi_{\ram(\rho)}(N) + \left|\sum_{p\leqslant N} \left(\frac{a_p}{2 \sqrt p} - x_p\right)\right|\right) ,
+\end{align*}
+which converges to zero. 
 When $L\ne \pm\infty$, this shows that the limit in question exists and is $L$. 
 When $L=\pm \infty$, this shows that the the sums in question diverge to $L$. 
 \end{proof}
@@ -343,7 +349,10 @@ satisfies the hypotheses of Theorem \ref{thm:discrepancy-arbitrary}, so
 there are ``$N^{-\alpha}$-decaying van der Corput sequences'' for 
 $\cos_\ast\mu$, and also that since $\cos\colon [0,\pi] \to [-1,1]$ is an 
 strictly decreasing, we know that for any sequence $\bx$ on $[-1,1]$, 
-$\D_N(\bx,\cos_\ast\mu) \approx \D_N(\cos^{-1}\bx,\mu)$. 
+$\D_N(\bx,\cos_\ast\mu) \approx \D_N(\cos^{-1}\bx,\mu)$. Recall that 
+$\varphi_1(N) = \Theta(\varphi_2(N))$ if there exists constants 
+$0 < C_1 < C_2$ such that 
+$C_1 \varphi_2(N) \leqslant \varphi_1(N) \leqslant C_2 \varphi_2(N)$. 
 
 
 \begin{theorem}\label{thm:integral-a_p-alpha}
@@ -403,16 +412,18 @@ that we can choose $a_{p_i}$ satisfying the Hasse bound so that
 \[
 	\D_N\left( \left\{\theta_{p_i}\right\},\left.\mu\right|_{[0,\pi/2)}\right) = \Theta(N^{-\alpha}) .
 \]
-We can also choose the $a_{q_i}\in [\pi/2,\pi]$ so that 
+We can also choose the $a_{q_i}$ such that 
+$\frac{a_{q_i}}{2\sqrt{q_i}}\in [\pi/2,\pi]$ and 
 $\left| \frac{a_{p_i}}{2\sqrt{p_i}} + \frac{a_{q_i}}{2\sqrt{q_i}}\right| \ll \frac{1}{\sqrt{p_i}}$. 
 If $\bx$ is the sequence of the $\frac{a_{p_i}}{2\sqrt{p_i}}$ and $\by$ is 
 the corresponding sequence with the $q_i$-s, then Lemma 
-\ref{lem:flip-discrepancy}, Lemma \ref{lem:disc-of-two-seq}, and Theorem 
+\ref{lem:disc-of-two-seq}, Lemma \ref{lem:flip-discrepancy}, and Theorem 
 \ref{thm:wreath-seq} tell us that $\D_N(\bx\wr\by,\mu) = \Theta(N^{-\alpha})$. 
 
 Moreover, $U_k(\cos^{-1} t)$ is an odd polynomial in $t$, so if 
 $|x_i - (-y_i)| \ll p_i^{-1/2}$, then 
-$|U_k(\theta_{p_i}) + U_k(\theta_{q_i})| \ll p_i^{-1/2}$. We can then bound 
+$|U_k(\theta_{p_i}) + U_k(\theta_{q_i})| = |U_k(\theta_{p_i}) - U_k(- \theta_{q_i})|\ll p_i^{-1/2}$. 
+We can then bound 
 \[
 	\left| \sum_{i\leqslant N} \left(U_k(\theta_{p_i}) + U_k(\theta_{q_i})\right)\right| \ll \sum_{p\leqslant N} p^{-1/2} \ll \pi(N)^{1/2} .
 \]

@@ -16,8 +16,38 @@ curve and let
 	L_{\sgn}(E,s) = \prod_p \frac{1}{1-\sgn(a_p) p^{-s}} .
 \]
 How much can we say about the behavior of $L_{\sgn}(E,s)$? For example, does it 
-admit analytic continuation past $\Re = 1$? (Yes!) Can the rank of $E$ be 
-found from $L_{\sgn}(E,s)$? (Not so clear.)
+admit analytic continuation to $\Re = 1$? Yes, by the results of 
+\cite[A.2]{serre-1989}. Can the rank of $E$ be 
+found from $L_{\sgn}(E,s)$? Theoretically yes, by the following result. 
+
+\begin{theorem}
+If $E_1$ and $E_2$ are non-CM elliptic curves with 
+$\sgn a_p(E_1) = \sgn a_p(E_2)$ for all $p$, then $E_1$ and $E_2$ are 
+isogenous.
+\end{theorem}
+\begin{proof}
+Assume by way of contradiction that $E_1$ and $E_2$ are non-isogenous, non-CM 
+elliptic curves over $\bQ$ with $\sgn a_p(E_1) = \sgn a_p(E_2)$ for all $p$. By 
+\cite[5.4]{harris-2009}, the pairs $(\theta_p(E_1),\theta_p(E_2))$ are 
+equidistributed with respect to 
+$\ST\times \ST = \frac{4}{\pi^2} \sin^2\theta_1\sin^2\theta_2\, \dd\theta_1\, \dd\theta_2$ 
+on $[0,\pi]\times [0,\pi]$. 
+
+Recall that if $f(\theta) = 1_{[0,\pi/2)}(\theta) - 1_{(\pi/2,\pi]}(\theta)$, 
+then $\sgn(a_p) = f(\theta_p)$. Moreover, 
+$g(\theta_1,\theta_2) = |f(\theta_1) - f(\theta_2)|$ is non-negative and 
+continuous almost-everywhere. Moreover, it is clear that 
+$\int g\, \dd \ST\times \ST > 0$. Harris' equidistribution result tells us that 
+\[
+	\int g\, \dd \ST\times\ST = \lim_{N\to \infty} \frac{1}{\pi(N)} \sum_{p\leqslant N} g(\theta_p(E_1),\theta_p(E_2)) = 0 ,
+\]
+which is a contradiction. 
+\end{proof}
+
+It follows that if $L_{\sgn}(E_1,s) = L_{\sgn}(E_2,s)$, then $E_1$ and $E_2$ 
+are isogenous, so in particular they have the same rank. 
+
+To-do: numerical experiments on recovering rank from $L_{\sgn}(E,1)$. 
 
 \begin{definition}
 Let $\bx=(x_2,x_3,x_5,\dots)$ be a sequence of complex numbers indexed by the 
@@ -61,7 +91,8 @@ as desired.
 \end{proof}
 
 \begin{theorem}\label{thm:AT->RH}
-Assume $|\sum_{p\leqslant N} x_p| \ll N^{\alpha+\epsilon}$ for some 
+Let $|\bx|_\infty \leqslant 1$, and assume 
+$|\sum_{p\leqslant N} x_p| \ll N^{\alpha+\epsilon}$ for some 
 $\alpha\in [\frac 1 2,1]$. Then the series for $\log L(\bx,s)$ converges 
 conditionally to a holomorphic function on $\Re > \alpha$. 
 \end{theorem}
@@ -94,7 +125,8 @@ complete.
 \end{proof}
 
 The proof of Theorem \ref{thm:AT->RH} actually gives an absolutely 
-convergent expression for $\log L(\bx,s)$ on the region $\Re >\alpha$. Namely, 
+convergent expression for $\log L(\bx,s)$ on the region $\Re >\alpha$. Since 
+the term $N^{-s} \sum_{p\leqslant N} x_p$ converges to zero, we get 
 \[
 	\log L(\bx,s) = s \int_2^\infty t^{-s-1}\left(\sum_{p\leqslant t} x_p\right) \dd t + \sum_p \sum_{r\geqslant 2} \frac{x_p^r}{r p^{r s}} . 
 \]
@@ -121,7 +153,8 @@ a finite-dimensional representation of $G$, put
 \]
 Clearly $L((\rho_1\oplus \rho_2)(\bx),s) = L(\rho_1(\bx),s) L(\rho_2(\bx),s)$. 
 Now, let $T\subset G$ be a maximal torus, and recall that 
-$T\twoheadrightarrow G^\natural$. The representation 
+$T\twoheadrightarrow G^\natural$ \cite[IX.5 Prop.~5]{bourbaki-2005}. 
+The representation 
 $\left.\rho\right|_T$ decomposes as $\bigoplus \chi^{\oplus m_\chi}$, where 
 $\chi$ ranges over characters of $T$ and the entire expression is 
 $W$-invariant. We may regard the $x_p$ as lying in $T/W$, so we have 
@@ -150,7 +183,8 @@ an estimate $|\sum_{p\leqslant N} x_p| \ll N^{\frac 1 2 + \epsilon}$.
 
 \begin{theorem}
 Let $(X,\mu)$ be a probability space in which discrepancy and Koksma--Hlawka 
-make sense, and let $\bx=(x_2,x_3,x_5,\dots)$ be a sequence in $X$ with 
+make sense (i.e., Theorem \ref{thm:koksma-hlawka} applies), and let 
+$\bx=(x_2,x_3,x_5,\dots)$ be a sequence in $X$ with 
 $\D_N(\bx,\mu) \ll N^{-\frac 1 2+\epsilon}$. For any function $f$ on $X$ of 
 bounded variation with $\int f\, \dd\mu = 0$, $L_f(\bx,s)$ satisfies 
 the Riemann Hypothesis. 
@@ -167,28 +201,39 @@ $\Re > 1 - \alpha$. This theorem applied to the function $L_{\sgn}(E,s)$ shows
 that the Akiyama--Tanigawa conjecture implies the Riemann Hypothesis for 
 $L_{\sgn}(E,s)$. The author is unaware of any results, conditional or 
 otherwise, that suggest $L_{\sgn}(E,s)$ has analytic continuation past 
-$\Re = \frac 1 2$ or has any kind of functional equation. 
+$\Re = \frac 1 2$ or has any kind of functional equation. Also, if 
+$\int f\, \dd\mu \ne 0$, the function $L_f(\bx,s)$ will have a singularity at 
+$s = 1$, but the author is not aware of a way to continue the function 
+$L_f(\bx,s)$ past $\Re = 1$, even if $\D_N(\bx,\mu)$ decays rapidly. 
 
 Let $F = \bF_q(t)$ be a function field, $E_{/F}$ a generic elliptic curve. 
 There is, for every prime $\fp$ of $F$, a Satake parameter 
 $\theta_\fp \in [0,\pi]$, defined in the usual way. It is known 
 \cite[Ch.~3]{katz-1988} that
-\[
+\begin{equation}\label{eq:katz-char-bound}
 	\left|\sum_{\N(\fp) \leqslant x} \tr\sym^k\smat{e^{i \theta_\fp}}{}{}{e^{- i \theta_\fp}} \right| \ll k \sqrt{x} .
+\end{equation}
+For $f\in L^1(\SU(2)^\natural)$, recall that the Fourier coefficients of $f$ 
+are 
+\[
+	\widehat f(\sym^k) = \int_{\SU(2)^\natural} f(x) \tr\sym^k(x)\, \dd x .
 \]
-This tells us that for any $f\in C(\SU(2)^\natural)$ with 
-$\sum_{k\geqslant 1} |\widehat f(\sym^k)|<\infty$ and $\widehat f(1) = 0$, 
+The Peter--Weyl theorem gives 
+$f = \sum_{k\geqslant 1} \widehat f(\sym^k) \tr\sym^k$. 
+Equation \eqref{eq:katz-char-bound} tells us that for any 
+$f\in C(\SU(2)^\natural)$ with 
+$\sum_{k\geqslant 1} |\widehat f(\sym^k)|<\infty$ and $\widehat f(\sym^1) = 0$, 
 the strange Dirichlet series $L_f(\btheta,s)$ satisfies the Riemann Hypothesis. 
 
 The best estimate on discrepancy is found in 
-\cite{niederreiter-1991}, where it is shown that $D_N \ll N^{-\frac 1 4}$ 
+\cite{niederreiter-1991}, where it is shown that $D_x \ll N^{-\frac 1 4+\epsilon}$ 
 by applying a generalization of the Koksma--Hlawka inequality to 
 $\SU(2)^\natural$. Namely, for any odd $r$, we have 
 \[
 	\D_x(\btheta,\ST) \ll \frac 1 r + \sum_{k=1}^{2 r -1} \frac 1 k \left| \frac{1}{\pi_F(x)} \sum_{\N(\fp)\leqslant x} \tr\sym^k\smat{e^{i \theta_\fp}}{}{}{e^{- i \theta_\fp}}\right| .
 \]
-Using the above estimate on character sums, Niederreiter is able to derive 
-$\D_x \ll x^{-\frac 1 4}$. This fits the results of 
+Using the estimate \eqref{eq:katz-char-bound} on character sums, Niederreiter 
+is able to derive $\D_x \ll x^{-\frac 1 4+\epsilon}$. This fits the results of 
 \cite{bucar-kedlaya-2015,rouse-thorner-2016}, both of which derive estimates 
 of the form $\D_N \ll N^{-\frac 1 4+\epsilon}$ under GRH + functional equation 
 for the (non-CM) elliptic curve in question. 
