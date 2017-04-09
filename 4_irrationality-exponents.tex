@@ -17,11 +17,11 @@ $\left| x - \frac p q\right| \leqslant q^{-w}$. If $x$ is rational, then it has
 irrationality exponent $1$. If $x$ is an algebraic irrational, then Roth's 
 theorem tells us its irrationality exponent is $2$. Liouiville constructed 
 transcendental numbers with arbitrarily large irrationality exponent. In fact, 
-a measure-zero set of reals have infinite irrationality exponent, for example 
-the Louiville number $\sum_{r\geqslant 1} 10^{-r!}$. In the results below, we 
-will only consider reals with finite irrationality constant. When 
-$d\geqslant 1$, there are a $d$ natural measures of irrationality, but we will 
-use only two of them. 
+a measure-zero set of reals, for example the Louiville number 
+$\sum_{r\geqslant 1} 10^{-r!}$, have infinite irrationality exponent. In the 
+results below, we will only consider reals with finite irrationality constant. 
+When $d\geqslant 1$, there are a $d$ natural measures of irrationality, but we 
+will use only two of them. 
 
 For the remainder of this thesis, $\langle \cdot,\cdot\rangle$ is the standard 
 inner product on $\bR^d$. 
@@ -39,7 +39,9 @@ $(n,\vm)\in \bZ\times\bZ^d$ such that
 \end{definition}
 
 It is easy to see that both $\omega_0(\vx)$ and $\omega_{d-1}(\vx)$ are 
-nonnegative. These two quantities are related by Khintchine's transference 
+nonnegative. Even better, by \cite[Th.~2 Cor]{laurent-2009}, 
+$\omega_0(\vx) \geqslant \frac 1 d$ and $\omega_{d-1}(\vx) \geqslant d$. 
+These two quantities are related by Khintchine's transference 
 principle \cite[Th.~2]{laurent-2009}, namely 
 \[
 	\frac{\omega_{d-1}(\vx)}{(d-1) \omega_{d-1}(\vx)+d} \leqslant \omega_0(\vx) \leqslant \frac{\omega_{d-1}(\vx)-d+1}{d} .
@@ -53,7 +55,7 @@ Let $w\geqslant 1/d$. Then there exists $\vx\in \bR^d$ such that
 $\omega_0(\vx)=w$ and $\omega_{d-1}(\vx) = d w+d-1$. 
 \end{theorem}
 
-\begin{theorem}
+\begin{theorem}\label{thm:omega-irrationality}
 If $d=1$ and $x\in (0,1)$, then $\omega_0(x) = \mu-1$, where $\mu$ is the 
 traditional irrationality measure of $x$. 
 \end{theorem}
@@ -67,10 +69,14 @@ $\omega_0(x) \geqslant \mu - 1$.
 To-do: complete proof.
 \end{proof}
 
-\begin{theorem}[\cite{roth-1955}]
+\begin{theorem}[Roth]
 Let $x\in (\overline\bQ\cap \bR)\smallsetminus \bQ$. Then 
 $\omega_0(x) = 1$. 
 \end{theorem}
+\begin{proof}
+This follows directly from \cite{roth-1955} and Theorem 
+\ref{thm:omega-irrationality}.
+\end{proof}
 
 Given $\vx\in \bR^d$, write 
 $\dd(\vx,\bZ^d)=\min_{\vm\in \bZ^d} |\vx-\vm|_\infty$. Note that 
@@ -261,7 +267,7 @@ we have
 \]
 Thus, for each $n\leqslant N$, $n \vx$ is within $q^{-1-\delta/2}$ of the 
 grid $\frac 1 q \bZ^d\subset (\bR/\bZ)^d$. So no element of 
-$\{\vx,\dots,N \vx\}$ lies any the half-open box 
+$\{\vx,\dots,N \vx\}$ lies in the half-open box 
 $I_q = \left[ q^{-1 - 2\delta / 3}, q^{-1} - q^{-1 - 2\delta / 3}\right)^d$. 
 Moreover, $I_q$ has volume $\left(q^{-1} - 2q^{-1 - 2\delta / 3}\right)^d$. 
 For $q$ sufficiently large, the volume of $I_q$ is bounded below by 
@@ -275,7 +281,7 @@ the discrepancy $\D_N^\star(\bvx)$ is bounded below by
 \]
 Since $\D_N^\star(\bvx)$ can, for $N\to \infty$, be bounded below by a constant 
 multiple of $N^{-\frac{d}{\omega_0(\vx)}}$, the proof is complete after an 
-application of Lemma \cite{lem:star-reg-disc}. 
+application of Lemma \ref{lem:star-reg-disc}. 
 \end{proof}
 
 
@@ -424,7 +430,7 @@ zero faster than the reciprocal of any polynomial.
 \end{proof}
 
 The function $f$ does not need to be smooth---so long as its Fourier 
-coefficients decay sufficiently rapidly so as to force 
+coefficients decay sufficiently rapidly as to force 
 $\sum |\widehat f(\vm)| \cdot |\vm|_\infty^{\omega_{d-1}(\vx)+\epsilon}$ to 
 converge, the proof works. 
 

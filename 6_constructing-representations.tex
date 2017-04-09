@@ -65,7 +65,7 @@ eigenvalues of $\bar\rho(\frob_p)$ have ratio $p$.
 Taylor allows $p\equiv -1\pmod l$, but the results of \cite{pande-2011} 
 require $p\not\equiv -1\pmod l$. 
 
-\begin{theorem}[Ramakrishna]
+\begin{theorem}[\cite{ramakrishna-1999}]
 Let $\bar\rho$ be a good residual representation and $p$ a nice prime. Then 
 any deformation of $\left.\bar\rho\right|_{G_{\bQ_p}}$ is induced by 
 $G_{\bQ_p} \to \GL_2(\bZ_l\pow{a,b} / \langle a b\rangle)$, sending 
@@ -136,9 +136,11 @@ $N$ of nice primes such that the map
 \end{equation}
 is an isomorphism. In fact, 
 $\# N = \dim\h^1(\bQ_{R\cup N},\Ad^0\bar\rho^\ast)$, and the primes in $N$ are 
-chosen, one at a time, from Chebotarev sets. This means we can force them to 
-be large enough to ensure that the bound 
-$\pi_{R\cup N}(x) \leqslant h(x)$ continues to hold. We also choose the 
+chosen, one at a time, from Chebotarev sets. Since $\pi_R(x)$ is eventually 
+constant and $h(x)$ increases to infinity, we can choose the first prime $p$ in 
+$N$ large enough so that $\pi_{R\cup\{p\}}(x) \leqslant h(x)$ for all $x$, and 
+so on for all the other primes in $N$. In other words, we can ensure that the 
+bound $\pi_{R\cup N}(x) \leqslant h(x)$ continues to hold. We also choose the 
 primes in $N$ to be larger than any prime in $U'$. 
 
 By our hypothesis, $\rho_n$ admits a lift to $\bZ/l^{n+1}$; call one such lift 
@@ -233,8 +235,10 @@ bound such that
 $\left| \frac{a_p}{2\sqrt p} - x_p\right| \leqslant \frac{l}{2\sqrt p}$.
 Choose, for all primes $p\in R_1$, a ramified 
 lift $\rho_p$ of $\left. \rho_1\right|_{G_{\bQ_p}}$. Let $U_1$ be the set of 
-primes not in $R_1$ such that 
-$\frac{l^2}{2\sqrt p} > \min\left(2, \frac{l h(p)}{2\sqrt p}\right)$. 
+primes $p$ not in $R_1$ such that 
+$\frac{l^2}{2\sqrt p} > \min\left(2, \frac{l h(p)}{2\sqrt p}\right)$; this is 
+finite because $\frac{l^2}{2\sqrt p} \to 0$ and also eventually 
+$h(p) \geqslant l$. 
 For each $p\in U_1$, there exists $a_p\in \bZ$, satisfying the 
 Hasse bound, such that 
 \[
@@ -420,14 +424,23 @@ the corresponding sequence with the $q_i$-s, then Lemma
 \ref{lem:disc-of-two-seq}, Lemma \ref{lem:flip-discrepancy}, and Theorem 
 \ref{thm:wreath-seq} tell us that $\D_N(\bx\wr\by,\mu) = \Theta(N^{-\alpha})$. 
 
-Moreover, $U_k(\cos^{-1} t)$ is an odd polynomial in $t$, so if 
-$|x_i - (-y_i)| \ll p_i^{-1/2}$, then 
-$|U_k(\theta_{p_i}) + U_k(\theta_{q_i})| = |U_k(\theta_{p_i}) - U_k(- \theta_{q_i})|\ll p_i^{-1/2}$. 
+Moreover, $U_k(\cos^{-1} t)$ is an odd polynomial in $t$, so for 
+$t_1,t_2\in [-1,1]$, 
+\[
+	|U_k(\cos^{-1} t_1) + U_k(\cos^{-1} t_2)| = |U_k(\cos^{-1} t_1) - U_k(\cos^{-1}(-t_1))| \ll |t_1 - (-t_2)|.
+\]
+It follows that since 
+$\left|\frac{a_{p_i}}{2\sqrt{p_i}} - \left(- \frac{a_{q_i}}{2\sqrt{q_i}}\right)\right| \ll p_i^{-1/2}$, 
+then $|U_k(\theta_{p_i}) + U_k(\theta_{q_i})|\ll p_i^{-1/2}$. 
 We can then bound 
 \[
 	\left| \sum_{i\leqslant N} \left(U_k(\theta_{p_i}) + U_k(\theta_{q_i})\right)\right| \ll \sum_{p\leqslant N} p^{-1/2} \ll \pi(N)^{1/2} .
 \]
 \end{proof}
+
+Note that this proof actually shows that for any $f\in C([0,\pi])$ with 
+$f\circ \cos^{-1}\in C^1([-1,1])$ and $f(\pi-\theta) = -f(\theta)$, the 
+estimate $\left| \sum_{p\leqslant N} f(\theta_p)\right| \ll \pi(N)^{1/2}$. 
 
 \begin{theorem}\label{thm:bad-Galois}
 Let $\mu$ be a Sato--Tate compatible $\sigma$-invariant measure on $[0,\pi]$. 
@@ -472,4 +485,9 @@ $I = \left[\frac \pi 2 - \epsilon,\frac \pi 2 + \epsilon\right]$), let $B_I(t)$
 be a bump function for $I$, normalized to have total mass one. Then Theorem 
 \ref{thm:bad-Galois} gives Galois representations with empirical Sato--Tate 
 distribution converging at any specified rate to $\mu_I = B_I(t)\, \dd t$. This 
-is a strictly stronger result than \cite[Th.~5.2]{pande-2011}. 
+is a strictly stronger result than \cite[Th.~5.2]{pande-2011}. Moreover, the 
+proof of Theorem \ref{thm:int-flip-seq} shows that in fact for any 
+$f\in C([0,\pi])$ with $f\circ \cos^{-1}\in C^1([-1,1])$ and 
+$f(\pi-\theta) = -f(\theta)$, the Dirichlet series 
+$L_f(\rho,s) = \prod \left( 1 - f(\theta_p) p^{-s}\right)^{-1}$ satisfies the 
+Riemann Hypothesis. 

@@ -36,7 +36,7 @@ on $[0,\pi]\times [0,\pi]$.
 Recall that if $f(\theta) = 1_{[0,\pi/2)}(\theta) - 1_{(\pi/2,\pi]}(\theta)$, 
 then $\sgn(a_p) = f(\theta_p)$. Moreover, 
 $g(\theta_1,\theta_2) = |f(\theta_1) - f(\theta_2)|$ is non-negative and 
-continuous almost-everywhere. Moreover, it is clear that 
+continuous almost everywhere. Moreover, it is clear that 
 $\int g\, \dd \ST\times \ST > 0$. Harris' equidistribution result tells us that 
 \[
 	\int g\, \dd \ST\times\ST = \lim_{N\to \infty} \frac{1}{\pi(N)} \sum_{p\leqslant N} g(\theta_p(E_1),\theta_p(E_2)) = 0 ,
@@ -113,11 +113,11 @@ prove directly that $\sum \frac{x_p}{p^s}$ converges absolutely to a
 holomorphic function on the region $\Re > \alpha$. 
 
 By Lemma \ref{lem:abel-sum} (Abel summation) with $f(t) = t^{-s}$, we have 
-\begin{align*}
+\begin{align}
 	\sum_{p\leqslant N} \frac{x_p}{p^s}
-		&= N^{-s} \sum_{p\leqslant N} x_p + s \int_2^N \sum_{p\leqslant t} x_p\, \frac{\dd t}{t^{s+1}} \\
-		&\ll N^{-\Re s + \alpha + \epsilon} + |s| \int_2^N t^{\alpha+\epsilon} \frac{\dd t}{t^{\Re s+1}} .
-\end{align*}
+		&= N^{-s} \sum_{p\leqslant N} x_p + s \int_2^N \sum_{p\leqslant t} x_p\, \frac{\dd t}{t^{s+1}} \label{eq:log-L-sum} \\ 
+		&\ll N^{-\Re s + \alpha + \epsilon} + |s| \int_2^N t^{\alpha+\epsilon} \frac{\dd t}{t^{\Re s+1}} . \nonumber
+\end{align}
 Since $\alpha-\Re s < 0$, the first term is bounded. Since 
 $\Re s+1-\alpha > 1$ and 
 $\epsilon$ is arbitrary, the integral converges absolutely, and the proof is 
@@ -126,7 +126,8 @@ complete.
 
 The proof of Theorem \ref{thm:AT->RH} actually gives an absolutely 
 convergent expression for $\log L(\bx,s)$ on the region $\Re >\alpha$. Since 
-the term $N^{-s} \sum_{p\leqslant N} x_p$ converges to zero, we get 
+the term $N^{-s} \sum_{p\leqslant N} x_p$ in \eqref{eq:log-L-sum} 
+converges to zero, we get 
 \[
 	\log L(\bx,s) = s \int_2^\infty t^{-s-1}\left(\sum_{p\leqslant t} x_p\right) \dd t + \sum_p \sum_{r\geqslant 2} \frac{x_p^r}{r p^{r s}} . 
 \]
@@ -213,16 +214,16 @@ $\theta_\fp \in [0,\pi]$, defined in the usual way. It is known
 \begin{equation}\label{eq:katz-char-bound}
 	\left|\sum_{\N(\fp) \leqslant x} \tr\sym^k\smat{e^{i \theta_\fp}}{}{}{e^{- i \theta_\fp}} \right| \ll k \sqrt{x} .
 \end{equation}
-For $f\in L^1(\SU(2)^\natural)$, recall that the Fourier coefficients of $f$ 
-are 
-\[
-	\widehat f(\sym^k) = \int_{\SU(2)^\natural} f(x) \tr\sym^k(x)\, \dd x .
-\]
-The Peter--Weyl theorem gives 
-$f = \sum_{k\geqslant 1} \widehat f(\sym^k) \tr\sym^k$. 
+Briefly, let $G$ be a compact Lie group, $\rho$ an irreducible unitary 
+representation of $G$. For $f\in L^1(G)$, the Fourier coefficient of $f$ at 
+$\rho$ is $\widehat f(\rho) = \int f(x) \tr\rho(x)\, \dd x$. If 
+$f\in L^1(G^\natural$, then $f = \sum_\rho \widehat f(\rho) \tr \rho$. When 
+$G = \SU(2)$, the irreducible (nontrivial) unitary representations are 
+$\sym^k$ for $k\geqslant 1$. 
+
 Equation \eqref{eq:katz-char-bound} tells us that for any 
 $f\in C(\SU(2)^\natural)$ with 
-$\sum_{k\geqslant 1} |\widehat f(\sym^k)|<\infty$ and $\widehat f(\sym^1) = 0$, 
+$\sum_{k\geqslant 1} |\widehat f(\sym^k)|<\infty$ and $\widehat f(\sym^0) = 0$, 
 the strange Dirichlet series $L_f(\btheta,s)$ satisfies the Riemann Hypothesis. 
 
 The best estimate on discrepancy is found in 
