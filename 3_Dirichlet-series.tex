@@ -45,9 +45,37 @@ which is a contradiction.
 \end{proof}
 
 It follows that if $L_{\sgn}(E_1,s) = L_{\sgn}(E_2,s)$, then $E_1$ and $E_2$ 
-are isogenous, so in particular they have the same rank. 
-
-To-do: numerical experiments on recovering rank from $L_{\sgn}(E,1)$. 
+are isogenous, so in particular they have the same rank. However, the following 
+table seems to show that the rank of $E$ may not easily be read off from 
+$L_{\sgn}(E,1)$, unlike the Birch and Swinnerton-Dyer conjecture. 
+\begin{center}
+\begin{tabular}{l|ll}
+$E$ 
+	& $\rk E$ 
+	& $L_{\sgn}(E,1)$ \\ \hline
+$y^2 + y = x^3 - x^2$
+	& 0 
+	& 2.9019\ldots \\
+$y^2 + y = x^3 - x$ 
+	& 1 
+	& 4.9987\ldots \\
+$y^2 + y = x^3 + x^2 - 2x$
+	& 2 
+	& 6.5930\ldots \\
+$y^2 + y = x^3 - 7 x + 6$
+	& 3
+	& 7.6268\ldots \\
+$y^2 + x y = x^3 - x^2 - 79 x + 289$
+	& 4
+	& $4.3983\ldots$ \\
+$y^2 + y = x^3 - 79x + 342$
+	& 5
+	& 9.0622\ldots \\
+$y^2 + x y = x^3 + x^2 - 2582 x + 48720$
+	& 6
+	& 3.4056\ldots
+\end{tabular}
+\end{center}
 
 \begin{definition}
 Let $\bx=(x_2,x_3,x_5,\dots)$ be a sequence of complex numbers indexed by the 
@@ -216,9 +244,9 @@ $\theta_\fp \in [0,\pi]$, defined in the usual way. It is known
 \end{equation}
 Briefly, let $G$ be a compact Lie group, $\rho$ an irreducible unitary 
 representation of $G$. For $f\in L^1(G)$, the Fourier coefficient of $f$ at 
-$\rho$ is $\widehat f(\rho) = \int f(x) \tr\rho(x)\, \dd x$. If 
-$f\in L^1(G^\natural$, then $f = \sum_\rho \widehat f(\rho) \tr \rho$. When 
-$G = \SU(2)$, the irreducible (nontrivial) unitary representations are 
+$\rho$ is $\widehat f(\rho) = \int f(x) \overline{\tr\rho(x)}\, \dd x$. If 
+$f\in L^1(G^\natural)$, then $f = \sum_\rho \widehat f(\rho) \tr \rho$. When 
+$G = \SU(2)$, the nontrivial irreducible unitary representations are 
 $\sym^k$ for $k\geqslant 1$. 
 
 Equation \eqref{eq:katz-char-bound} tells us that for any 

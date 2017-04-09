@@ -12,7 +12,7 @@ We follow the notation of \cite{laurent-2009}. Fix a dimension
 $d\geqslant 1$, and let $\vx=(x_1,\dots,x_d)\in \bR^d$ be such that the $x_i$ 
 are linearly independent over $\bQ$. If $d = 1$, the \emph{irrationality 
 exponent} of $x\in \bR$ is the supremum of the set of $w\in \bR^+$ such that 
-there infinitely many rational numbers $\frac p q$ ($p,q$ relatively prime) with 
+there infinitely many rational numbers $\frac p q$ with 
 $\left| x - \frac p q\right| \leqslant q^{-w}$. If $x$ is rational, then it has 
 irrationality exponent $1$. If $x$ is an algebraic irrational, then Roth's 
 theorem tells us its irrationality exponent is $2$. Liouiville constructed 
@@ -56,17 +56,27 @@ $\omega_0(\vx)=w$ and $\omega_{d-1}(\vx) = d w+d-1$.
 \end{theorem}
 
 \begin{theorem}\label{thm:omega-irrationality}
-If $d=1$ and $x\in (0,1)$, then $\omega_0(x) = \mu-1$, where $\mu$ is the 
+If $d=1$, then $\omega_0(x) = \mu-1$, where $\mu$ is the 
 traditional irrationality measure of $x$. 
 \end{theorem}
 \begin{proof}
+Both $\mu$ and $\omega_0$ are invariant under translation by $\bZ$, so without 
+loss of generality we may assume $x\in [0,1)$. 
+
 First we show that $\omega_0(x)\geqslant \mu-1$. Suppose there exist infinitely 
 many $p/q$ with $\left| x - \frac p q\right| \leqslant q^{-w}$. Since $x<1$ we 
 may assume that for infinitely many of the $p/q$, $p<q$. Then 
 $| q x - p| \leqslant q^{-w + 1} = \max(p,q)^{-w}$, which tells us that 
 $\omega_0(x) \geqslant \mu - 1$. 
 
-To-do: complete proof.
+Now, we show that $\mu \geqslant \omega_0(x) + 1$. Suppose there exist 
+infinitely many $(n,m)$ with $|n x - m| \leqslant \max(|n|,|m|)^{-w}$. By the 
+reverse triangle inequality, 
+$\left| |n x| - |m|\right| \leqslant \max(|n|,|m|)^{-w}$, and since 
+$x<1$, for $n$ sufficiently large this implies $|n| \geqslant |m|$. It follows 
+that for infinitely many $(n,m)$, we have 
+$\left| x - \frac m n\right| \leqslant n^{-(w + 1)}$, which implies 
+$\mu \geqslant \omega_0(x) + 1$. 
 \end{proof}
 
 \begin{theorem}[Roth]
@@ -382,7 +392,7 @@ Riemann Hypothesis.
 It is natural to ask: does the Riemann Hypothesis for all $L(r\circ \rho_l,s)$ 
 imply the Akiyama--Tanigawa conjecture for $A$? We proceed to construct 
 $L$-functions coming from ``fake Satake parameters'' which provide evidence to 
-the contrary. 
+the contrary for nonmotivic (non-automorphic, in fact) Satake parameters. 
 
 Give $(\bR/\bZ)^d$ the Haar measure normalized to have total mass one. 
 Recall that for any $f\in L^1((\bR/\bZ)^d)$, the Fourier coefficients of $f$ 
@@ -459,7 +469,7 @@ Theorem \ref{thm:AT->RH} tells us this estimate implies the Riemann Hypothesis.
 This shows that even if each $L(r_\ast \rho_l,s)$ satisfies the Riemann 
 Hypothesis, we may not conclude that the Akiyama--Tanigawa 
 conjecture holds for $A$. Note also that Theorem \ref{thm:AT->RH} does 
-\emph{not} tell us that $L_f(\vx,s)$ has analytic continuation to $\Re > 0$, or 
+\emph{not} tell us that $L_f(\bvx,s)$ has analytic continuation to $\Re > 0$, or 
 that there are no zeros in $\Re > 0$. For, the term 
-$\sum_\fp \sum_{r\geqslant 2} \frac{f(x_\fp^r}{r p^{r s}}$ will not converge 
-past $\Re > \frac 1 2$.
+$\sum_\fp \sum_{r\geqslant 2} \frac{f(\vx_\fp)^r}{r \N(\fp)^{r s}}$ will not 
+converge past $\Re > \frac 1 2$.
