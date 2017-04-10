@@ -66,7 +66,7 @@ loss of generality we may assume $x\in [0,1)$.
 First we show that $\omega_0(x)\geqslant \mu-1$. Suppose there exist infinitely 
 many $p/q$ with $\left| x - \frac p q\right| \leqslant q^{-w}$. Since $x<1$ we 
 may assume that for infinitely many of the $p/q$, $p<q$. Then 
-$| q x - p| \leqslant q^{-w + 1} = \max(p,q)^{-w}$, which tells us that 
+$| q x - p| \leqslant q^{-(w - 1)} = \max(p,q)^{-w}$, which tells us that 
 $\omega_0(x) \geqslant \mu - 1$. 
 
 Now, we show that $\mu \geqslant \omega_0(x) + 1$. Suppose there exist 
@@ -376,7 +376,7 @@ $(\bR/\bZ)^d\simeq \ST(A)$ gives rise to a notion of discrepancy
 $\D_N(\btheta)$. We call the ``Akiyama--Tanigawa conjecture for $A$'' the 
 estimate $\D_N(\btheta) \ll N^{-\frac 1 2+\epsilon}$. 
 
-\begin{theorem}
+\begin{theorem}\label{AT->RH:AB}
 Let $A_{/K}$ be a CM abelian variety. The Akiyama--Tanigawa conjecture for $A$ 
 implies the Riemann Hypothesis for all $L(r\circ \rho_l,s)$ with 
 $\left. r\right|_{\ST(A)}$ nontrivial. 
@@ -385,8 +385,8 @@ $\left. r\right|_{\ST(A)}$ nontrivial.
 The Akiyama--Tanigawa estimate implies, via the Koksma--Hlawka inequality, an 
 estimate 
 $\left| \sum_{\N(\fp)\leqslant N} r(\theta_\fp)\right| \ll N^{-\frac 1 2+\epsilon}$. 
-By Theorem \ref{thm:AT->RH}, the function $L(r\circ \rho_l,s)$ satisfies the 
-Riemann Hypothesis. 
+By Theorem \ref{thm:AT->RH:gp}, the function $L(r\circ \rho_l,s)$ satisfies 
+the Riemann Hypothesis. 
 \end{proof}
 
 It is natural to ask: does the Riemann Hypothesis for all $L(r\circ \rho_l,s)$ 
@@ -463,12 +463,13 @@ The upper bound on discrepancy is Theorem \ref{thm:disc-upper-bound}, and
 the lower bound is Theorem \ref{thm:disc-lower-bound}. For the functions $f$ in 
 question, Theorem \ref{thm:translates-bound-sum} gives an estimate (stronger 
 than) $\left| \sum_{\N(\fp)\leqslant N} f(\vx_\fp)\right|\ll N^{\frac 1 2}$, and 
-Theorem \ref{thm:AT->RH} tells us this estimate implies the Riemann Hypothesis. 
+Theorem \ref{thm:AT->RH:gp} tells us this estimate implies the Riemann 
+Hypothesis. 
 \end{proof}
 
 This shows that even if each $L(r_\ast \rho_l,s)$ satisfies the Riemann 
 Hypothesis, we may not conclude that the Akiyama--Tanigawa 
-conjecture holds for $A$. Note also that Theorem \ref{thm:AT->RH} does 
+conjecture holds for $A$. Note also that Theorem \ref{thm:AT->RH:gp} does 
 \emph{not} tell us that $L_f(\bvx,s)$ has analytic continuation to $\Re > 0$, or 
 that there are no zeros in $\Re > 0$. For, the term 
 $\sum_\fp \sum_{r\geqslant 2} \frac{f(\vx_\fp)^r}{r \N(\fp)^{r s}}$ will not 

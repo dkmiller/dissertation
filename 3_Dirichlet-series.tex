@@ -10,7 +10,7 @@
 
 We start by considering a very general class of Dirichlet series: those that 
 admit a product formula with degree 1 factors. The motivating example was 
-suggested to the author by Ravi Ramakrishna. Let $E_{/\bQ}$ be an elliptic 
+suggested to the author by Ramakrishna. Let $E_{/\bQ}$ be an elliptic 
 curve and let 
 \[
 	L_{\sgn}(E,s) = \prod_p \frac{1}{1-\sgn(a_p) p^{-s}} .
@@ -45,37 +45,9 @@ which is a contradiction.
 \end{proof}
 
 It follows that if $L_{\sgn}(E_1,s) = L_{\sgn}(E_2,s)$, then $E_1$ and $E_2$ 
-are isogenous, so in particular they have the same rank. However, the following 
-table seems to show that the rank of $E$ may not easily be read off from 
-$L_{\sgn}(E,1)$, unlike the Birch and Swinnerton-Dyer conjecture. 
-\begin{center}
-\begin{tabular}{l|ll}
-$E$ 
-	& $\rk E$ 
-	& $L_{\sgn}(E,1)$ \\ \hline
-$y^2 + y = x^3 - x^2$
-	& 0 
-	& 2.9019\ldots \\
-$y^2 + y = x^3 - x$ 
-	& 1 
-	& 4.9987\ldots \\
-$y^2 + y = x^3 + x^2 - 2x$
-	& 2 
-	& 6.5930\ldots \\
-$y^2 + y = x^3 - 7 x + 6$
-	& 3
-	& 7.6268\ldots \\
-$y^2 + x y = x^3 - x^2 - 79 x + 289$
-	& 4
-	& $4.3983\ldots$ \\
-$y^2 + y = x^3 - 79x + 342$
-	& 5
-	& 9.0622\ldots \\
-$y^2 + x y = x^3 + x^2 - 2582 x + 48720$
-	& 6
-	& 3.4056\ldots
-\end{tabular}
-\end{center}
+are isogenous, so in particular they have the same rank. To-do: can the rank of 
+$E$ be ``read off'' from the behavior of $L_{\sgn}(E,1/2)$?
+
 
 \begin{definition}
 Let $\bx=(x_2,x_3,x_5,\dots)$ be a sequence of complex numbers indexed by the 
@@ -194,6 +166,33 @@ If the trivial representation appears in $\left.\rho\right|_T$, this product
 formula will include a copy (possibly several) of $\zeta(s)$. Since 
 $\chi(x_p) \in S^1$, the above formula decomposes $L(\rho(\bx),s)$ into a 
 product of Dirichlet series of the type considered above. 
+
+\begin{theorem}\label{thm:AT->RH:gp}
+Let $G^\natural$ be the space of conjugacy classes in a compact Lie group, 
+$\bx = (x_2,x_3,x_5,\dots)$ a sequence in $G^\natural$. If $\rho$ is a 
+nontrivial unitary representation of $G$ and 
+$\left| \sum_{p\leqslant N} \tr \rho(x_p)\right| \ll x^{\alpha+\epsilon}$, then 
+$L(\rho(\bx),s)$ admits a nonvanishing analytic continuation to $\Re > \alpha$. 
+\end{theorem}
+\begin{proof}
+Let $T$ be a maximal torus of $G$, and decompose $\rho|_T$ as 
+$\bigoplus_\chi \chi^{m_\chi}$, where $\chi$ ranges over the characters of $T$. 
+Then $L(\rho(\bx),s) = \prod_\chi L(\chi(\bx),s)^{m_\chi}$, where we regard the 
+$x_p$ as lying in a quotient of $T$ via the surjection 
+$T\twoheadrightarrow G^\natural$. The expression 
+$\prod_\chi L(\chi(\bx),s)^{m_\chi}$ is invariant under the action of the Weyl 
+group, so it doesn't matter that the $x_p$ are only well-defined up to the 
+action of $W$. Taking logarithms, we have 
+$\log L(\rho(\bx),s) = \sum_\chi m_\chi \log L(\chi(\bx),s)$. Expanding the 
+Dirichlet series for this as in the proof of Theorem \ref{thm:AT->RH}, we see 
+that if the expression $\sum_p \frac{\sum_\chi m_\chi \chi(x_p)}{p^s}$ 
+converges on $\Re > \alpha$, then $\log L(\rho(\bx),s)$ converges to an 
+analytic function on $\Re > \alpha$. Since 
+$\sum_\chi m_\chi \chi(x_p) = \tr \rho(x_p)$, the estimate 
+$\left| \sum_{p\leqslant N} \tr \rho(x_p)\right| \ll N^{\alpha+\epsilon}$ 
+yields the desired analytic continuation as in the proof of Theorem 
+\ref{thm:AT->RH}. 
+\end{proof}
 
 
 

@@ -51,13 +51,13 @@ $G^\natural$, the set of conjugacy classes in $G$. Let $\mu$ be the
 (normalized) Haar measure on $G^\natural$, and let 
 $\D(P_x) = \max_{S\subset G^\natural} \left| P_x(S) - \mu(S)\right|$. 
 Then $P_x$ converges weakly to the Haar measure on $G^\natural$ if and 
-only if $\D(P_x) \to 0$. Recall that this weak convergence simply means 
+only if $\D(P_x) \to 0$. Recall that weak convergence simply means 
 $\int f\, \dd P_x \to \int f$ for all continuous functions $f$ on $G^\natural$. 
 Since $G^\natural$ is a finite set, all functions are continuous, but later 
 on we will consider weak convergence on more general spaces.  
 
 \begin{theorem}[{\cite[Th.~2 Cor., A.1]{serre-1989}}]
-The measure $P_x$ converge weakly to the Haar measure on $G^\natural$ if and 
+The measures $P_x$ converge weakly to the Haar measure on $G^\natural$ if and 
 only if the function $L(\rho,s)$ admits a nonvanishing analytic continuation 
 to $\Re = 1$ for all nontrivial $\rho$. 
 \end{theorem}
@@ -74,7 +74,8 @@ $L(\rho,s)$, $\rho$ nontrivial, satisfies the Riemann Hypothesis.
 \end{theorem}
 
 The forward implication follows from the results of Chapter 
-\ref{ch:Dirichlet-series}, while the reverse direction is a result of Serre. 
+\ref{ch:Dirichlet-series}, while the reverse implication is a result of 
+Serre \cite[Th.~4]{serre-1981}. 
 This whole discussion generalizes to a more complicated set of Galois 
 representations---those arising from elliptic curves and more general motives.  
 
@@ -84,8 +85,10 @@ representations---those arising from elliptic curves and more general motives.
 
 \section{Discrepancy and Riemann Hypothesis for elliptic curves}
 
-For background on Galois representations and $L$-functions associated to 
-elliptic curves, see \cite[III\S7, C\S17]{silverman-2009}. 
+For background on the Galois representations and $L$-functions associated to 
+elliptic curves, see \cite[III\S7, C\S17]{silverman-2009}. Throughout this 
+thesis, what we call the $L$-function of an elliptic curve (motive, \ldots) is 
+the normalized (analytic) $L$-function. 
 Let $E_{/\bQ}$ be an elliptic curve. For any prime $l$, the $l$-adic Tate 
 module of $E$ induces a continuous representation 
 $\rho_l \colon G_\bQ \to \GL_2(\bZ_l)$. It is known that the quantities 
@@ -157,8 +160,7 @@ complex multiplication). The Sato--Tate measure for such $E$ is the Haar
 measure on $\SO(2)$, i.e.~the uniform measure on $[0,\pi]$. Instead of 
 symmetric power $L$-functions, there is an $L$-function for each character of 
 $\SO(2)$. Once again, there is a theorem ``Akiyama--Tanigawa implies Riemann 
-Hypothesis.'' For a precise statement and proof, see the end of 
-Chapter \ref{chapter:irrationality-exponent}. 
+Hypothesis.'' For a precise statement and proof, see Theorem \ref{AT->RH:AB}. 
 
 It is natural to assume that the converse to the implication 
 ``Akiyama--Tanigawa implies Riemann Hypothesis'' holds. David Zywina 

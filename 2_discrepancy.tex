@@ -125,7 +125,6 @@ using whichever makes a proof easier to follow.
 
 We are usually interested in comparing empirical measures and their conjectured 
 asymptotic distribution. 
-
 Let $\bvx = (\vx_1,\vx_2,\vx_3,\dots)$ be a sequence in 
 $[\vzero,\vinfty)$, and $\mu$ a probability measure on $[\vzero,\vinfty)$. For any 
 $N\geqslant 1$, the empirical measure associated to the truncated 
@@ -152,7 +151,7 @@ constant multiples of each other. So as far as asymptotics go, there is a
 well-defined discrepancy on $T$. Moreover, $\lambda$ is normalized Haar measure 
 on the torus, we write $\D_N(\bvx)$ in place of $\D_N(\bvx, \lambda)$. 
 
-Now let $G$ be a general compact, connected Lie group, and consider a sequence 
+Now let $G$ be a compact, connected Lie group, and consider a sequence 
 lying in the space $G^\natural$ of conjugacy classes. Choose a maximal torus $T\subset G$, and recall that 
 $G^\natural = T/W$, for $W$ the Weyl group of $T$. There is a half-open 
 box in $\ft = \lie(T)$ which maps bijectively to $T$ under the exponential 
@@ -237,7 +236,7 @@ suggest this is not the case.
 Here we summarize the results of the paper \cite{okten-1999}, generalizing them 
 as needed for our context. Recall that a function $f$ on 
 $[\vzero,\vinfty)\subset \bR^d$ is said to be of \emph{bounded variation} (in 
-the measure-theoretic sense) if there is a finite Radon measure (i.e., $\nu$ is 
+the measure-theoretic sense) if there is a finite Radon measure (i.e., 
 finite and inner regular) $\nu$ such that 
 $f(\vx) - f(\vzero) = \nu[\vzero,\vx]$. In such a case we write 
 $\Var(f) = |\nu|$. If $f\in C^d(\bR^d)$, then 
@@ -281,7 +280,7 @@ still holds \cite[Ch.~2, Th.~5.1]{kuipers-niederreiter-1974}. In particular,
 when $\mu$ is the Sato--Tate measure and $f$ is piecewise continuous, we can 
 apply this inequality. When $d>1$, the non-measure-theoretic definition of 
 variation is much more complicated than the measure-theoretic one. See 
-\cite[2\S5]{kuipers-niederreiter-1974} for a discussion. 
+\cite[2\S5]{kuipers-niederreiter-1974} for a discussion of this. 
 
 
 
@@ -328,7 +327,7 @@ $[0,\infty)$. Then
 $\left|\D_N(\bx, \mu) - \D_N(\sigma_\ast \bx, \sigma_\ast \mu)\right| \leqslant \frac{2}{N}$. 
 \end{lemma}
 \begin{proof}
-Every isometry of $\bR$ is a composition of a translation and reflection. 
+Every isometry of $\bR$ is a composition of a translation and a reflection. 
 The statement is clear if $\sigma$ is a translation, as then the two 
 discrepancies are equal. So, suppose $\sigma(t) = a - t$ for some $a>0$. Since 
 $\mu$ is absolutely continuous, $\mu\{t\}=0$ for all $t\geqslant 0$. In 
@@ -484,9 +483,9 @@ sequence begins by adding van der Corput elements until the discrepancy is
 smaller than $N^{-\alpha}$, then repeatedly adds the same element to the end 
 of the sequence, pushing up the discrepancy until it is bigger than 
 $N^{-\alpha}$. There are two main difficulties. First, we need to show that 
-adding the same element to the end of a sequence eventually forces the 
-discrepancy to increase, and that when doing this, the discrepancy does not 
-increase (or fall) too rapidly. 
+repeatedly adding the same element to the end of a sequence eventually forces 
+the discrepancy to increase, and that when doing this, the discrepancy does not 
+increase or decrease too rapidly. 
 
 \begin{proof}
 Let $I = [a,b]$. If $\bx_{\leqslant N}$ is a sequence of length $N$, let 
@@ -533,7 +532,7 @@ discrepancy of
 $\bx_{\leqslant N}:^M a$ is eventually increasing, and can increase by at most 
 $N^{-1}$ at each 
 step. So if $\D(\bx_{\leqslant N},\mu) < N^{-\alpha}$, we can ensure that 
-$\D(\bx_{\leqslant N}:^M a,\mu)$ is at most $N^{-1}$ greater than 
+$\D(\bx_{\leqslant N}: a^M,\mu)$ is at most $N^{-1}$ greater than 
 $N^{-\alpha}$. 
 Moreover, we know that $\D(\bx_{\leqslant N}: a,\mu)$ is at most 
 $\frac{2}{N+1}$ away from $\D(\bx_{\leqslant N},\mu)$. So when adding van der 
