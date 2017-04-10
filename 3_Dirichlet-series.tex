@@ -17,7 +17,9 @@ curve and let
 \]
 How much can we say about the behavior of $L_{\sgn}(E,s)$? For example, does it 
 admit analytic continuation to $\Re = 1$? Yes, by the results of 
-\cite[A.2]{serre-1989}. Can the rank of $E$ be 
+\cite[A.2]{serre-1989}. In fact, we will see later that the Akiyama--Tanigawa 
+conjecture implies the existence of a non-vanishing analytic continuation of 
+$L_{\sgn}(E,s)$ to $\Re > \frac 1 2$. Can the rank of $E$ be 
 found from $L_{\sgn}(E,s)$? Theoretically yes, by the following result. 
 
 \begin{theorem}
@@ -45,9 +47,27 @@ which is a contradiction.
 \end{proof}
 
 It follows that if $L_{\sgn}(E_1,s) = L_{\sgn}(E_2,s)$, then $E_1$ and $E_2$ 
-are isogenous, so in particular they have the same rank. To-do: can the rank of 
-$E$ be ``read off'' from the behavior of $L_{\sgn}(E,1/2)$?
-
+are isogenous, so in particular they have the same rank. The heuristics in 
+\cite{sarnak-2007} suggest that if the Akiyama--Tanigawa (and other natural 
+conjectures) hold, then $L_f(E,s)$ has a zero of order 
+$\sum_{k\geqslant 1} \widehat f(\sym^k) \left(-2 r_k + (-1)^{k+1}\right)$ at 
+$s = \frac 1 2$, where 
+$\widehat f(\sym^k) = \int_{\SU(2)^\natural} f(x) \tr\sym^k(x)\, \dd x$ and 
+$r_k$ is the order of vanishing of $L(\sym^k E,s)$ at $s = \frac 1 2$. If 
+$f = \tr\sym^1$ (this is called $U_1$ in Sarnak's letter), then
+$\widehat f(\sym^k)$ vanishes for $k\geqslant 2$, so the order of 
+vanishing of $L_{U_1}(E,s)$ at $s = \frac 1 2$ clearly depends only on $r_1$, 
+which is conjecturally the rank of $E$. However, for 
+$f = 1_{[0,\pi/2)} - 1_{(\pi/2,\pi]}$, we have 
+\[
+	\widehat f(\sym^k) = 
+	\begin{cases}
+		0 & \text{$k$ is even} \\
+		\frac 2 \pi (-1)^{\frac{k-1}{2}} \left(\frac 1 k + \frac{1}{k+2}\right) & \text{$k$ is odd} 
+	\end{cases} ,
+\]
+so it's not clear if the rank of $E$ can be directly read from the behavior 
+of $L_{\sgn}(E,s)$ at $s = \frac 1 2$. 
 
 \begin{definition}
 Let $\bx=(x_2,x_3,x_5,\dots)$ be a sequence of complex numbers indexed by the 
@@ -71,6 +91,10 @@ is holomorphic on $\Re > 1$. By \cite[Th.~11.7]{apostol-1976}, the
 product formula holds in the same region. The formula for $\log L(\bx,s)$ 
 comes from \cite[11.9 Ex.~2]{apostol-1976}. 
 \end{proof}
+
+Abel summation is a commonly-used result that will allow us to turn questions 
+on the analytic continuation and non-vanishing of $L(\bx,s)$ into questions 
+about the asymptotics of $\sum_{p\leqslant N} x_p$. 
 
 \begin{lemma}[Abel summation]\label{lem:abel-sum}
 Let $\bx=(x_2,x_3,x_5,\dots)$ be a sequence of complex numbers, $f$ a smooth 
@@ -132,7 +156,7 @@ converges to zero, we get
 	\log L(\bx,s) = s \int_2^\infty t^{-s-1}\left(\sum_{p\leqslant t} x_p\right) \dd t + \sum_p \sum_{r\geqslant 2} \frac{x_p^r}{r p^{r s}} . 
 \]
 
-Let $X$ be a space, $f\colon X\to \bC$ a function with 
+Let $X$ be a topological space, $f\colon X\to \bC$ a function with 
 $|f|_\infty\leqslant 1$, and $\bx=(x_2,x_3,\dots)$ a sequence in $X$. Write 
 \[
 	L_f(\bx,s) = \prod_p \frac{1}{1-f(x_p) p^{-s}} ,
@@ -148,12 +172,13 @@ exclusively focus on Dirichlet series of this type.
 
 Suppose $G$ is a compact group, $G^\natural$ the space of conjugacy classes in 
 $G$. If $\bx = (x_2,x_3,x_5,\dots)$ is a sequence in $G^\natural$ and $\rho$ is 
-a finite-dimensional representation of $G$, put 
+a finite-dimensional unitary representation of $G$, put 
 \[
 	L(\rho(\bx),s) = \prod_p \frac{1}{\det(1-\rho(x_p) p^{-s})} .
 \]
 Clearly $L((\rho_1\oplus \rho_2)(\bx),s) = L(\rho_1(\bx),s) L(\rho_2(\bx),s)$. 
-Now, let $T\subset G$ be a maximal torus, and recall that 
+Now, suppose $G$ is a compact connected Lie group, let $T\subset G$ be a 
+maximal torus, and recall that 
 $T\twoheadrightarrow G^\natural$ \cite[IX.5 Prop.~5]{bourbaki-2005}. 
 The representation 
 $\left.\rho\right|_T$ decomposes as $\bigoplus \chi^{\oplus m_\chi}$, where 
@@ -165,33 +190,35 @@ $W$-invariant. We may regard the $x_p$ as lying in $T/W$, so we have
 If the trivial representation appears in $\left.\rho\right|_T$, this product 
 formula will include a copy (possibly several) of $\zeta(s)$. Since 
 $\chi(x_p) \in S^1$, the above formula decomposes $L(\rho(\bx),s)$ into a 
-product of Dirichlet series of the type considered above. 
+product of Dirichlet series of the type considered above. For $G = \SU(2)$, the 
+trivial representation occurs in $\left.\sym^k \right|_T$ if and only if $k$ is 
+even, and the resulting $\zeta(s)$ in the product decomposition of 
+$L(\sym^k \bx,s)$ may explain why some of the results in this thesis only apply 
+to \emph{odd} symmetric powers. 
 
 \begin{theorem}\label{thm:AT->RH:gp}
-Let $G^\natural$ be the space of conjugacy classes in a compact Lie group, 
+Let $G^\natural$ be the space of conjugacy classes in a compact group, 
 $\bx = (x_2,x_3,x_5,\dots)$ a sequence in $G^\natural$. If $\rho$ is a 
 nontrivial unitary representation of $G$ and 
-$\left| \sum_{p\leqslant N} \tr \rho(x_p)\right| \ll x^{\alpha+\epsilon}$, then 
-$L(\rho(\bx),s)$ admits a nonvanishing analytic continuation to $\Re > \alpha$. 
+$\left| \sum_{p\leqslant N} \tr \rho(x_p)\right| \ll N^{\alpha+\epsilon}$ for 
+$\alpha\in \left[\frac 1 2,1\right]$, then $L(\rho(\bx),s)$ admits a 
+non-vanishing analytic continuation to $\Re > \alpha$. 
 \end{theorem}
 \begin{proof}
-Let $T$ be a maximal torus of $G$, and decompose $\rho|_T$ as 
-$\bigoplus_\chi \chi^{m_\chi}$, where $\chi$ ranges over the characters of $T$. 
-Then $L(\rho(\bx),s) = \prod_\chi L(\chi(\bx),s)^{m_\chi}$, where we regard the 
-$x_p$ as lying in a quotient of $T$ via the surjection 
-$T\twoheadrightarrow G^\natural$. The expression 
-$\prod_\chi L(\chi(\bx),s)^{m_\chi}$ is invariant under the action of the Weyl 
-group, so it doesn't matter that the $x_p$ are only well-defined up to the 
-action of $W$. Taking logarithms, we have 
-$\log L(\rho(\bx),s) = \sum_\chi m_\chi \log L(\chi(\bx),s)$. Expanding the 
-Dirichlet series for this as in the proof of Theorem \ref{thm:AT->RH}, we see 
-that if the expression $\sum_p \frac{\sum_\chi m_\chi \chi(x_p)}{p^s}$ 
-converges on $\Re > \alpha$, then $\log L(\rho(\bx),s)$ converges to an 
-analytic function on $\Re > \alpha$. Since 
-$\sum_\chi m_\chi \chi(x_p) = \tr \rho(x_p)$, the estimate 
-$\left| \sum_{p\leqslant N} \tr \rho(x_p)\right| \ll N^{\alpha+\epsilon}$ 
-yields the desired analytic continuation as in the proof of Theorem 
-\ref{thm:AT->RH}. 
+On $\Re > 1$, we have 
+$\log L(\rho(\bx),s) = \sum_{r\geqslant 1} \sum_p \frac{\tr \rho(x_p)^r}{r p^{r s}}$. 
+Just as in the proof of Theorem \ref{thm:AT->RH}, we can split the sum into 
+two terms, $\sum_p \frac{\tr \rho(x_p)}{p^s}$ and 
+$\sum_{r\geqslant 2} \sum_p \frac{\tr \rho(x_p)^r}{r p^{r s}}$. Analytic 
+continuation and nonvanishing remain the same when we omit finitely many Euler 
+factors, so we may ignore all primes for which 
+$\frac{\dim(\rho)}{p^{-1/2}} \geqslant 1$. Then the second sum converges on 
+$\Re > \frac 1 2$, and assuming 
+$\left| \sum_{p\leqslant N} \tr \rho(x_p)\right| \ll N^{\alpha+\epsilon}$, an 
+argument identical to the one used in the proof of Theorem \ref{thm:AT->RH}, 
+using Abel summation, shows that 
+$\sum_p \frac{\tr \rho(x_p)}{p^s}$ converges to a holomorphic function on 
+$\Re > \alpha$. This yields the desired non-vanishing analytic continuation. 
 \end{proof}
 
 
@@ -206,7 +233,9 @@ $\log L(\bx,s)$ admits analytic continuation to $\Re > \frac 1 2$.
 \end{definition}
 
 Under reasonable analytic hypotheses, namely conditional convergence of 
-$\log L(\bx,s)$ on $\Re > \frac 1 2$, \cite[II.1 Th.~10]{tenenbaum-1995} gives 
+the Dirichlet series for 
+$\log L(\bx,s)$ on $\Re > \frac 1 2$, the result 
+\cite[II.1 Th.~10]{tenenbaum-1995} gives 
 an estimate $|\sum_{p\leqslant N} x_p| \ll N^{\frac 1 2 + \epsilon}$. 
 
 \begin{theorem}
@@ -254,14 +283,14 @@ $\sum_{k\geqslant 1} |\widehat f(\sym^k)|<\infty$ and $\widehat f(\sym^0) = 0$,
 the strange Dirichlet series $L_f(\btheta,s)$ satisfies the Riemann Hypothesis. 
 
 The best estimate on discrepancy is found in 
-\cite{niederreiter-1991}, where it is shown that $D_x \ll N^{-\frac 1 4+\epsilon}$ 
+\cite{niederreiter-1991}, where it is shown that $D_x \ll N^{-\frac 1 4}$ 
 by applying a generalization of the Koksma--Hlawka inequality to 
 $\SU(2)^\natural$. Namely, for any odd $r$, we have 
 \[
 	\D_x(\btheta,\ST) \ll \frac 1 r + \sum_{k=1}^{2 r -1} \frac 1 k \left| \frac{1}{\pi_F(x)} \sum_{\N(\fp)\leqslant x} \tr\sym^k\smat{e^{i \theta_\fp}}{}{}{e^{- i \theta_\fp}}\right| .
 \]
 Using the estimate \eqref{eq:katz-char-bound} on character sums, Niederreiter 
-is able to derive $\D_x \ll x^{-\frac 1 4+\epsilon}$. This fits the results of 
-\cite{bucar-kedlaya-2015,rouse-thorner-2016}, both of which derive estimates 
-of the form $\D_N \ll N^{-\frac 1 4+\epsilon}$ under GRH + functional equation 
-for the (non-CM) elliptic curve in question. 
+is able to derive $\D_x \ll x^{-\frac 1 4}$. This fits the results of 
+\cite{bucar-kedlaya-2015,rouse-thorner-2016} in the number field case, both of 
+which derive estimates of the form $\D_N \ll N^{-\frac 1 4+\epsilon}$ under 
+GRH + functional equation for the (non-CM) elliptic curve in question. 

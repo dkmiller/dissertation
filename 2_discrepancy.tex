@@ -121,7 +121,7 @@ For a discussion and related context, see
 
 Since we are only interested in the asymptotics of discrepancy, we will 
 sometimes gloss over the distinction between discrepancy and star discrepancy, 
-using whichever makes a proof easier to follow. 
+using whichever type of discrepancy makes a proof easier to follow. 
 
 We are usually interested in comparing empirical measures and their conjectured 
 asymptotic distribution. 
@@ -147,9 +147,9 @@ using that isomorphism identify the torus with  $[0,1)^d\subset [\vzero,\vinfty)
 This gives a notion of discrepancy for sequences in $T$. Two different 
 isomorphisms $T\simeq (\bR/\bZ)^d$ will give two different definitions of 
 discrepancy, but asymptotically they will be bounded above and below by 
-constant multiples of each other. So as far as asymptotics go, there is a 
-well-defined discrepancy on $T$. Moreover, $\lambda$ is normalized Haar measure 
-on the torus, we write $\D_N(\bvx)$ in place of $\D_N(\bvx, \lambda)$. 
+constant multiples of each other as long as the measure in question is the 
+normalized Haar measure on the torus. In that case, we write $\D_N(\bvx)$ in 
+place of $\D_N(\bvx, \mu)$. 
 
 Now let $G$ be a compact, connected Lie group, and consider a sequence 
 lying in the space $G^\natural$ of conjugacy classes. Choose a maximal torus $T\subset G$, and recall that 
@@ -179,14 +179,14 @@ $\#\{\textnormal{indices }\leqslant N\}^{-1}$.
 
 \emph{Why half-open boxes?} The choice of sets of the form $[\vx,\vy)$ in the 
 definition of discrepancy seems rather arbitrary, and it is. Discrepancy can 
-easily be defined as a supremum over all open (or closed) balls---and in fact 
+easily be defined as a supremum over all open (or closed) balls---and 
 those  definitions generalize to arbitrary metric spaces. There are also more 
 subtle definitions involving suprema over open or closed convex sets 
 (isotropic discrepancy). See \cite{kuipers-niederreiter-1974} for a discussion 
 and comparison of these differing definitions. In this thesis, we restrict to 
 half-open boxes because they are computationally tractable, fit well with 
-Diophantine approximation on tori, and the theory is most developed for this 
-definition. 
+Diophantine approximation on tori, and the theory is most well-developed for 
+this definition. 
 
 
 
@@ -196,7 +196,7 @@ definition.
 
 Let $\Omega$ be a probability space, and let $\{\theta_p\}$ be a collection of 
 prime-indexed independent, identically distributed, random variables on 
-$\Omega$ with continuous joint distribution $\mu$. By this, we mean 
+$\Omega$ with continuous joint distribution $\mu$. By this, we mean each 
 $\theta_p\colon \Omega \to \bR$ is measurable, and if $P$ is the probability 
 measure on $\Omega$, then 
 $\left(\prod_{p\in S} \theta_p\right)_\ast P = \prod_{p\in S} \mu$ for all 
@@ -209,8 +209,9 @@ Kolmogorov--Smirnov statistic in this context) is the random variable
 \[
 	D_N = \sup_{x\in [0,\pi]} \left|\frac{1}{\pi(N)} \sum_{p\leqslant N} 1_{[0,x]}\circ \theta_p - \int 1_{[0,x]}\, \dd\mu\right| .
 \]
-Kolmogorov and Smirnov proved that the inside of the absolute value converges 
-to zero. The Glivenko--Cantelli Theorem says that $D_N \to 0$ almost everywhere, 
+Kolmogorov and Smirnov proved that the inside of the absolute value, a 
+function-valued random variable, converges 
+to zero. The Glivenko--Cantelli theorem says that $D_N \to 0$ almost everywhere, 
 and even better, the normalized discrepancy $\sqrt{\pi(N)} D_N$ approaches 
 a limiting distribution (supremum of the Brownian bridge) which does not 
 depend on $\mu$. The rate of convergence of $\sqrt{\pi(N)} D_N$ to that 
@@ -223,7 +224,7 @@ $\theta_p$ are being randomly drawn from the distribution $\ST$. Then the
 above theorems suggest that as $N\to \infty$, we should have 
 $\D_N(\btheta,\ST)\sim \pi(N)^{-\frac 1 2}$, or, if we are not so lucky, at 
 least $\D_N(\btheta,\ST) \ll N^{-\frac 1 2+\epsilon}$. Ideally, the 
-normalized discrepancy $\sqrt{\pi(N)}\D_N^\star(\btheta,\ST)$ would also 
+normalized discrepancy $\sqrt{\pi(N)}\D_N(\btheta,\ST)$ would also 
 be equidistributed, but sadly, numerical experiments conducted by the author 
 suggest this is not the case. 
 
@@ -233,8 +234,8 @@ suggest this is not the case.
 
 \section{The Koksma--Hlawka inequality}
 
-Here we summarize the results of the paper \cite{okten-1999}, generalizing them 
-as needed for our context. Recall that a function $f$ on 
+In this section we summarize the results of the paper \cite{okten-1999}, 
+generalizing them as needed for our context. Recall that a function $f$ on 
 $[\vzero,\vinfty)\subset \bR^d$ is said to be of \emph{bounded variation} (in 
 the measure-theoretic sense) if there is a finite Radon measure (i.e., 
 finite and inner regular) $\nu$ such that 
@@ -269,10 +270,10 @@ The supremum is bounded above by $\D_N(\bvx,\mu)$, so the proof is complete.
 \end{proof}
 
 This theorem is proved in a somewhat restrictive setting, and there are more 
-general versions for less restrictive notions of bounded variation. For 
-example,  $f$ a function on $\bR^+$ that is bounded variation in the 
-traditional sense (for example, piecewise continuous) and $\mu$ a continuous 
-probability measure, the inequality 
+general versions of the theorem for less restrictive notions of bounded 
+variation. For example,  $f$ a function on $\bR^+$ that is bounded variation 
+in the traditional sense (for example, piecewise continuous) and $\mu$ a 
+continuous probability measure, the inequality 
 \[
 	\left| \frac{1}{N} \sum_{n\leqslant N} f(x_n) - \int f\, \dd\mu\right| \leqslant \Var(f) \D_N^\star(\bx,\mu) 
 \]
@@ -288,7 +289,14 @@ variation is much more complicated than the measure-theoretic one. See
 
 \section{Comparing and combining sequences}
 
-Throughout this section, $\lambda$ is the Lebesgue measure on $\bR$. 
+Throughout this section, $\lambda$ is the Lebesgue measure on $\bR$. Recall 
+that for another measure $\mu$ on $\bR$, the \emph{Radon--Nikodym derivative} 
+of $\mu$ with respect to $\lambda$ (when it exists) is uniquely determined by 
+$\cdf_\mu(x) = \int_{-\infty}^x \frac{\dd\mu}{\dd\lambda}(t)\, \dd t$. The 
+Radon--Nikodym derivative exists whenever $\mu$ is absolutely continuous with 
+respect to $\lambda$, i.e.~$\mu(S) = 0$ whenever $\lambda(S) = 0$. The 
+following result quantifies how much the discrepancy of a sequence changes when 
+the elements of the sequence are changed by a small amount. 
 
 \begin{lemma}\label{lem:disc-of-two-seq}
 Let $\bx$ and $\by$ be sequences in $[0,\infty)$. Suppose $\mu$ is an 
@@ -318,6 +326,10 @@ This tells us that
 $\D_N^\star(\by,\mu) \leqslant \left\|\frac{\dd\mu}{\dd\lambda}\right\|_\infty \epsilon + \D_N^\star(\bx,\mu) + \frac{\#\{ n\leqslant N : |x_n - y_n| \geqslant \epsilon\}}{N}$. 
 Reversing the roles of $\bx$ and $\by$, we obtain the desired result. 
 \end{proof}
+
+This next result shows that if a sequence is transformed by an isometry of 
+$\bR$, the discrepancy of the transformed sequence is roughly the same as the 
+discrepancy of the original sequence.
 
 \begin{lemma}\label{lem:flip-discrepancy}
 Let $\sigma$ be an isometry of $\bR$, and $\bx$ a sequence in $[0,\infty)$ 
@@ -443,8 +455,8 @@ $\bv = (v_1,v_2,v_3,\dots)$.
 \end{definition}
 
 The van der Corput sequence has generalizations to other bases and higher 
-dimensions, but we will not use these. Its discrepancy has extremely fast 
-convergence to zero. 
+dimensions, but we will not use them. The discrepancy of the van der Corput 
+sequence has extremely fast convergence to zero. 
 
 \begin{lemma}[{\cite[Ch.~2 Th.~3.5]{kuipers-niederreiter-1974}}]
 $\D_N(\bv) \leqslant \frac{\log(N+1)}{N\log 2}$. 
@@ -466,8 +478,16 @@ Since $\left(\cdf_\mu\right)_\ast\mu$ is the Lebesgue measure, Lemma
 $\left|\D_N(\cdf_\mu^{-1}(\bv), \mu) - \D_N(\bv)\right| \ll N^{-1}$. Since 
 $\cdf_\mu$ is strictly increasing, it is an order-preserving bijection between 
 $I$ and $[0,1]$, which gives us the desired result with 
-$\bx = \cdf_\mu^{-1}(\bv)$. 
+$\bx = \cdf_\mu^{-1}(\bv)$. The implied constant in the result does not depend 
+on $\mu$. 
 \end{proof}
+
+Now that we can construct sequences with discrepancy decaying rapidly (with 
+respect to a fixed measure $\mu$), we use the sequences with rapid discrepancy 
+decay to construct sequences whose discrepancy decays at any specified rate. 
+The $N^{-\alpha}$ in the following theorem could actually be specified by any 
+decreasing function of $N$ which converges to zero, but doesn't decay faster 
+than $N^{-1}$. 
 
 \begin{theorem}\label{thm:discrepancy-arbitrary}
 Let $\mu$ be an absolutely continuous probability measure, supported on $I$, 

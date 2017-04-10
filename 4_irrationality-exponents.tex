@@ -15,11 +15,11 @@ exponent} of $x\in \bR$ is the supremum of the set of $w\in \bR^+$ such that
 there infinitely many rational numbers $\frac p q$ with 
 $\left| x - \frac p q\right| \leqslant q^{-w}$. If $x$ is rational, then it has 
 irrationality exponent $1$. If $x$ is an algebraic irrational, then Roth's 
-theorem tells us its irrationality exponent is $2$. Liouiville constructed 
-transcendental numbers with arbitrarily large irrationality exponent. In fact, 
+theorem says its irrationality exponent is $2$. Liouiville constructed 
+transcendental numbers with arbitrarily large irrationality exponent. Only 
 a measure-zero set of reals, for example the Louiville number 
 $\sum_{r\geqslant 1} 10^{-r!}$, have infinite irrationality exponent. In the 
-results below, we will only consider reals with finite irrationality constant. 
+results below, we will only consider reals with finite irrationality exponent. 
 When $d\geqslant 1$, there are a $d$ natural measures of irrationality, but we 
 will use only two of them. 
 
@@ -55,9 +55,12 @@ Let $w\geqslant 1/d$. Then there exists $\vx\in \bR^d$ such that
 $\omega_0(\vx)=w$ and $\omega_{d-1}(\vx) = d w+d-1$. 
 \end{theorem}
 
+We can relate the traditional irrationality exponent and the invariant 
+$\omega_0$ in the special case $d = 1$. 
+
 \begin{theorem}\label{thm:omega-irrationality}
 If $d=1$, then $\omega_0(x) = \mu-1$, where $\mu$ is the 
-traditional irrationality measure of $x$. 
+traditional irrationality exponent of $x$. 
 \end{theorem}
 \begin{proof}
 Both $\mu$ and $\omega_0$ are invariant under translation by $\bZ$, so without 
@@ -78,6 +81,8 @@ that for infinitely many $(n,m)$, we have
 $\left| x - \frac m n\right| \leqslant n^{-(w + 1)}$, which implies 
 $\mu \geqslant \omega_0(x) + 1$. 
 \end{proof}
+
+Here is a statement of Roth's theorem in the current context. 
 
 \begin{theorem}[Roth]
 Let $x\in (\overline\bQ\cap \bR)\smallsetminus \bQ$. Then 
@@ -172,9 +177,7 @@ This is \cite[Th.~1.21]{drmota-tichy-1997}.
 
 \begin{lemma}\label{lem:bound-exp-sum}
 Let $x\in \bR$. Then 
-\[
-	\left| \sum_{n\leqslant N} e^{2\pi i n x}\right| \leqslant \frac{2}{\dd(x, \bZ)} .
-\]
+$\left| \sum_{n\leqslant N} e^{2\pi i n x}\right| \leqslant \frac{2}{\dd(x, \bZ)}$. 
 \end{lemma}
 \begin{proof}
 We begin with an easy bound: 
@@ -191,9 +194,9 @@ It is easy to check that $|\sin(\pi x)| \geqslant \dd(x,\bZ)$, whence the result
 
 \begin{corollary}\label{cor:bound-disc-distance}
 Let $\vx\in (\bR/\bZ)^d$ with $(x_1,\dots,x_d)$ linearly independent over $\bQ$. 
-Then for $\bx=(\vx,2\vx,3\vx,\dots)$, we have 
+Then for $\bvx=(\vx,2\vx,3\vx,\dots)$, we have 
 \[
-	\D_N(\bx) \ll \frac 1 h + \frac 1 N \sum_{0<|\vm|_\infty \leqslant h} \frac{2}{r(\vm) \dd(\langle \vm,\vx\rangle,\bZ)} 
+	\D_N(\bvx) \ll \frac 1 h + \frac 1 N \sum_{0<|\vm|_\infty \leqslant h} \frac{2}{r(\vm) \dd(\langle \vm,\vx\rangle,\bZ)} 
 \]
 for any integer $h$, with the implied constant depending only on $d$. 
 \end{corollary}
@@ -202,10 +205,13 @@ Apply the Erd\"os--Tur\'an--Koksma inequality, and bound the exponential sums
 using Lemma \ref{lem:bound-exp-sum}. 
 \end{proof}
 
+We combine the above results to estimate an upper bound on the discrepancy of 
+the sequence $\bvx$. 
+
 \begin{theorem}\label{thm:disc-upper-bound}
-Let $\bx=(\vx,2\vx,3\vx,\dots)$ in $(\bR/\bZ)^d$. Then 
+Let $\bvx=(\vx,2\vx,3\vx,\dots)$ in $(\bR/\bZ)^d$. Then 
 \[
-	\D_N(\bx) \ll N^{-\frac{1}{\omega_{d-1}(\vx)+1}+\epsilon} .
+	\D_N(\bvx) \ll N^{-\frac{1}{\omega_{d-1}(\vx)+1}+\epsilon} .
 \]
 \end{theorem}
 \begin{proof}
@@ -214,13 +220,13 @@ $\delta>0$ such that
 $\frac{1}{\omega_{d-1}(\vx)+1+\delta} = \frac{1}{\omega_{d-1}(\vx)+1} - \epsilon$. 
 By Corollary \ref{cor:bound-disc-distance}, we know that 
 \[
-	\D_N(\bx) \ll \frac 1 h + \frac 1 N \sum_{0<|\vm|_\infty \leqslant h} \frac{1}{r(\vm) \dd(\langle \vm,\vx\rangle,\bZ)} ,
+	\D_N(\bvx) \ll \frac 1 h + \frac 1 N \sum_{0<|\vm|_\infty \leqslant h} \frac{1}{r(\vm) \dd(\langle \vm,\vx\rangle,\bZ)} ,
 \]
 and by Lemma \ref{lem:bound-distance}, we know that 
 $\dd(\langle \vm,\vx\rangle,\bZ)^{-1} \ll |\vm|^{\omega_{d-1}(\vx)+\delta}$. 
 It follows that 
 \[
-	\D_N(\bx) \ll \frac 1 h + \frac 1 N \sum_{0 < |\vm|_\infty \leqslant h} \frac{|\vm|_\infty^{\omega_{d-1}(\vx)+\delta}}{r(\vm)} .
+	\D_N(\bvx) \ll \frac 1 h + \frac 1 N \sum_{0 < |\vm|_\infty \leqslant h} \frac{|\vm|_\infty^{\omega_{d-1}(\vx)+\delta}}{r(\vm)} .
 \]
 All that remains is to bound the sum. Clearly 
 \[
@@ -237,9 +243,9 @@ $I_\sigma$ is easy to bound. For example, the integral over $I_1$ is
 		&\ll (\log h)^{d-1} h^{\omega_{d-1}(\vx)+\delta} .
 \end{align*}
 It follows that 
-$\D_N(\bx) \ll \frac 1 h + \frac 1 N (\log h)^{d-1} h^{\omega_{d-1}(\vx)+\delta}$. 
+$\D_N(\bvx) \ll \frac 1 h + \frac 1 N (\log h)^{d-1} h^{\omega_{d-1}(\vx)+\delta}$. 
 Setting $h\approx N^{\frac{1}{1+\omega_{d-1}(\vx)+\delta}}$, we see that 
-$D_N(\bx) \ll N^{-\frac{1}{\omega_{d-1}(\vx)+1+\delta}} = N^{-\frac{1}{\omega_{d-1}(\vx)+1} + \epsilon}$. 
+$D_N(\bvx) \ll N^{-\frac{1}{\omega_{d-1}(\vx)+1+\delta}} = N^{-\frac{1}{\omega_{d-1}(\vx)+1} + \epsilon}$. 
 
 For a slightly different proof of a similar result, given as a sequence of 
 exercises, see  \cite[Ch.~2, Ex.~3.15, 16, 17]{kuipers-niederreiter-1974}. 
@@ -250,8 +256,8 @@ purposes, but does not strengthen any of the results in this thesis.
 
 \begin{theorem}\label{thm:disc-lower-bound}
 Let $\vx\in \bR^d$ be such that $x_1,\dots,x_d$ are linearly independent over 
-$\bQ$, and let $\bx=(\vx,2\vx,3\vx,\dots)$ in $(\bR/\bZ)^d$. Then 
-$\D_N(\bx) = \Omega\left(N^{-\frac{d}{\omega_0(\vx)}-\epsilon} \right)$. 
+$\bQ$, and let $\bvx=(\vx,2\vx,3\vx,\dots)$ in $(\bR/\bZ)^d$. Then 
+$\D_N(\bvx) = \Omega\left(N^{-\frac{d}{\omega_0(\vx)}-\epsilon} \right)$. 
 \end{theorem}
 \begin{proof}
 We follow the proof of \cite[Ch.~2, Th.~3.3]{kuipers-niederreiter-1974}, 
@@ -278,20 +284,19 @@ we have
 Thus, for each $n\leqslant N$, $n \vx$ is within $q^{-1-\delta/2}$ of the 
 grid $\frac 1 q \bZ^d\subset (\bR/\bZ)^d$. So no element of 
 $\{\vx,\dots,N \vx\}$ lies in the half-open box 
-$I_q = \left[ q^{-1 - 2\delta / 3}, q^{-1} - q^{-1 - 2\delta / 3}\right)^d$. 
-Moreover, $I_q$ has volume $\left(q^{-1} - 2q^{-1 - 2\delta / 3}\right)^d$. 
+$I_q = \left[ q^{-1 - \delta / 3}, q^{-1} - q^{-1 - \delta / 3}\right)^d$. 
+Moreover, $I_q$ has volume $\left(q^{-1} - 2q^{-1 - \delta / 3}\right)^d$. 
 For $q$ sufficiently large, the volume of $I_q$ is bounded below by 
-$2^{-d} q^{-d}$, so the discrepancy $\D_N^\star(\bvx)$ is 
+$2^{-d} q^{-d}$, so the discrepancy $\D_N(\bvx)$ is 
 bounded below by $2^{-d} q^{-d}$. Since $q^{\omega_0(\vx)-\delta} \leqslant 2 N$, 
-the discrepancy $\D_N^\star(\bvx)$ is bounded below by 
+the discrepancy $\D_N(\bvx)$ is bounded below by 
 \[
 	2^{-d} \left( (2 N)^{\frac{1}{\omega_0(\vx)+\delta}}\right)^{-d} 
 		= 2^{-d-\frac{d}{\omega_0(\vx)+\delta}} N^{-\frac{d}{\omega_0(\vx)+\delta}}
 		= 2^{-d\left(1+\frac{1}{\omega_0(\vx)}\right)-\epsilon} N^{-\frac{d}{\omega_0(\vx)}-\epsilon} .
 \]
-Since $\D_N^\star(\bvx)$ can, for $N\to \infty$, be bounded below by a constant 
-multiple of $N^{-\frac{d}{\omega_0(\vx)}}$, the proof is complete after an 
-application of Lemma \ref{lem:star-reg-disc}. 
+Since $\D_N(\bvx)$ can, as $N\to \infty$, be bounded below by a constant 
+multiple of $N^{-\frac{d}{\omega_0(\vx)}}$, the proof is complete.
 \end{proof}
 
 
@@ -302,8 +307,8 @@ application of Lemma \ref{lem:star-reg-disc}.
 \section{Pathological Satake parameters for CM abelian varieties}
 
 We apply the results of the previous sections to $L$-functions associated to 
-CM abelian varieties. For background, see 
-\cite{serre-tate-1968,serre-1994,yu-2015}. 
+CM abelian varieties. For background on the motivic Galois group and Sato--Tate 
+group of an abelian variety, see \cite{serre-tate-1968,serre-1994,yu-2015}. 
 Recall that for $E$ a non-CM elliptic curve, the 
 Akiyama--Tanigawa conjecture implies the Riemann Hypothesis for all 
 $L(\sym^k E,s)$, $k\geqslant 1$. The appearance of $\sym^k$ is dictated by the 
@@ -420,6 +425,9 @@ $\dd(\langle \vm,\vx\rangle, \bZ)^{-1} \ll |\vm|_\infty^{\omega_{d-1}(x)+\epsilo
 The result follows. 
 \end{proof}
 
+By writing any function as a Fourier series, we can apply this result to sums 
+of the form $\sum_{n\leqslant N} f(n \vx)$. 
+
 \begin{theorem}\label{thm:translates-bound-sum}
 Let $\vx\in \bR^d$ with $\omega_{d-1}(\vx)$ finite. Fix 
 $f\in C^\infty((\bR/\bZ)^d)$ with $\widehat f(\vzero)=0$. Then 
@@ -444,12 +452,13 @@ coefficients decay sufficiently rapidly as to force
 $\sum |\widehat f(\vm)| \cdot |\vm|_\infty^{\omega_{d-1}(\vx)+\epsilon}$ to 
 converge, the proof works. 
 
-Enumerate the primes of $K$ as $\fp_1,\fp_2,\fp_3,\dots$.  
+Enumerate the primes of $K$ with increasing norms as $\fp_1,\fp_2,\fp_3,\dots$.  
 Let $\vy\in \bR^d$ with $y_1,\dots,y_d$ linearly independent over $\bQ$. The 
 associated sequence of ``fake Satake parameters'' is 
 $\bvx = (\vy, 2\vy, 3 \vy, 4 \vy, \dots)$, 
-where we put $\vx_{\fp_n} = n \vy\mod \bZ^d$. By Theorem \ref{thm:jarnik}, we can 
-arrange for $\omega_0(\vy) = w$ and $\omega_{d-1}(\vy) = d w + d - 1$. 
+where we put $\vx_{\fp_n} = n \vy\mod \bZ^d$. For any fixed 
+$w\geqslant \frac 1 d$, by Theorem \ref{thm:jarnik}, we can find $\vy$ with 
+$\omega_0(\vy) = w$ and $\omega_{d-1}(\vy) = d w + d - 1$. 
 
 \begin{theorem}
 The sequence $\bvx$ is equidistributed in $(\bR/\bZ)^d$, with discrepancy 

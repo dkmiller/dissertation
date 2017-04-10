@@ -24,11 +24,11 @@ $\lim_{x\to \infty} \frac{\pi(x)}{\Li(x)} = 1$.
 
 Since $\zeta(s)$ does have the desired properties, the prime number 
 theorem is true. It is natural to try to bound the difference 
-$\pi(x) - \Li(x)$. Numerical experiements going all the way back to Gauss 
+$\pi(x) - \Li(x)$. Numerical experiements dating back to Gauss 
 suggest that $|\pi(x) - \Li(x)| \ll x^{-\frac 1 2+\epsilon}$, and in fact we 
 have the following result. 
 
-\begin{theorem}[{\cite{rosser-schoenfeld-1976}}]
+\begin{theorem}[{\cite{von-koch-1901}}]
 The Riemann Hypothesis is true if and only if 
 $|\pi(x) - \Li(x)| \ll x^{-\frac 1 2+\epsilon}$. 
 \end{theorem}
@@ -51,14 +51,15 @@ $G^\natural$, the set of conjugacy classes in $G$. Let $\mu$ be the
 (normalized) Haar measure on $G^\natural$, and let 
 $\D(P_x) = \max_{S\subset G^\natural} \left| P_x(S) - \mu(S)\right|$. 
 Then $P_x$ converges weakly to the Haar measure on $G^\natural$ if and 
-only if $\D(P_x) \to 0$. Recall that weak convergence simply means 
+only if $\D(P_x) \to 0$. Recall that weak convergence of $P_x$ to $\mu$ means 
 $\int f\, \dd P_x \to \int f$ for all continuous functions $f$ on $G^\natural$. 
-Since $G^\natural$ is a finite set, all functions are continuous, but later 
-on we will consider weak convergence on more general spaces.  
+Since $G^\natural$ is a finite set, all functions on $G^\natural$ are 
+continuous, but later on we will consider weak convergence on more general 
+spaces.  
 
 \begin{theorem}[{\cite[Th.~2 Cor., A.1]{serre-1989}}]
 The measures $P_x$ converge weakly to the Haar measure on $G^\natural$ if and 
-only if the function $L(\rho,s)$ admits a nonvanishing analytic continuation 
+only if the function $L(\rho,s)$ admits a non-vanishing analytic continuation 
 to $\Re = 1$ for all nontrivial $\rho$. 
 \end{theorem}
 
@@ -73,9 +74,7 @@ The bound $\D(P_x) \ll x^{-\frac 1 2+\epsilon}$ holds if and only if each
 $L(\rho,s)$, $\rho$ nontrivial, satisfies the Riemann Hypothesis. 
 \end{theorem}
 
-The forward implication follows from the results of Chapter 
-\ref{ch:Dirichlet-series}, while the reverse implication is a result of 
-Serre \cite[Th.~4]{serre-1981}. 
+The forward implication follows from Theorem \ref{thm:AT->RH:gp}, while the reverse implication is a result of Serre \cite[Th.~4]{serre-1981}. 
 This whole discussion generalizes to a more complicated set of Galois 
 representations---those arising from elliptic curves and more general motives.  
 
@@ -88,7 +87,7 @@ representations---those arising from elliptic curves and more general motives.
 For background on the Galois representations and $L$-functions associated to 
 elliptic curves, see \cite[III\S7, C\S17]{silverman-2009}. Throughout this 
 thesis, what we call the $L$-function of an elliptic curve (motive, \ldots) is 
-the normalized (analytic) $L$-function. 
+the normalized (i.e.~analytic instead of algebraic) $L$-function. 
 Let $E_{/\bQ}$ be an elliptic curve. For any prime $l$, the $l$-adic Tate 
 module of $E$ induces a continuous representation 
 $\rho_l \colon G_\bQ \to \GL_2(\bZ_l)$. It is known that the quantities 
@@ -98,12 +97,12 @@ corresponding Satake parameter for $E$ is
 $\theta_p = \cos^{-1}\left(\frac{a_p}{2\sqrt p}\right) \in [0,\pi]$. 
 These parameters are packaged into an $L$-function as follows:
 \[
-	L(E,s) = \prod_p \frac{1}{(1 - e^{i \theta_p} p^{-s})(1- e^{-i \theta_p} p^{-s})} = \prod_p \frac{1}{\det\left(1 - \smat{e^{i\theta_p}}{}{}{e^{-i \theta_p}}p^{-s}\right)}.
+	L(E,s) = \prod_p \frac{1}{(1 - e^{i \theta_p} p^{-s})(1- e^{-i \theta_p} p^{-s})} = \prod_p \det\left(1 - \smat{e^{i\theta_p}}{}{}{e^{-i \theta_p}}p^{-s}\right)^{-1}.
 \]
 More generally we have, for each irreducible representation $\sym^k$ of 
 $\SU(2)$, the $k$-th symmetric power $L$-function: 
 \[
-	L(\sym^k E, s) = \prod_p \prod_{j=0}^k \frac{1}{1 - e^{i (k - 2j) \theta_p} p^{-s}} = \prod_p \frac{1}{\det\left(1-\sym^k \smat{e^{i\theta_p}}{}{}{e^{-i \theta_p}}p^{-s}\right)}.
+	L(\sym^k E, s) = \prod_p \prod_{j=0}^k \frac{1}{1 - e^{i (k - 2j) \theta_p} p^{-s}} = \prod_p \det\left(1-\sym^k \smat{e^{i\theta_p}}{}{}{e^{-i \theta_p}}p^{-s}\right)^{-1}.
 \]
 
 Numerical experiments suggest that the Satake parameters are equidistributed 
@@ -111,7 +110,7 @@ with respect to the Sato--Tate distribution
 $\ST = \frac{2}{\pi} \sin^2\theta\, \dd\theta$. Indeed, for any cutoff $x$, let 
 $P_x$ be the empirical measure 
 $\frac{1}{\pi(x)} \sum_{p\leqslant x} \delta_{\theta_p}$. 
-The convergence of the $P_x$ to the Sato--Tate measure is closely related to 
+The convergence of $P_x$ to the Sato--Tate measure is closely related to 
 the analytic properties of the $L(\sym^k E,s)$. First, here is the famous 
 Sato--Tate conjecture (now a theorem) in our notation. 
 
@@ -139,7 +138,7 @@ $\{\theta_p\}_{p\leqslant x}$ is
 \[
 	\D\left(\{\theta_p\}_{p\leqslant x},\ST\right) = \sup_{t\in [0,\pi]} \left| P_x[0,t] - \ST[0,t]\right| .
 \]
-The following conjecture is first made in \cite{akiyama-tanigawa-1999}.
+The following conjecture is made in \cite{akiyama-tanigawa-1999}.
 
 \begin{conjecture}[Akiyama--Tanigawa]
 If $E_{/\bQ}$ is a non-CM elliptic curve, then 
@@ -206,7 +205,7 @@ If $z\in \bC$, write $\Re z$ for the real part of $z$.
 If $\alpha\in \bR$, we write $\Re > \alpha$ for the half-plane of complex 
 numbers with real part $> \alpha$. So a function has analytic continuation to 
 the half-plane $\{z\in \bC : \Re z > \alpha\}$ if and only if the function 
-extends to $\Re > \alpha$. 
+extends to an analytic function on $\Re > \alpha$. 
 
 We write $\bx = (x_1,x_2,\dots)$ for infinite sequences and 
 $\vx = (x_1,\dots,x_d)$ for vectors. Sometimes we will have a sequence of 
@@ -215,7 +214,8 @@ vectors, written as $\bvx = (\vx_1,\vx_2,\dots)$.
 If $\bx=(x_1,x_2,\dots)$ is a sequence, write 
 $P_{\bx,N} = \frac{1}{N} \sum_{n\leqslant N} \delta_{x_n}$ for the 
 corresponding empirical measure. If $\bx=(x_\alpha)$ is instead indexed by 
-some other (discrete) subset of $\bR^+$, write 
+some other discrete subset of $\bR^+$ (for example a subset of the primes), 
+write 
 \[
 	P_{\bx,N} = \frac{1}{\# \{\text{indices }\leqslant N\}}\sum_{\alpha \leqslant N} \delta_{x_\alpha} .
 \]
