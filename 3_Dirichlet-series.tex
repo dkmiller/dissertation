@@ -38,7 +38,7 @@ on $[0,\pi]\times [0,\pi]$.
 Recall that if $f(\theta) = 1_{[0,\pi/2)}(\theta) - 1_{(\pi/2,\pi]}(\theta)$, 
 then $\sgn(a_p) = f(\theta_p)$. Moreover, 
 $g(\theta_1,\theta_2) = |f(\theta_1) - f(\theta_2)|$ is non-negative and 
-continuous almost everywhere. Moreover, it is clear that 
+continuous almost everywhere. It is clear that 
 $\int g\, \dd \ST\times \ST > 0$. Harris' equidistribution result tells us that 
 \[
 	\int g\, \dd \ST\times\ST = \lim_{N\to \infty} \frac{1}{\pi(N)} \sum_{p\leqslant N} g(\theta_p(E_1),\theta_p(E_2)) = 0 ,
@@ -46,7 +46,8 @@ $\int g\, \dd \ST\times \ST > 0$. Harris' equidistribution result tells us that
 which is a contradiction. 
 \end{proof}
 
-It follows that if $L_{\sgn}(E_1,s) = L_{\sgn}(E_2,s)$, then $E_1$ and $E_2$ 
+It follows that if $L_{\sgn}(E_1,s) = L_{\sgn}(E_2,s)$ for all $s$ in some 
+right half-plane, then $E_1$ and $E_2$ 
 are isogenous, so in particular they have the same rank. The heuristics in 
 \cite{sarnak-2007} suggest that if the Akiyama--Tanigawa (and other natural 
 conjectures) hold, then $L_f(E,s)$ has a zero of order 
@@ -142,7 +143,7 @@ By Lemma \ref{lem:abel-sum} (Abel summation) with $f(t) = t^{-s}$, we have
 		&= N^{-s} \sum_{p\leqslant N} x_p + s \int_2^N \sum_{p\leqslant t} x_p\, \frac{\dd t}{t^{s+1}} \label{eq:log-L-sum} \\ 
 		&\ll N^{-\Re s + \alpha + \epsilon} + |s| \int_2^N t^{\alpha+\epsilon} \frac{\dd t}{t^{\Re s+1}} . \nonumber
 \end{align}
-Since $\alpha-\Re s < 0$, the first term is bounded. Since 
+Since $\alpha-\Re s < 0$, the first term is converges to zero. Since 
 $\Re s+1-\alpha > 1$ and 
 $\epsilon$ is arbitrary, the integral converges absolutely, and the proof is 
 complete. 

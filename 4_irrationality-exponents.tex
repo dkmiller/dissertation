@@ -268,7 +268,7 @@ $\frac{d}{\omega_0(\vx)-\delta} = \frac{d}{\omega_0(\vx)} + \epsilon$.
 By the definition of $\omega_0(\vx)$, there exist infinitely many 
 $(q,\vm)$ with $q>0$ such that 
 $|q \vx - \vm|_\infty \leqslant |(q,\vm)|_\infty^{-\omega_0(\vx)+\delta/2}$. 
-Since $|(q,\vm)|_\infty \geqslant q$, we derive the stronger 
+Since $|(q,\vm)|_\infty \geqslant q$, we derive the seemingly stronger 
 statement that for infinitely many $q$, there exists 
 $\vm\in \bZ^d$ such that 
 $|q \vx-\vm|_\infty \leqslant q^{-\omega_0(\vx)+\delta/2}$ or, equivalently, 
@@ -378,8 +378,9 @@ $L(r\circ \rho_l,s) = \prod \left(1 - r(\theta_\fp) \N(\fp)^{-s}\right)^{-1}$
 (this is the normalized $L$-function, not the algebraic $L$-function). 
 As in Chapter \ref{ch2:discrepancy}, the choice of an isomorphism
 $(\bR/\bZ)^d\simeq \ST(A)$ gives rise to a notion of discrepancy 
-$\D_N(\btheta)$. We call the ``Akiyama--Tanigawa conjecture for $A$'' the 
-estimate $\D_N(\btheta) \ll N^{-\frac 1 2+\epsilon}$. 
+for sequences in $\ST(A)$. We call the ``Akiyama--Tanigawa conjecture for $A$'' 
+the estimate $\D_N(\btheta) \ll N^{-\frac 1 2+\epsilon}$, where 
+$\btheta = (\theta_\fp)$ is the Satake parameters of $A$. 
 
 \begin{theorem}\label{AT->RH:AB}
 Let $A_{/K}$ be a CM abelian variety. The Akiyama--Tanigawa conjecture for $A$ 
@@ -436,12 +437,12 @@ $\left| \sum_{n\leqslant N} f(n \vx)\right| \ll 1$.
 \begin{proof}
 Write $f$ as a Fourier series:
 $f(\vx) = \sum_{\vm\in \bZ^d} \widehat f(\vm) e^{2\pi i \langle \vm,\vx\rangle}$. 
-Since $\widehat f(0)=0$, we can compute:
+Since $\widehat f(\vzero)=0$, we can compute:
 \begin{align*}
 	\left| \sum_{n\leqslant N} f(n \vx)\right| 
-		&= \left| \sum_{n\leqslant N} \sum_{\vm\in \bZ^d\smallsetminus 0} \widehat f(\vm) e^{2\pi i n \langle \vm,\vx\rangle}\right| \\
-		&\leqslant \sum_{\vm\in \bZ^d\smallsetminus 0} \left|\widehat f(\vm)\right|\cdot \left| \sum_{n\leqslant N} e^{2\pi i n \langle \vm,\vx\rangle}\right| \\
-		&\ll \sum_{\vm\in \bZ^d\smallsetminus 0} \left|\widehat f(\vm)\right|\cdot |\vm|_\infty^{\omega_{d-1}(\vx) + \epsilon} .
+		&= \left| \sum_{n\leqslant N} \sum_{\vm\in \bZ^d\smallsetminus \vzero} \widehat f(\vm) e^{2\pi i n \langle \vm,\vx\rangle}\right| \\
+		&\leqslant \sum_{\vm\in \bZ^d\smallsetminus \vzero} \left|\widehat f(\vm)\right|\cdot \left| \sum_{n\leqslant N} e^{2\pi i n \langle \vm,\vx\rangle}\right| \\
+		&\ll \sum_{\vm\in \bZ^d\smallsetminus \vzero} \left|\widehat f(\vm)\right|\cdot |\vm|_\infty^{\omega_{d-1}(\vx) + \epsilon} .
 \end{align*}
 The sum converges since the Fourier coefficients $\widehat f(\vm)$ converge to 
 zero faster than the reciprocal of any polynomial. 
