@@ -144,7 +144,7 @@ tacitly extend it by zero to $\bR^d$. It is also possible to define discrepancy
 for sequences lying in compact Lie groups. For example, if the sequence $\bvx$ 
 lies in a real torus $T$, choose an isomorphism $(\bR/\bZ)^d \simeq T$, and 
 using that isomorphism identify the torus with  $[0,1)^d\subset [\vzero,\vinfty)$. 
-This gives a notion of discrepancy for sequences in $T$. Two different 
+This gives a definition of discrepancy for sequences in $T$. Two different 
 isomorphisms $T\simeq (\bR/\bZ)^d$ will give two different definitions of 
 discrepancy, but asymptotically they will be bounded above and below by 
 constant multiples of each other as long as the measure in question is the 
@@ -157,10 +157,11 @@ $G^\natural = T/W$, for $W$ the Weyl group of $T$. There is a half-open
 box in $\ft = \lie(T)$ which maps bijectively to $T$ under the exponential 
 map. Choose a ``half-open'' polyhedral set $Q$ which is a fundamental domain for 
 the action of $W$ on $T$. Then $Q\subset \ft$ and, if we choose a basis for 
-$\ft$ mapping to zero in $T$, it makes sense to talk about the discrepancy of 
+$\ft$ mapping to zero in $T$, we can identify $G^\natural$ with a subset of 
+$[0,1)^d$, $d = \dim T$. This gives a definition of discrepancy for 
 a sequence in $G^\natural$ with respect to the Haar measure. Of course this 
-definition depends on the choice of $Q$, but asymptotically these definitions 
-are all the same. The paper 
+definition depends on the choice of $T$, $Q$, and the basis of $\ft$, but 
+asymptotically these definitions are all the same. The paper 
 \cite{rosengarten-2013} has a different definition of discrepancy which only 
 works for semisimple simply-connected groups, but also proves an 
 Erd\"os--Tur\'an inequality in that context. It is likely that a reasonable 
@@ -280,8 +281,9 @@ continuous probability measure, the inequality
 still holds \cite[Ch.~2, Th.~5.1]{kuipers-niederreiter-1974}. In particular, 
 when $\mu$ is the Sato--Tate measure and $f$ is piecewise continuous, we can 
 apply this inequality. When $d>1$, the non-measure-theoretic definition of 
-variation is much more complicated than the measure-theoretic one. See 
-\cite[2\S5]{kuipers-niederreiter-1974} for a discussion of this. 
+variation is more general, but much more complicated, than the 
+measure-theoretic one. See \cite[2\S5]{kuipers-niederreiter-1974} for a 
+discussion of this. 
 
 
 
