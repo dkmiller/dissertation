@@ -1,38 +1,30 @@
-% !TEX root = main.tex
+% !TEX root = Daniel-Miller-thesis.tex
 
-% operators
-\DeclareMathOperator{\Ad}{Ad}
-\DeclareMathOperator{\aut}{Aut}
-\DeclareMathOperator{\cdf}{cdf}
-\DeclareMathOperator{\D}{D}
-\DeclareMathOperator{\disc}{D} % DEPRECATED
-\DeclareMathOperator{\End}{End}
-\DeclareMathOperator{\ext}{Ext}
-\DeclareMathOperator{\Gal}{Gal}
-\DeclareMathOperator{\GL}{GL}
-\DeclareMathOperator{\h}{H}
-\DeclareMathOperator{\im}{im}
-\DeclareMathOperator{\Li}{Li}
-\DeclareMathOperator{\lie}{Lie}
-\DeclareMathOperator{\N}{N}
-\DeclareMathOperator{\R}{R}  % restriction of scalars
-\DeclareMathOperator{\Rep}{Rep}
-\DeclareMathOperator{\rk}{rk}
-\DeclareMathOperator{\sgn}{sgn}
-\DeclareMathOperator{\SO}{SO}
-\DeclareMathOperator{\spec}{Spec}
-\DeclareMathOperator{\spf}{Spf}
-\DeclareMathOperator{\stab}{Stab}
-\DeclareMathOperator{\SU}{SU}
-\DeclareMathOperator{\sym}{sym}
-\newcommand{\tangent}{\mathrm{T}}
-\DeclareMathOperator{\tr}{tr}
-\DeclareMathOperator{\X}{X}
-\DeclareMathOperator{\Var}{Var}
-\DeclareMathOperator{\witt}{W}
-\DeclareMathOperator{\zentrum}{Z}  % center
 
-% symbols 
+% Operators.
+\DeclareMathOperator{\Ad}{Ad}    % Adjoint representation.
+\DeclareMathOperator{\cdf}{cdf}  % Cumulative distribution function.
+\DeclareMathOperator{\D}{D}      % Discrepancy.
+\DeclareMathOperator{\End}{End}  % Ring of endomorphisms.
+\DeclareMathOperator{\Gal}{Gal}  % Galois group.
+\DeclareMathOperator{\GL}{GL}    % General Linear Group.
+\DeclareMathOperator{\h}{H}      % (Group) cohomology.
+\DeclareMathOperator{\im}{im}    % Image of a map. 
+\DeclareMathOperator{\Li}{Li}    % (Eulerian) logarithmic integral.
+\DeclareMathOperator{\Lie}{Lie}  % Lie algebra
+\DeclareMathOperator{\N}{N}      % Norm map.
+\DeclareMathOperator{\R}{R}      % restriction of scalars
+\DeclareMathOperator{\rk}{rk}    % Rank of a group.
+\DeclareMathOperator{\sgn}{sgn}  % Sign of a real number.
+\DeclareMathOperator{\SO}{SO}    % Special orthogonal group.
+\DeclareMathOperator{\SU}{SU}    % Special unitary group.
+\DeclareMathOperator{\sym}{sym}  % Symmetric power.
+\DeclareMathOperator{\tr}{tr}    % Trace.
+\DeclareMathOperator{\X}{X}      % Group of characters of a torus.
+\DeclareMathOperator{\Var}{Var}  % Variation of a function.
+
+
+% Bold letters.
 \newcommand{\ba}{{\boldsymbol a}}
 \newcommand{\bA}{\mathbf{A}}
 \newcommand{\balpha}{{\boldsymbol\alpha}}
@@ -50,30 +42,16 @@
 \newcommand{\by}{{\boldsymbol y}}
 \newcommand{\bz}{{\boldsymbol z}}
 \newcommand{\bZ}{\mathbf{Z}}
-\newcommand{\cA}{\mathcal{A}}
-\newcommand{\cB}{\mathcal{B}}
-\newcommand{\cC}{\mathcal{C}}
-\newcommand{\cG}{\mathcal{G}}
-\newcommand{\cL}{\mathcal{L}}
-\newcommand{\cN}{\mathcal{N}}
-\newcommand{\cO}{\mathcal{O}}
-\newcommand{\cP}{\mathcal{P}}
-\newcommand{\cR}{\mathcal{R}}
-\newcommand{\cS}{\mathcal{S}}
-\newcommand{\cX}{\mathcal{X}}
-\newcommand{\cY}{\mathcal{Y}}
-\newcommand{\cZ}{\mathcal{Z}}
 \newcommand{\dQ}{\mathbf{Q}}
+
+
+% Fraktur letters.
 \newcommand{\fa}{\mathfrak{a}}
-\newcommand{\fg}{\mathfrak{g}}
-\newcommand{\fm}{\mathfrak{m}}
 \newcommand{\fp}{\mathfrak{p}}
-\newcommand{\fr}{\mathfrak{r}}
-\newcommand{\fs}{\mathfrak{s}}
 \newcommand{\ft}{\mathfrak{t}}
-\newcommand{\fz}{\mathfrak{z}}
-\newcommand{\sF}{\mathscr{F}}
-\newcommand{\sO}{\mathscr{O}}
+
+
+% Vectors.
 \newcommand{\va}{\vec{a}}
 \newcommand{\vb}{\vec{b}}
 \newcommand{\vinfty}{\vec{\infty}}
@@ -84,44 +62,45 @@
 \newcommand{\vy}{\vec{y}}
 \newcommand{\vzero}{\vec{0}}
 
-\newcommand{\ad}{\mathrm{ad}} % adjoint group
-\newcommand{\alg}{\mathrm{alg}}
-\newcommand{\cts}{\mathrm{cts}}
-\newcommand{\dd}{\mathrm{d}}
-\newcommand{\fl}{\mathrm{fl}}
-\newcommand{\frob}{\mathrm{fr}}
-\newcommand{\Ga}{\mathbf{G}_\mathrm{a}}
-\newcommand{\Gm}{\mathbf{G}_\mathrm{m}}
-\newcommand{\iso}{\xrightarrow\sim}
-\newcommand{\LL}{\mathrm{L}} % cotangent complex
-\newcommand{\monic}{\hookrightarrow}
-\newcommand{\nr}{\mathrm{nr}}
-\newcommand{\odd}{\mathrm{odd}}
-\newcommand{\pow}[1]{\llbracket #1 \rrbracket}
-\newcommand{\ram}{\mathrm{ram}}
-\newcommand{\smat}[4]{\left(\begin{smallmatrix} #1 & #2 \\ #3 & #4 \end{smallmatrix}\right)}
-\newcommand{\svec}[2]{\left(\begin{smallmatrix} #1 \\ #2 \end{smallmatrix} \right)}
-\newcommand{\ST}{\mathrm{ST}}
-\newcommand{\tate}{\mathrm{T}} % Tate module
 
+% Miscellaneous symbols.
+\newcommand{\dd}{\mathrm{d}}                 % Differential.
+\newcommand{\frob}{\mathrm{fr}}              % Frobenius. 
+\newcommand{\Gm}{\mathbf{G}_\mathrm{m}}      % Multiplicative group.
+\newcommand{\nr}{\mathrm{nr}}                % Non-ramified cohomology.
+\newcommand{\pow}[1]{\llbracket#1\rrbracket} % Ring of power series.
+\newcommand{\ram}{\mathrm{ram}}              % Set of ramified primes.
+\newcommand{\ST}{\mathrm{ST}}                % Sato--Tate group.
+\newcommand{\tate}{\mathrm{T}}               % Tate module
+
+
+% Matrices.
+\newcommand{\smat}[4]{
+	\left(\begin{smallmatrix} 
+		#1 & #2 \\ 
+		#3 & #4 
+	\end{smallmatrix}\right)
+}
+\newcommand{\svec}[2]{
+	\left(\begin{smallmatrix} 
+		#1 \\ 
+		#2 
+	\end{smallmatrix} \right)
+}
+
+
+
+% Tate--Shafarevich groups.
 \DeclareFontFamily{U}{wncy}{}
 \DeclareFontShape{U}{wncy}{m}{n}{<->wncyr10}{}
 \DeclareSymbolFont{mcy}{U}{wncy}{m}{n}
-\DeclareMathSymbol{\sha}{\mathord}{mcy}{"58} % Tate-Shafarevich groups
+\DeclareMathSymbol{\Sha}{\mathord}{mcy}{"58}
 
-% categories 
-\newcommand{\Art}{\mathsf{C}}
-\newcommand{\Exal}{\mathsf{Ex}}
-\DeclareMathOperator{\Gp}{\mathsf{Gp}}
-\DeclareMathOperator{\Ind}{\mathsf{Ind}}
-\newcommand{\sets}{\mathsf{Set}}
-\DeclareMathOperator{\Sh}{\mathsf{Sh}}
 
-% environments 
+% Environments. 
+\newtheorem{conjecture}[subsection]{Conjecture}
 \newtheorem{corollary}[subsection]{Corollary}
-\newtheorem{definition}[subsection]{Definition}
 \newtheorem{lemma}[subsection]{Lemma}
-\newtheorem{proposition}[subsection]{Proposition}
 \newtheorem{theorem}[subsection]{Theorem}
 \theoremstyle{definition}
-\newtheorem{example}[subsection]{Example}
+\newtheorem{definition}[subsection]{Definition}
