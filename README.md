@@ -1,4 +1,4 @@
 # thesis
-PhD thesis at Cornell University
+This is my PhD dissertation, written in the spring of 2017 while at Cornell 
+University.
 
-This is the source code for my PhD dissertation written while at Cornell University.
