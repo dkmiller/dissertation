@@ -29,7 +29,7 @@ suggest that $|\pi(x) - \Li(x)| \ll x^{-\frac 1 2+\epsilon}$, and in fact we
 have the following result. 
 
 \begin{theorem}[{\cite{von-koch-1901}}]
-The Riemann Hypothesis is true if and only if 
+The Riemann hypothesis is true if and only if 
 $|\pi(x) - \Li(x)| \ll x^{-\frac 1 2+\epsilon}$. 
 \end{theorem}
 
@@ -41,7 +41,7 @@ rational prime $p$ at which $K$ is unramified, let $\frob_p$ be the conjugacy
 class of the Frobenius at $p$ in $G$. For any irreducible representation 
 $\rho$ of $G$, there is a corresponding $L$-function defined as 
 \[
-	L(\rho,s) = \prod_p \frac{1}{\det(1-\rho(\frob_p) p^{-s})} ,
+	L(\rho,s) = \prod_p \det\left(1-\rho(\frob_p) p^{-s}\right)^{-1} ,
 \]
 where here (and for the remainder of this thesis) we tacitly omit from the 
 product those primes at which $\rho$ is ramified. Given a cutoff $x$, there is 
@@ -65,13 +65,13 @@ to $\Re = 1$ for all nontrivial $\rho$.
 
 Both sides of this equivalence are true, and known as the Chebotarev density 
 theorem. Moreover, there is a version of the strong prime number theorem in 
-this context. In this thesis, the Riemann Hypothesis for a Dirichlet series 
+this context. In this thesis, the Riemann hypothesis for a Dirichlet series 
 $L(s)$ is the statement that $L(s)$ admits a non-vanishing analytic 
 continuation to $\Re > \frac 1 2$. 
 
 \begin{theorem}
 The bound $\D(P_x) \ll x^{-\frac 1 2+\epsilon}$ holds if and only if each
-$L(\rho,s)$, $\rho$ nontrivial, satisfies the Riemann Hypothesis. 
+$L(\rho,s)$, $\rho$ nontrivial, satisfies the Riemann hypothesis. 
 \end{theorem}
 
 The forward implication follows from Theorem \ref{thm:AT->RH:gp}, while the reverse implication is a result of Serre \cite[Th.~4]{serre-1981}. 
@@ -82,11 +82,11 @@ representations---those arising from elliptic curves and more general motives.
 
 
 
-\section{Discrepancy and Riemann Hypothesis for elliptic curves}
+\section{Discrepancy and Riemann hypothesis for elliptic curves}
 
 For background on the Galois representations and $L$-functions associated to 
 elliptic curves, see \cite[III\S7, C\S17]{silverman-2009}. Throughout this 
-thesis, what we call the $L$-function of an elliptic curve (motive, \ldots) is 
+thesis, what we call the $L$-function of an elliptic curve (motive, etc.) is 
 the normalized (i.e.~analytic instead of algebraic) $L$-function. 
 Let $E_{/\bQ}$ be an elliptic curve. For any prime $l$, the $l$-adic Tate 
 module of $E$ induces a continuous representation 
@@ -132,25 +132,25 @@ odd, the $L$-function is potentially automorphic. See Theorem
 \ref{thm:bad-Galois} for a result in this thesis where more can be said about 
 odd symmetric power $L$-functions than even ones. 
 
-The Riemann Hypothesis, and its analogue for Artin $L$-functions, has a natural 
+The Riemann hypothesis, and its analogue for Artin $L$-functions, has a natural 
 generalization to elliptic curves. In this context, the discrepancy of the set 
 $\{\theta_p\}_{p\leqslant x}$ is 
 \[
-	\D\left(\{\theta_p\}_{p\leqslant x},\ST\right) = \sup_{t\in [0,\pi]} \left| P_x[0,t] - \ST[0,t]\right| .
+	\D_x\left(E,\ST\right) = \sup_{t\in [0,\pi]} \left| P_x[0,t] - \ST[0,t]\right| .
 \]
 The following conjecture is made in \cite{akiyama-tanigawa-1999}.
 
 \begin{conjecture}[Akiyama--Tanigawa]
 If $E_{/\bQ}$ is a non-CM elliptic curve, then 
-$\D\left(\{\theta_p\}_{p\leqslant x},\ST\right)\ll x^{-\frac 1 2+\epsilon}$.
+$\D_x\left(E,\ST\right)\ll x^{-\frac 1 2+\epsilon}$.
 \end{conjecture}
 
 Akiyama and Tanigawa go on to prove a special case of the following theorem, 
 proved in full generality in \cite{mazur-2008}. 
 
 \begin{theorem}[Mazur]
-If $\D\left(\{\theta_p\}_{p\leqslant x},\ST\right)\ll x^{-\frac 1 2+\epsilon}$, 
-then all the functions $L(\sym^k E, s)$ satisfy the Riemann Hypothesis. 
+If $\D_x\left(E,\ST\right)\ll x^{-\frac 1 2+\epsilon}$, 
+then all the functions $L(\sym^k E, s)$ satisfy the Riemann hypothesis. 
 \end{theorem}
 
 This discussion also makes sense when $E$ has complex multiplication (for 
@@ -158,16 +158,17 @@ simplicity, we consider $E_{/F}$ where $F$ is the field of definition of the
 complex multiplication). The Sato--Tate measure for such $E$ is the Haar 
 measure on $\SO(2)$, i.e.~the uniform measure on $[0,\pi]$. Instead of 
 symmetric power $L$-functions, there is an $L$-function for each character of 
-$\SO(2)$. Once again, there is a theorem ``Akiyama--Tanigawa implies Riemann 
-Hypothesis.'' For a precise statement and proof, see Theorem \ref{AT->RH:AB}. 
+$\SO(2)$. Once again, there is a theorem ``Akiyama--Tanigawa conjecture implies 
+Riemann hypothesis.'' For a precise statement and proof, see Theorem 
+\ref{AT->RH:AB}. 
 
 It is natural to assume that the converse to the implication 
-``Akiyama--Tanigawa implies Riemann Hypothesis'' holds. David Zywina 
+``Akiyama--Tanigawa conjecture implies Riemann hypothesis'' holds. Zywina 
 first suggested to the author that it might not. In this thesis, we construct a 
-range of counterexamples to the implication ``Akiyama--Tanigawa implies 
-Riemann Hypothesis'' for the case of CM abelian varieties. Moreover, we 
-generalize the results of \cite{pande-2011} to show that there can be no 
-purely Galois-theoretic proof of the Sato--Tate conjecture, for there are 
+range of counterexamples to the implication ``Akiyama--Tanigawa conjecture implies 
+generalized Riemann hypothesis'' for the case of CM abelian varieties. 
+Moreover, we generalize the results of \cite{pande-2011} to show that there can 
+be no purely Galois-theoretic proof of the Sato--Tate conjecture, for there are 
 Galois representations with arbitrary Sato--Tate distributions! We also show 
 that some of the results of \cite{sarnak-2007} about sums of the form 
 $\sum_{p\leqslant x} \frac{a_p}{\sqrt p}$ cannot be generalized to 

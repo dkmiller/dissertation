@@ -226,10 +226,10 @@ $\Re > \alpha$. This yields the desired non-vanishing analytic continuation.
 
 
 
-\section{Discrepancy of sequences and the Riemann Hypothesis}
+\section{Discrepancy of sequences and the Riemann hypothesis}
 
 \begin{definition}
-We say the \emph{Riemann Hypothesis} for $L(\bx,s)$ holds if the function 
+We say the \emph{Riemann hypothesis} for $L(\bx,s)$ holds if the function 
 $\log L(\bx,s)$ admits analytic continuation to $\Re > \frac 1 2$. 
 \end{definition}
 
@@ -245,18 +245,19 @@ make sense (i.e., Theorem \ref{thm:koksma-hlawka} applies), and let
 $\bx=(x_2,x_3,x_5,\dots)$ be a sequence in $X$ with 
 $\D_N(\bx,\mu) \ll N^{-\frac 1 2+\epsilon}$. For any function $f$ on $X$ of 
 bounded variation with $\int f\, \dd\mu = 0$, $L_f(\bx,s)$ satisfies 
-the Riemann Hypothesis. 
+the Riemann hypothesis. 
 \end{theorem}
 \begin{proof}
-By the Koksma--Hlawka inequality, the bound on discrepancy yields the estimate 
+By the Koksma--Hlawka inequality (Theorem \ref{thm:koksma-hlawka}), the bound 
+on discrepancy yields the estimate 
 $\left| \sum_{p\leqslant N} f(x_p)\right| \ll N^{\frac 1 2+\epsilon}$. 
-By Theorem \ref{thm:AT->RH}, the Riemann Hypothesis holds for $L_f(\bx,s)$. 
+By Theorem \ref{thm:AT->RH}, the Riemann hypothesis holds for $L_f(\bx,s)$. 
 \end{proof}
 
 The same proof shows that if $\D_N(\bx,\mu)\ll N^{-\alpha+\epsilon}$, then 
 $\log L_f(\bx,s)$ conditionally converges to a holomorphic function on 
 $\Re > 1 - \alpha$. This theorem applied to the function $L_{\sgn}(E,s)$ shows 
-that the Akiyama--Tanigawa conjecture implies the Riemann Hypothesis for 
+that the Akiyama--Tanigawa conjecture implies the Riemann hypothesis for 
 $L_{\sgn}(E,s)$. The author is unaware of any results, conditional or 
 otherwise, that suggest $L_{\sgn}(E,s)$ has analytic continuation past 
 $\Re = \frac 1 2$ or has any kind of functional equation. Also, if 
@@ -281,7 +282,7 @@ $\sym^k$ for $k\geqslant 1$.
 Equation \eqref{eq:katz-char-bound} tells us that for any 
 $f\in C(\SU(2)^\natural)$ with 
 $\sum_{k\geqslant 1} |\widehat f(\sym^k)|<\infty$ and $\widehat f(\sym^0) = 0$, 
-the strange Dirichlet series $L_f(\btheta,s)$ satisfies the Riemann Hypothesis. 
+the strange Dirichlet series $L_f(\btheta,s)$ satisfies the Riemann hypothesis. 
 
 The best estimate on discrepancy is found in 
 \cite{niederreiter-1991}, where it is shown that $D_x \ll N^{-\frac 1 4}$ 
@@ -291,7 +292,9 @@ $\SU(2)^\natural$. Namely, for any odd $r$, we have
 	\D_x(\btheta,\ST) \ll \frac 1 r + \sum_{k=1}^{2 r -1} \frac 1 k \left| \frac{1}{\pi_F(x)} \sum_{\N(\fp)\leqslant x} \tr\sym^k\smat{e^{i \theta_\fp}}{}{}{e^{- i \theta_\fp}}\right| .
 \]
 Using the estimate \eqref{eq:katz-char-bound} on character sums, Niederreiter 
-is able to derive $\D_x \ll x^{-\frac 1 4}$. This fits the results of 
+is able to derive $\D_x \ll x^{-\frac 1 4}$. This fits well with the results of 
 \cite{bucar-kedlaya-2015,rouse-thorner-2016} in the number field case, both of 
-which derive estimates of the form $\D_N \ll N^{-\frac 1 4+\epsilon}$ under 
-GRH + functional equation for the (non-CM) elliptic curve in question. 
+which derive estimates of the form $\D_N \ll N^{-\frac 1 4+\epsilon}$, assuming 
+both the generalized Riemann hypothesis and the functional equation for all 
+symmetric-power $L$-functions associated to the (non-CM) elliptic curve in 
+question. 
