@@ -6,7 +6,7 @@
 
 
 
-\section{Definitions}
+\section{Definitions and motivation}
 
 We start by considering a very general class of Dirichlet series: those that 
 admit a product formula with degree 1 factors. The motivating example was 
@@ -20,7 +20,8 @@ admit analytic continuation to $\Re = 1$? Yes, by the results of
 \cite[A.2]{serre-1989}. In fact, we will see later that the Akiyama--Tanigawa 
 conjecture implies the existence of a non-vanishing analytic continuation of 
 $L_{\sgn}(E,s)$ to $\Re > \frac 1 2$. Can the rank of $E$ be 
-found from $L_{\sgn}(E,s)$? Theoretically yes, by the following result. 
+found from $L_{\sgn}(E,s)$? Theoretically yes, by the following result, which 
+the author learned from Harris. 
 
 \begin{theorem}
 If $E_1$ and $E_2$ are non-CM elliptic curves over $\bQ$ with 
@@ -49,18 +50,21 @@ which is a contradiction.
 
 It follows that if $L_{\sgn}(E_1,s) = L_{\sgn}(E_2,s)$ for all $s$ in some 
 right half-plane, then $E_1$ and $E_2$ 
-are isogenous, so in particular they have the same rank. The heuristics in 
-\cite{sarnak-2007} suggest that if the Akiyama--Tanigawa (and other natural 
-conjectures) hold, then $L_f(E,s)$ has a zero of order 
+are isogenous, so in particular they have the same rank. Can we recover the 
+rank of $E$ from the behavior of $L_{\sgn}(E,s)$ at $s = \frac 1 2$? For 
+$k\geqslant 1$, let $r_k$ be the order of vanishing of $L(\sym^k E,s)$ at 
+$s = \frac 1 2$. The heuristics in \cite{sarnak-2007} suggest that if the 
+Akiyama--Tanigawa (and other natural conjectures) hold, then $L_f(E,s)$ has a 
+zero of order 
 $\sum_{k\geqslant 1} \widehat f(\sym^k) \left(-2 r_k + (-1)^{k+1}\right)$ at 
-$s = \frac 1 2$, where 
-$\widehat f(\sym^k) = \int_{\SU(2)^\natural} f(x) \tr\sym^k(x)\, \dd x$ and 
-$r_k$ is the order of vanishing of $L(\sym^k E,s)$ at $s = \frac 1 2$. If 
-$f = \tr\sym^1$ (this is called $U_1$ in Sarnak's letter), then
-$\widehat f(\sym^k)$ vanishes for $k\geqslant 2$, so the order of 
-vanishing of $L_{U_1}(E,s)$ at $s = \frac 1 2$ clearly depends only on $r_1$, 
-which is conjecturally the rank of $E$. However, for 
-$f = 1_{[0,\pi/2)} - 1_{(\pi/2,\pi]}$, we have 
+$s = \frac 1 2$. Here, 
+$\widehat f(\sym^k) = \int_{\SU(2)^\natural} f(x) \tr\sym^k(x)\, \dd x$ is the 
+$\sym^k$-Fourier coefficient of $f$. If $f = \tr\sym^1$ (this is called $U_1$ 
+in Sarnak's letter), then $\widehat f(\sym^k)$ vanishes for $k\geqslant 2$, so 
+the order of vanishing of $L_{U_1}(E,s)$ at $s = \frac 1 2$ is $1 - 2 r_1$, 
+which, if we assume the Birch and Swinnerton-Dyer conjecture, allows us to 
+``read'' the rank of $E$ from the behavior of $L_{U_1}(E,s)$ at 
+$s = \frac 1 2$. However, for $f = 1_{[0,\pi/2)} - 1_{(\pi/2,\pi]}$, we have 
 \[
 	\widehat f(\sym^k) = 
 	\begin{cases}
@@ -227,7 +231,7 @@ $\Re > \alpha$. This yields the desired non-vanishing analytic continuation.
 
 
 
-\section{Discrepancy of sequences and the Riemann hypothesis}
+\section{Discrepancy and the Riemann hypothesis}
 
 \begin{definition}
 We say the \emph{Riemann hypothesis} for $L(\bx,s)$ holds if the function 
