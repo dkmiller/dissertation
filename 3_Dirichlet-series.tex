@@ -23,7 +23,7 @@ $L_{\sgn}(E,s)$ to $\Re > \frac 1 2$. Can the rank of $E$ be
 found from $L_{\sgn}(E,s)$? Theoretically yes, by the following result. 
 
 \begin{theorem}
-If $E_1$ and $E_2$ are non-CM elliptic curves with 
+If $E_1$ and $E_2$ are non-CM elliptic curves over $\bQ$ with 
 $\sgn a_p(E_1) = \sgn a_p(E_2)$ for all $p$, then $E_1$ and $E_2$ are 
 isogenous.
 \end{theorem}
@@ -38,7 +38,8 @@ on $[0,\pi]\times [0,\pi]$.
 Recall that if $f(\theta) = 1_{[0,\pi/2)}(\theta) - 1_{(\pi/2,\pi]}(\theta)$, 
 then $\sgn(a_p) = f(\theta_p)$. Moreover, 
 $g(\theta_1,\theta_2) = |f(\theta_1) - f(\theta_2)|$ is non-negative and 
-continuous almost everywhere. It is clear that 
+continuous almost everywhere, and $g(\theta_p(E_1),\theta_p(E_2)) = 0$ if and 
+only if $\sgn a_p(E_1) = \sgn a_p(E_2)$. It is clear that 
 $\int g\, \dd \ST\times \ST > 0$. Harris' equidistribution result tells us that 
 \[
 	\int g\, \dd \ST\times\ST = \lim_{N\to \infty} \frac{1}{\pi(N)} \sum_{p\leqslant N} g(\theta_p(E_1),\theta_p(E_2)) = 0 ,
