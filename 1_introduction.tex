@@ -82,13 +82,13 @@ representations---those arising from elliptic curves and more general motives.
 
 
 
-\section{Discrepancy and Riemann hypothesis for elliptic curves}
+\section{Discrepancy and the Riemann hypothesis for elliptic curves}
 
 For background on the Galois representations and $L$-functions associated to 
 elliptic curves, see \cite[III\S7, C\S17]{silverman-2009}. Throughout this 
 thesis, what we call the $L$-function of an elliptic curve (motive, etc.) is 
 the normalized (i.e.~analytic instead of algebraic) $L$-function. 
-Let $E_{/\bQ}$ be an elliptic curve. For any prime $l$, the $l$-adic Tate 
+Let $E_{/\bQ}$ be a non-CM elliptic curve. For any prime $l$, the $l$-adic Tate 
 module of $E$ induces a continuous representation 
 $\rho_l \colon G_\bQ \to \GL_2(\bZ_l)$. It is known that the quantities 
 $a_p = \tr \rho_l(\frob_p)$ lie in $\bZ$ and satisfy the Hasse bound 
@@ -115,16 +115,16 @@ the analytic properties of the $L(\sym^k E,s)$. First, here is the famous
 Sato--Tate conjecture (now a theorem) in our notation. 
 
 \begin{theorem}[Taylor et.~al.]
-If $E$ is non-CM, the measures $P_x$ converge weakly to $\ST$. 
+The measures $P_x$ converge weakly to $\ST$. 
 \end{theorem}
 
 \begin{theorem}[Serre]
-The Sato--Tate conjecture holds for (a non-CM) $E$ if and only if each of 
+The Sato--Tate conjecture holds for $E$ if and only if each of 
 the functions $L(\sym^k E,s)$ have analytic continuation to $\Re = 1$. 
 \end{theorem}
 
 The stunning recent proof of the Sato--Tate conjecture 
-\cite{clozel-harris-taylor-2008,taylor-2008,harris-shepherd-barron-taylor-2010} 
+\cite{harris-shepherd-barron-taylor-2010} 
 showed that the functions $L(\sym^k E,s)$ have the desired analytic 
 continuation. In fact, they show that for all $k$, $L(\sym^k E,s)$ has 
 meromorphic continuation to the whole complex plane. Even better, when $k$ is 
@@ -141,7 +141,6 @@ $\{\theta_p\}_{p\leqslant x}$ is
 The following conjecture is made in \cite{akiyama-tanigawa-1999}.
 
 \begin{conjecture}[Akiyama--Tanigawa]
-If $E_{/\bQ}$ is a non-CM elliptic curve, then 
 $\D_x\left(E,\ST\right)\ll x^{-\frac 1 2+\epsilon}$.
 \end{conjecture}
 

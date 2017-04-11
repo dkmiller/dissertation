@@ -45,7 +45,7 @@ which are of the form
 \]
 In fact, in light of the following theorem, we can consider functions $f$ 
 which are only continuous almost everywhere. This allows us to consider 
-step functions like $-1_{[0,\pi/2)} + 1_{(\pi/2,\pi]}$ on $[0,\pi]$. 
+step functions like $1_{[0,\pi/2)} - 1_{(\pi/2,\pi]}$ on $[0,\pi]$. 
 
 \begin{theorem}
 Let $X$ be a compact separable metric space with no isolated points. Let $\mu$ 
@@ -297,8 +297,10 @@ of $\mu$ with respect to $\lambda$ (when it exists) is uniquely determined by
 $\cdf_\mu(x) = \int_{-\infty}^x \frac{\dd\mu}{\dd\lambda}(t)\, \dd t$. The 
 Radon--Nikodym derivative exists whenever $\mu$ is absolutely continuous with 
 respect to $\lambda$, i.e.~$\mu(S) = 0$ whenever $\lambda(S) = 0$. The 
-following result quantifies how much the discrepancy of a sequence changes when 
-the elements of the sequence are changed by a small amount. 
+following result, a generalization of 
+\cite[Ch.~2 Th.~4.1]{kuipers-niederreiter-1974}, quantifies how much the 
+discrepancy of a sequence changes when the elements of the sequence are changed 
+by a small amount. 
 
 \begin{lemma}\label{lem:disc-of-two-seq}
 Let $\bx$ and $\by$ be sequences in $[0,\infty)$. Suppose $\mu$ is an 
@@ -438,12 +440,13 @@ which yields the result.
 Historically, one of the first interesting examples of an equidistributed 
 sequence is the set of translates  of an irrational number modulo one. 
 
-\begin{theorem}
+\begin{theorem}[Weyl, Sierpi\'nski, Bohl]
 Let $a\in \bR$ be irrational. Then the sequence 
-$\bx=(a\mod 1,2a\mod 1,3a\mod 1,\dots)$ is equidistributed in $[0,1]$. 
+$\bx=(a\mod 1,2a\mod 1,3a\mod 1,\dots)$ is equidistributed in $[0,1)$. 
 \end{theorem}
 
-We will prove this result, originally due to Weyl, in Chapter \ref{chapter:irrationality-exponent}. It is known, and we will prove, that 
+We will prove this result in Chapter \ref{chapter:irrationality-exponent}. It 
+is known, and we will prove, that 
 sequences of this form have discrepancy which decays roughly like 
 $N^{-\alpha}$, for some $\alpha\in \left(0,\frac 1 2\right)$ which controls the 
 ``goodness'' of rational approximations of $x$. It is useful to have a sequence 

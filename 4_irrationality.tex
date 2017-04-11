@@ -163,7 +163,7 @@ makes sense for elements of $(\bR/\bZ)^d$). For $\vx\in (\bR/\bZ)^d$, we wish
 to control the discrepancy of the sequence $(\vx,2\vx,3\vx,\dots)$ with respect 
 to the Haar measure of $(\bR/\bZ)^d$. 
 
-\begin{theorem}[Erd\"os--Tur\'an--Koksma]
+\begin{theorem}[Erd\"os--Tur\'an--Koksma. {\cite[Th.~1.21]{drmota-tichy-1997}}]\label{thm:ETK}
 Let $\bvx$ be a sequence in $(\bR/\bZ)^d$ and $h$ an arbitrary integer. Then 
 \[
 	\D_N(\bvx) \ll \frac 1 h + \sum_{0\leqslant |\vm|_\infty \leqslant h} \frac{1}{r(\vm)} \left| \frac 1 N \sum_{n\leqslant N} e^{2\pi i \langle \vm,\vx_n\rangle}\right| ,
@@ -171,9 +171,6 @@ Let $\bvx$ be a sequence in $(\bR/\bZ)^d$ and $h$ an arbitrary integer. Then
 where the first sum ranges over $\vm\in \bZ^d$, 
 $r(\vm) = \prod \max\{1,|m_i|\}$, and the implied constant depends only on $d$. 
 \end{theorem}
-\begin{proof}
-This is \cite[Th.~1.21]{drmota-tichy-1997}. 
-\end{proof}
 
 \begin{lemma}\label{lem:bound-exp-sum}
 Let $x\in \bR$. Then 
@@ -201,8 +198,8 @@ Then for $\bvx=(\vx,2\vx,3\vx,\dots)$, we have
 for any integer $h$, with the implied constant depending only on $d$. 
 \end{corollary}
 \begin{proof}
-Apply the Erd\"os--Tur\'an--Koksma inequality, and bound the exponential sums 
-using Lemma \ref{lem:bound-exp-sum}. 
+Apply the Erd\"os--Tur\'an--Koksma inequality (Theorem \ref{thm:ETK}), and 
+bound the exponential sums using Lemma \ref{lem:bound-exp-sum}. 
 \end{proof}
 
 We combine the above results to estimate an upper bound on the discrepancy of 
@@ -383,7 +380,7 @@ the estimate $\D_N(\btheta) \ll N^{-\frac 1 2+\epsilon}$, where
 $\btheta = (\theta_\fp)_\fp$ is the sequence of Satake parameters of $A$. 
 
 \begin{theorem}\label{AT->RH:AB}
-Let $A_{/K}$ be a CM abelian variety. The Akiyama--Tanigawa conjecture for $A$ 
+The Akiyama--Tanigawa conjecture for $A$ 
 implies the Riemann hypothesis for all $L(r\circ \rho_l,s)$ with 
 $\left. r\right|_{\ST(A)}$ nontrivial. 
 \end{theorem}

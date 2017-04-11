@@ -142,9 +142,10 @@ $N$ of nice primes such that the map
 is an isomorphism. In fact, 
 $\# N = \dim\h^1(\bQ_{R\cup N},\Ad^0\bar\rho^\ast)$, and the primes in $N$ are 
 chosen, one at a time, from Chebotarev sets. Since $\pi_R(x)$ is eventually 
-constant and $h(x)$ increases to infinity, we can choose the first prime $p$ in 
-$N$ to be large enough so that $\pi_{R\cup\{p\}}(x) \leqslant h(x)$ for all 
-$x$, and so on for all the other primes in $N$. In other words, we can ensure 
+constant and $h(x)$ increases to infinity, $h(x) \geqslant \pi_R(x)+1$ for all 
+$x\geqslant C_1$ for some $C_1$. Choose the first prime $p$ in $N$ to be 
+$\geqslant C_1$; then $\pi_{R\cup\{p\}}(x) \leqslant h(x)$ for all $x$. Repeat 
+this process for allor all the other primes in $N$. We can ensure 
 that the bound $\pi_{R\cup N}(x) \leqslant h(x)$ continues to hold. We also 
 choose the primes in $N$ to be larger than any prime in $U'$. 
 
@@ -206,8 +207,9 @@ specified values.
 Given any deformation $\rho$, write $\pi_{\ram(\rho)}(x)$ for the function 
 which counts $\rho_n$-ramified primes $\leqslant x$. Since we will have 
 $\pi_{\ram(\rho)}(x)\ll h(x)$ and bounds of this form are only helpful 
-if $h(x) = o(\pi(x))$, we will usually assume $h(x) = \log x$ 
-or something similar (for example, the inverse of the Ackerman function). 
+if $h(x) = o(\pi(x))$, we will usually assume $h(x) \ll x^\epsilon$, 
+e.g.~$h(x) = \log x$ or something which grows even slower (for example, the 
+inverse of the Ackerman function). 
 
 \begin{theorem}\label{thm:master-Galois}
 Let $l$, $\bar\rho$, $\bx$ be as above. Fix a function 
@@ -359,9 +361,11 @@ satisfies the hypotheses of Theorem \ref{thm:discrepancy-arbitrary}, so
 there are ``$N^{-\alpha}$-decaying van der Corput sequences'' for 
 $\cos_\ast\mu$, and also that since $\cos\colon [0,\pi] \to [-1,1]$ is an 
 strictly decreasing, we know that for any sequence $\bx$ on $[-1,1]$, 
-$\D_N(\bx,\cos_\ast\mu) \approx \D_N(\cos^{-1}\bx,\mu)$. Recall that 
-$\varphi_1(N) = \Theta(\varphi_2(N))$ if there exists constants 
-$0 < C_1 < C_2$ such that 
+$\D_N(\bx,\cos_\ast\mu) \approx \D_N(\cos^{-1}\bx,\mu)$. Finally, the 
+Radon--Nikodym derivative $\mu$ (and also $\cos_\ast\mu$) is bounded , so Lemma 
+\ref{lem:disc-of-two-seq} applies. Recall that for deceasing functions 
+$\varphi_1,\varphi_2$, we write $\varphi_1(N) = \Theta(\varphi_2(N))$ if 
+there exists constants $0 < C_1 < C_2$ such that 
 $C_1 \varphi_2(N) \leqslant \varphi_1(N) \leqslant C_2 \varphi_2(N)$. 
 
 
