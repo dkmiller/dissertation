@@ -9,31 +9,26 @@
 	thesis,   % custom math commands
 	tikz-cd   % commutative diagrams
 }
-
 \SetSymbolFont{stmry}{bold}{U}{stmry}{m}{n} % Kills stmaryrd warning.
 \usepackage[hidelinks]{hyperref}
 
-\usepackage[
-	backend  = bibtex,    % use bibtex instead of biber
-	sorting  = nyt,       % sort by (name, year, title)
-	style    = alphabetic % citations look like [Har77]
-]{biblatex}
-
 \tolerance=9999
 
-\DeclareFieldFormat{postnote}{#1}
-\DeclareFieldFormat{multipostnote}{#1}
-\addbibresource{thesis.bib}
+\bibliographystyle{alpha}
+
+\renewcommand{\topfraction}{0.85}
+\renewcommand{\textfraction}{0.1}
+\renewcommand{\floatpagefraction}{0.75}
 
 \title{Counterexamples related to the Sato--Tate conjecture}
 \author{Daniel Miller}
 \conferraldate{May}{2017}
-
-
-
-
+\degreefield {Ph.D.}
+\copyrightholder{Daniel Miller}
+\copyrightyear{2017}
 
 \begin{document}
+
 \maketitle
 \makecopyright
 
@@ -116,15 +111,12 @@ her.
 \end{acknowledgements}
 
 \contentspage
+
 \normalspacing
 \setcounter{page}{1}
 \pagenumbering{arabic}
 \pagestyle{cornell}
 \addtolength{\parskip}{0.5\baselineskip}
-
-
-
-
 
 \include{1_introduction}
 \include{2_discrepancy}
@@ -134,8 +126,6 @@ her.
 \include{6_conclusion}
 
 
+\bibliography{thesis}
 
-
-
-\printbibliography[heading=bibintoc]
 \end{document}
