@@ -429,12 +429,16 @@ that we can choose $a_{p_i}$ satisfying the Hasse bound so that
 We can also choose the $a_{q_i}$ such that 
 $\frac{a_{q_i}}{2\sqrt{q_i}}\in [\pi/2,\pi]$ and 
 $\left| \frac{a_{p_i}}{2\sqrt{p_i}} + \frac{a_{q_i}}{2\sqrt{q_i}}\right| \ll \frac{1}{\sqrt{p_i}}$. 
-If $\bx$ is the sequence of the $\frac{a_{p_i}}{2\sqrt{p_i}}$ and $\by$ is 
-the corresponding sequence with the $q_i$-s, then Lemma 
-\ref{lem:disc-of-two-seq}, Lemma \ref{lem:flip-discrepancy}, and Theorem 
-\ref{thm:wreath-seq} tell us that $\D_N(\bx\wr\by,\mu) = \Theta(N^{-\alpha})$. 
+Let $\bx$ be the sequence of the $\frac{a_{p_i}}{2\sqrt{p_i}}$ and $\by$  
+the corresponding sequence with the $q_i$-s. Then 
+Lemma \ref{lem:flip-discrepancy} tells us that the discrepancy of 
+$\by$ decays at the same rate (within $O(N^{-1})$) as $-\by$, and then Lemma  \ref{lem:disc-of-two-seq} with $\epsilon\approx N^{-1/2}$ tells us that 
+the discrepancy of $-\by$ decays at the same rate (within $O(N^{-1/2})$) as 
+the discrepancy of $\bx$. Thus the discrepancies of both $\bx$ and $\by$ decay 
+as $\Theta(N^{-\alpha})$. Finally, Theorem \ref{thm:wreath-seq} tell us that 
+$\D_N(\bx\wr\by,\mu) = \Theta(N^{-\alpha})$. 
 
-Moreover, $U_k(\cos^{-1} t)$ is an odd polynomial in $t$, so for 
+The function $U_k(\cos^{-1} t)$ is an odd polynomial in $t$, so for 
 $t_1,t_2\in [-1,1]$, 
 \[
 	|U_k(\cos^{-1} t_1) + U_k(\cos^{-1} t_2)| = |U_k(\cos^{-1} t_1) - U_k(\cos^{-1}(-t_1))| \ll |t_1 - (-t_2)|.
@@ -448,9 +452,10 @@ We can then bound
 \]
 \end{proof}
 
-Note that this proof actually shows that for any $f\in C([0,\pi])$ with 
-$f\circ \cos^{-1}\in C^1([-1,1])$ and $f(\pi-\theta) = -f(\theta)$, the 
-estimate $\left| \sum_{p\leqslant N} f(\theta_p)\right| \ll \pi(N)^{1/2}$. 
+Note that this proof actually shows that for any $f\in C([0,\pi])$ such 
+that $f\circ \cos^{-1}$ is Lipschitz, and $f(\pi-\theta) = -f(\theta)$, the 
+estimate $\left| \sum_{p\leqslant N} f(\theta_p)\right| \ll \pi(N)^{1/2}$ 
+holds. 
 
 \begin{theorem}\label{thm:bad-Galois}
 Let $\mu$ be a Sato--Tate compatible $\sigma$-invariant measure on $[0,\pi]$. 
@@ -477,15 +482,26 @@ hypothesis.
 \end{theorem}
 \begin{proof}
 Let $\bx$ be an $N^{-\alpha}$-decay van der Corput sequence for 
-$\cos_\ast \left.\mu\right|_{[0,\pi/2)}$. Let $\by = -\bx$. Then 
-$\D_N(\bx\wr\by,\cos_\ast\mu) = \Theta(N^{-\alpha})$. Set $h(x) = \log(x)$. 
-By Theorem \ref{thm:master-Galois}, there is a 
-$\rho\colon G_\bQ \to \GL_2(\bZ_l)$ lifting $\bar\rho$ such that parts 
-1 and 2 of the theorem hold. The discrepancy estimate comes from Lemma 
-\ref{lem:flip-discrepancy}, Lemma \ref{lem:disc-of-two-seq}, and Theorem 
-\ref{thm:wreath-seq} as above, while the Riemann hypothesis for odd symmetric 
-powers follows from Theorem \ref{thm:AT->RH:gp} and the proof of Theorem 
-\ref{thm:int-flip-seq}. 
+$\cos_\ast \left.\mu\right|_{[0,\pi/2)}$, so that $\bx$ is contained in 
+$(0,1]$. Let $\by = -\bx$ (contained in $[-1,0)$), and put 
+$\bz = \bx\wr\by$, reindexed by the prime numbers. We have
+$\D_N(\bz,\cos_\ast\mu) = \Theta(\pi(N)^{-\alpha})$ just as in the proof 
+of Theorem \ref{thm:int-flip-seq}. Set $h(x) = \log(x)$. By Theorem 
+\ref{thm:master-Galois}, there is a $\rho\colon G_\bQ \to \GL_2(\bZ_l)$ lifting 
+$\bar\rho$ such that $\pi_{\ram(\rho)}(x) \ll \log x$, the $\tr \rho(\frob_p)$ 
+are integral, satisfy the Hasse bound, and 
+$\left| \frac{a_p}{2\sqrt p} - z_p\right| \leqslant \frac{l \log p}{2\sqrt p}$. 
+This implies, just as in the proof of Theorem \ref{thm:master-Galois}, that 
+the discrepancy of the sequence $\left\{\frac{a_p}{2\sqrt p}\right\}$ decays 
+as $\Theta(\pi(N)^{-\alpha})$ and by Lemma \ref{lem:push-discrepancy}, the 
+discrepancies of $\left\{\frac{a_p}{2\sqrt p}\right\}$ and $\{\theta_p\}$ 
+decay asymptotically at the same rate. 
+
+We've proved statements 1--3 in the theorem, so all that remains is to prove 
+the Riemann hypothesis for odd symmetric powers. The proof of Theorem 
+\ref{thm:int-flip-seq} gives us an estimate 
+$\left| \sum_{p\leqslant N} U_k(\theta_p)\right| \ll N^{\frac 1 2+\epsilon}$, 
+and this combined with Theorem \ref{thm:AT->RH:gp} yields the result. 
 \end{proof}
 
 This entire discussion also works with absolutely continuous measure $\mu$, 
