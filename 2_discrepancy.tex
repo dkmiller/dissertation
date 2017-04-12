@@ -48,17 +48,37 @@ which are only continuous almost everywhere. This allows us to consider
 step functions like $1_{[0,\pi/2)} - 1_{(\pi/2,\pi]}$ on $[0,\pi]$. 
 
 \begin{theorem}
-Let $X$ be a compact separable metric space with no isolated points. Let $\mu$ 
-be a Radon measure on $X$ and let $f\colon X\to \bC$ be bounded and measurable. 
-Then $f$ is continuous $\mu$-almost everywhere if and only if 
+Let $X$ be a compact topological space, $\mu$ a Radon probability measure on 
+$X$, and $f\colon X\to \bC$ bounded and continuous $\mu$-almost everywhere. If 
+$\bx$ is $\mu$-equidistributed, then 
 \[
-	\lim_{N\to \infty} \frac{1}{\pi(N)} \sum_{p\leqslant N} f(x_p) = \int f\, \dd\mu
+	\lim_{N\to \infty} \frac{1}{\pi(N)} \sum_{p\leqslant N} f(x_p) = \int f\, \dd\mu .
 \]
-for all $\mu$-equidistributed sequences $\bx$. 
 \end{theorem}
 \begin{proof}
-This follows in a straightforward way from the proof of 
-\cite[Th.~1]{mazzone-1995}. 
+We prove the more general result that if $\{\mu_n\}$ is a sequence of Radon 
+probability measures on $X$ which converges weakly to $\mu$, then 
+$\mu_n(f) \to \mu(f)$ for all $f$ which are bounded and continuous 
+$\mu$-almost everywhere. 
+
+Let $D$ be the set of points at which $f$ is not continuous. For every 
+$\epsilon>0$, there exists an open $U_\epsilon\supset D$ with 
+$\mu(U_\epsilon) < \epsilon$, and $f_\epsilon\in C(X)$ such that 
+$|f_\epsilon|_\infty \leqslant |f|_\infty$, $f_\epsilon|_D = 0$, and 
+$f_\epsilon|_{X\smallsetminus U_\epsilon} = f|_{X\smallsetminus U_\epsilon}$. 
+Note that 
+\begin{equation}\label{eq:measures-ineq}
+	|\mu_n f - \mu f| \leqslant |\mu_n f - \mu_n f_\epsilon| + |\mu_n f_\epsilon - \mu f_\epsilon| + |\mu f_\epsilon - \mu f| .
+\end{equation}
+Now $|\mu_n f - \mu f| \leqslant \mu_n(U_\epsilon) |f|_\infty$. Since 
+$U_\epsilon$ is open, this converges to 
+$\mu(U_\epsilon) |f|_\infty < \epsilon |f|_\infty$. The second term in 
+\eqref{eq:measures-ineq} converges to zero because $f_\epsilon$ is continuous, 
+and the third term can be bounded as 
+$|\mu f_\epsilon - \mu f| \leqslant \mu(U_\epsilon) |f|_\infty < \epsilon |f|_\infty$. 
+We have shown that 
+$\limsup_{n\to \infty} |\mu_n f - \mu f| \leqslant 2 \epsilon |f|_\infty$. 
+Since $\epsilon$ was arbitrary, the result follows. 
 \end{proof}
 
 
