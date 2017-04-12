@@ -77,7 +77,7 @@ infinitely many $(n,m)$ with $|n x - m| \leqslant \max(|n|,|m|)^{-w}$. By the
 reverse triangle inequality, 
 $\left| |n x| - |m|\right| \leqslant \max(|n|,|m|)^{-w}$, and since 
 $x<1$, for $n$ sufficiently large this implies $|n| \geqslant |m|$. It follows 
-that for infinitely many $(n,m)$, we have 
+that for infinitely many $\frac m n$, we have 
 $\left| x - \frac m n\right| \leqslant n^{-(w + 1)}$, which implies 
 $\mu \geqslant \omega_0(x) + 1$. 
 \end{proof}
@@ -96,7 +96,7 @@ This follows directly from \cite{roth-1955} and Theorem
 Given $\vx\in \bR^d$, write 
 $\dd(\vx,\bZ^d)=\min_{\vm\in \bZ^d} |\vx-\vm|_\infty$. Note that 
 $\dd(\vx,\bZ^d)=0$ if and only if $\vx\in \bZ^d$. Moreover, $\dd(-,\bZ^d)$ 
-is well-defined for elements of $(\bR/\bZ)^d$. 
+is well-defined for elements of $\bT^d$. 
 
 \begin{lemma}\label{lem:bound-distance}
 Let $\vx\in \bR^d$ with $|\vx|_\infty< 1$ and $\omega_0(\vx)$ 
@@ -137,7 +137,7 @@ Now we consider the second inequality. Note
 that $\dd(\langle \vm,\vx\rangle,\bZ) = |n + \langle \vm,\vx\rangle|$ for 
 some $n$ with $|n| \leqslant |\vm|_2\cdot |\vx|_2 + 1$. Thus 
 $|(n,\vm)|_\infty \ll |\vm|_2 \ll |\vm|_\infty$ with the implied constants 
-depending on $d$ and $x$, because any two norms on a 
+depending on $d$ and $\vx$, because any two norms on a 
 finite-dimensional Banach space are equivalent. This gives us 
 $\dd(\langle\vm,\vx\rangle,\bZ) \geqslant C_{d-1}' |\vm|_\infty^{-\omega_{d-1}(\vx)-\epsilon}$, 
 for some constant $C_{d-1}'$. This implies 
@@ -155,16 +155,16 @@ the implied constant depending on $\vx$ and $\epsilon$.
 
 Let $\vx=(x_1,\dots,x_d)\in \bR^d$. The sequence 
 $(\vx\mod \bZ^d,2\vx\mod\bZ^d,\dots)$ will be equidistributed in a subtorus of 
-$(\bR/\bZ)^d$ whose rank is equal to the dimension of the $\bQ$-vector space 
+$\bT^d$ whose rank is equal to the dimension of the $\bQ$-vector space 
 spanned by $\{x_1,\dots,x_d\}$. We are interested in the case where this 
-sequence is equidistributed in the whole torus $(\bR/\bZ)^d$, so assume 
+sequence is equidistributed in the whole torus $\bT^d$, so assume 
 $x_1,\dots,x_d$ are linearly independent over $\bQ$ (this condition also 
-makes sense for elements of $(\bR/\bZ)^d$). For $\vx\in (\bR/\bZ)^d$, we wish 
+makes sense for elements of $\bT^d$). For $\vx\in \bT^d$, we wish 
 to control the discrepancy of the sequence $(\vx,2\vx,3\vx,\dots)$ with respect 
-to the Haar measure of $(\bR/\bZ)^d$. 
+to the Haar measure of $\bT^d$. 
 
 \begin{theorem}[Erd\"os--Tur\'an--Koksma. {\cite[Th.~1.21]{drmota-tichy-1997}}]\label{thm:ETK}
-Let $\bvx$ be a sequence in $(\bR/\bZ)^d$ and $h$ an arbitrary integer. Then 
+Let $\bvx$ be a sequence in $\bT^d$ and $h$ an arbitrary integer. Then 
 \[
 	\D_N(\bvx) \ll \frac 1 h + \sum_{0\leqslant |\vm|_\infty \leqslant h} \frac{1}{r(\vm)} \left| \frac 1 N \sum_{n\leqslant N} e^{2\pi i \langle \vm,\vx_n\rangle}\right| ,
 \]
@@ -190,7 +190,7 @@ It is easy to check that $|\sin(\pi x)| \geqslant \dd(x,\bZ)$, whence the result
 \end{proof}
 
 \begin{corollary}\label{cor:bound-disc-distance}
-Let $\vx\in (\bR/\bZ)^d$ with $(x_1,\dots,x_d)$ linearly independent over $\bQ$. 
+Let $\vx\in \bT^d$ with $(x_1,\dots,x_d)$ linearly independent over $\bQ$. 
 Then for $\bvx=(\vx,2\vx,3\vx,\dots)$, we have 
 \[
 	\D_N(\bvx) \ll \frac 1 h + \frac 1 N \sum_{0<|\vm|_\infty \leqslant h} \frac{2}{r(\vm) \dd(\langle \vm,\vx\rangle,\bZ)} 
@@ -206,7 +206,7 @@ We combine the above results to estimate an upper bound on the discrepancy of
 the sequence $\bvx$. 
 
 \begin{theorem}\label{thm:disc-upper-bound}
-Let $\bvx=(\vx,2\vx,3\vx,\dots)$ in $(\bR/\bZ)^d$. Then 
+Let $\bvx=(\vx,2\vx,3\vx,\dots)$ in $\bT^d$. Then 
 \[
 	\D_N(\bvx) \ll N^{-\frac{1}{\omega_{d-1}(\vx)+1}+\epsilon} .
 \]
@@ -253,7 +253,7 @@ purposes, but does not strengthen any of the results in this thesis.
 
 \begin{theorem}\label{thm:disc-lower-bound}
 Let $\vx\in \bR^d$ be such that $x_1,\dots,x_d$ are linearly independent over 
-$\bQ$, and let $\bvx=(\vx,2\vx,3\vx,\dots)$ in $(\bR/\bZ)^d$. Then 
+$\bQ$, and let $\bvx=(\vx,2\vx,3\vx,\dots)$ in $\bT^d$. Then 
 $\D_N(\bvx) = \Omega\left(N^{-\frac{d}{\omega_0(\vx)}-\epsilon} \right)$. 
 \end{theorem}
 \begin{proof}
@@ -279,7 +279,7 @@ we have
 		\leqslant q^{-1-\delta/2}. 
 \]
 Thus, for each $n\leqslant N$, $n \vx$ is within $q^{-1-\delta/2}$ of the 
-grid $\frac 1 q \bZ^d\subset (\bR/\bZ)^d$. So no element of 
+grid $\frac 1 q \bZ^d\subset \bT^d$. So no element of 
 $\{\vx,\dots,N \vx\}$ lies in the half-open box 
 $I_q = \left[ q^{-1 - \delta / 3}, q^{-1} - q^{-1 - \delta / 3}\right)^d$. 
 Moreover, $I_q$ has volume $\left(q^{-1} - 2q^{-1 - \delta / 3}\right)^d$. 
@@ -336,7 +336,7 @@ $\det_\fa\colon \R_{K/\bQ}\Gm \to \R_{F/\bQ}\Gm$ be the map induced by the
 determinant of the action of $K$ on $\fa$ (viewed as an $F$-vector space). Then 
 $G_A = \im(\det_\fa)$ \cite{yu-2015}, and $\ST(A)$ is a maximal compact 
 subgroup of $G_A^1(\bC) = G_A^{\N_{F/\bQ} = 1}(\bC)$. So 
-$\ST(A) \simeq (\bR/\bZ)^d$ for some $1\leqslant d \leqslant g$, and every 
+$\ST(A) \simeq \bT^d$ for some $1\leqslant d \leqslant g$, and every 
 unitary character of $\ST(A)$ is induced by an algebraic character of 
 $G_A^1$. Any character of a subtorus extends to the whole torus, so any 
 character of $G_A^1$ is the restriction of a character of $\R_{F/\bQ}\Gm$. 
@@ -376,7 +376,7 @@ Recall that
 $L(r\circ \rho_l,s) = \prod \left(1 - r(\theta_\fp) \N(\fp)^{-s}\right)^{-1}$ 
 (this is the normalized $L$-function, not the algebraic $L$-function). 
 As in Chapter \ref{ch2:discrepancy}, the choice of an isomorphism
-$(\bR/\bZ)^d\simeq \ST(A)$ yields a definition of discrepancy 
+$\bT^d\simeq \ST(A)$ yields a definition of discrepancy 
 for sequences in $\ST(A)$. We call the ``Akiyama--Tanigawa conjecture for $A$'' 
 the estimate $\D_N(\btheta) \ll N^{-\frac 1 2+\epsilon}$, where 
 $\btheta = (\theta_\fp)_\fp$ is the sequence of Satake parameters of $A$. 
@@ -399,19 +399,19 @@ imply the Akiyama--Tanigawa conjecture for $A$? We proceed to construct
 $L$-functions coming from ``fake Satake parameters'' which provide evidence to 
 the contrary for nonmotivic (non-automorphic, in fact) Satake parameters. 
 
-Give $(\bR/\bZ)^d$ the Haar measure normalized to have total mass one. 
-Recall that for any $f\in L^1((\bR/\bZ)^d)$, the Fourier coefficients of $f$ 
+Give $\bT^d$ the Haar measure normalized to have total mass one. 
+Recall that for any $f\in L^1(\bT^d)$, the Fourier coefficients of $f$ 
 are, for $\vm\in \bZ^d$: 
 \[
-	\widehat f(\vm) = \int_{(\bR/\bZ)^d} e^{2\pi i \langle \vm,\vx\rangle} \, \dd \vx ,
+	\widehat f(\vm) = \int_{\bT^d} e^{2\pi i \langle \vm,\vx\rangle} \, \dd \vx ,
 \]
 where $\langle \vm,\vx\rangle = m_1 x_1 + \cdots + m_d x_d$ is the usual inner 
-product. Typically, if $f$ is a function on $(\bR/\bZ)^d$, sums of the form 
+product. Typically, if $f$ is a function on $\bT^d$, sums of the form 
 $\sum_{n\leqslant N} f(n \vx)$ will be $o(N)$. When $f$ is a character of the 
 torus, there is a much stronger bound. 
 
 \begin{theorem}
-Fix $\vx\in (\bR/\bZ)^d$ with $\omega_{d-1}(\vx)$ finite. Then 
+Fix $\vx\in \bT^d$ with $\omega_{d-1}(\vx)$ finite. Then 
 \[
 	\left| \sum_{n\leqslant N} e^{2\pi i \langle \vm, n \vx\rangle}\right| \ll |\vm|_\infty^{\omega_{d-1}(\vx) + \epsilon} 
 \]
@@ -430,7 +430,7 @@ of the form $\sum_{n\leqslant N} f(n \vx)$.
 
 \begin{theorem}\label{thm:translates-bound-sum}
 Let $\vx\in \bR^d$ with $\omega_{d-1}(\vx)$ finite. Fix 
-$f\in C^\infty((\bR/\bZ)^d)$ with $\widehat f(\vzero)=0$. Then 
+$f\in C^\infty(\bT^d)$ with $\widehat f(\vzero)=0$. Then 
 $\left| \sum_{n\leqslant N} f(n \vx)\right| \ll 1$. 
 \end{theorem}
 \begin{proof}
@@ -461,10 +461,10 @@ $w\geqslant \frac 1 d$, by Theorem \ref{thm:jarnik}, we can find $\vy$ with
 $\omega_0(\vy) = w$ and $\omega_{d-1}(\vy) = d w + d - 1$. 
 
 \begin{theorem}
-The sequence $\bvx$ is equidistributed in $(\bR/\bZ)^d$, with discrepancy 
+The sequence $\bvx$ is equidistributed in $\bT^d$, with discrepancy 
 decaying as $\D_N(\bvx) \ll N^{-\frac{1}{d w+d} + \epsilon}$, and for which 
 $\D_N(\bvx) = \Omega\left(N^{-\frac{d}{w} - \epsilon}\right)$. 
-However, for any $f\in C^\infty((\bR/\bZ)^d)$ with $\widehat f(0)=0$, the 
+However, for any $f\in C^\infty(\bT^d)$ with $\widehat f(\vzero)=0$, the 
 Dirichlet series  $L_f(\bx,s)$ satisfies the Riemann hypothesis. 
 \end{theorem}
 \begin{proof}

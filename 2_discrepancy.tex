@@ -150,7 +150,7 @@ $[\vzero,\vinfty)$, and $\mu$ a probability measure on $[\vzero,\vinfty)$. For a
 $N\geqslant 1$, the empirical measure associated to the truncated 
 sequence $\bvx_{\leqslant N} = (\vx_n)_{n\leqslant N}$ is 
 $P_{\bvx,N} = \frac{1}{N} \sum_{n\leqslant N} \delta_{\vx_n}$. Write 
-$\D_N(\bvx,\mu) = \D_N\left( P_{\bvx,N},\mu\right)$, and similarly for star 
+$\D_N(\bvx,\mu) = \D\left( P_{\bvx,N},\mu\right)$, and similarly for star 
 discrepancy. In this context, 
 \[
 	\D^\star_N(\bvx,\mu) = \sup_{\vy\in [\vzero,\vinfty)} \left| \frac{\# \{n\leqslant N : \vx_n \in [\vzero,\vy)\}}{N} - \int_{[\vzero,\vy)} \, \dd\mu\right| .
@@ -162,17 +162,19 @@ discrepancy) of the sequence $\bx$.
 If the measure $\mu$ is only defined on a Borel subset of $[\vzero,\vinfty)$, we 
 tacitly extend it by zero to $\bR^d$. It is also possible to define discrepancy 
 for sequences lying in compact Lie groups. For example, if the sequence $\bvx$ 
-lies in a real torus $T$, choose an isomorphism $(\bR/\bZ)^d \simeq T$, and 
+lies in a real torus $T$, choose an isomorphism $\bT^d \simeq T$, and 
 using that isomorphism identify the torus with  $[0,1)^d\subset [\vzero,\vinfty)$. 
 This gives a definition of discrepancy for sequences in $T$. Two different 
-isomorphisms $T\simeq (\bR/\bZ)^d$ will give two different definitions of 
+isomorphisms $T\simeq \bT^d$ will give two different definitions of 
 discrepancy, but asymptotically they will be bounded above and below by 
 constant multiples of each other as long as the measure in question is the 
-normalized Haar measure on the torus. In that case, we write $\D_N(\bvx)$ in 
-place of $\D_N(\bvx, \mu)$. 
+normalized Haar measure. In that case, we write $\D_N(\bvx)$ in place of 
+$\D_N(\bvx, \mu)$. 
 
-Now let $G$ be a compact, connected Lie group, and consider a sequence 
-lying in the space $G^\natural$ of conjugacy classes. Choose a maximal torus $T\subset G$, and recall that 
+We can even define discrepancy for sequences in compact, connected Lie groups, 
+though we will only use $G = \SU(2)$. Let $G$ be such a group, and consider a 
+sequence lying in the space $G^\natural$ of conjugacy classes of $G$. Choose a 
+maximal torus $T\subset G$, and recall that 
 $G^\natural = T/W$, for $W$ the Weyl group of $T$. There is a half-open 
 box in $\ft = \Lie(T)$ which maps bijectively to $T$ under the exponential 
 map. Choose a ``half-open'' polyhedral set $Q$ which is a fundamental domain for 
@@ -182,8 +184,8 @@ $[0,1)^d$, $d = \dim T$. This gives a definition of discrepancy for
 a sequence in $G^\natural$ with respect to the Haar measure. Of course this 
 definition depends on the choice of $T$, $Q$, and the basis of $\ft$, but 
 asymptotically these definitions are all the same. The paper 
-\cite{rosengarten-2013} has a different definition of discrepancy which only 
-works for semisimple simply-connected groups, but also proves an 
+\cite{rosengarten-2013} gives a different definition of discrepancy which only 
+works for semisimple simply-connected groups, but unlike this thesis, proves an 
 Erd\"os--Tur\'an inequality in that context. It is likely that a reasonable 
 application of isotropic discrepancy would render these definitions equivalent, 
 at least for asymptotic purposes, but as the two definitions coincide for 
@@ -199,8 +201,9 @@ and that in formulas $\frac{1}{N}$ is replaced by
 $\#\{\textnormal{indices }\leqslant N\}^{-1}$. 
 
 \emph{Why half-open boxes?} The choice of sets of the form $[\vx,\vy)$ in the 
-definition of discrepancy seems rather arbitrary, and it is. Discrepancy can 
-easily be defined as a supremum over all open (or closed) balls---and 
+definition of discrepancy seems rather arbitrary, and it is. One could easily 
+define another kind of discrepancy as a supremum over all open or closed 
+balls---and 
 those  definitions generalize to arbitrary metric spaces. There are also more 
 subtle definitions involving suprema over open or closed convex sets 
 (isotropic discrepancy). See \cite{kuipers-niederreiter-1974} for a discussion 
@@ -328,7 +331,7 @@ absolutely continuous probability measure on $[0,\infty)$ with bounded
 Radon--Nikodym derivative $\frac{\dd \mu}{\dd\lambda}$. Let $\epsilon>0$ be 
 arbitrary. Then 
 \[
-	\left|\D_N^\star(\bx, \mu) - \D_N^\star(\by,\mu)\right| \leqslant \left\|\frac{\dd\mu}{\dd\lambda}\right\|_\infty \epsilon + \frac{\#\{ n\leqslant N : |x_n - y_n| \geqslant \epsilon\}}{N} .
+	\left|\D_N^\star(\bx, \mu) - \D_N^\star(\by,\mu)\right| \leqslant \left|\frac{\dd\mu}{\dd\lambda}\right|_\infty \epsilon + \frac{\#\{ n\leqslant N : |x_n - y_n| \geqslant \epsilon\}}{N} .
 \]
 \end{lemma}
 \begin{proof}
@@ -344,10 +347,10 @@ $\left| P_{\bx,N}[0,t+\epsilon) - \mu[0,t+\epsilon)\right| \leqslant \D_N^\star(
 	P_{\by,N}[0,t) - \mu[0,t) 
 		&\leqslant P_{\bx,N}[0,t+\epsilon) - \mu[0,t) + \frac{\#\{ n\leqslant N : |x_n - y_n| \geqslant \epsilon\}}{N} \\
 		&\leqslant \mu[t,t+\epsilon) + \D_N^\star(\bx,\mu) + \frac{\#\{ n\leqslant N : |x_n - y_n| \geqslant \epsilon\}}{N} \\
-		&\leqslant \left\|\frac{\dd\mu}{\dd\lambda}\right\|_\infty \epsilon + \D_N^\star(\bx,\mu) + \frac{\#\{ n\leqslant N : |x_n - y_n| \geqslant \epsilon\}}{N} 
+		&\leqslant \left|\frac{\dd\mu}{\dd\lambda}\right|_\infty \epsilon + \D_N^\star(\bx,\mu) + \frac{\#\{ n\leqslant N : |x_n - y_n| \geqslant \epsilon\}}{N} 
 \end{align*}
 This tells us that 
-$\D_N^\star(\by,\mu) \leqslant \left\|\frac{\dd\mu}{\dd\lambda}\right\|_\infty \epsilon + \D_N^\star(\bx,\mu) + \frac{\#\{ n\leqslant N : |x_n - y_n| \geqslant \epsilon\}}{N}$. 
+$\D_N^\star(\by,\mu) \leqslant \left|\frac{\dd\mu}{\dd\lambda}\right|_\infty \epsilon + \D_N^\star(\bx,\mu) + \frac{\#\{ n\leqslant N : |x_n - y_n| \geqslant \epsilon\}}{N}$. 
 Reversing the roles of $\bx$ and $\by$, we obtain the desired result. 
 \end{proof}
 
@@ -445,7 +448,22 @@ $[\vs,\vt)$ be a half-open box such that $|P_{\bx,N}[\vs,\vt) - \mu[\vs,\vt)|$
 is within some arbitrary $\epsilon$ of $\D_N(\bx,\mu)$. Use the coordinate 
 hyperplane between $I$ and $J$ to ``cut off'' the part of $[\vs,\vt)$ that 
 does not intersect $I$. Replacing $[\vs,\vt)$ with this smaller box, we may 
-assume it does not intersect $J$. Under the assumption  
+assume it does not intersect $J$. 
+\begin{figure}[h]
+\caption{The sets $I$, $J$, and $[\vs,\vt)$ when $d = 2$.}
+\centering
+\begin{tikzpicture}
+\draw (0,0) rectangle (3,1);
+\draw (1,2) rectangle (4,4);
+\draw (-1,1.5) -- (5,1.5);
+\draw (2,0.5) rectangle (4,1.5);
+\node at (6,1.5) {hyperplane};
+\node at (3.5,1) {$[\vs,\vt)$};
+\node at (1,0.5) {$I$};
+\node at (2.5,3) {$J$};
+\end{tikzpicture}
+\end{figure}
+Under the assumption  
 $[\vs,\vt)\cap J=\varnothing$, we have
 $\left|P_{\bx\wr\by,N}[\vs,\vt) - (\mu+\nu)[\vs,\vt)\right| = |P_{\bx,N}[\vs,\vt) - \mu[\vs,\vt)|$, 
 which yields the result. 
@@ -474,7 +492,7 @@ whose discrepancy decays faster. The best known rate of decay is achieved by
 the following example. 
 
 \begin{definition}
-For $n\in \bN$, write $n$ in base $2$ as $n = \sum a_i 2^i$ and put 
+For $n\in \bN$, write $n$ in base $2$ as $n = \sum a_i 2^i$, and put 
 $v_n = \sum a_i 2^{-(i+1)}$. The \emph{van der Corput sequence} is 
 $\bv = (v_1,v_2,v_3,\dots)$.
 \end{definition}
