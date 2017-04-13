@@ -432,28 +432,29 @@ By writing any function as a Fourier series, we can apply this result to sums
 of the form $\sum_{n\leqslant N} f(n \vx)$. 
 
 \begin{theorem}\label{thm:translates-bound-sum}
-Let $\vx\in \bR^d$ with $\omega_{d-1}(\vx)$ finite. Fix 
-$f\in C^\infty(\bT^d)$ with $\widehat f(\vzero)=0$. Then 
-$\left| \sum_{n\leqslant N} f(n \vx)\right| \ll 1$. 
+Let $\vx\in \bR^d$ with $\omega_{d-1}(\vx)$ finite. Let 
+$r>\omega_{d-1}(\vx)+1$, and fix $f\in C^r(\bT^d)$ with $\widehat f(\vzero)=0$. 
+Then $\left| \sum_{n\leqslant N} f(n \vx)\right| \ll 1$. 
 \end{theorem}
 \begin{proof}
 Write $f$ as a Fourier series:
 $f(\vx) = \sum_{\vm\in \bZ^d} \widehat f(\vm) e^{2\pi i \langle \vm,\vx\rangle}$. 
 Since $\widehat f(\vzero)=0$, we can compute:
-\begin{align*}
+\begin{align}
 	\left| \sum_{n\leqslant N} f(n \vx)\right| 
-		&= \left| \sum_{n\leqslant N} \sum_{\vm\in \bZ^d\smallsetminus \vzero} \widehat f(\vm) e^{2\pi i n \langle \vm,\vx\rangle}\right| \\
-		&\leqslant \sum_{\vm\in \bZ^d\smallsetminus \vzero} \left|\widehat f(\vm)\right|\cdot \left| \sum_{n\leqslant N} e^{2\pi i n \langle \vm,\vx\rangle}\right| \\
-		&\ll \sum_{\vm\in \bZ^d\smallsetminus \vzero} \left|\widehat f(\vm)\right|\cdot |\vm|_\infty^{\omega_{d-1}(\vx) + \epsilon} .
-\end{align*}
-The sum converges since the Fourier coefficients $\widehat f(\vm)$ converge to 
-zero faster than the reciprocal of any polynomial. 
+		&= \left| \sum_{n\leqslant N} \sum_{\vm\in \bZ^d\smallsetminus \vzero} \widehat f(\vm) e^{2\pi i n \langle \vm,\vx\rangle}\right|\nonumber \\ 
+		&\leqslant \sum_{\vm\in \bZ^d\smallsetminus \vzero} \left|\widehat f(\vm)\right|\cdot \left| \sum_{n\leqslant N} e^{2\pi i n \langle \vm,\vx\rangle}\right| \nonumber \\ 
+		\label{eq:sum-converges}
+		&\ll \sum_{\vm\in \bZ^d\smallsetminus \vzero} \left|\widehat f(\vm)\right|\cdot |\vm|_\infty^{\omega_{d-1}(\vx) + \epsilon} . 
+\end{align}
+Recall that $\int_{[1,\infty)^d} |\vx|_\infty^\alpha\, \dd x$ 
+converges (and hence 
+$\sum_{\vm\in \bZ^d\smallsetminus \vzero} |\vm|_\infty^\alpha$ converges)
+whenever as $\alpha < -1$. The sum \eqref{eq:sum-converges} 
+converges since the Fourier coefficients $\widehat f(\vm)$ converge to 
+zero faster than $|\vm|_\infty^{-r}$ \cite[Th.~8.22]{folland-1999}, 
+$\epsilon>0$ is arbitrary, and $-r+\omega_{d-1}(\vx) < -1$. 
 \end{proof}
-
-The function $f$ does not need to be smooth---so long as its Fourier 
-coefficients decay sufficiently rapidly as to force 
-$\sum |\widehat f(\vm)| \cdot |\vm|_\infty^{\omega_{d-1}(\vx)+\epsilon}$ to 
-converge, the proof works. 
 
 Enumerate the primes of $K$ with increasing norms as $\fp_1,\fp_2,\fp_3,\dots$.  
 Let $\vy\in \bR^d$ with $y_1,\dots,y_d$ linearly independent over $\bQ$. The 
