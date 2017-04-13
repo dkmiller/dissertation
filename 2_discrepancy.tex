@@ -70,7 +70,7 @@ Note that
 \begin{equation}\label{eq:measures-ineq}
 	|\mu_n f - \mu f| \leqslant |\mu_n f - \mu_n f_\epsilon| + |\mu_n f_\epsilon - \mu f_\epsilon| + |\mu f_\epsilon - \mu f| .
 \end{equation}
-Now $|\mu_n f - \mu f| \leqslant \mu_n(U_\epsilon) |f|_\infty$. Since 
+Now $|\mu_n f - \mu_n f_\epsilon| \leqslant \mu_n(U_\epsilon) |f|_\infty$. Since 
 $U_\epsilon$ is open, this converges to 
 $\mu(U_\epsilon) |f|_\infty < \epsilon |f|_\infty$. The second term in 
 \eqref{eq:measures-ineq} converges to zero because $f_\epsilon$ is continuous, 
@@ -445,8 +445,9 @@ $[\va,\vb)\cap J=\varnothing$ and $[\vs,\vt)\cap I = \varnothing$. Then
 This yields the second inequality in the statement of the theorem. To see the 
 first, assume that the maximum discrepancy is $\D_N(\bx,\mu)$, and let 
 $[\vs,\vt)$ be a half-open box such that $|P_{\bx,N}[\vs,\vt) - \mu[\vs,\vt)|$ 
-is within some arbitrary $\epsilon$ of $\D_N(\bx,\mu)$. Use the coordinate 
-hyperplane between $I$ and $J$ to ``cut off'' the part of $[\vs,\vt)$ that 
+is within some arbitrary $\epsilon$ of $\D_N(\bx,\mu)$. Use a hyperplane 
+(parallel to a coordinate hyperplane) 
+between $I$ and $J$ to ``cut off'' the part of $[\vs,\vt)$ that 
 does not intersect $I$. Replacing $[\vs,\vt)$ with this smaller box, we may 
 assume it does not intersect $J$. 
 \begin{figure}[h]
@@ -566,7 +567,7 @@ discrepancy $\D(\bx_{\leqslant N};a^M,\mu)$ will be larger than
 $(N+M)^{-\alpha}$. On the other hand for $J = [s,t)\subset I$, 
 \begin{align*}
 	\left| P_{\bx_{\leqslant N}: a^M}(J) - P_{\bx_{\leqslant N}}(J)\right| 
-		&= \frac{\left|\#\{n\leqslant N : x_n\in J\} + M - \frac{M+N}{N}\#\{n\leqslant N : x_n\in J\}\right|}{M+N} \\
+		&\leqslant \frac{\left|\#\{n\leqslant N : x_n\in J\} + M - \frac{M+N}{N}\#\{n\leqslant N : x_n\in J\}\right|}{M+N} \\
 		&= \frac{\left|M - \frac{M}{N} \#\{n\leqslant N : x_n \leqslant t\} \right|}{M+N} \\
 		&\leqslant \frac{M}{M+N} ,
 \end{align*}
@@ -604,5 +605,6 @@ faster than by $\frac{2}{N+1}$ per $a$ added. This yields
 \[
 	\left|\D_N(\bx,\mu) - N^{-\alpha}\right| \ll N^{-1} , 
 \]
-which is even stronger than we need.
+which implies $\D_N(\bx,\mu) \sim N^{-\alpha}$, both of which are even 
+stronger than we need.
 \end{proof}

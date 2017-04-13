@@ -23,8 +23,8 @@ results below, we will only consider reals with finite irrationality exponent.
 When $d\geqslant 1$, there are a $d$ natural measures of irrationality, but we 
 will use only two of them. 
 
-For the remainder of this thesis, $\langle \cdot,\cdot\rangle$ is the standard 
-inner product on $\bR^d$. 
+For the remainder of this thesis, let $\langle \cdot,\cdot\rangle$ be the 
+standard inner product on $\bR^d$. 
 
 \begin{definition}\label{def:approx-exp}
 Let $\omega_0(\vx)$ (resp.~$\omega_{d-1}(\vx)$) be the supremum of the set of 
@@ -190,8 +190,7 @@ It is easy to check that $|\sin(\pi x)| \geqslant \dd(x,\bZ)$, whence the result
 \end{proof}
 
 \begin{corollary}\label{cor:bound-disc-distance}
-Let $\vx\in \bT^d$ with $(x_1,\dots,x_d)$ linearly independent over $\bQ$. 
-Then for $\bvx=(\vx,2\vx,3\vx,\dots)$, we have 
+For $\bvx=(\vx,2\vx,3\vx,\dots)$ in $\bT^d$, we have 
 \[
 	\D_N(\bvx) \ll \frac 1 h + \frac 1 N \sum_{0<|\vm|_\infty \leqslant h} \frac{2}{r(\vm) \dd(\langle \vm,\vx\rangle,\bZ)} 
 \]
@@ -230,9 +229,9 @@ All that remains is to bound the sum. Clearly
 	\sum_{0 < |\vm|_\infty \leqslant h} \frac{|\vm|_\infty^{\omega_{d-1}(\vx) + \delta}}{r(m)} \ll \int_1^h \int_1^h \dots \int_1^h \frac{\max(|t_1|,\dots,|t_d|)^{\omega_{d-1}(\vx)+\delta}}{t_1 \dots t_d}\, \dd t_1 \dots \dd t_d .
 \]
 For each permutation $\sigma$ of $\{1,\dots,d\}$, call $I_\sigma$ the set of 
-all $(t_1,\dots,t_d)$ in $[1,\infty)^d$ with 
-$t_{\sigma(1)} < \dots < t_{\sigma(d)}$. Then 
-$[1,\infty)^d = \bigcup_{\sigma\in S_d} I_\sigma$, and each integral over 
+all $(t_1,\dots,t_d)$ in $[1,h]^d$ with 
+$t_{\sigma(1)} \leqslant \dots \leqslant t_{\sigma(d)}$. Then 
+$[1,h]^d = \bigcup_{\sigma\in S_d} I_\sigma$, and each integral over 
 $I_\sigma$ is easy to bound. For example, the integral over $I_1$ is 
 \begin{align*}
 	\int_1^h \int_1^{t_d} \dots \int_1^{t_2} \frac{t_d^{\omega_{d-1}(\vx)+\delta}}{t_1 \dots t_d}\, \dd t_1 \dots \dd t_d 
@@ -265,9 +264,12 @@ $\frac{d}{\omega_0(\vx)-\delta} = \frac{d}{\omega_0(\vx)} + \epsilon$.
 By the definition of $\omega_0(\vx)$, there exist infinitely many 
 $(q,\vm)$ with $q>0$ such that 
 $|q \vx - \vm|_\infty \leqslant |(q,\vm)|_\infty^{-\omega_0(\vx)+\delta/2}$. 
-Since $|(q,\vm)|_\infty \geqslant q$, we derive the seemingly stronger 
-statement that for infinitely many $q$, there exists 
-$\vm\in \bZ^d$ such that 
+For any fixed $q$, where are only finitely many $\vm$ with 
+$|q \vx - \vm|_\infty \leqslant 1$. Since $|(q,\vm)|_\infty \geqslant q$, for 
+any fixed $q$ there are at most finitely many $\vm$ with 
+$|q \vx - \vm|_\infty \leqslant |(q,\vm)|_\infty^{-\omega_0(\vx)+\delta/2}$. 
+Thus we derive the seemingly stronger statement that for infinitely many $q$, 
+there exists $\vm\in \bZ^d$ such that 
 $|q \vx-\vm|_\infty \leqslant q^{-\omega_0(\vx)+\delta/2}$ or, equivalently, 
 $|\vx-q^{-1}\vm| \leqslant q^{-1-\omega_0(\vx)+\delta/2}$. Fix one such $q$, 
 and let $N=\lfloor q^{\omega_0(\vx)-\delta}\rfloor$. For each $n\leqslant N$, 
@@ -302,6 +304,7 @@ multiple of $N^{-\frac{d}{\omega_0(\vx)}-\epsilon}$, the proof is complete.
 
 
 \section{Pathological Satake parameters for CM abelian varieties}
+\label{sec:Satake-CM}
 
 We apply the results of the previous sections to $L$-functions associated to 
 CM abelian varieties. For background on the motivic Galois group and Sato--Tate 
@@ -415,7 +418,7 @@ Fix $\vx\in \bT^d$ with $\omega_{d-1}(\vx)$ finite. Then
 \[
 	\left| \sum_{n\leqslant N} e^{2\pi i \langle \vm, n \vx\rangle}\right| \ll |\vm|_\infty^{\omega_{d-1}(\vx) + \epsilon} 
 \]
-as $\vm$ ranges over $\bZ^d\smallsetminus 0$. 
+as $\vm$ ranges over $\bZ^d\smallsetminus \vzero$. 
 \end{theorem}
 \begin{proof}
 From Lemma \ref{lem:bound-exp-sum} we know that 

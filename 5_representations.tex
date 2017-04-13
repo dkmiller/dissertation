@@ -30,7 +30,7 @@ with the obvious $G_{\bQ_S}$-action, and write $M^\ast = M^\vee(1)$ for the
 Cartier dual of $M^\vee$. By \cite[Th.~8.6.7]{neukirch-schmidt-winberg-2008}, 
 there is an isomorphism $\Sha^1_S(M^\ast) \simeq \Sha_S^2(M)^\vee$. As a 
 result, if $\Sha_S^1(M)$ and $\Sha_S^2(M)$ are trivial, and $S\subset T$, then 
-$\Sha_T^1(M)$ and $\Sha_T^2(M)$ are also trivial. 
+$\Sha_T^1(M)$ and $\Sha_T^2(M)$ are also both trivial. 
 
 % The l>=7 comes from \cite{ramakrishna-2002}. 
 \begin{definition}
@@ -92,94 +92,97 @@ following definition.
 Let $\bar\rho$ be a good residual representation, 
 $h\colon \bR^+ \to \bR_{\geqslant 1}$ an 
 increasing function. An \emph{$h$-bounded lifting datum} is a tuple 
-$(\rho_n,R,U,\{\rho_p\}_{p\in R\cup U})$, where 
+$(\rho_n,R_n,U_n,\{\rho_p\}_{p\in R_n\cup U_n})$, where 
 \begin{enumerate}
 \item
-$\rho_n\colon G_{\bQ_R} \to \GL_2(\bZ/l^n)$ is a lift of $\bar\rho$.
+$\rho_n\colon G_{\bQ_{R_n}} \to \GL_2(\bZ/l^n)$ is a lift of $\bar\rho$.
 
 \item
-$R$ and $U$ are finite sets of primes, $R$ containing $l$ and all primes at 
+$R_n$ and $U_n$ are finite sets of primes, $R_n$ containing $l$ and all primes at 
 which $\rho_n$ ramifies. 
 
 \item
-$\pi_R(x)\leqslant h(x)$ for all $x$. 
+$\pi_{R_n}(x)\leqslant h(x)$ for all $x$. 
 
 \item
-$\Sha_R^1(\Ad^0\bar\rho)$ and $\Sha_R^2(\Ad^0\bar\rho)$ are trivial. 
+Both $\Sha_{R_n}^1(\Ad^0\bar\rho)$ and $\Sha_{R_n}^2(\Ad^0\bar\rho)$ are 
+trivial. 
 
 \item
-For all $p\in R\cup U$, 
+For all $p\in R_n\cup U_n$, 
+$\rho_p\colon G_{\bQ_p} \to \GL_2(\bZ_l)$ satisfies 
 $\rho_p\equiv \left. \rho_n\right|_{G_{\bQ_p}}\pmod{l^n}$. 
 
 \item
-For all $p\in R$, $\rho_p$ is ramified. 
+For all $p\in R_n$, $\rho_p$ is ramified. 
 
 \item
 $\rho_n$ admits a lift to $\bZ/l^{n+1}$. 
 \end{enumerate}
 \end{definition}
 
-If $(\rho_n,R,U,\{\rho_p\})$ is an $h$-bounded lifting datum, we call 
-another $h$-bounded lifting datum $(\rho_{n+1},R',U',\{\rho_p\})$ a \emph{lift 
-of $(\rho_n,R,U,\{\rho_p\})$} if $U\subset U'$, $R\subset R'$, and for all 
-$p\in R\cup U$, the two possible $\rho_p$ agree. 
+If $(\rho_n,R_n,U_n,\{\rho_p\})$ is an $h$-bounded lifting datum, we call 
+another $h$-bounded lifting datum $(\rho_{n+1},R_{n+1},U_{n+1},\{\rho_p\})$ a 
+\emph{lift} of $(\rho_n,R_n,U_n,\{\rho_p\})$ if $U_n\subset U_{n+1}$, 
+$R_n\subset R_{n+1}$, and for all 
+$p\in R_n\cup U_n$, the two possible $\rho_p$ agree. 
 
 \begin{theorem}\label{thm:lifting-datum}
 Let $\bar\rho$ be a good residual representation, 
 $h\colon \bR^+ \to \bR_{\geqslant 1}$ 
-increasing to infinity. If $(\rho_n,R,U,\{\rho_p\})$ is an $h$-bounded lifting 
-datum, $U'\supset U$ is a finite set of primes disjoint from $R$, and 
-$\{\rho_p\}_{p\in U'}$ extends $\{\rho_p\}_{p\in U}$, then there exists an 
-$h$-bounded lift $(\rho_{n+1},R',U',\{\rho_p\})$ of 
-$(\rho_n,R,U,\{\rho_p\})$. 
+increasing to infinity. If $(\rho_n,R_n,U_n,\{\rho_p\})$ is an $h$-bounded lifting 
+datum, $U_{n+1}\supset U_n$ is a finite set of primes disjoint from $R_n$, and 
+$\{\rho_p\}_{p\in U_{n+1}}$ extends $\{\rho_p\}_{p\in U_n}$, then there exists an 
+$h$-bounded lift $(\rho_{n+1},R_{n+1},U_{n+1},\{\rho_p\})$ of 
+$(\rho_n,R_n,U_n,\{\rho_p\})$. 
 \end{theorem}
 \begin{proof}
 By \cite[Lem.~8]{khare-larsen-ramakrishna-2005}, there exists a finite set 
 $N$ of nice primes such that the map 
 \begin{equation}\label{eq:h1-isom}
-	\h^1(\bQ_{R\cup N},\Ad^0\bar\rho) \to \prod_{p\in R} \h^1(\bQ_p,\Ad^0\bar\rho) \times \prod_{p\in U'} \h_\nr^1(\bQ_p,\Ad^0\bar\rho) 
+	\h^1(\bQ_{R_n\cup N},\Ad^0\bar\rho) \to \prod_{p\in R_n} \h^1(\bQ_p,\Ad^0\bar\rho) \times \prod_{p\in U_{n+1}} \h_\nr^1(\bQ_p,\Ad^0\bar\rho) 
 \end{equation}
 is an isomorphism. In fact, 
-$\# N = \dim\h^1(\bQ_{R\cup N},\Ad^0\bar\rho^\ast)$, and the primes in $N$ are 
-chosen, one at a time, from Chebotarev sets. Since $\pi_R(x)$ is eventually 
-constant and $h(x)$ increases to infinity, $h(x) \geqslant \pi_R(x)+1$ for all 
+$\# N = \dim\h^1(\bQ_{R_n\cup U_n},\Ad^0\bar\rho^\ast)$, and the primes in $N$ are 
+chosen, one at a time, from Chebotarev sets. Since $\pi_{R_n}(x)$ is eventually 
+constant and $h(x)$ increases to infinity, $h(x) \geqslant \pi_{R_n}(x)+1$ for all 
 $x\geqslant C_1$ for some $C_1$. Choose the first prime $p$ in $N$ to be 
-$\geqslant C_1$; then $\pi_{R\cup\{p\}}(x) \leqslant h(x)$ for all $x$. Repeat 
-this process for allor all the other primes in $N$. We can ensure 
-that the bound $\pi_{R\cup N}(x) \leqslant h(x)$ continues to hold. We also 
-choose the primes in $N$ to be larger than any prime in $U'$. 
+$\geqslant C_1$; then $\pi_{R_n\cup\{p\}}(x) \leqslant h(x)$ for all $x$. Repeat 
+this process for for all the other primes in $N$. We can ensure 
+that the bound $\pi_{R_n\cup N}(x) \leqslant h(x)$ continues to hold. We also 
+choose the primes in $N$ to be larger than any prime in $U_{n+1}$. 
 
 By our hypothesis, $\rho_n$ admits a lift to $\bZ/l^{n+1}$; call one such lift 
-$\rho^\ast$. For each $p\in R\cup U'$, $\h^1(\bQ_p,\Ad^0\bar\rho)$ acts 
+$\rho^\ast$. For each $p\in R_n\cup U_{n+1}$, $\h^1(\bQ_p,\Ad^0\bar\rho)$ acts 
 transitively on lifts of $\left.\rho_n\right|_{G_{\bQ_p}}$ to $\bZ/l^{n+1}$. In 
 particular, there are cohomology classes $f_p\in \h^1(\bQ_p,\Ad^0\bar\rho)$ 
 such that $f_p\cdot \rho^\ast \equiv \rho_p\pmod{l^{n+1}}$ for all 
-$p\in R\cup U'$. Moreover, for all $p\in U'$, the class $f_p$ is unramified. 
-Since the map \eqref{eq:h1-isom} is an isomorphism, there exists 
-$f\in \h^1(\bQ_{R\cup N},\Ad^0\bar\rho)$ such that 
+$p\in R_n\cup U_{n+1}$. Moreover, for all $p\in U_{n+1}$, the class $f_p$ is 
+unramified. Since the map \eqref{eq:h1-isom} is an isomorphism, there exists 
+$f\in \h^1(\bQ_{R_n\cup N},\Ad^0\bar\rho)$ such that 
 $\left.f\cdot \rho^\ast\right|_{G_{\bQ_p}}\equiv \rho_p\pmod{l^{n+1}}$ for all 
-$p\in R\cup U'$. 
+$p\in R_n\cup U_{n+1}$. 
 
 Clearly $\left. f\cdot \rho^\ast\right|_{G_{\bQ_p}}$ admits a lift to $\bZ_l$ 
-for all $p\in R\cup U'$, but it does not necessarily admit such a lift for 
+for all $p\in R_n\cup U_{n+1}$, but it does not necessarily admit such a lift for 
 $p\in N$. By repeated applications of \cite[Prop.~3.10]{pande-2011}, there 
 exists a set $N'\supset N$, with $\# N'\leqslant 2\# N$, of nice primes and 
-$g\in \h^1(\bQ_{R\cup N'},\Ad^0\bar\rho)$ such that 
-$(g+f)\cdot \rho^\ast$ still agrees with $\rho_p$ for $p\in R\cup U'$, and 
+$g\in \h^1(\bQ_{R_n\cup N'},\Ad^0\bar\rho)$ such that 
+$(g+f)\cdot \rho^\ast$ still agrees with $\rho_p$ for $p\in R_n\cup U'$, and 
 $(g+f)\cdot \rho^\ast$ is nice for all $p\in N'$. As above, the primes in $N'$ 
 are chosen one at a time from Chebotarev sets, so we can continue to ensure the 
-bound $\pi_{R\cup N'}(x)\leqslant h(x)$ and also that all primes in $N'$ 
-are larger than those in $U'$. Let $\rho_{n+1} = (g+f) \cdot \rho^\ast$. Let 
-$R' = R\cup \{p\in N' : \rho_{n+1}\text{ is ramified at }p\}$. For each 
-$p\in R'\smallsetminus R$, choose a lift $\rho_p$ of 
+bound $\pi_{R_n\cup N'}(x)\leqslant h(x)$ and also that all primes in $N'$ 
+are larger than those in $U_{n+1}$. Let $\rho_{n+1} = (g+f) \cdot \rho^\ast$. Let 
+$R_{n+1} = R_n\cup \{p\in N' : \rho_{n+1}\text{ is ramified at }p\}$. For each 
+$p\in R_{n+1}\smallsetminus R_n$, choose a lift $\rho_p$ of 
 $\left. \rho_{n+1}\right|_{G_{\bQ_p}}$ to $\bZ_l$. 
 
 Since $\left.\rho_{n+1}\right|_{G_{\bQ_p}}$ admits a lift to $\bZ/l^{n+2}$ (in 
 fact, it admits a lift to $\bZ_l$) for each $p$, and 
-$\Sha_{R'}^1(\Ad^0\bar\rho)$, $\Sha_{R'}^2(\Ad^0\bar\rho)$ are trivial, the 
-deformation $\rho_{n+1}$ admits a lift to $\bZ/l^{n+2}$. Thus 
-$(\rho_{n+1},R',U',\{\rho_p\})$ is the desired lift of 
-$(\rho_n,R,U,\{\rho_p\})$. 
+$\Sha_{R_{n+1}}^1(\Ad^0\bar\rho)$, $\Sha_{R_{n+1}}^2(\Ad^0\bar\rho)$ are 
+trivial, the deformation $\rho_{n+1}$ admits a lift to $\bZ/l^{n+2}$. The tuple 
+$(\rho_{n+1},R_{n+1},U_{n+1},\{\rho_p\})$ is the desired lift of 
+$(\rho_n,R_n,U_n,\{\rho_p\})$ to $\bZ/l^{n+1}$. 
 \end{proof}
 
 
@@ -225,7 +228,7 @@ Hasse bound.
 
 \item
 For each unramified prime $p$, 
-$\left| \frac{a_p}{2\sqrt p} - x_p\right| \leqslant \frac{l h(p)}{2\sqrt p}$. 
+$\left| \frac{a_p}{2\sqrt p} - x_p\right| \leqslant \frac{l h(p)}{\sqrt p}$. 
 \end{enumerate}
 \end{theorem}
 \begin{proof}
@@ -239,7 +242,7 @@ the set $R_1$ is finite. For all $p\notin R_1$ and any $a\in \bF_l$, there
 exists $a_p\in \bZ$ satisfying the Hasse bound with $a_p\equiv a\pmod l$. In 
 fact, given any $x_p\in [-1,1]$, there exists $a_p\in \bZ$ satisfying the Hasse 
 bound such that 
-$\left| \frac{a_p}{2\sqrt p} - x_p\right| \leqslant \frac{l}{2\sqrt p}$.
+$\left| \frac{a_p}{2\sqrt p} - x_p\right| \leqslant \frac{l}{\sqrt p}$.
 Choose, for all primes $p\in R_1$, a ramified 
 lift $\rho_p$ of $\left. \rho_1\right|_{G_{\bQ_p}}$. Let $U_1$ be the set of 
 primes $p$ not in $R_1$ such that 
@@ -250,7 +253,7 @@ proof are superfluous, but the theorem still holds.
 For each $p\in U_1$, there exists $a_p\in \bZ$, satisfying the 
 Hasse bound, such that 
 \[
-	\left| \frac{a_p}{2\sqrt p} - x_p\right| \leqslant \frac{l}{2\sqrt p} \leqslant \frac{l h(p)}{2\sqrt p} ,
+	\left| \frac{a_p}{2\sqrt p} - x_p\right| \leqslant \frac{l}{\sqrt p} \leqslant \frac{l h(p)}{\sqrt p} ,
 \]
 and moreover $a_p\equiv \tr\bar\rho(\frob_p)\pmod l$. For each $p\in U_1$, let 
 $\rho_p$ be an unramified lift of $\left.\bar\rho\right|_{G_{\bQ_p}}$ with 
@@ -277,7 +280,7 @@ $U_n$ be the set of all primes not in $R_{n-1}$ such that
 $\frac{l^{n+1}}{2\sqrt p} > \min\left(2, \frac{l h(p)}{2\sqrt p}\right)$. For 
 each $p\in U_n\smallsetminus U_{n-1}$, there is an integer $a_p$, satisfying 
 the Hasse bound, such that $a_p\equiv \rho_n(\frob_p)\pmod{l^n}$, and moreover 
-$\left|\frac{a_p}{2\sqrt p} - x_p\right| \leqslant \frac{l h(p)}{2\sqrt p}$. 
+$\left|\frac{a_p}{2\sqrt p} - x_p\right| \leqslant \frac{l h(p)}{\sqrt p}$. 
 For such $p$, let $\rho_p$ be an unramified lift of 
 $\left. \rho_n\right|_{G_{\bQ_p}}$ such that $\tr\rho_n(\frob_p)$ is the 
 desired $a_p$. By Theorem \ref{thm:lifting-datum}, there exists an 
@@ -352,18 +355,32 @@ this section, we associate Galois representations to these fake Satake
 parameters. 
 
 \begin{definition}
-Let $\mu = f(t)\, \dd t$ be an absolutely continuous measure with continuous 
-cdf on $[0,\pi]$. If $f(t) \ll \sin(t)$, then $\mu$ is a \emph{Sato--Tate compatible measure}. 
+Let $\mu = f(\theta)\, \dd \theta$ be an absolutely continuous probability 
+measure on $[0,\pi]$. If $f(\theta) \ll \sin(\theta)$, then $\mu$ is a 
+\emph{Sato--Tate compatible measure}. 
 \end{definition}
 
-The key facts about Sato--Tate compatible measures are that $\cos_\ast\mu$ 
+Recall that $\cos_\ast\mu = \frac{f(\cos^{-1} t)}{\sqrt{1-t^2}}\, \dd t$. So 
+the Radon--Nikodym derivative of $\cos_\ast\mu$ is bounded if and only if 
+$\frac{f(\cos^{-1} t)}{\sqrt{1-t^2}}$ is bounded. Plugging in 
+$t = \cos\theta$, we see that $\cos_\ast\mu$ has bounded Radon--Nikodym 
+derivative if and only if $\frac{f(\theta)}{\sin\theta}$ is bounded, 
+i.e.~$f(\theta) \ll \sin\theta$. So we could rephrase the definition of a 
+Sato--Tate compatible measure to be ``an absolutely continuous measure $\mu$ 
+such that $\cos_\ast\mu$ has bounded Radon--Nikodym derivative.'' 
+Since $\ST = \frac 2 \pi \sin^2\theta\, \dd\theta$ clearly satisfies this 
+definition, the Sato--Tate measure is itself Sato--Tate compatible. 
+
+If $\mu$ is Sato--Tate compatible, then $\cos_\ast\mu$ 
 satisfies the hypotheses of Theorem \ref{thm:discrepancy-arbitrary}, so 
 there are ``$N^{-\alpha}$-decaying van der Corput sequences'' for 
-$\cos_\ast\mu$, and also that since $\cos\colon [0,\pi] \to [-1,1]$ is an 
+$\cos_\ast\mu$, and also that since $\cos\colon [0,\pi] \to [-1,1]$ is 
 strictly decreasing, we know that for any sequence $\bx$ on $[-1,1]$, 
-$\D_N(\bx,\cos_\ast\mu) \approx \D_N(\cos^{-1}\bx,\mu)$. Finally, the 
-Radon--Nikodym derivative $\mu$ (and also $\cos_\ast\mu$) is bounded , so Lemma 
-\ref{lem:disc-of-two-seq} applies. Recall that for deceasing functions 
+$\D_N(\bx,\cos_\ast\mu) \approx \D_N(\cos^{-1}\bx,\mu)$, with the 
+difference being $O(N^{-1})$.  Finally, the 
+Radon--Nikodym derivative of $\mu$ (and also $\cos_\ast\mu$) is bounded , so 
+Lemma \ref{lem:disc-of-two-seq} applies to both $\mu$ and $\cos_\ast\mu$. 
+Recall that for deceasing functions 
 $\varphi_1,\varphi_2$, we write $\varphi_1(N) = \Theta(\varphi_2(N))$ if 
 there exists constants $0 < C_1 < C_2$ such that 
 $C_1 \varphi_2(N) \leqslant \varphi_1(N) \leqslant C_2 \varphi_2(N)$. 
