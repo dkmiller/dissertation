@@ -65,15 +65,13 @@ the order of vanishing of $L_{U_1}(E,s)$ at $s = \frac 1 2$ is $1 - 2 r_1$,
 which, if we assume the Birch and Swinnerton-Dyer conjecture, allows us to 
 ``read'' the rank of $E$ from the behavior of $L_{U_1}(E,s)$ at 
 $s = \frac 1 2$. However, for $f = 1_{[0,\pi/2)} - 1_{(\pi/2,\pi]}$, we have 
+$\widehat f(\sym^k) = 0$ when $k$ is even, and 
+$\widehat f(\sym^k) = \frac 2 \pi (-1)^{\frac{k-1}{2}} \left(\frac 1 k + \frac{1}{k+2}\right)$ when $k$ is odd. So we should expect that
 \[
-	\widehat f(\sym^k) = 
-	\begin{cases}
-		0 & \text{$k$ is even} \\
-		\frac 2 \pi (-1)^{\frac{k-1}{2}} \left(\frac 1 k + \frac{1}{k+2}\right) & \text{$k$ is odd} 
-	\end{cases} ,
-\]
-so it's not clear if the rank of $E$ can be directly read from the behavior 
-of $L_{\sgn}(E,s)$ at $s = \frac 1 2$. 
+	\ord_{s = \frac 1 2} L_{\sgn}(E,s) = \frac 2 \pi\sum_{k\text{ odd}}(-1)^{\frac{k-1}{2}} \left(\frac 1 k + \frac{1}{k+2}\right)\left(-2 r_k + (-1)^{k+1}\right) .
+\] 
+In light of this, it does not seem like the rank of $E$ can be directly read 
+from the behavior of $L_{\sgn}(E,s)$ at $s = \frac 1 2$. 
 
 \begin{definition}
 Let $\bx=(x_2,x_3,x_5,\dots)$ be a sequence of complex numbers indexed by the 
@@ -207,7 +205,7 @@ Let $G^\natural$ be the space of conjugacy classes in a compact group,
 $\bx = (x_2,x_3,x_5,\dots)$ a sequence in $G^\natural$. If $\rho$ is a 
 nontrivial unitary representation of $G$ and 
 $\left| \sum_{p\leqslant N} \tr \rho(x_p)\right| \ll N^{\alpha+\epsilon}$ for 
-$\alpha\in \left[\frac 1 2,1\right]$, then $L(\rho(\bx),s)$ admits a 
+some $\alpha\in \left[\frac 1 2,1\right]$, then $L(\rho(\bx),s)$ admits a 
 non-vanishing analytic continuation to $\Re > \alpha$. 
 \end{theorem}
 \begin{proof}
