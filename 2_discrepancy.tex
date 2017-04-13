@@ -436,10 +436,11 @@ Then
 Any half-open box in $[0,\vinfty)$ can be split by a coordinate 
 hyperplane into two disjoint half-open boxes $[\va,\vb)\sqcup [\vs,\vt)$, each 
 of which intersects at most one of $I$ and $J$. We may assume that 
-$[\va,\vb)\cap J=\varnothing$ and $[\vs,\vt)\cap I = \varnothing$. Then 
+$[\va,\vb)\cap J=\varnothing$ and $[\vs,\vt)\cap I = \varnothing$. Write 
+$A = [\va,\vb)$ and $S = [\vs,\vt)$. Then
 \begin{align*}
-	\left| P_{\bx\wr\by,N}([\va,\vb)\sqcup [\vs,\vt)) - (\mu+\nu)([\va,\vb)\sqcup[\vs,\vt))\right| 
-		&\leqslant |P_{\bx,N}[\va,\vb) - \mu[\va,\vb)| + |P_{\by,N}[\vs,\vt) - \nu[\vs,\vt)| \\
+	\left| P_{\bx\wr\by,N}(A\cup S) - (\mu+\nu)(A\cup S)\right| 
+		&\leqslant |P_{\bx,N}(A) - \mu(A)| + |P_{\by,N}(S) - \nu(S)| \\
 		&\leqslant \D_N(\bx,\mu) + \D_N(\by,\nu) .
 \end{align*}
 This yields the second inequality in the statement of the theorem. To see the 
