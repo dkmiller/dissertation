@@ -433,7 +433,7 @@ of the form $\sum_{n\leqslant N} f(n \vx)$.
 
 \begin{theorem}\label{thm:translates-bound-sum}
 Let $\vx\in \bR^d$ with $\omega_{d-1}(\vx)$ finite. Let 
-$r>\omega_{d-1}(\vx)+1$, and fix $f\in C^r(\bT^d)$ with $\widehat f(\vzero)=0$. 
+$r>d+\omega_{d-1}(\vx)$, and fix $f\in C^r(\bT^d)$ with $\widehat f(\vzero)=0$. 
 Then $\left| \sum_{n\leqslant N} f(n \vx)\right| \ll 1$. 
 \end{theorem}
 \begin{proof}
@@ -447,13 +447,16 @@ Since $\widehat f(\vzero)=0$, we can compute:
 		\label{eq:sum-converges}
 		&\ll \sum_{\vm\in \bZ^d\smallsetminus \vzero} \left|\widehat f(\vm)\right|\cdot |\vm|_\infty^{\omega_{d-1}(\vx) + \epsilon} . 
 \end{align}
-Recall that $\int_{[1,\infty)^d} |\vx|_\infty^\alpha\, \dd x$ 
-converges (and hence 
+Recall that an integral of $\phi$ over $\bR^d$ can be re-written in spherical 
+coordinates as $\int \phi(r,s) r^{d-1} \psi(s)\, \dd r \dd s$, where 
+$r$ ranges over $\bR^+$ with the usual Lebesgue measure, $s$ ranges over 
+$S^{d-1}$ with its rotation-invariant measure, and $\psi$ is bounded. Thus 
+$\int_{[1,\infty)^d} |\vx|_\infty^\alpha\, \dd x$ converges (and hence 
 $\sum_{\vm\in \bZ^d\smallsetminus \vzero} |\vm|_\infty^\alpha$ converges)
-whenever as $\alpha < -1$. The sum \eqref{eq:sum-converges} 
+whenever as $d-1+\alpha < -1$. The sum \eqref{eq:sum-converges} 
 converges since the Fourier coefficients $\widehat f(\vm)$ converge to 
 zero faster than $|\vm|_\infty^{-r}$ \cite[Th.~8.22]{folland-1999}, 
-$\epsilon>0$ is arbitrary, and $-r+\omega_{d-1}(\vx) < -1$. 
+$\epsilon>0$ is arbitrary, and $d-1-r+\omega_{d-1}(\vx) < -1$. 
 \end{proof}
 
 Enumerate the primes of $K$ with increasing norms as $\fp_1,\fp_2,\fp_3,\dots$.  
