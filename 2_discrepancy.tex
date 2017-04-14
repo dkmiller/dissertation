@@ -162,8 +162,10 @@ discrepancy) of the sequence $\bx$.
 If the measure $\mu$ is only defined on a Borel subset of $[\vzero,\vinfty)$, we 
 tacitly extend it by zero to $\bR^d$. It is also possible to define discrepancy 
 for sequences lying in compact Lie groups. For example, if the sequence $\bvx$ 
-lies in a real torus $T$, choose an isomorphism $\bT^d \simeq T$, and 
-using that isomorphism identify the torus with  $[0,1)^d\subset [\vzero,\vinfty)$. 
+lies in a real torus $T$, choose an isomorphism $T\simeq \bT^d = (\bR/\bZ)^d$, 
+and using that isomorphism identify the torus (as a measure space, not a 
+topological space) with 
+$[0,1)^d\subset [\vzero,\vinfty)$. 
 This gives a definition of discrepancy for sequences in $T$. Two different 
 isomorphisms $T\simeq \bT^d$ will give two different definitions of 
 discrepancy, but asymptotically they will be bounded above and below by 
@@ -175,14 +177,14 @@ We can even define discrepancy for sequences in compact, connected Lie groups,
 though we will only use $G = \SU(2)$. Let $G$ be such a group, and consider a 
 sequence lying in the space $G^\natural$ of conjugacy classes of $G$. Choose a 
 maximal torus $T\subset G$, and recall that 
-$G^\natural = T/W$, for $W$ the Weyl group of $T$. There is a half-open 
-box in $\ft = \Lie(T)$ which maps bijectively to $T$ under the exponential 
-map. Choose a ``half-open'' polyhedral set $Q$ which is a fundamental domain for 
-the action of $W$ on $T$. Then $Q\subset \ft$ and, if we choose a basis for 
-$\ft$ mapping to zero in $T$, we can identify $G^\natural$ with a subset of 
-$[0,1)^d$, $d = \dim T$. This gives a definition of discrepancy for 
+$G^\natural = T/W$, for $W$ the Weyl group of $T$. Choose an isomorphism 
+$T \simeq \bT^d$, and as before we can identify $T$ as a measure space with 
+$[0,1)^d$. The Weyl group acts on $T$, and we can choose a connected fundamental 
+domain $Q$ for the action of $W$. Identifying 
+$G^\natural$ with $Q\subset [0,1)^d$, this gives a definition of discrepancy for 
 a sequence in $G^\natural$ with respect to the Haar measure. Of course this 
-definition depends on the choice of $T$, $Q$, and the basis of $\ft$, but 
+definition depends on the choice of $T$, $Q$, and the isomorphism 
+$T\simeq \bT^d$, but 
 asymptotically these definitions are all the same. The paper 
 \cite{rosengarten-2013} gives a different definition of discrepancy which only 
 works for semisimple simply-connected groups, but unlike this thesis, proves an 
@@ -247,8 +249,9 @@ Now let $E_{/\bQ}$ be a non-CM elliptic curve, and suppose the Satake parameters
 $\theta_p$ are being randomly drawn from the distribution $\ST$. Then the 
 above theorems suggest that as $N\to \infty$, we should have 
 $\D_N(\btheta,\ST)\sim \pi(N)^{-\frac 1 2}$, or, if we are not so lucky, at 
-least $\D_N(\btheta,\ST) \ll N^{-\frac 1 2+\epsilon}$. Ideally, the 
-normalized discrepancy $\sqrt{\pi(N)}\D_N(\btheta,\ST)$ would also 
+least $\D_N(\btheta,\ST) \ll N^{-\frac 1 2+\epsilon}$ (this is the 
+Akiyama--Tanigawa conjecture, i.e.~Conjecture \ref{conj:akiyama-tanigawa}). 
+Ideally, the normalized discrepancy $\sqrt{\pi(N)}\D_N(\btheta,\ST)$ would also 
 be equidistributed, but sadly, numerical experiments conducted by the author 
 suggest this is not the case. 
 
@@ -594,12 +597,12 @@ nowhere does $\D_N(\bx,\mu)$ differ by too much from $N^{-\alpha}$.
 Note that $\frac{M+1}{N+M+1} - \frac{M}{N+M} \leqslant N^{-1}$. This tells 
 us that when we are adding $a$'s at the end of $\bx_{\leqslant N}$, the 
 discrepancy of 
-$\bx_{\leqslant N}:^M a$ is eventually increasing, and can increase by at most 
+$\bx_{\leqslant N}: a^M$ is eventually increasing, and can increase by at most 
 $N^{-1}$ at each 
 step. So if $\D(\bx_{\leqslant N},\mu) < N^{-\alpha}$, we can ensure that 
 $\D(\bx_{\leqslant N}: a^M,\mu)$ is at most $N^{-1}$ greater than 
 $N^{-\alpha}$. 
-Moreover, we know that $\D(\bx_{\leqslant N}: a,\mu)$ is at most 
+Moreover, we know that $\D(\bx_{\leqslant N}: a^1,\mu)$ is at most 
 $\frac{2}{N+1}$ away from $\D(\bx_{\leqslant N},\mu)$. So when adding van der 
 Corput elements to the end of the sequence, its discrepancy cannot decay any 
 faster than by $\frac{2}{N+1}$ per $a$ added. This yields 
