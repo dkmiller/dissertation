@@ -16,7 +16,7 @@ curve and let
 	L_{\sgn}(E,s) = \prod_p \frac{1}{1-\sgn(a_p) p^{-s}} .
 \]
 How much can we say about the behavior of $L_{\sgn}(E,s)$? For example, does it 
-admit analytic continuation to $\Re = 1$? Yes, by the results of 
+admit analytic continuation to $\Re = 1$? Yes, by 
 \cite[A.2]{serre-1989}. In fact, we will see later that the Akiyama--Tanigawa 
 conjecture implies the existence of a non-vanishing analytic continuation of 
 $L_{\sgn}(E,s)$ to $\Re > \frac 1 2$. Can the rank of $E$ be 
@@ -53,22 +53,22 @@ right half-plane, then $E_1$ and $E_2$
 are isogenous, so in particular they have the same rank. Can we recover the 
 rank of $E$ from the behavior of $L_{\sgn}(E,s)$ at $s = \frac 1 2$? For 
 $k\geqslant 1$, let $r_k$ be the order of vanishing of $L(\sym^k E,s)$ at 
-$s = \frac 1 2$. The heuristics in \cite{sarnak-2007} suggest that if the 
-Akiyama--Tanigawa (and other natural conjectures) hold, then $L_f(E,s)$ has a 
-zero of order 
-$\sum_{k\geqslant 1} \widehat f(\sym^k) \left(-2 r_k + (-1)^{k+1}\right)$ at 
-$s = \frac 1 2$. Here, 
-$\widehat f(\sym^k) = \int_{\SU(2)^\natural} f(x) \tr\sym^k(x)\, \dd x$ is the 
-$\sym^k$-Fourier coefficient of $f$. If $f = \tr\sym^1$ (this is called $U_1$ 
-in Sarnak's letter), then $\widehat f(\sym^k)$ vanishes for $k\geqslant 2$, so 
-the order of vanishing of $L_{U_1}(E,s)$ at $s = \frac 1 2$ is $1 - 2 r_1$, 
+$s = \frac 1 2$. Also, for $f\in L^1([0,\pi],\ST) = L^1(\SU(2)^\natural)$, let 
+$\widehat f(\sym^k) = \int_{\SU(2)^\natural} f(x) \tr\sym^k(x)\, \dd x$ be the 
+$\sym^k$-Fourier coefficient of $f$. The heuristics in \cite{sarnak-2007} 
+suggest that if the Akiyama--Tanigawa (and other natural conjectures) hold, 
+then $L_f(E,s)$ has a zero of order 
+$\sum_{k\geqslant 1} \widehat f(\sym^k) \left(2 r_k + (-1)^k\right)$ at 
+$s = \frac 1 2$.  If $f = \tr\sym^1$ (this is called $U_1$ in 
+\cite{sarnak-2007}), then $\widehat f(\sym^k)$ vanishes for $k\geqslant 2$, so 
+the order of vanishing of $L_{U_1}(E,s)$ at $s = \frac 1 2$ is $2 r_1 - 1$, 
 which, if we assume the Birch and Swinnerton-Dyer conjecture, allows us to 
 ``read'' the rank of $E$ from the behavior of $L_{U_1}(E,s)$ at 
 $s = \frac 1 2$. However, for $f = 1_{[0,\pi/2)} - 1_{(\pi/2,\pi]}$, we have 
 $\widehat f(\sym^k) = 0$ when $k$ is even, and 
 $\widehat f(\sym^k) = \frac 2 \pi (-1)^{\frac{k-1}{2}} \left(\frac 1 k + \frac{1}{k+2}\right)$ when $k$ is odd. So we should expect that
 \[
-	\ord_{s = \frac 1 2} L_{\sgn}(E,s) = \frac 2 \pi\sum_{k\text{ odd}}(-1)^{\frac{k-1}{2}} \left(\frac 1 k + \frac{1}{k+2}\right)\left(-2 r_k + (-1)^{k+1}\right) .
+	\ord_{s = \frac 1 2} L_{\sgn}(E,s) = \frac 2 \pi\sum_{k\text{ odd}}(-1)^{\frac{k-1}{2}} \left(\frac 1 k + \frac{1}{k+2}\right)\left(2 r_k + (-1)^k\right) .
 \] 
 In light of this, it does not seem like the rank of $E$ can be directly read 
 from the behavior of $L_{\sgn}(E,s)$ at $s = \frac 1 2$. 
@@ -197,7 +197,8 @@ $\chi(x_p) \in S^1$, the above formula decomposes $L(\rho(\bx),s)$ into a
 product of Dirichlet series of the type considered above. For $G = \SU(2)$, the 
 trivial representation occurs in $\left.\sym^k \right|_T$ if and only if $k$ is 
 even, and the resulting $\zeta(s)$ in the product decomposition of 
-$L(\sym^k \bx,s)$ may explain why some of the results in this thesis only apply 
+$L(\sym^k \bx,s)$ may explain why some of the results in this thesis 
+(e.g.~Theorem \ref{thm:bad-Galois}) only apply 
 to \emph{odd} symmetric powers. 
 
 \begin{theorem}\label{thm:AT->RH:gp}
@@ -216,7 +217,7 @@ two terms, $\sum_p \frac{\tr \rho(x_p)}{p^s}$ and
 $\sum_{r\geqslant 2} \sum_p \frac{\tr \rho(x_p)^r}{r p^{r s}}$. Analytic 
 continuation and nonvanishing remain the same when we omit finitely many Euler 
 factors, so we may ignore all primes for which 
-$\frac{\dim(\rho)}{p^{-1/2}} \geqslant 1$. Then the second sum converges on 
+$\dim(\rho) \geqslant \sqrt p$. Then the second sum converges on 
 $\Re > \frac 1 2$, and assuming 
 $\left| \sum_{p\leqslant N} \tr \rho(x_p)\right| \ll N^{\alpha+\epsilon}$, an 
 argument identical to the one used in the proof of Theorem \ref{thm:AT->RH}, 

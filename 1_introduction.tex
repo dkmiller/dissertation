@@ -35,8 +35,9 @@ $|\pi(x) - \Li(x)| \ll x^{-\frac 1 2+\epsilon}$.
 
 Neither side of this equivalence is known for certain to be true! 
 
-The above discussion generalizes naturally to Artin $L$-functions. 
-Let $K/\bQ$ be a finite Galois extension with group $G=\Gal(K/\bQ)$. For any 
+There is an analogue of the above discussion for Artin $L$-functions. 
+Let $K/\bQ$ be a nontrivial finite  Galois extension with group 
+$G=\Gal(K/\bQ)$. For any 
 rational prime $p$ at which $K$ is unramified, let $\frob_p$ be the conjugacy 
 class of the Frobenius at $p$ in $G$. For any irreducible representation 
 $\rho$ of $G$, there is a corresponding $L$-function defined as 
@@ -44,7 +45,9 @@ $\rho$ of $G$, there is a corresponding $L$-function defined as
 	L(\rho,s) = \prod_p \det\left(1-\rho(\frob_p) p^{-s}\right)^{-1} ,
 \]
 where here (and for the remainder of this thesis) we tacitly omit from the 
-product those primes at which $\rho$ is ramified. Given a cutoff $x$, there is 
+product those primes at which $\rho$ is ramified. If $\rho$ is the trivial 
+representation, then up to the ramified factors, $L(1,s) = \zeta(s)$, the 
+Riemann zeta function. Given a cutoff $x$, there is 
 a natural empirical measure 
 $P_x = \frac{1}{\pi(x)} \sum_{p\leqslant x} \delta_{\frob_p}$ on 
 $G^\natural$, the set of conjugacy classes in $G$. Let $\mu$ be the 
@@ -64,7 +67,12 @@ to $\Re = 1$ for all nontrivial $\rho$.
 \end{theorem}
 
 Both sides of this equivalence are true, and known as the Chebotarev density 
-theorem. Moreover, there is a version of the strong prime number theorem in 
+theorem. If $K = \bQ$, so that $G$ (and hence $\rho$) are trivial, then the 
+``Frobenius elements'' are all the identity, so equidistribution holds 
+trivially. However, $\zeta(s)$ does not admit a non-vanishing \emph{analytic} 
+continuation to $\Re = 1$, for there is a simple pole at $s = 1$. 
+Returning to the case where $K/\bQ$ is nontrivial, 
+there is a version of the strong prime number theorem in 
 this context. In this thesis, the Riemann hypothesis for a Dirichlet series 
 $L(s)$ is the statement that $L(s)$ admits a non-vanishing analytic 
 continuation to $\Re > \frac 1 2$. 

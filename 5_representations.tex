@@ -52,8 +52,7 @@ representation. Then there exists a weight-$2$ lift of $\bar\rho$ to $\bZ_l$,
 ramified at the same set of primes as $\bar\rho$. 
 \end{theorem}
 \begin{proof}
-This is \cite[Th.~1]{ramakrishna-2002}, taking into account that the paper in 
-question allows for arbitrary fixed determinants. 
+To-do: find a proof of this!
 \end{proof}
 
 \begin{definition}
@@ -202,7 +201,8 @@ of $\rho$ is not determined at the beginning, but at each stage there will be
 a large finite set $U$ of primes which we know will remain unramified. 
 Reindexing $\bx$ by these unramified primes, we will construct $\rho$ so that 
 for all unramified primes $p$, $\tr\rho(\frob_p)\in \bZ$, satisfies the Hasse 
-bound, and has $\tr\rho(\frob_p) \approx x_p$. Moreover, we can ensure that the 
+bound, and has $\frac{\tr\rho(\frob_p)}{2\sqrt p} \approx x_p$. 
+Moreover, we can ensure that the 
 set of ramified primes has density zero in a very strong sense (controlled by a 
 parameter function $h$) and that our trace of Frobenii are very close to 
 specified values. 
@@ -236,7 +236,7 @@ Hasse bound.
 
 \item
 For each unramified prime $p$, 
-$\left| \frac{a_p}{2\sqrt p} - x_p\right| \leqslant \frac{l h(p)}{\sqrt p}$. 
+$\left| \frac{a_p}{2\sqrt p} - x_p\right| \leqslant \frac{l h(p)}{2\sqrt p}$. 
 \end{enumerate}
 \end{theorem}
 \begin{proof}
@@ -249,8 +249,8 @@ $\frac{l}{2\sqrt p} > 2$. Since $\frac{l}{2\sqrt p} \to 0$ as $p\to \infty$,
 the set $R_1$ is finite. For all $p\notin R_1$ and any $a\in \bF_l$, there 
 exists $a_p\in \bZ$ satisfying the Hasse bound with $a_p\equiv a\pmod l$. In 
 fact, given any $x_p\in [-1,1]$, there exists $a_p\in \bZ$ satisfying the Hasse 
-bound such that 
-$\left| \frac{a_p}{2\sqrt p} - x_p\right| \leqslant \frac{l}{\sqrt p}$.
+bound, congruent to any fixed $a\in\bF_l$ modulo $l$, such that 
+$\left| \frac{a_p}{2\sqrt p} - x_p\right| \leqslant \frac{l}{2\sqrt p}$.
 Choose, for all primes $p\in R_1$, a ramified 
 lift $\rho_p$ of $\left. \rho_1\right|_{G_{\bQ_p}}$. Let $U_1$ be the set of 
 primes $p$ not in $R_1$ such that 
@@ -261,7 +261,7 @@ proof are superfluous, but the theorem still holds.
 For each $p\in U_1$, there exists $a_p\in \bZ$, satisfying the 
 Hasse bound, such that 
 \[
-	\left| \frac{a_p}{2\sqrt p} - x_p\right| \leqslant \frac{l}{\sqrt p} \leqslant \frac{l h(p)}{\sqrt p} ,
+	\left| \frac{a_p}{2\sqrt p} - x_p\right| \leqslant \frac{l}{2\sqrt p} \leqslant \frac{l h(p)}{2\sqrt p} ,
 \]
 and moreover $a_p\equiv \tr\bar\rho(\frob_p)\pmod l$. For each $p\in U_1$, let 
 $\rho_p$ be an unramified lift of $\left.\bar\rho\right|_{G_{\bQ_p}}$ with 
@@ -280,7 +280,7 @@ there are always integral $a_p$ satisfying the Hasse bound which satisfy any
 mod-$l^{n+1}$ constraint, and that can always choose these $a_p$ so as to 
 preserve statement 2 in the theorem. 
 
-The base case is already complete, so suppose we are given 
+The base case is complete, so suppose we have 
 $(\rho_{n-1},R_{n-1},U_{n-1},\{\rho_p\})$. We may assume that $U_{n-1}$ 
 contains all primes for 
 which $\frac{l^n}{2\sqrt p} > \min\left(2, \frac{l h(p)}{2\sqrt p}\right)$. Let 
@@ -288,7 +288,7 @@ $U_n$ be the set of all primes not in $R_{n-1}$ such that
 $\frac{l^{n+1}}{2\sqrt p} > \min\left(2, \frac{l h(p)}{2\sqrt p}\right)$. For 
 each $p\in U_n\smallsetminus U_{n-1}$, there is an integer $a_p$, satisfying 
 the Hasse bound, such that $a_p\equiv \rho_n(\frob_p)\pmod{l^n}$, and moreover 
-$\left|\frac{a_p}{2\sqrt p} - x_p\right| \leqslant \frac{l h(p)}{\sqrt p}$. 
+$\left|\frac{a_p}{2\sqrt p} - x_p\right| \leqslant \frac{l h(p)}{2\sqrt p}$. 
 For such $p$, let $\rho_p$ be an unramified lift of 
 $\left. \rho_n\right|_{G_{\bQ_p}}$ such that $\tr\rho_n(\frob_p)$ is the 
 desired $a_p$. By Theorem \ref{thm:lifting-datum}, there exists an 
@@ -301,7 +301,9 @@ The implied constant in the bound $\pi_{\ram(\rho)}(x)\ll h(x)$ depends on
 $\bar\rho$ (and hence $l$) but not on $h$. 
 We will apply this theorem to construct Galois representations with specified 
 Sato--Tate distributions in the next section, but for now here is a small 
-consequence, which addresses the results in \cite{sarnak-2007}. Sarnak remarks 
+consequence, which addresses the results in \cite{sarnak-2007}. Sarnak, 
+the generalized Riemann hypothesis along with linear independence of the 
+zeros of $L(\sym^k E,s)$, proves 
 that for $E_{/\bQ}$ a non-CM elliptic curve with rank $r$, the partial sums 
 $\frac{\log x}{\sqrt x} \sum_{p\leqslant x} \frac{a_p}{\sqrt p}$ approach a 
 limiting distribution with mean $1 - 2 r$. 
@@ -316,22 +318,52 @@ each $a_p = \tr\rho(\frob_p)\in \bZ$ satisfies the Hasse bound,
 and $\pi_{\ram(\rho)}(x) \ll \log(x)$. 
 \end{corollary}
 \begin{proof}
-Begin with a sequence $(x_p)$ in $[-1,1]$ such that 
+Begin with a sequence $(x_p)$ in $\left[-\frac 1 2,\frac 1 2\right]$ such that 
 $\lim_{N\to \infty} \frac{\log N}{\sqrt N}\sum_{p\leqslant N} x_p = L$. If 
-$L=\pm \infty$, we can choose $x_p = \pm 1$. By Theorem 
+$L=\pm \infty$, we can choose $x_p = \pm \frac 1 2$. By Theorem 
 \ref{thm:master-Galois}, there exists $\rho\colon G_\bQ \to \GL_2(\bZ_l)$ with 
 $\pi_{\ram(\rho)}(x) \ll \log(x)$, and such that for each unramified $p$, 
-$a_p = \tr\rho(\frob_p)\in \bZ$, satisfies the Hasse bound, has 
-$\left| \frac{a_p}{2\sqrt p} - x_p\right| < \frac{l \log p}{\sqrt p}$, and by 
-inspecting the proof, we can even ensure that 
-$\sum \left(\frac{a_p}{2\sqrt p} - x_p\right)$ converges conditionally (make 
-sure the sign of $\frac{a_p}{2\sqrt p} - b_p$ alternates). Note that
-\begin{align*}
-	\left|\frac{\log N}{\sqrt N}\sum_{p\leqslant N} \frac{a_p}{2\sqrt p} - \frac{\log N}{\sqrt N} \sum_{p\leqslant N} x_p\right| 
-		&\leqslant \frac{\log N}{\sqrt N}\left|\sum_{\substack{p\leqslant N \\ p\text{ ram.}}} \left(\frac{a_p}{2 \sqrt p} - x_p\right) + \sum_{\substack{p\leqslant N \\ p\text{ n.r.}}} \left(\frac{a_p}{2 \sqrt p} - x_p\right) \right|  \\
-		&\ll \frac{\log N}{\sqrt N} \left(\pi_{\ram(\rho)}(N) + \left|\sum_{p\leqslant N} \left(\frac{a_p}{2 \sqrt p} - x_p\right)\right|\right) ,
-\end{align*}
-which converges to zero. 
+$a_p = \tr\rho(\frob_p)\in \bZ$, satisfies the Hasse bound. Moreover, after 
+re-indexing $(x_p)$ by the unramified primes of $\rho$, we have 
+$\left| \frac{a_p}{2\sqrt p} - x_p\right| < \frac{l \log p}{\sqrt p}$. In fact, 
+by inspecting the proof of Theorem \ref{thm:master-Galois}, we can even ensure 
+that
+$\sum \left(\frac{a_p}{2\sqrt p} - x_p\right)$ converges conditionally, by 
+forcing the sign of $\frac{a_p}{2\sqrt p} - x_p$ to alternate. This will relax 
+the bound 
+$\left|\frac{a_p}{2\sqrt p} - x_p\right| \leqslant \frac{l \log p}{2\sqrt p}$ 
+to 
+$\left|\frac{a_p}{2\sqrt p} - x_p\right| \leqslant \frac{l \log p}{\sqrt p}$. 
+Write $A_N = \frac{\log N}{\sqrt N}\sum_{p\leqslant N} \frac{a_p}{2\sqrt p}$ 
+and $B_N = \frac{\log N}{\sqrt N} \sum_{p\leqslant N} x_p$, both sums tacitly 
+taken over $\rho$-unramified primes. Then 
+\[
+	\left| A_N - B_N\right| \leqslant \frac{\log N}{\sqrt N} \left| \sum_{p\leqslant N} \left(\frac{a_p}{2\sqrt p} - x_p\right)\right| ,
+\]
+which converges to zero because 
+$\sum_{p\leqslant N} \left(\frac{a_p}{2\sqrt p} - x_p\right)$ converges to a 
+finite quantity by the alternating series test, and 
+$\frac{\log N}{\sqrt N} \to 0$. The proof isn't quite 
+complete, because we only know that 
+$\lim_{N\to \infty} \frac{\log N}{\sqrt N}\sum_{p\leqslant N} x_p = L$ when 
+$x_p$ is indexed by \emph{all} the rational primes, not just by the 
+$\rho$-unramified ones. We need to prove that $B_N$ converges to $L$. 
+Let $C_N = \frac{\log N}{\sqrt N} \sum_{p\leqslant N} x_p$, where here the sum 
+is taken with $x_p$ indexed by all primes. Write 
+$M_N = \pi^{-1}(\pi(N) - \pi_{\ram(\rho)}(N))$; then the number of 
+$\rho$-unramified primes $\leqslant N$ is the same as number of all primes 
+$\leqslant M_N$. It follows that 
+$B_N = \frac{\log N}{\sqrt N} \frac{\sqrt{M_N}}{\log{M_N}}C_{M_N}$, so to prove 
+$B_N \to L$, it suffices to prove that 
+$\frac{\log N}{\sqrt N} \frac{\sqrt{M_N}}{\log{M_N}} \to 1$. Convergence 
+$\frac{M_N}{N} \to 1$ follows from the prime number theorem, so we show that 
+this implies $\frac{\log N}{\log M_N} \to 1$. Since 
+$\frac{\log M_N}{\log N} = \log_N(M_N)$, we want to prove 
+that $\log_N(M_N) \to 1$. Write $M_N = N^{\alpha_N}$; then 
+$\frac{M_N}{N} = N^{\alpha_N - 1}$. Since $N\to \infty$, the only way for 
+$N^{\alpha_N - 1} \to 1$ is for $\alpha_N \to 1$, 
+i.e.~$\frac{\log N}{\log{M_N}} \to 1$. 
+
 When $L\ne \pm\infty$, this shows that the limit in question exists and is $L$. 
 When $L=\pm \infty$, this shows that the the sums in question diverge to $L$. 
 \end{proof}
@@ -364,8 +396,8 @@ parameters.
 
 \begin{definition}
 Let $\mu = f(\theta)\, \dd \theta$ be an absolutely continuous probability 
-measure on $[0,\pi]$. If $f(\theta) \ll \sin(\theta)$, then $\mu$ is a 
-\emph{Sato--Tate compatible measure}. 
+measure on $[0,\pi]$. If $f(\theta) \ll \sin(\theta)$ on $[0,\pi]$, then $\mu$ 
+is a \emph{Sato--Tate compatible measure}. 
 \end{definition}
 
 Recall that $\cos_\ast\mu = \frac{f(\cos^{-1} t)}{\sqrt{1-t^2}}\, \dd t$. So 
@@ -405,7 +437,7 @@ then $\D_N(\btheta,\mu) = \Theta(\pi(N)^{-\alpha})$.
 Apply Theorem \ref{thm:discrepancy-arbitrary} to find a sequence $\bx$ such 
 that $\D_N(\bx,\cos_\ast \mu) = \Theta(\pi(N)^{-\alpha})$. For each prime 
 $p$, there exists an integer $a_p$ such that $|a_p|\leqslant 2\sqrt p$ and 
-$\left| \frac{a_p}{2\sqrt p} - x_p\right| \leqslant p^{-1/2}$. Let 
+$\left| \frac{a_p}{2\sqrt p} - x_p\right| \leqslant \frac{1}{2\sqrt p}$. Let 
 $y_p = \frac{a_p}{2\sqrt p}$, and apply Lemma \ref{lem:disc-of-two-seq} with 
 $\epsilon = N^{-1/2}$. We obtain 
 \[
@@ -445,15 +477,20 @@ The basic ideas is as follows. Enumerate the primes
 \[
 	p_1 = 2, q_1 = 3, p_2 = 5, q_2 = 7, p_3 = 11, q_3 = 13, \dots .
 \]
-Consider the measure $\left.\mu\right|_{[0,\pi/2)}$. An argument 
+Consider the measure $\left.\mu\right|_{[0,\pi/2)}$. This is supported on 
+$[0,\pi/2)$, but we extend it by zero to $[0,\pi]$. An argument 
 nearly identical to the proof of Theorem \ref{thm:integral-a_p-alpha} shows 
 that we can choose $a_{p_i}$ satisfying the Hasse bound so that 
 \[
 	\D_N\left( \left\{\theta_{p_i}\right\},\left.\mu\right|_{[0,\pi/2)}\right) = \Theta(N^{-\alpha}) .
 \]
-We can also choose the $a_{q_i}$ such that 
-$\frac{a_{q_i}}{2\sqrt{q_i}}\in [\pi/2,\pi]$ and 
+Since $\frac{a_{p_i}}{2\sqrt{p_i}}\in \frac{1}{2\sqrt{p_i}} \bZ$ and 
+$\frac{a_{q_i}}{2\sqrt{q_i}}\in \frac{1}{2\sqrt{q_i}}\bZ$, we cannot obtain 
+$\frac{a_{p_i}}{2\sqrt{p_i}} = - \frac{a_{q_i}}{2\sqrt{q_i}}$, but we can get 
+quite close to equality. That is, we can also choose the $a_{q_i}$ such that 
+$\frac{a_{q_i}}{2\sqrt{q_i}}\in [-1,0)$ and 
 $\left| \frac{a_{p_i}}{2\sqrt{p_i}} + \frac{a_{q_i}}{2\sqrt{q_i}}\right| \ll \frac{1}{\sqrt{p_i}}$. 
+
 Let $\bx$ be the sequence of the $\frac{a_{p_i}}{2\sqrt{p_i}}$ and $\by$  
 the corresponding sequence with the $q_i$-s. Then 
 Lemma \ref{lem:flip-discrepancy} tells us that the discrepancy of 
@@ -466,7 +503,7 @@ $\D_N(\bx\wr\by,\mu) = \Theta(N^{-\alpha})$.
 The function $U_k(\cos^{-1} t)$ is an odd polynomial in $t$, so for 
 $t_1,t_2\in [-1,1]$, 
 \[
-	|U_k(\cos^{-1} t_1) + U_k(\cos^{-1} t_2)| = |U_k(\cos^{-1} t_1) - U_k(\cos^{-1}(-t_1))| \ll |t_1 - (-t_2)|.
+	|U_k(\cos^{-1} t_1) + U_k(\cos^{-1} t_2)| = |U_k(\cos^{-1} t_1) - U_k(\cos^{-1}(-t_2))| \ll |t_1 - (-t_2)|.
 \]
 It follows that since 
 $\left|\frac{a_{p_i}}{2\sqrt{p_i}} - \left(- \frac{a_{q_i}}{2\sqrt{q_i}}\right)\right| \ll p_i^{-1/2}$, 
@@ -522,7 +559,8 @@ as $\Theta(\pi(N)^{-\alpha})$ and by Lemma \ref{lem:push-discrepancy}, the
 discrepancies of $\left\{\frac{a_p}{2\sqrt p}\right\}$ and $\{\theta_p\}$ 
 decay asymptotically at the same rate. 
 
-We've proved statements 1--3 in the theorem, so all that remains is to prove 
+We've proved statements 1--3 in the theorem, which follow essentially for free 
+from Theorem \ref{thm:master-Galois} and its proof. All that remains is to prove 
 the Riemann hypothesis for odd symmetric powers. The proof of Theorem 
 \ref{thm:int-flip-seq} gives us an estimate 
 $\left| \sum_{p\leqslant N} U_k(\theta_p)\right| \ll N^{\frac 1 2+\epsilon}$, 

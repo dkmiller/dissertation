@@ -57,6 +57,7 @@ $\bx$ is $\mu$-equidistributed, then
 \end{theorem}
 \begin{proof}
 We prove the more general result that if $\{\mu_n\}$ is a sequence of Radon 
+(i.e.~finite and inner regular)
 probability measures on $X$ which converges weakly to $\mu$, then 
 $\mu_n(f) \to \mu(f)$ for all $f$ which are bounded and continuous 
 $\mu$-almost everywhere. 
@@ -88,7 +89,7 @@ Since $\epsilon$ was arbitrary, the result follows.
 \section{Definitions and first results}
 
 We will define discrepancy for measures on the $d$-dimensional half-open box 
-$[\vzero,\vinfty) = [\vzero,\infty)^d\subset \bR^d$. For vectors 
+$[\vzero,\vinfty) = [0,\infty)^d\subset \bR^d$. For vectors 
 $\vx,\vy\in [\vzero,\vinfty)$, we say $\vx<\vy$ if $x_i<y_i\,\forall i$, and 
 in that case write $[\vx,\vy)$ for the half-open box 
 $[x_1,y_1)\times \cdots \times [x_d,y_d)$. 
@@ -157,17 +158,17 @@ discrepancy. In this context,
 \]
 When the measure $\mu$ is clear from the context, we will refer to 
 $\D_N(\bvx,\mu)$ (resp.~$\D_N^\star(\bvx,\mu)$) as the discrepancy (resp.~star 
-discrepancy) of the sequence $\bx$.
+discrepancy) of the sequence $\bvx$.
 
 If the measure $\mu$ is only defined on a Borel subset of $[\vzero,\vinfty)$, we 
 tacitly extend it by zero to $\bR^d$. It is also possible to define discrepancy 
 for sequences lying in compact Lie groups. For example, if the sequence $\bvx$ 
-lies in a real torus $T$, choose an isomorphism $T\simeq \bT^d = (\bR/\bZ)^d$, 
+lies in a real torus $T$, choose a Lie isomorphism $T\simeq \bT^d = (\bR/\bZ)^d$, 
 and using that isomorphism identify the torus (as a measure space, not a 
 topological space) with 
 $[0,1)^d\subset [\vzero,\vinfty)$. 
 This gives a definition of discrepancy for sequences in $T$. Two different 
-isomorphisms $T\simeq \bT^d$ will give two different definitions of 
+Lie isomorphisms $T\simeq \bT^d$ will give two different definitions of 
 discrepancy, but asymptotically they will be bounded above and below by 
 constant multiples of each other as long as the measure in question is the 
 normalized Haar measure. In that case, we write $\D_N(\bvx)$ in place of 
@@ -177,13 +178,14 @@ We can even define discrepancy for sequences in compact, connected Lie groups,
 though we will only use $G = \SU(2)$. Let $G$ be such a group, and consider a 
 sequence lying in the space $G^\natural$ of conjugacy classes of $G$. Choose a 
 maximal torus $T\subset G$, and recall that 
-$G^\natural = T/W$, for $W$ the Weyl group of $T$. Choose an isomorphism 
-$T \simeq \bT^d$, and as before we can identify $T$ as a measure space with 
+$G^\natural = T/W$, for $W$ the Weyl group of $T$. Choose a Lie isomorphism 
+$\bT^d = (\bR/\bZ)^d \simeq T$, and as before we can identify $T$ as a measure 
+space with 
 $[0,1)^d$. The Weyl group acts on $T$, and we can choose a connected fundamental 
 domain $Q$ for the action of $W$. Identifying 
 $G^\natural$ with $Q\subset [0,1)^d$, this gives a definition of discrepancy for 
 a sequence in $G^\natural$ with respect to the Haar measure. Of course this 
-definition depends on the choice of $T$, $Q$, and the isomorphism 
+definition depends on the choice of $T$, $Q$, and the Lie isomorphism 
 $T\simeq \bT^d$, but 
 asymptotically these definitions are all the same. The paper 
 \cite{rosengarten-2013} gives a different definition of discrepancy which only 
@@ -221,7 +223,8 @@ this definition.
 \section{Statistical heuristics}
 
 Let $\Omega$ be a probability space, and let $\{\theta_p\}$ be a collection of 
-prime-indexed independent, identically distributed, random variables on 
+prime-indexed iid (that is, independent and identically distributed) 
+random variables on 
 $\Omega$ with continuous joint distribution $\mu$. By this, we mean each 
 $\theta_p\colon \Omega \to \bR$ is measurable, and if $P$ is the probability 
 measure on $\Omega$, then 
@@ -245,11 +248,13 @@ distribution is quantified by the Dvoretzky--Kiefer--Wolfowitz inequality,
 which tells us that 
 $\mathrm{P}\left(\sqrt{\pi(N)} D_N > t\right) \leqslant 2 e^{-2 t^2}$. 
 
-Now let $E_{/\bQ}$ be a non-CM elliptic curve, and suppose the Satake parameters 
-$\theta_p$ are being randomly drawn from the distribution $\ST$. Then the 
-above theorems suggest that as $N\to \infty$, we should have 
-$\D_N(\btheta,\ST)\sim \pi(N)^{-\frac 1 2}$, or, if we are not so lucky, at 
-least $\D_N(\btheta,\ST) \ll N^{-\frac 1 2+\epsilon}$ (this is the 
+Now let $E_{/\bQ}$ be a non-CM elliptic curve with Satake parameters 
+$\theta_p$. If the $\theta_p$ were being drawn at random from the distribution 
+$\ST$, then the Glivenko--Cantelli theorem would say that as $N\to \infty$, 
+we would have $\D_N(\btheta,\ST) \sim \pi(N)^{-\frac 1 2 + \epsilon}$. Since we 
+expect the Satake parameters $\{\theta_p\}$ to behave roughly as if they were 
+drawn at random, the Glivenko--Cantelli theorem suggests that at least 
+$\D_N(\btheta,\ST) \ll N^{-\frac 1 2+\epsilon}$ (this is the 
 Akiyama--Tanigawa conjecture, i.e.~Conjecture \ref{conj:akiyama-tanigawa}). 
 Ideally, the normalized discrepancy $\sqrt{\pi(N)}\D_N(\btheta,\ST)$ would also 
 be equidistributed, but sadly, numerical experiments conducted by the author 
@@ -264,8 +269,7 @@ suggest this is not the case.
 In this section we summarize the results of the paper \cite{okten-1999}, 
 generalizing them as needed for our context. Recall that a function $f$ on 
 $[\vzero,\vinfty)\subset \bR^d$ is said to be of \emph{bounded variation} (in 
-the measure-theoretic sense) if there is a finite Radon measure (i.e., 
-finite and inner regular) $\nu$ such that 
+the measure-theoretic sense) if there is a finite Radon measure $\nu$ such that 
 $f(\vx) - f(\vzero) = \nu[\vzero,\vx]$. In such a case we write 
 $\Var(f) = |\nu|$. If $f\in C^d(\bR^d)$, then 
 $\Var(f) = \int_{[\vzero,\vinfty)} \left|\frac{\dd^d f}{\dd t_1 \dots \dd t_d} \right|$. 
@@ -279,9 +283,10 @@ we have
 \]
 \end{theorem}
 \begin{proof}
-By assumption, there is a finite Radon (that is, inner regular) measure $\nu$ 
-such that $f(\vy) - f(\vzero) = \nu[\vzero,\vy]$. What follows relies on the 
-fact that $1_{[\vzero,\vx]}(\vy) = 1_{[\vy,\vinfty)}(\vx)$. 
+By assumption, there is a finite Radon measure $\nu$ 
+such that $f(\vy) - f(\vzero) = \nu[\vzero,\vy]$. Recall that 
+$1_{[\vzero,\vz]}(\vy) = 1_{[\vy,\vinfty)}(\vz)$ for any 
+$\vy,\vz\in [\vzero,\vinfty)$. Then 
 \begin{align*}
 	\frac{1}{N} \sum_{n\leqslant N} f(\vx_n) - \int f\, \dd\mu 
 		&= \frac{1}{N} \sum_{n\leqslant N} \left(f(\vx_n) - f(\vzero)\right) - \int \left(f(\vx) - f(\vzero)\right)\, \dd\mu(\vx) \\
@@ -298,7 +303,7 @@ The supremum is bounded above by $\D_N(\bvx,\mu)$, so the proof is complete.
 
 This theorem is proved in a somewhat restrictive setting, and there are more 
 general versions of the theorem for less restrictive notions of bounded 
-variation. For example,  $f$ a function on $\bR^+$ that is bounded variation 
+variation. For example, for $f$ a function on $\bR^+$ that is bounded variation 
 in the traditional sense (for example, piecewise continuous) and $\mu$ a 
 continuous probability measure, the inequality 
 \[
@@ -338,7 +343,9 @@ arbitrary. Then
 \]
 \end{lemma}
 \begin{proof}
-Fix $\epsilon>0$, and let $t\in [0,\infty)$ be arbitrary. For all 
+Fix $\epsilon>0$, and let $t\in [0,\infty)$ be arbitrary. Recall that 
+$P_{\bx,N}$ is the empirical measure associated to $\{x_n\}_{n\leqslant N}$, 
+so $P_{\bx,N} = \frac 1 N \sum_{n\leqslant N} \delta_{x_n}$. For all 
 $n\leqslant N$ such that $y_n<t$, either $x_n < t+\epsilon$ or 
 $|x_n - y_n| \geqslant \epsilon$. It follows that 
 \[
@@ -391,26 +398,26 @@ with respect to the pushforward measure.
 Let $I$, $J$ be closed connected intervals and $f\colon I\twoheadrightarrow J$ 
 a continuous monotonic map. If $\bx$ is a sequence in $I$ and $\mu$ is an 
 absolutely continuous probability measure on $I$, then 
-$\left|\D_N(\bx,\mu) - \D_N(f_\ast \bx,f_\ast\mu)\right| \leqslant \frac 4 N$.
+$\left|\D_N(\bx,\mu) - \D_N(f_\ast \bx,f_\ast\mu)\right| \leqslant \frac 2 N$.
 \end{lemma}
 \begin{proof}
 Because $f$ is continuous and monotonic, given $[u,v)\subset I$, there exists 
-$[x,y)\subset J$ such that $f[u,v)$ differs from $[x,y)$ by at most two 
-elements. Compute:
+$[x,y)\subset J$ such that $f[u,v)$ differs from $[x,y)$ by at most one 
+element. Compute:
 \[
-	\left| P_{f_\ast\bx,N}[x,y) - f_\ast\mu[x,y) - \left(P_{\bx,N}[u,v) - \mu[u,v)\right)\right| \leqslant \frac 4 N ,
+	\left| P_{f_\ast\bx,N}[x,y) - f_\ast\mu[x,y) - \left(P_{\bx,N}[u,v) - \mu[u,v)\right)\right| \leqslant \frac 1 N ,
 \]
 the equality $f_\ast\mu[u,v) = \mu[x,y)$ following from the continuity of $\mu$. 
 Since $[u,v)\subset I$ was arbitrary, it follows that 
-$\D_N(\bx,\mu) \leqslant \D_N(f_\ast \bx,f_\ast\mu) + \frac 4 N$. 
+$\D_N(\bx,\mu) \leqslant \D_N(f_\ast \bx,f_\ast\mu) + \frac 1 N$. 
 
 Similarly, for any $[x,y)\subset J$, there exists $[u,v)\subset I$ such that 
 $f^{-1}[x,y)$ differs from $[u,v)$ by at most two elements. Compute:
 \[
-	\left| P_{\bx,N}[u,v) - \mu[u,v) - \left(P_{f_\ast \bx,N}[x,y) - f_\ast\mu[x,y)\right)\right| \leqslant \frac 4 N .
+	\left| P_{\bx,N}[u,v) - \mu[u,v) - \left(P_{f_\ast \bx,N}[x,y) - f_\ast\mu[x,y)\right)\right| \leqslant \frac 2 N .
 \]
 Here, $[x,y)$ is arbitrary, so 
-$\D_N(f_\ast \bx,f_\ast\mu) \leqslant \D_N(\bx,\mu) + \frac 4 N$. The result 
+$\D_N(f_\ast \bx,f_\ast\mu) \leqslant \D_N(\bx,\mu) + \frac 2 N$. The result 
 follows. 
 \end{proof}
 
@@ -468,7 +475,7 @@ assume it does not intersect $J$.
 \node at (2.5,3) {$J$};
 \end{tikzpicture}
 \end{figure}
-Under the assumption  
+Assuming 
 $[\vs,\vt)\cap J=\varnothing$, we have
 $\left|P_{\bx\wr\by,N}[\vs,\vt) - (\mu+\nu)[\vs,\vt)\right| = |P_{\bx,N}[\vs,\vt) - \mu[\vs,\vt)|$, 
 which yields the result. 
@@ -581,7 +588,7 @@ $\D\left(\bx_{\leqslant N}: a^M,\mu\right) \leqslant \D\left(\bx^N,\mu\right) + 
 Let $\bv$ be the $\mu$-equidistributed van der Corput sequence of 
 Theorem \ref{thm:van-der-corput}, possibly transformed linearly to lie in 
 $[a,b]$. We know that $\D(\bv^N, \mu) \ll \frac{\log N}{N}$, which converges 
-to zero faster than $N^{-\alpha}$. 
+to zero faster than $N^{-\alpha}$ since $\alpha\in \left(0,\frac 1 2\right)$. 
 
 We construct the sequence $\bx$ via the following recipe. Start with 
 $(x_1 = v_1,x_2 = v_2,\dots)$ until, for some $N_1$, 
