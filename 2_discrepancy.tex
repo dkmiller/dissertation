@@ -251,7 +251,7 @@ $\mathrm{P}\left(\sqrt{\pi(N)} D_N > t\right) \leqslant 2 e^{-2 t^2}$.
 Now let $E_{/\bQ}$ be a non-CM elliptic curve with Satake parameters 
 $\theta_p$. If the $\theta_p$ were being drawn at random from the distribution 
 $\ST$, then the Glivenko--Cantelli theorem would say that as $N\to \infty$, 
-we would have $\D_N(\btheta,\ST) \sim \pi(N)^{-\frac 1 2 + \epsilon}$. Since we 
+we would have $\D_N(\btheta,\ST) \sim \pi(N)^{-\frac 1 2}$. Since we 
 expect the Satake parameters $\{\theta_p\}$ to behave roughly as if they were 
 drawn at random, the Glivenko--Cantelli theorem suggests that at least 
 $\D_N(\btheta,\ST) \ll N^{-\frac 1 2+\epsilon}$ (this is the 
@@ -327,11 +327,11 @@ that for another measure $\mu$ on $\bR$, the \emph{Radon--Nikodym derivative}
 of $\mu$ with respect to $\lambda$ (when it exists) is uniquely determined by 
 $\cdf_\mu(x) = \int_{-\infty}^x \frac{\dd\mu}{\dd\lambda}(t)\, \dd t$. The 
 Radon--Nikodym derivative exists whenever $\mu$ is absolutely continuous with 
-respect to $\lambda$, i.e.~$\mu(S) = 0$ whenever $\lambda(S) = 0$. The 
-following result, a generalization of 
-\cite[Ch.~2 Th.~4.1]{kuipers-niederreiter-1974}, quantifies how much the 
-discrepancy of a sequence changes when the elements of the sequence are changed 
-by a small amount. 
+respect to $\lambda$, i.e.~$\mu(S) = 0$ whenever $\lambda(S) = 0$ (this is the 
+Lebesgue--Radon--Nikodym theorem \cite[Th.~3.8]{folland-1999}). The following 
+result, a generalization of \cite[Ch.~2 Th.~4.1]{kuipers-niederreiter-1974}, 
+quantifies how much the discrepancy of a sequence changes when the elements of 
+the sequence are changed by a small amount. 
 
 \begin{lemma}\label{lem:disc-of-two-seq}
 Let $\bx$ and $\by$ be sequences in $[0,\infty)$. Suppose $\mu$ is an 
@@ -344,10 +344,10 @@ arbitrary. Then
 \end{lemma}
 \begin{proof}
 Fix $\epsilon>0$, and let $t\in [0,\infty)$ be arbitrary. Recall that 
-$P_{\bx,N}$ is the empirical measure associated to $\{x_n\}_{n\leqslant N}$, 
-so $P_{\bx,N} = \frac 1 N \sum_{n\leqslant N} \delta_{x_n}$. For all 
-$n\leqslant N$ such that $y_n<t$, either $x_n < t+\epsilon$ or 
-$|x_n - y_n| \geqslant \epsilon$. It follows that 
+$P_{\bx,N} = \frac 1 N \sum_{n\leqslant N} \delta_{x_n}$ is the empirical 
+measure associated to $(x_n)_{n\leqslant N}$. For all $n\leqslant N$ such that 
+$y_n<t$, either $x_n < t+\epsilon$ or $|x_n - y_n| \geqslant \epsilon$. It 
+follows that 
 \[
 	P_{\by,N}[0,t) \leqslant P_{\bx,N}[0,t+\epsilon) + \frac{\#\{ n\leqslant N : |x_n - y_n| \geqslant \epsilon\}}{N} .
 \]
@@ -364,30 +364,67 @@ $\D_N^\star(\by,\mu) \leqslant \left|\frac{\dd\mu}{\dd\lambda}\right|_\infty \ep
 Reversing the roles of $\bx$ and $\by$, we obtain the desired result. 
 \end{proof}
 
+We can apply the above result to the case where the elements of two sequences 
+get closer and closer together. In the proof below, the exponent 
+$\frac{1}{\alpha+1}$ is optimal. 
+
+\begin{corollary}\label{cor:close-seq-disc}
+Let $\bx$, $\by$, and $\mu$ be as in Lemma \ref{lem:disc-of-two-seq}. Suppose 
+$|x_n - y_n| \ll n^{-\alpha}$ for some fixed $\alpha>0$. Then 
+$|\D_N(\bx,\mu) - \D_N(\by,\mu)| \ll N^{-\frac{\alpha}{\alpha+1}}$. 
+\end{corollary}
+\begin{proof}
+Let $C>0$ be such that $|x_n - y_n| < C n^{-\alpha}$ for all $n$. Given 
+$N$, let $\epsilon_N = N^{-\frac{\alpha}{\alpha+1}}$. Note that 
+$C n^{-\alpha} \geqslant \epsilon_N$ if and only if 
+$\log C - \alpha\log n \geqslant -\frac{\alpha}{\alpha+1} \log N$, which is 
+equivalent to $n \leqslant N^{\frac{1}{\alpha+1}} C^{1/\alpha}$. 
+Lemma \ref{lem:disc-of-two-seq} with $\epsilon = \epsilon_N$ and the estimate 
+$\# \{n\leqslant N : |x_n - y_n|\} \leqslant N^{\frac{1}{\alpha+1}} C^{1/\alpha}$ 
+tells us that 
+$|\D_N(\bx,\mu) - \D_N(\by,\mu)| \ll N^{-\frac{\alpha}{\alpha+1}} + N^{\frac{1}{\alpha+1} - 1} C^{1/\alpha}\ll N^{-\frac{\alpha}{\alpha+1}}$. 
+\end{proof}
+
 This next result shows that if a sequence is transformed by an isometry of 
-$\bR$, the discrepancy of the transformed sequence is roughly the same as the 
+$\bR$, the discrepancy of the transformed sequence is the same as the 
 discrepancy of the original sequence.
 
 \begin{lemma}\label{lem:flip-discrepancy}
 Let $\sigma$ be an isometry of $\bR$, and $\bx$ a sequence in $[0,\infty)$ 
 such that $\sigma(\bx)$ is also in $[0,\infty)$. Let $\mu$ be an absolutely 
 continuous measure on $[0,\infty)$ such that $\sigma_\ast \mu$ is supported on 
-$[0,\infty)$. Then 
-$\left|\D_N(\bx, \mu) - \D_N(\sigma_\ast \bx, \sigma_\ast \mu)\right| \leqslant \frac{2}{N}$. 
+$[0,\infty)$. Then $\D_N(\bx, \mu) = \D_N(\sigma_\ast \bx, \sigma_\ast \mu)$. 
 \end{lemma}
 \begin{proof}
 Every isometry of $\bR$ is a composition of a translation and a reflection. 
 The statement is clear if $\sigma$ is a translation, as then the two 
 discrepancies are equal. So, suppose $\sigma(t) = a - t$ for some $a>0$. Since 
-$\mu$ is absolutely continuous, $\mu\{t\}=0$ for all $t\geqslant 0$. In 
-particular, $\mu[s,t) = \mu(s,t]$. By definition, 
-$P_{\bx,N}\{t\}\leqslant \frac 1 N$. For any interval $[s,t)$ in $[0,\infty)$, 
-we know that 
-$\left| P_{\bx,N}[s,t) - P_{\bx,N}(s,t]\right| \leqslant \frac{2}{N}$, hence 
-\[
-	\left| P_{\bx,N}[s,t) - \mu[s,t) - \left(P_{\sigma_\ast \bx,N}[a-t,a-s) - \sigma_\ast \mu[a-t,a-s)\right)\right| \leqslant \frac{2}{N} .
-\]
-This proves the result. 
+$\mu$ is absolutely continuous, $\mu\{t\}=0$ for all $t\geqslant 0$, and 
+similarly for $\sigma_\ast\mu$. Thus 
+$\mu[s,t) = \sigma_\ast\mu(a-t,a-s] = \sigma_\ast\mu[a-t,a-s)$ for any 
+$[s,t)\subset [0,\infty)$. Let $\epsilon>0$ be arbitrary, and let 
+$I = [s,t)$ be such that $|P_{\bx,N}I - \mu I| > \D_N(\bx,\mu) - \epsilon$. 
+Since $P_{\bx,N}$ can assign positive measure to a point, it may not be that 
+$P_{\sigma_\ast \bx,N}(a-t,a-s] = P_{\sigma_\ast \bx,N}[a-t,a-s)$. Consider the 
+family of intervals $I_n = \left[a-t+\frac 1 n, a-s+\frac 1 n\right)$. For 
+$n$ sufficiently large, 
+$P_{\sigma_\ast\bx,N}I_n = P_{\sigma\ast\bx,N}(a-t,a-s]$ because no element of 
+$\sigma_\ast\bx$ is in either $\left(a-t,a-t+\frac 1 n\right)$ or 
+$\left(a-s,a-s+\frac 1 n\right)$. Moreover, since $\sigma_\ast\mu$ is absolutely 
+continuous, 
+$\sigma_\ast\mu(I_n) \to \sigma_\ast\mu(a-s,a-t] = \sigma_\ast\mu[a-s,a-t)$. 
+It follows that 
+\begin{align*}
+	|P_{\sigma_\ast\bx,N}(I_n) - \sigma_\ast\mu(I_n)| 
+		&\to |P_{\sigma_\ast\bx,N}(a-s,a-t] - \sigma_\ast\mu(a-s,a-t]| \\
+		&= |P_{\bx,N}(I) - \mu(I)| .
+\end{align*}
+This means there exists $I_n$ such that 
+$|P_{\sigma_\ast\bx,N}(I_n) - \sigma_\ast\mu(I_n)|> \D_N(\bx,\mu) - \epsilon$. 
+We have proved that 
+$\D_N(\sigma_\ast\bx,\sigma_\ast\mu) \geqslant \D_N(\bx,\mu)$. Repeating this 
+argument with $\sigma_\ast\mu$ and $\sigma_\ast\bx$ gives the other inequality, 
+so the proof is complete. 
 \end{proof}
 
 A technique we will use throughout this thesis involves comparing the 
@@ -395,37 +432,32 @@ discrepancy of a sequence with the discrepancy of a pushforward sequence,
 with respect to the pushforward measure. 
 
 \begin{lemma}\label{lem:push-discrepancy}
-Let $I$, $J$ be closed connected intervals and $f\colon I\twoheadrightarrow J$ 
-a continuous monotonic map. If $\bx$ is a sequence in $I$ and $\mu$ is an 
-absolutely continuous probability measure on $I$, then 
-$\left|\D_N(\bx,\mu) - \D_N(f_\ast \bx,f_\ast\mu)\right| \leqslant \frac 2 N$.
+Let $I$, $J$ be closed connected intervals and $f\colon I\to J$ a continuous, 
+order-preserving (or order-reversing) bijection. If $\mu,\nu$ are probability 
+measure on $I$, then 
+$\D_N(\mu,\nu) = \D_N(f_\ast \mu,f_\ast\nu)$.
 \end{lemma}
 \begin{proof}
-Because $f$ is continuous and monotonic, given $[u,v)\subset I$, there exists 
-$[x,y)\subset J$ such that $f[u,v)$ differs from $[x,y)$ by at most one 
-element. Compute:
-\[
-	\left| P_{f_\ast\bx,N}[x,y) - f_\ast\mu[x,y) - \left(P_{\bx,N}[u,v) - \mu[u,v)\right)\right| \leqslant \frac 1 N ,
-\]
-the equality $f_\ast\mu[u,v) = \mu[x,y)$ following from the continuity of $\mu$. 
-Since $[u,v)\subset I$ was arbitrary, it follows that 
-$\D_N(\bx,\mu) \leqslant \D_N(f_\ast \bx,f_\ast\mu) + \frac 1 N$. 
+First we suppose that $f$ is order-preserving. Then for any interval 
+$[s,t)\subset I$, we know that $f[s,t) = [u,v)$ for some $u,v\in J$. It follows 
+that $|\mu[s,t) - \nu[s,t)| = |f_\ast\mu[u,v) - f_\ast\nu[u,v)|$, so 
+$\D_N(\mu,\nu) \geqslant \D_N(f_\ast\mu,f_\ast\nu)$. Similarly, for any 
+$[u,v)\subset J$, we know that $f^{-1}[u,v) = [s,t)$ for some 
+$s,t\in I$. It follows that 
+$|f_\ast\mu[u,v) - f_\ast\nu[u,v)| = |\mu[s,t) - \nu[s,t)$, which means 
+$\D_N(f_\ast\mu,f_\ast\nu) \geqslant \D_N(\mu,\nu)$.
 
-Similarly, for any $[x,y)\subset J$, there exists $[u,v)\subset I$ such that 
-$f^{-1}[x,y)$ differs from $[u,v)$ by at most two elements. Compute:
-\[
-	\left| P_{\bx,N}[u,v) - \mu[u,v) - \left(P_{f_\ast \bx,N}[x,y) - f_\ast\mu[x,y)\right)\right| \leqslant \frac 2 N .
-\]
-Here, $[x,y)$ is arbitrary, so 
-$\D_N(f_\ast \bx,f_\ast\mu) \leqslant \D_N(\bx,\mu) + \frac 2 N$. The result 
-follows. 
+If $f$ is order-reversing, then we may write $f$ as the composition of a 
+reflection and an order-preserving bijection. Combining Lemma 
+\ref{lem:flip-discrepancy} and the first part of this proof, we see that 
+$\D_N(f_\ast\mu,f_\ast\nu) = \D_N(\mu,\nu)$. 
 \end{proof}
 
 Now we show that the discrepancy behaves as expected when two sequences are 
 interleaved. 
 
 \begin{definition}
-Let $\bx$ and $\by$ be sequences in $[0,\vinfty)\subset \bR^d$. We write 
+Let $\bx$ and $\by$ be sequences in $[\vzero,\vinfty)\subset \bR^d$. We write 
 $\bx\wr\by$ for the interleaved sequence $(x_1,y_1,x_2,y_2,x_3,y_3,\dots)$. 
 \end{definition}
 
@@ -434,10 +466,9 @@ $P_{\bx\wr\by,N} = \frac{1}{2} \left( P_{\bx,N} + P_{\by,N}\right)$ for the
 combined empirical measure of the interleaved sequence $\bx\wr\by$. 
 
 \begin{theorem}\label{thm:wreath-seq}
-Let $I$ and $J$ be disjoint open boxes in $[0,\vinfty)$, and let $\mu$, 
-$\nu$ be absolutely continuous probability measures on $I$ and $J$, 
-respectively. Let $\bx$ be a sequence in $I$ and $\by$ be a sequence in $J$. 
-Then 
+Let $I$ and $J$ be disjoint open boxes in $[\vzero,\vinfty)$, and let $\mu$, 
+$\nu$ be probability measures on $I$ and $J$, respectively. Let $\bx$ be a 
+sequence in $I$ and $\by$ be a sequence in $J$. Then 
 \[
 	\max\{\D_N(\bx,\mu),\D_N(\by,\nu)\} \leqslant \D_N(\bx\wr\by, \mu+\nu) \leqslant \D_N(\bx,\mu) + \D(\by,\nu)
 \]
@@ -503,7 +534,7 @@ $N^{-\alpha}$, for some $\alpha\in \left(0,\frac 1 2\right)$ which controls the
 whose discrepancy decays faster. The best known rate of decay is achieved by 
 the following example. 
 
-\begin{definition}
+\begin{definition}\label{def:van-der-corput}
 For $n\in \bN$, write $n$ in base $2$ as $n = \sum a_i 2^i$, and put 
 $v_n = \sum a_i 2^{-(i+1)}$. The \emph{van der Corput sequence} is 
 $\bv = (v_1,v_2,v_3,\dots)$.
@@ -514,6 +545,7 @@ dimensions, but we will not use them. The discrepancy of the van der Corput
 sequence has extremely fast convergence to zero. 
 
 \begin{lemma}[{\cite[Ch.~2 Th.~3.5]{kuipers-niederreiter-1974}}]
+\label{lem:vdc-disc}
 $\D_N(\bv) \leqslant \frac{\log(N+1)}{N\log 2}$. 
 \end{lemma}
 
@@ -523,18 +555,24 @@ section to construct sequences equidistributed with respect to more general
 measures. 
 
 \begin{theorem}\label{thm:van-der-corput}
-Let $\mu$ be an absolutely continuous probability measure on an interval $I$  
-whose cdf is strictly increasing on $I$. Then there exists a sequence 
-$\bx=(x_1,x_2,\dots)$ in $I$ such that $\D_N(\bx,\mu) \ll \frac{\log(N)}{N}$. 
+Let $\mu$ be an absolutely continuous probability measure on an interval $I$. 
+Then there exists a sequence $\bx=(x_1,x_2,\dots)$ in $I$ such that 
+$\D_N(\bx,\mu) \ll \frac{\log(N)}{N}$. 
 \end{theorem}
 \begin{proof}
-Since $\left(\cdf_\mu\right)_\ast\mu$ is the Lebesgue measure, Lemma 
-\ref{lem:push-discrepancy} tells us that 
-$\left|\D_N(\cdf_\mu^{-1}(\bv), \mu) - \D_N(\bv)\right| \ll N^{-1}$. Since 
-$\cdf_\mu$ is strictly increasing, it is an order-preserving bijection between 
-$I$ and $[0,1]$, which gives us the desired result with 
-$\bx = \cdf_\mu^{-1}(\bv)$. The implied constant in the result does not depend 
-on $\mu$. 
+Let $I = [a,b]$. We rephrase the proof of 
+\cite[Ch.~2 Lem.~4.2]{kuipers-niederreiter-1974} for our context. Let 
+$\bv = (v_1,v_2,\dots)$ be the van der Corput sequence (Definition 
+\ref{def:van-der-corput}). For each $n$, there exists $x_n\in I$ such that 
+$\cdf_\mu^{-1}[0,v_n] = [a,x_n]$. It follows that for any $t\in I$, $x_n < t$ 
+if and only if $v_n < \cdf_\mu(t)$, and thus 
+\[
+	P_{\bx,N}[a,t) - \mu[a,t) = P_{\bv,N}[0,\cdf_\mu(t)) - \cdf_\mu(t) .
+\]
+Since $t$ was arbitrary and $\cdf_\mu$ is surjective by the absolute continuity 
+of $\mu$, it follows via Lemma \ref{lem:vdc-disc} that 
+$\D_N^\star(\bx,\mu) \ll \frac{\log N}{N}$, hence 
+$\D_N(\bx,\mu) \ll \frac{\log N}{N}$. 
 \end{proof}
 
 Now that we can construct sequences with discrepancy decaying rapidly (with 

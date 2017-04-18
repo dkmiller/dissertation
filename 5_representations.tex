@@ -324,7 +324,7 @@ $L=\pm \infty$, we can choose $x_p = \pm \frac 1 2$. By Theorem
 \ref{thm:master-Galois}, there exists $\rho\colon G_\bQ \to \GL_2(\bZ_l)$ with 
 $\pi_{\ram(\rho)}(x) \ll \log(x)$, and such that for each unramified $p$, 
 $a_p = \tr\rho(\frob_p)\in \bZ$, satisfies the Hasse bound. Moreover, after 
-re-indexing $(x_p)$ by the unramified primes of $\rho$, we have 
+re-indexing $(x_p)$ by the unramified primes of $\rho$, we can have 
 $\left| \frac{a_p}{2\sqrt p} - x_p\right| < \frac{l \log p}{\sqrt p}$. In fact, 
 by inspecting the proof of Theorem \ref{thm:master-Galois}, we can even ensure 
 that
@@ -428,7 +428,7 @@ $C_1 \varphi_2(N) \leqslant \varphi_1(N) \leqslant C_2 \varphi_2(N)$.
 
 \begin{theorem}\label{thm:integral-a_p-alpha}
 Let $\mu$ be a Sato--Tate compatible measure, and fix 
-$\alpha\in \left(0,\frac 1 2\right)$. 
+$\alpha\in \left(0,\frac 1 3\right)$. 
 Then there exists a sequence of integers $a_p$ satisfying the Hasse bound, 
 such that if we set $\theta_p = \cos^{-1}\left(\frac{a_p}{2\sqrt p}\right)$, 
 then $\D_N(\btheta,\mu) = \Theta(\pi(N)^{-\alpha})$. 
@@ -460,7 +460,7 @@ of $U_k$ in what follows.
 
 \begin{theorem}\label{thm:int-flip-seq}
 Let $\mu$ be a $\sigma$-invariant Sato--Tate compatible measure. Fix 
-$\alpha\in \left(0,\frac 1 2\right)$. Then there is a sequence of integers 
+$\alpha\in \left(0,\frac 1 3\right)$. Then there is a sequence of integers 
 $a_p$, satisfying the Hasse bound, such that for 
 $\theta_p =\cos^{-1}\left( \frac{a_p}{2\sqrt p}\right)$, we have
 \begin{enumerate}
@@ -492,12 +492,13 @@ $\frac{a_{q_i}}{2\sqrt{q_i}}\in [-1,0)$ and
 $\left| \frac{a_{p_i}}{2\sqrt{p_i}} + \frac{a_{q_i}}{2\sqrt{q_i}}\right| \ll \frac{1}{\sqrt{p_i}}$. 
 
 Let $\bx$ be the sequence of the $\frac{a_{p_i}}{2\sqrt{p_i}}$ and $\by$  
-the corresponding sequence with the $q_i$-s. Then 
-Lemma \ref{lem:flip-discrepancy} tells us that the discrepancy of 
-$\by$ decays at the same rate (within $O(N^{-1})$) as $-\by$, and then Lemma  \ref{lem:disc-of-two-seq} with $\epsilon\approx N^{-1/2}$ tells us that 
-the discrepancy of $-\by$ decays at the same rate (within $O(N^{-1/2})$) as 
-the discrepancy of $\bx$. Thus the discrepancies of both $\bx$ and $\by$ decay 
-as $\Theta(N^{-\alpha})$. Finally, Theorem \ref{thm:wreath-seq} tell us that 
+the corresponding sequence with the $q_i$-s. Then Lemma 
+\ref{lem:flip-discrepancy} with $\sigma(t) = -t$ tells us that the discrepancy 
+of $\by$ decays at the same rate as $-\by$, and then Corollary 
+\ref{cor:close-seq-disc} with $\alpha = \frac 1 2$ tells us that the 
+discrepancy of $-\by$ decays at the same rate (within $O(N^{-1/3})$) as the 
+discrepancy of $\bx$. Thus the discrepancies of both $\bx$ and $\by$ decay as 
+$\Theta(N^{-\alpha})$. Finally, Theorem \ref{thm:wreath-seq} tell us that 
 $\D_N(\bx\wr\by,\mu) = \Theta(N^{-\alpha})$. 
 
 The function $U_k(\cos^{-1} t)$ is an odd polynomial in $t$, so for 
@@ -521,7 +522,7 @@ holds.
 
 \begin{theorem}\label{thm:bad-Galois}
 Let $\mu$ be a Sato--Tate compatible $\sigma$-invariant measure on $[0,\pi]$. 
-Fix $\alpha\in \left(0,\frac 1 2\right)$ and a good residual representation 
+Fix $\alpha\in \left(0,\frac 1 3\right)$ and a good residual representation 
 $\bar\rho\colon G_\bQ \to \GL_2(\bF_l)$. Then there exists a weight-$2$ lift 
 $\rho\colon G_\bQ \to \GL_2(\bZ_l)$ of $\bar\rho$ such that 
 \begin{enumerate}
@@ -555,9 +556,10 @@ are integral, satisfy the Hasse bound, and
 $\left| \frac{a_p}{2\sqrt p} - z_p\right| \leqslant \frac{l \log p}{2\sqrt p}$. 
 This implies, just as in the proof of Theorem \ref{thm:master-Galois}, that 
 the discrepancy of the sequence $\left\{\frac{a_p}{2\sqrt p}\right\}$ decays 
-as $\Theta(\pi(N)^{-\alpha})$ and by Lemma \ref{lem:push-discrepancy}, the 
+as $\Theta(\pi(N)^{-\alpha})$ and by Lemma \ref{lem:push-discrepancy} with 
+$f(t) = \cos^{-1}(t)$, the 
 discrepancies of $\left\{\frac{a_p}{2\sqrt p}\right\}$ and $\{\theta_p\}$ 
-decay asymptotically at the same rate. 
+decay at the same rate. 
 
 We've proved statements 1--3 in the theorem, which follow essentially for free 
 from Theorem \ref{thm:master-Galois} and its proof. All that remains is to prove 
@@ -567,17 +569,16 @@ $\left| \sum_{p\leqslant N} U_k(\theta_p)\right| \ll N^{\frac 1 2+\epsilon}$,
 and this combined with Theorem \ref{thm:AT->RH:gp} yields the result. 
 \end{proof}
 
-This entire discussion also works with absolutely continuous measure $\mu$, 
-supported on a proper subinterval of $[0,\pi]$, so long as $\cdf_\mu$ is 
-strictly increasing on that interval. Let $I$ be an arbitrarily small 
-subinterval of $[0,\pi]$ (for example, 
-$I = \left[\frac \pi 2 - \epsilon,\frac \pi 2 + \epsilon\right]$), let $B_I(t)$ 
-be a bump function for $I$, normalized to have total mass one. Then Theorem 
-\ref{thm:bad-Galois} gives Galois representations with empirical Sato--Tate 
-distribution converging at any specified rate to $\mu_I = B_I(t)\, \dd t$. This 
-is a strictly stronger result than \cite[Th.~5.2]{pande-2011}. Moreover, the 
-proof of Theorem \ref{thm:int-flip-seq} shows that in fact for any 
-$f\in C([0,\pi])$ with $f\circ \cos^{-1}\in C^1([-1,1])$ and 
-$f(\pi-\theta) = -f(\theta)$, the Dirichlet series 
+This entire discussion works with absolutely continuous measure $\mu$. For 
+example, let $I$ be an arbitrarily small subinterval of $[0,\pi]$ 
+(e.g.~$I = \left[\frac \pi 2 - \epsilon,\frac \pi 2 + \epsilon\right]$), let 
+$B_I(t)$ be a bump function for $I$, normalized to have total mass one. Then 
+Theorem \ref{thm:bad-Galois} gives Galois representations with empirical 
+Sato--Tate distribution converging at any specified rate to 
+$\mu_I = B_I(t)\, \dd t$. This is a strictly stronger result than 
+\cite[Th.~5.2]{pande-2011}. Moreover, the proof of Theorem 
+\ref{thm:int-flip-seq} shows that in fact for any $f\in C([0,\pi])$ with 
+$f\circ \cos^{-1}\in C^1([-1,1])$ and $f(\pi-\theta) = -f(\theta)$, the 
+Dirichlet series 
 $L_f(\rho,s) = \prod \left( 1 - f(\theta_p) p^{-s}\right)^{-1}$ satisfies the 
 Riemann hypothesis. 

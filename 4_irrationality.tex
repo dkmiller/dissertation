@@ -105,10 +105,12 @@ Let $\vx\in \bR^d$ with $|\vx|_\infty< 1$ and $\omega_0(\vx)$
 (resp.~$\omega_{d-1}(\vx)$) finite. Then 
 \begin{align*}
 	\frac{1}{\dd(n \vx,\bZ^d)} 
-		&\ll |n|^{\omega_0(\vx)+\epsilon}\qquad \text{ for $n\in \bZ\smallsetminus 0$} \\
+		&\ll |n|^{\omega_0(\vx)+\epsilon} 
+		&&\text{ for $n\in \bZ\smallsetminus 0$} \\
 	\text{(resp.~}
 	\frac{1}{\dd\left(\langle \vm,\vx\rangle, \bZ\right)} 
-		&\ll |\vm|_\infty^{\omega_{d-1}(\vx)+\epsilon} \qquad\text{ for $\vm\in \bZ^d\smallsetminus \vzero$).}
+		&\ll |\vm|_\infty^{\omega_{d-1}(\vx)+\epsilon} 
+		&&\text{ for $\vm\in \bZ^d\smallsetminus \vzero$).}
 \end{align*}
 \end{lemma}
 \begin{proof}
@@ -136,14 +138,14 @@ depending on $\vx$. Thus
 $\frac{1}{\dd(n \vx,\bZ^d)} \ll |n|^{\omega_0(\vx)+\epsilon}$, the 
 implied constant depending on both $\vx$ and $\epsilon$.
 
-Now we consider the second inequality. Note 
-that $\dd(\langle \vm,\vx\rangle,\bZ) = |n + \langle \vm,\vx\rangle|$ for 
+Now we consider the second inequality. Note that when $\vm\ne 0$, 
+$\dd(\langle \vm,\vx\rangle,\bZ) = |n + \langle \vm,\vx\rangle|$ for 
 some $n$ with $|n| \leqslant |\vm|_2\cdot |\vx|_2 + 1$. Thus 
 $|(n,\vm)|_\infty \ll |\vm|_2 \ll |\vm|_\infty$ with the implied constants 
 depending on $d$ and $\vx$, because any two norms on a 
 finite-dimensional Banach space are equivalent. This gives us 
 $\dd(\langle\vm,\vx\rangle,\bZ) \geqslant C_{d-1}' |\vm|_\infty^{-\omega_{d-1}(\vx)-\epsilon}$, 
-for some constant $C_{d-1}'$. This implies 
+for some constant $C_{d-1}'$, which implies 
 \[
 	\frac{1}{d(\langle \vm,\vx\rangle,\bZ)} \ll |\vm|_\infty^{\omega_{d-1}(\vx)+\epsilon} ,
 \]
@@ -209,7 +211,8 @@ We combine the above results to estimate an upper bound on the discrepancy of
 the sequence $\bvx$. 
 
 \begin{theorem}\label{thm:disc-upper-bound}
-Let $\bvx=(\vx,2\vx,3\vx,\dots)$ in $\bT^d$. Then 
+Let $\vx$ generate a dense subgroup of $\bT^d$, and let 
+$\bvx=(\vx,2\vx,3\vx,\dots)$ in $\bT^d$. Then 
 \[
 	\D_N(\bvx) \ll N^{-\frac{1}{\omega_{d-1}(\vx)+1}+\epsilon} .
 \]
@@ -255,9 +258,8 @@ purposes, but does not strengthen any of the results in this thesis.
 \end{proof}
 
 \begin{theorem}\label{thm:disc-lower-bound}
-Let $\vx\in \bR^d$ be such that $x_1,\dots,x_d$ are linearly independent over 
-$\bQ$, and $\omega_0(\vx)$, $\omega_{d-1}(\vx)$ are finite. Let 
-$\bvx=(\vx,2\vx,3\vx,\dots)$ in $\bT^d$. Then 
+Let $\vx\in \bT^d$ generate a dense subgroup, with $\omega_0(\vx)$, 
+$\omega_{d-1}(\vx)$ finite. Let $\bvx=(\vx,2\vx,3\vx,\dots)$. Then 
 $\D_N(\bvx) = \Omega\left(N^{-\frac{d}{\omega_0(\vx)}-\epsilon} \right)$. 
 \end{theorem}
 \begin{proof}
@@ -267,7 +269,7 @@ $\delta>0$ such that
 $\frac{d}{\omega_0(\vx)-\delta} = \frac{d}{\omega_0(\vx)} + \epsilon$. 
 
 By the definition of $\omega_0(\vx)$, there exist infinitely many 
-$(n,\vm)$ with $q>0$ such that 
+$(n,\vm)$ with $n>0$ such that 
 $|n \vx - \vm|_\infty \leqslant |(n,\vm)|_\infty^{-\omega_0(\vx)+\delta/2}$. 
 For any fixed $n$, where are only finitely many $\vm$ with 
 $|n \vx - \vm|_\infty \leqslant 1$. Since $|(n,\vm)|_\infty \geqslant n$, for 
@@ -344,7 +346,8 @@ $\det_\fa\colon \R_{K/\bQ}\Gm \to \R_{F/\bQ}\Gm$ be the map induced by the
 determinant of the action of $K$ on $\fa$ (viewed as an $F$-vector space). Then 
 $G_A = \im(\det_\fa)$ \cite{yu-2015}, and $\ST(A)$ is a maximal compact 
 subgroup of $G_A^1(\bC) = G_A^{\N_{F/\bQ} = 1}(\bC)$. So 
-$\ST(A) \simeq \bT^d$ for some $1\leqslant d \leqslant g$, and every 
+$\ST(A) \simeq \bT^d$ for some $1\leqslant d \leqslant g$ (we will use the 
+same $d$ when applying Theorem \ref{thm:disc-lower-bound}), and every 
 unitary character of $\ST(A)$ is induced by an algebraic character of 
 $G_A^1$. Any character of a subtorus extends to the whole torus, so any 
 character of $G_A^1$ is the restriction of a character of $\R_{F/\bQ}\Gm$. 
@@ -428,7 +431,7 @@ as $\vm$ ranges over $\bZ^d\smallsetminus \vzero$.
 \end{theorem}
 \begin{proof}
 Since $\vx$ generates a dense subgroup of $\bT^d$, 
-$\langle \vm,\vx\rangle\in \bR\smallsetminus 0$. Thus Lemma 
+$\langle \vm,\vx\rangle\in \bR\smallsetminus \bZ$. Thus Lemma 
 \ref{lem:bound-exp-sum} tells us that 
 $\left| \sum_{n\leqslant N} e^{2\pi i \langle \vm, n \vx\rangle}\right| \ll \dd(\langle \vm, \vx\rangle,\bZ)^{-1}$, 
 and from Lemma \ref{lem:bound-distance}, we know that 
