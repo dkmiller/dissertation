@@ -12,7 +12,7 @@ Discrepancy (also known as the Kolmogorov--Smirnov statistic) is a way of
 measuring how closely sample data fits a predicted distribution. It has many 
 applications in computer science and statistics, but here we will focus on only 
 its basic properties, such as how discrepancy changes when sequences 
-are ``tweaked'' and combined. 
+are perturbed, transformed by a function, or combined. 
 
 First, recall that discrepancy provides a way of sharpening the soft 
 convergence results in \cite[A.1]{serre-1989}. Let $X$ be a compact 
@@ -37,11 +37,12 @@ generates a dense subpace of $C(X)^{\mu = 0}$.
 
 In the discussion in \cite[A.1]{serre-1989}, $X$ is the space of conjugacy 
 classes in a compact Lie group, and $f$ is allowed to range over the characters 
-of irreducible, nontrivial, unitary representations of the group. Serre's 
-results can be generalized to a much broader class of Dirichlet series, 
+of irreducible, nontrivial, unitary representations of the group---these 
+generate a dense subspace of $C(X)^{\mu = 0}$ by the Peter--Weyl theorem. 
+Serre's results can be generalized to a much broader class of Dirichlet series, 
 which are of the form 
 \[
-	L_f(\bx,s) = \prod_p \frac{1}{1-f(x_p)p^{-s}} .
+	L_f(\bx,s) = \prod_p \left(1-f(x_p)p^{-s}\right)^{-1} .
 \]
 In fact, in light of the following theorem, we can consider functions $f$ 
 which are only continuous almost everywhere. This allows us to consider 
@@ -57,28 +58,29 @@ $\bx$ is $\mu$-equidistributed, then
 \end{theorem}
 \begin{proof}
 We prove the more general result that if $\{\mu_n\}$ is a sequence of Radon 
-(i.e.~finite and inner regular)
+(i.e.~finite and regular)
 probability measures on $X$ which converges weakly to $\mu$, then 
 $\mu_n(f) \to \mu(f)$ for all $f$ which are bounded and continuous 
 $\mu$-almost everywhere. 
 
 Let $D$ be the set of points at which $f$ is not continuous. For every 
 $\epsilon>0$, there exists an open $U_\epsilon\supset D$ with 
-$\mu(U_\epsilon) < \epsilon$, and $f_\epsilon\in C(X)$ such that 
-$|f_\epsilon|_\infty \leqslant |f|_\infty$, $f_\epsilon|_D = 0$, and 
+% Tietze extension: Rudin R&C th 20.4
+$\mu(U_\epsilon) < \epsilon$. By the Tietze extension theorem, there exists 
+$f_\epsilon\in C(X)$ such that $|f_\epsilon|_\infty \leqslant |f|_\infty$ and 
 $f_\epsilon|_{X\smallsetminus U_\epsilon} = f|_{X\smallsetminus U_\epsilon}$. 
 Note that 
 \begin{equation}\label{eq:measures-ineq}
 	|\mu_n f - \mu f| \leqslant |\mu_n f - \mu_n f_\epsilon| + |\mu_n f_\epsilon - \mu f_\epsilon| + |\mu f_\epsilon - \mu f| .
 \end{equation}
-Now $|\mu_n f - \mu_n f_\epsilon| \leqslant \mu_n(U_\epsilon) |f|_\infty$. Since 
+Now $|\mu_n f - \mu_n f_\epsilon| \leqslant 2\mu_n(U_\epsilon) |f|_\infty$. Since 
 $U_\epsilon$ is open, this converges to 
-$\mu(U_\epsilon) |f|_\infty < \epsilon |f|_\infty$. The second term in 
+$2\mu(U_\epsilon) |f|_\infty < 2\epsilon |f|_\infty$. The second term in 
 \eqref{eq:measures-ineq} converges to zero because $f_\epsilon$ is continuous, 
 and the third term can be bounded as 
-$|\mu f_\epsilon - \mu f| \leqslant \mu(U_\epsilon) |f|_\infty < \epsilon |f|_\infty$. 
+$|\mu f_\epsilon - \mu f| \leqslant 2\mu(U_\epsilon) |f|_\infty < 2\epsilon |f|_\infty$. 
 We have shown that 
-$\limsup_{n\to \infty} |\mu_n f - \mu f| \leqslant 2 \epsilon |f|_\infty$. 
+$\limsup_{n\to \infty} |\mu_n f - \mu f| \leqslant 4 \epsilon |f|_\infty$. 
 Since $\epsilon$ was arbitrary, the result follows. 
 \end{proof}
 
@@ -154,7 +156,7 @@ $P_{\bvx,N} = \frac{1}{N} \sum_{n\leqslant N} \delta_{\vx_n}$. Write
 $\D_N(\bvx,\mu) = \D\left( P_{\bvx,N},\mu\right)$, and similarly for star 
 discrepancy. In this context, 
 \[
-	\D^\star_N(\bvx,\mu) = \sup_{\vy\in [\vzero,\vinfty)} \left| \frac{\# \{n\leqslant N : \vx_n \in [\vzero,\vy)\}}{N} - \int_{[\vzero,\vy)} \, \dd\mu\right| .
+	\D^\star_N(\bvx,\mu) = \sup_{\vy\in [\vzero,\vinfty)} \left| \frac{\# \{n\leqslant N : \vx_n \in [\vzero,\vy)\}}{N} - \mu[\vzero,\vy)\right| .
 \]
 When the measure $\mu$ is clear from the context, we will refer to 
 $\D_N(\bvx,\mu)$ (resp.~$\D_N^\star(\bvx,\mu)$) as the discrepancy (resp.~star 
@@ -190,7 +192,7 @@ $T\simeq \bT^d$, but
 asymptotically these definitions are all the same. The paper 
 \cite{rosengarten-2013} gives a different definition of discrepancy which only 
 works for semisimple simply-connected groups, but unlike this thesis, proves an 
-Erd\"os--Tur\'an inequality in that context. It is likely that a reasonable 
+Erd\"os--Tur\'an inequality for that definition. It is likely that a reasonable 
 application of isotropic discrepancy would render these definitions equivalent, 
 at least for asymptotic purposes, but as the two definitions coincide for 
 $\SU(2)$, we do not explore this further. 
@@ -198,8 +200,8 @@ $\SU(2)$, we do not explore this further.
 Sometimes the sequence $\bx$ will not be indexed by the natural numbers, but 
 by the rational primes, or some other discrete subset of $\bR^+$. In that case 
 we will still use the notations $\D_N(\bx,\mu)$, 
-$\bx_{\leqslant N} = (\vx_1,\dots,\vx_N)$, 
-$\bx_{\geqslant N} = (\vx_N,\vx_{N+1},\dots)$, etc., 
+$\bx_{\leqslant N} = (\vx_\alpha)_{\alpha\leqslant N}$, 
+$\bx_{\geqslant N} = (\vx_\alpha)_{\alpha\geqslant N}$, etc., 
 keeping in mind that the set $\{\vx_\alpha : \alpha \leqslant N\}$ is involved, 
 and that in formulas $\frac{1}{N}$ is replaced by 
 $\#\{\textnormal{indices }\leqslant N\}^{-1}$. 
@@ -251,14 +253,15 @@ $\mathrm{P}\left(\sqrt{\pi(N)} D_N > t\right) \leqslant 2 e^{-2 t^2}$.
 Now let $E_{/\bQ}$ be a non-CM elliptic curve with Satake parameters 
 $\theta_p$. If the $\theta_p$ were being drawn at random from the distribution 
 $\ST$, then the Glivenko--Cantelli theorem would say that as $N\to \infty$, 
-we would have $\D_N(\btheta,\ST) \sim \pi(N)^{-\frac 1 2}$. Since we 
-expect the Satake parameters $\{\theta_p\}$ to behave roughly as if they were 
+we would have $\D_N(\btheta,\ST) = \Theta\left(\pi(N)^{-\frac 1 2}\right)$. Since 
+we expect the Satake parameters $\{\theta_p\}$ to behave roughly as if they were 
 drawn at random, the Glivenko--Cantelli theorem suggests that at least 
 $\D_N(\btheta,\ST) \ll N^{-\frac 1 2+\epsilon}$ (this is the 
 Akiyama--Tanigawa conjecture, i.e.~Conjecture \ref{conj:akiyama-tanigawa}). 
-Ideally, the normalized discrepancy $\sqrt{\pi(N)}\D_N(\btheta,\ST)$ would also 
-be equidistributed, but sadly, numerical experiments conducted by the author 
-suggest this is not the case. 
+See \cite{akiyama-tanigawa-1999} for computational evidence for this 
+conjecture. In a perfect world, the normalized discrepancy 
+$\sqrt{\pi(N)}\D_N(\btheta,\ST)$ would also be equidistributed, but sadly, 
+numerical experiments conducted by the author suggest this is not the case. 
 
 
 
@@ -304,17 +307,17 @@ The supremum is bounded above by $\D_N(\bvx,\mu)$, so the proof is complete.
 This theorem is proved in a somewhat restrictive setting, and there are more 
 general versions of the theorem for less restrictive notions of bounded 
 variation. For example, for $f$ a function on $\bR^+$ that is bounded variation 
-in the traditional sense (for example, piecewise continuous) and $\mu$ a 
-continuous probability measure, the inequality 
+in the traditional sense (any piecewise continuous function will do) and $\mu$ 
+an absolutely continuous probability measure, the inequality 
 \[
 	\left| \frac{1}{N} \sum_{n\leqslant N} f(x_n) - \int f\, \dd\mu\right| \leqslant \Var(f) \D_N^\star(\bx,\mu) 
 \]
-still holds \cite[Ch.~2, Th.~5.1]{kuipers-niederreiter-1974}. In particular, 
+holds \cite[Ch.~2, Th.~5.1]{kuipers-niederreiter-1974}. In particular, 
 when $\mu$ is the Sato--Tate measure and $f$ is piecewise continuous, we can 
 apply this inequality. When $d>1$, the non-measure-theoretic definition of 
 variation is more general, but much more complicated, than the 
 measure-theoretic one. See \cite[2\S5]{kuipers-niederreiter-1974} for a 
-discussion of this. 
+discussion. 
 
 
 
@@ -327,11 +330,11 @@ that for another measure $\mu$ on $\bR$, the \emph{Radon--Nikodym derivative}
 of $\mu$ with respect to $\lambda$ (when it exists) is uniquely determined by 
 $\cdf_\mu(x) = \int_{-\infty}^x \frac{\dd\mu}{\dd\lambda}(t)\, \dd t$. The 
 Radon--Nikodym derivative exists whenever $\mu$ is absolutely continuous with 
-respect to $\lambda$, i.e.~$\mu(S) = 0$ whenever $\lambda(S) = 0$ (this is the 
-Lebesgue--Radon--Nikodym theorem \cite[Th.~3.8]{folland-1999}). The following 
+respect to $\lambda$, i.e.~$\lambda(S) = 0\Rightarrow \mu(S)=0$ (this is the 
+Lebesgue--Radon--Nikodym theorem) \cite[Th.~3.8]{folland-1999}. The following 
 result, a generalization of \cite[Ch.~2 Th.~4.1]{kuipers-niederreiter-1974}, 
 quantifies how much the discrepancy of a sequence changes when the elements of 
-the sequence are changed by a small amount. 
+the sequence are perturbed slightly. 
 
 \begin{lemma}\label{lem:disc-of-two-seq}
 Let $\bx$ and $\by$ be sequences in $[0,\infty)$. Suppose $\mu$ is an 
@@ -371,7 +374,7 @@ $\frac{1}{\alpha+1}$ is optimal.
 \begin{corollary}\label{cor:close-seq-disc}
 Let $\bx$, $\by$, and $\mu$ be as in Lemma \ref{lem:disc-of-two-seq}. Suppose 
 $|x_n - y_n| \ll n^{-\alpha}$ for some fixed $\alpha>0$. Then 
-$|\D_N(\bx,\mu) - \D_N(\by,\mu)| \ll N^{-\frac{\alpha}{\alpha+1}}$. 
+$|\D_N^\star(\bx,\mu) - \D_N^\star(\by,\mu)| \ll N^{-\frac{\alpha}{\alpha+1}}$. 
 \end{corollary}
 \begin{proof}
 Let $C>0$ be such that $|x_n - y_n| < C n^{-\alpha}$ for all $n$. Given 
@@ -382,7 +385,7 @@ equivalent to $n \leqslant N^{\frac{1}{\alpha+1}} C^{1/\alpha}$.
 Lemma \ref{lem:disc-of-two-seq} with $\epsilon = \epsilon_N$ and the estimate 
 $\# \{n\leqslant N : |x_n - y_n|\} \leqslant N^{\frac{1}{\alpha+1}} C^{1/\alpha}$ 
 tells us that 
-$|\D_N(\bx,\mu) - \D_N(\by,\mu)| \ll N^{-\frac{\alpha}{\alpha+1}} + N^{\frac{1}{\alpha+1} - 1} C^{1/\alpha}\ll N^{-\frac{\alpha}{\alpha+1}}$. 
+$|\D_N^\star(\bx,\mu) - \D_N^\star(\by,\mu)| \ll N^{-\frac{\alpha}{\alpha+1}} + N^{\frac{1}{\alpha+1} - 1} C^{1/\alpha}\ll N^{-\frac{\alpha}{\alpha+1}}$. 
 \end{proof}
 
 This next result shows that if a sequence is transformed by an isometry of 
@@ -422,9 +425,9 @@ It follows that
 This means there exists $I_n$ such that 
 $|P_{\sigma_\ast\bx,N}(I_n) - \sigma_\ast\mu(I_n)|> \D_N(\bx,\mu) - \epsilon$. 
 We have proved that 
-$\D_N(\sigma_\ast\bx,\sigma_\ast\mu) \geqslant \D_N(\bx,\mu)$. Repeating this 
-argument with $\sigma_\ast\mu$ and $\sigma_\ast\bx$ gives the other inequality, 
-so the proof is complete. 
+$\D_N(\sigma_\ast\bx,\sigma_\ast\mu) \geqslant \D_N(\bx,\mu)$. Since $\sigma^2$ 
+is the identity, we can repeat this argument with $\sigma_\ast\mu$ and 
+$\sigma_\ast\bx$ to get the other inequality, so the proof is complete. 
 \end{proof}
 
 A technique we will use throughout this thesis involves comparing the 
@@ -474,8 +477,9 @@ sequence in $I$ and $\by$ be a sequence in $J$. Then
 \]
 \end{theorem}
 \begin{proof}
-Any half-open box in $[0,\vinfty)$ can be split by a coordinate 
-hyperplane into two disjoint half-open boxes $[\va,\vb)\sqcup [\vs,\vt)$, each 
+Any half-open box in $[0,\vinfty)$ can be split by a hyperplane (parallel to a 
+coordinate hyperplane) into two disjoint half-open boxes 
+$[\va,\vb)\sqcup [\vs,\vt)$, each 
 of which intersects at most one of $I$ and $J$. We may assume that 
 $[\va,\vb)\cap J=\varnothing$ and $[\vs,\vt)\cap I = \varnothing$. Write 
 $A = [\va,\vb)$ and $S = [\vs,\vt)$. Then
@@ -487,8 +491,8 @@ $A = [\va,\vb)$ and $S = [\vs,\vt)$. Then
 This yields the second inequality in the statement of the theorem. To see the 
 first, assume that the maximum discrepancy is $\D_N(\bx,\mu)$, and let 
 $[\vs,\vt)$ be a half-open box such that $|P_{\bx,N}[\vs,\vt) - \mu[\vs,\vt)|$ 
-is within some arbitrary $\epsilon$ of $\D_N(\bx,\mu)$. Use a hyperplane 
-(parallel to a coordinate hyperplane) 
+is within some arbitrary $\epsilon$ of $\D_N(\bx,\mu)$. Just as at the 
+beginning of this proof, use a hyperplane (parallel to a coordinate hyperplane) 
 between $I$ and $J$ to ``cut off'' the part of $[\vs,\vt)$ that 
 does not intersect $I$. Replacing $[\vs,\vt)$ with this smaller box, we may 
 assume it does not intersect $J$. 
@@ -567,10 +571,9 @@ $\bv = (v_1,v_2,\dots)$ be the van der Corput sequence (Definition
 $\cdf_\mu^{-1}[0,v_n] = [a,x_n]$. It follows that for any $t\in I$, $x_n < t$ 
 if and only if $v_n < \cdf_\mu(t)$, and thus 
 \[
-	P_{\bx,N}[a,t) - \mu[a,t) = P_{\bv,N}[0,\cdf_\mu(t)) - \cdf_\mu(t) .
+	\left|P_{\bx,N}[a,t) - \mu[a,t)\right| = \left|P_{\bv,N}[0,\cdf_\mu(t)) - \cdf_\mu(t)\right| \leqslant \D_N^\star(\bv) .
 \]
-Since $t$ was arbitrary and $\cdf_\mu$ is surjective by the absolute continuity 
-of $\mu$, it follows via Lemma \ref{lem:vdc-disc} that 
+It follows via Lemma \ref{lem:vdc-disc} that 
 $\D_N^\star(\bx,\mu) \ll \frac{\log N}{N}$, hence 
 $\D_N(\bx,\mu) \ll \frac{\log N}{N}$. 
 \end{proof}
@@ -626,7 +629,7 @@ $\D\left(\bx_{\leqslant N}: a^M,\mu\right) \leqslant \D\left(\bx^N,\mu\right) + 
 Let $\bv$ be the $\mu$-equidistributed van der Corput sequence of 
 Theorem \ref{thm:van-der-corput}, possibly transformed linearly to lie in 
 $[a,b]$. We know that $\D(\bv^N, \mu) \ll \frac{\log N}{N}$, which converges 
-to zero faster than $N^{-\alpha}$ since $\alpha\in \left(0,\frac 1 2\right)$. 
+to zero faster than $N^{-\alpha}$ since $\alpha\in \left(0, 1\right)$. 
 
 We construct the sequence $\bx$ via the following recipe. Start with 
 $(x_1 = v_1,x_2 = v_2,\dots)$ until, for some $N_1$, 

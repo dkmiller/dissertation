@@ -24,9 +24,10 @@ $\lim_{x\to \infty} \frac{\pi(x)}{\Li(x)} = 1$.
 
 Since $\zeta(s)$ does have the desired properties, the prime number 
 theorem is true. It is natural to try to bound the difference 
-$\pi(x) - \Li(x)$. Numerical experiements dating back to Gauss 
-suggest that $|\pi(x) - \Li(x)| \ll x^{-\frac 1 2+\epsilon}$, and in fact we 
-have the following result. 
+$\pi(x) - \Li(x)$. Numerical experiements dating back to Gauss suggest that 
+$|\pi(x) - \Li(x)| \ll x^{-\frac 1 2+\epsilon}$. By this we mean that the 
+estimate holds for any $\epsilon>0$, though the implied constant may depend on 
+$\epsilon$. In fact, we have the following result. 
 
 \begin{theorem}[{\cite[Th., p.~90]{edwards-1974}}]
 The Riemann hypothesis is true if and only if 
@@ -44,19 +45,19 @@ $\rho$ of $G$, there is a corresponding $L$-function defined as
 \[
 	L(\rho,s) = \prod_p \det\left(1-\rho(\frob_p) p^{-s}\right)^{-1} ,
 \]
-where here (and for the remainder of this thesis) we tacitly omit from the 
+where here, and for the remainder of this thesis, we tacitly omit from the 
 product those primes at which $\rho$ is ramified. If $\rho$ is the trivial 
-representation, then $L(1,s) = \zeta(s)$, the Riemann zeta function. Given a 
-cutoff $x$, there is a natural empirical measure 
-$P_x = \frac{1}{\pi(x)} \sum_{p\leqslant x} \delta_{\frob_p}$ on 
-$G^\natural$, the set of conjugacy classes in $G$. Let $\mu$ be the 
-(normalized) Haar measure on $G^\natural$, and let 
+representation, then $L(1,s) = \zeta(s)$. Given a cutoff $x$, there is a 
+natural empirical measure 
+$P_x = \frac{1}{\pi(x)} \sum_{p\leqslant x} \delta_{\frob_p}$ on $G^\natural$, 
+the set of conjugacy classes in $G$. Let $\mu$ be the normalized Haar measure 
+on $G^\natural$, and let 
 $\D(P_x) = \max_{S\subset G^\natural} \left| P_x(S) - \mu(S)\right|$. 
 Then $P_x$ converges weakly to the Haar measure on $G^\natural$ if and 
 only if $\D(P_x) \to 0$. Recall that weak convergence of $P_x$ to $\mu$ means 
-$\int f\, \dd P_x \to \int f$ for all continuous functions $f$ on $G^\natural$. 
-Since $G^\natural$ is a finite set, all functions on $G^\natural$ are 
-continuous, but later on we will consider weak convergence on more general 
+$\int f\, \dd P_x \to \int f\, \dd\mu$ for all continuous functions $f$ on 
+$G^\natural$. Since $G^\natural$ is a finite set, all functions on $G^\natural$ 
+are continuous, but later on we will consider weak convergence on more general 
 spaces.  
 
 \begin{theorem}[{\cite[Th.~2 Cor., A.1]{serre-1989}}]
@@ -69,12 +70,16 @@ Both sides of this equivalence are true, and known as the Chebotarev density
 theorem. If $K = \bQ$, so that $G$ (and hence $\rho$) are trivial, then the 
 ``Frobenius elements'' are all the identity, so equidistribution holds 
 trivially. However, $\zeta(s)$ does not admit a non-vanishing \emph{analytic} 
-continuation to $\Re = 1$, for there is a simple pole at $s = 1$. So the 
+continuation to $\Re = 1$, for it has a simple pole at $s = 1$. So the 
 result is only true when $K/\bQ$ is a nontrivial extension. Returning to that 
-case ($K\ne \bQ$), there is a version of the strong prime number theorem in 
-this context. In this thesis, the Riemann hypothesis for a Dirichlet series 
-$L(s)$ is the statement that $L(s)$ admits a non-vanishing analytic 
-continuation to $\Re > \frac 1 2$. 
+case ($K\ne \bQ$), there is a version of the strong prime number theorem. It is 
+known that Artin $L$-functions admit a meromorphic continuation to the complex 
+plane, and that this continuation satisfies a functional equation. However, in 
+this thesis, we will consider Dirichlet series for which no such continuation 
+or functional equation exist---even conjecturally. As a result, in this thesis, 
+by the ``Riemann hypothesis'' for a Dirichlet series $L(s)$ we mean the 
+statement that $L(s)$ admits a non-vanishing analytic continuation to 
+$\Re > \frac 1 2$. 
 
 \begin{theorem}
 The bound $\D(P_x) \ll x^{-\frac 1 2+\epsilon}$ holds if and only if each
@@ -132,7 +137,7 @@ the functions $L(\sym^k E,s)$ have analytic continuation to $\Re = 1$.
 
 The stunning recent proof of the Sato--Tate conjecture over totally real fields 
 showed that the functions $L(\sym^k E,s)$ have the desired analytic 
-continuation. In fact, they show that for all $k$, $L(\sym^k E,s)$ has 
+continuation. Moreover, it showed that for all $k$, $L(\sym^k E,s)$ has 
 meromorphic continuation to the whole complex plane. Even better, when $k$ is 
 odd, the $L$-function is potentially automorphic. See Theorem 
 \ref{thm:bad-Galois} for a result in this thesis where more can be said about 
@@ -142,7 +147,7 @@ The Riemann hypothesis, and its analogue for Artin $L$-functions, has a natural
 generalization to elliptic curves. In this context, the discrepancy of the set 
 $\{\theta_p\}_{p\leqslant x}$ is 
 \[
-	\D_x\left(E,\ST\right) = \sup_{t\in [0,\pi]} \left| P_x[0,t] - \ST[0,t]\right| .
+	\D_x\left(E,\ST\right) = \sup_{t\in [0,\pi]} \left| P_x[0,t) - \ST[0,t)\right| .
 \]
 The following conjecture is made in \cite{akiyama-tanigawa-1999}.
 
@@ -150,8 +155,9 @@ The following conjecture is made in \cite{akiyama-tanigawa-1999}.
 $\D_x\left(E,\ST\right)\ll x^{-\frac 1 2+\epsilon}$.
 \end{conjecture}
 
-Akiyama and Tanigawa go on to prove a special case of the following theorem, 
-proved in full generality by Mazur. 
+Akiyama and Tanigawa provide computational evidence for their conjecture, then 
+go on to prove a special case of the following theorem, proved in full 
+generality by Mazur. 
 
 \begin{theorem}[{\cite[\S3.4]{mazur-2008}}]
 If $\D_x\left(E,\ST\right)\ll x^{-\frac 1 2+\epsilon}$, 

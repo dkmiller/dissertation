@@ -46,14 +46,11 @@ Roughly, ``good residual representations'' have enough properties that we can
 prove meaningful theorems about their lifts without assuming the modularity 
 results of Khare--Wintenberger. 
 
-\begin{theorem}\label{thm:always-can-lift}
+\begin{theorem}[{\cite[Th.~1]{ramakrishna-2002}}]\label{thm:always-can-lift}
 Let $\bar\rho\colon G_\bQ \to \GL_2(\bF_l)$ be a good residual 
-representation. Then there exists a weight-$2$ lift of $\bar\rho$ to $\bZ_l$, 
-ramified at the same set of primes as $\bar\rho$. 
+representation. Then there exists a finitely ramified weight-$2$ lift of 
+$\bar\rho$ to $\bZ_l$. 
 \end{theorem}
-\begin{proof}
-To-do: find a proof of this!
-\end{proof}
 
 \begin{definition}
 Let $\bar\rho\colon G_{\bQ_S} \to \GL_2(\bF_l)$ be a good residual 
@@ -240,7 +237,9 @@ $\left| \frac{a_p}{2\sqrt p} - x_p\right| \leqslant \frac{l h(p)}{2\sqrt p}$.
 \end{enumerate}
 \end{theorem}
 \begin{proof}
-Begin with $\rho_1= \bar\rho$. By \cite[Lem.~6]{khare-larsen-ramakrishna-2005}, 
+Begin with $\rho_1= \bar\rho$. By \cite[Th.~1]{ramakrishna-2002}, each 
+$\left.\rho_1\right|_{G_{\bQ_p}}$ admits a lift to $\bZ_l$. 
+By \cite[Lem.~6]{khare-larsen-ramakrishna-2005}, 
 there exists a finite set $R$, containing the set of primes at which $\bar\rho$ 
 ramifies, such that $\Sha_R^1(\Ad^0\bar\rho)$ and $\Sha_R^2(\Ad^0\bar\rho)$ are 
 trivial. 
@@ -248,8 +247,8 @@ Let $R_1$ be the union of $R$ and all primes $p$ with
 $\frac{l}{2\sqrt p} > 2$. Since $\frac{l}{2\sqrt p} \to 0$ as $p\to \infty$, 
 the set $R_1$ is finite. For all $p\notin R_1$ and any $a\in \bF_l$, there 
 exists $a_p\in \bZ$ satisfying the Hasse bound with $a_p\equiv a\pmod l$. In 
-fact, given any $x_p\in [-1,1]$, there exists $a_p\in \bZ$ satisfying the Hasse 
-bound, congruent to any fixed $a\in\bF_l$ modulo $l$, such that 
+fact, given any $x_p\in [-1,1]$ and $a\in \bF_l$, there exists $a_p\in \bZ$ 
+satisfying the Hasse bound, congruent to $a$ modulo $l$, such that 
 $\left| \frac{a_p}{2\sqrt p} - x_p\right| \leqslant \frac{l}{2\sqrt p}$.
 Choose, for all primes $p\in R_1$, a ramified 
 lift $\rho_p$ of $\left. \rho_1\right|_{G_{\bQ_p}}$. Let $U_1$ be the set of 
@@ -301,10 +300,10 @@ The implied constant in the bound $\pi_{\ram(\rho)}(x)\ll h(x)$ depends on
 $\bar\rho$ (and hence $l$) but not on $h$. 
 We will apply this theorem to construct Galois representations with specified 
 Sato--Tate distributions in the next section, but for now here is a small 
-consequence, which addresses the results in \cite{sarnak-2007}. Sarnak, 
+consequence, which addresses the results in \cite{sarnak-2007}. Sarnak, assuming 
 the generalized Riemann hypothesis along with linear independence of the 
 zeros of $L(\sym^k E,s)$, proves 
-that for $E_{/\bQ}$ a non-CM elliptic curve with rank $r$, the partial sums 
+that for $E_{/\bQ}$ a non-CM elliptic curve of rank $r$, the partial sums 
 $\frac{\log x}{\sqrt x} \sum_{p\leqslant x} \frac{a_p}{\sqrt p}$ approach a 
 limiting distribution with mean $1 - 2 r$. 
 
@@ -329,11 +328,7 @@ $\left| \frac{a_p}{2\sqrt p} - x_p\right| < \frac{l \log p}{\sqrt p}$. In fact,
 by inspecting the proof of Theorem \ref{thm:master-Galois}, we can even ensure 
 that
 $\sum \left(\frac{a_p}{2\sqrt p} - x_p\right)$ converges conditionally, by 
-forcing the sign of $\frac{a_p}{2\sqrt p} - x_p$ to alternate. This will relax 
-the bound 
-$\left|\frac{a_p}{2\sqrt p} - x_p\right| \leqslant \frac{l \log p}{2\sqrt p}$ 
-to 
-$\left|\frac{a_p}{2\sqrt p} - x_p\right| \leqslant \frac{l \log p}{\sqrt p}$. 
+forcing the sign of $\frac{a_p}{2\sqrt p} - x_p$ to alternate.  
 Write $A_N = \frac{\log N}{\sqrt N}\sum_{p\leqslant N} \frac{a_p}{2\sqrt p}$ 
 and $B_N = \frac{\log N}{\sqrt N} \sum_{p\leqslant N} x_p$, both sums tacitly 
 taken over $\rho$-unramified primes. Then 
@@ -574,7 +569,7 @@ example, let $I$ be an arbitrarily small subinterval of $[0,\pi]$
 (e.g.~$I = \left[\frac \pi 2 - \epsilon,\frac \pi 2 + \epsilon\right]$), let 
 $B_I(t)$ be a bump function for $I$, normalized to have total mass one. Then 
 Theorem \ref{thm:bad-Galois} gives Galois representations with empirical 
-Sato--Tate distribution converging at any specified rate to 
+Sato--Tate distribution converging at an arbitrarily slow rate to 
 $\mu_I = B_I(t)\, \dd t$. This is a strictly stronger result than 
 \cite[Th.~5.2]{pande-2011}. Moreover, the proof of Theorem 
 \ref{thm:int-flip-seq} shows that in fact for any $f\in C([0,\pi])$ with 
