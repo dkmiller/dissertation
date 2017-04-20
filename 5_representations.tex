@@ -31,12 +31,11 @@ Cartier dual of $M^\vee$. By \cite[Th.~8.6.7]{neukirch-schmidt-winberg-2008},
 there is an isomorphism $\Sha^1_S(M^\ast) \simeq \Sha_S^2(M)^\vee$. As a 
 result, if $\Sha_S^1(M)$ and $\Sha_S^2(M)$ are trivial, and $S\subset T$, then 
 $\Sha_T^1(M)$ and $\Sha_T^2(M)$ are also both trivial. 
-
-% The l>=7 comes from \cite{ramakrishna-2002}. 
+ 
 \begin{definition}
 A \emph{good residual representation} is an odd, absolutely irreducible, 
 weight-$2$ representation $\bar\rho\colon G_{\bQ_S} \to \GL_2(\bF_l)$, where 
-$l\geqslant 7$ is a rational prime. 
+$l\geqslant 5$ is a rational prime. 
 \end{definition}
 
 Recall that $\bar\rho$ is weight-$2$ if $\det\bar\rho$ is the mod-$l$ 
@@ -46,7 +45,7 @@ Roughly, ``good residual representations'' have enough properties that we can
 prove meaningful theorems about their lifts without assuming the modularity 
 results of Khare--Wintenberger. 
 
-\begin{theorem}[{\cite[Th.~1]{ramakrishna-2002}}]\label{thm:always-can-lift}
+\begin{theorem}[{\cite[Th.~1.3]{taylor-2003}}]\label{thm:always-can-lift}
 Let $\bar\rho\colon G_\bQ \to \GL_2(\bF_l)$ be a good residual 
 representation. Then there exists a finitely ramified weight-$2$ lift of 
 $\bar\rho$ to $\bZ_l$. 
@@ -433,10 +432,10 @@ Apply Theorem \ref{thm:discrepancy-arbitrary} to find a sequence $\bx$ such
 that $\D_N(\bx,\cos_\ast \mu) = \Theta(\pi(N)^{-\alpha})$. For each prime 
 $p$, there exists an integer $a_p$ such that $|a_p|\leqslant 2\sqrt p$ and 
 $\left| \frac{a_p}{2\sqrt p} - x_p\right| \leqslant \frac{1}{2\sqrt p}$. Let 
-$y_p = \frac{a_p}{2\sqrt p}$, and apply Lemma \ref{lem:disc-of-two-seq} with 
-$\epsilon = N^{-1/2}$. We obtain 
+$y_p = \frac{a_p}{2\sqrt p}$, and apply Corollary \ref{cor:close-seq-disc}. 
+We obtain 
 \[
-	\left| \D_N(\bx,\cos_\ast \mu) - \D_N(\by, \cos_\ast \mu)\right| \ll  N^{-1/2} + \frac{\pi(N^{1/2})}{\pi(N)} ,
+	\left| \D_N(\bx,\cos_\ast \mu) - \D_N(\by, \cos_\ast \mu)\right| \ll  \pi(N)^{-\frac 1 3} ,
 \]
 which tells us that $\D_N(\by,\cos_\ast\mu) = \Theta(\pi(N)^{-\alpha})$. 
 Now let $\btheta = \cos^{-1}(\by)$. Apply Lemma \ref{lem:push-discrepancy} to 
