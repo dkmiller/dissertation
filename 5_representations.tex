@@ -337,8 +337,9 @@ including $p$) is $<0$, choose $a_p$ so that $\frac{a_p}{2\sqrt p}$ is to the
 right of $x_p$ (hence $\frac{a_p}{2\sqrt p} - x_p$ is positive). If the 
 partial sum is $>0$, choose $a_p$ so that $\frac{a_p}{2\sqrt p}$ is to the left 
 of $x_p$ (hence $\frac{a_p}{2\sqrt p}-x_p$ is negative). Since the sum can 
-change by at most $\frac{1}{2\sqrt p}$ at each step, each partial sum has 
-absolute value at most $\frac{1}{2\sqrt 2}$. 
+change by at most $\frac{l\log p}{2\sqrt p}$ at each step, the partial sums are 
+bounded by the maximum possible value of $\frac{l \log p}{2\sqrt p}$, namely 
+$l/e$ (this is calculated via elementary calculus). 
  
 Write $A_N = \frac{\log N}{\sqrt N}\sum_{p\leqslant N} \frac{a_p}{2\sqrt p}$ 
 and $B_N = \frac{\log N}{\sqrt N} \sum_{p\leqslant N} x_p$, both sums tacitly 
