@@ -245,19 +245,17 @@ function-valued random variable, converges
 to zero. The Glivenko--Cantelli theorem says that $D_N \to 0$ almost everywhere, 
 and even better, the normalized discrepancy $\sqrt{\pi(N)} D_N$ approaches 
 a limiting distribution (supremum of the Brownian bridge) which does not 
-depend on $\mu$. The rate of convergence of $\sqrt{\pi(N)} D_N$ to that 
-distribution is quantified by the Dvoretzky--Kiefer--Wolfowitz inequality, 
-which tells us that 
-$\mathrm{P}\left(\sqrt{\pi(N)} D_N > t\right) \leqslant 2 e^{-2 t^2}$. 
+depend on $\mu$. 
 
-To-do: clarify what assumptions go into the heuristics below? 
-
-Now let $E_{/\bQ}$ be a non-CM elliptic curve with Satake parameters 
-$\theta_p$. If the $\theta_p$ were being drawn at random from the distribution 
-$\ST$, then the Glivenko--Cantelli theorem would say that as $N\to \infty$, 
-we would have $\D_N(\btheta,\ST) = \Theta\left(\pi(N)^{-\frac 1 2}\right)$. Since 
-we expect the Satake parameters $\{\theta_p\}$ to behave roughly as if they were 
-drawn at random, the Glivenko--Cantelli theorem suggests that at least 
+Now let $\theta_p$ be a collection of angles drawn at random from the 
+distribution $\ST$. Then the Glivenko--Cantelli theorem implies that as 
+$N\to \infty$, the bound 
+$\D_N(\btheta,\ST) = \Theta\left(\pi(N)^{-\frac 1 2}\right)$ holds. Of course, 
+if $E$ is an elliptic curve, the  $\theta_p$ are not, \emph{a priori}, drawn at 
+random from $\ST$, so the Glivento--Cantelli theorem does not imply this bound 
+for any actual elliptic curve. However, since we expect the $\theta_p$ of an 
+actual elliptic curve to behave roughly as if they were drawn randomly from 
+$\ST$, the Glivenko--Cantelli theorem suggests that at least 
 $\D_N(\btheta,\ST) \ll N^{-\frac 1 2+\epsilon}$ (this is the 
 Akiyama--Tanigawa conjecture, i.e.~Conjecture \ref{conj:akiyama-tanigawa}). 
 See \cite{akiyama-tanigawa-1999} for computational evidence for this 
@@ -555,6 +553,8 @@ sequence has extremely fast convergence to zero.
 $\D_N(\bv) \leqslant \frac{\log(N+1)}{N\log 2}$. 
 \end{lemma}
 
+By \cite[Ch.~2 Th.~2.3]{kuipers-niederreiter-1974}, this is (asymptotically) 
+the fastest rate of decay possible. 
 The van der Corput sequence is uniformly distributed (equidistributed with 
 respect to the Lebesgue measure). We can use the results of the previous 
 section to construct sequences equidistributed with respect to more general 

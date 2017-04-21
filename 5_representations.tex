@@ -278,8 +278,6 @@ there are always integral $a_p$ satisfying the Hasse bound which satisfy any
 mod-$l^{n+1}$ constraint, and that can always choose these $a_p$ so as to 
 preserve statement 2 in the theorem. 
 
-To-do: why is $l^n \leqslant l h(p)$?
-
 The base case is complete, so suppose we have 
 $(\rho_{n-1},R_{n-1},U_{n-1},\{\rho_p\})$. We may assume that $U_{n-1}$ 
 contains all primes for 
@@ -288,8 +286,11 @@ $U_n$ be the set of all primes not in $R_{n-1}$ such that
 $\frac{l^{n+1}}{2\sqrt p} > \min\left(2, \frac{l h(p)}{2\sqrt p}\right)$. For 
 each $p\in U_n\smallsetminus U_{n-1}$, there is an integer $a_p$, satisfying 
 the Hasse bound, such that $a_p\equiv \rho_n(\frob_p)\pmod{l^n}$, and moreover 
-$\left|\frac{a_p}{2\sqrt p} - x_p\right| \leqslant \frac{l h(p)}{2\sqrt p}$. 
-For such $p$, let $\rho_p$ be an unramified lift of 
+$\left|\frac{a_p}{2\sqrt p} - x_p\right| \leqslant \frac{l^n}{2\sqrt p}$. 
+Since $p\notin U_{n-1}$, we know that $l^n\leqslant l h(p)$, 
+s the bound in the previous sentence implies 
+$\left|\frac{a_p}{2\sqrt p} - x_p\right| \leqslant \frac{l h(p)}{2\sqrt p}$.
+For $p\in U_n\smallsetminus U_{n-1}$, let $\rho_p$ be an unramified lift of 
 $\left. \rho_n\right|_{G_{\bQ_p}}$ such that $\tr\rho_n(\frob_p)$ is the 
 desired $a_p$. By Theorem \ref{thm:lifting-datum}, there exists an 
 $h^\ast$-bounded lifting datum $(\rho_n,R_n,U_n,\{\rho_p\})$ extending and 
@@ -318,8 +319,6 @@ each $a_p = \tr\rho(\frob_p)\in \bZ$ satisfies the Hasse bound,
 and $\pi_{\ram(\rho)}(x) \ll \log(x)$. 
 \end{corollary}
 \begin{proof}
-To-do: why can we force the signs to alternate?
-
 Begin with a sequence $(x_p)$ in $\left[-\frac 1 2,\frac 1 2\right]$ such that 
 $\lim_{N\to \infty} \frac{\log N}{\sqrt N}\sum_{p\leqslant N} x_p = L$. If 
 $L=\pm \infty$, we can choose $x_p = \pm \frac 1 2$. By Theorem 
@@ -329,18 +328,26 @@ $a_p = \tr\rho(\frob_p)\in \bZ$, satisfies the Hasse bound. Moreover, after
 re-indexing $(x_p)$ by the unramified primes of $\rho$, we can have 
 $\left| \frac{a_p}{2\sqrt p} - x_p\right| < \frac{l \log p}{\sqrt p}$. In fact, 
 by inspecting the proof of Theorem \ref{thm:master-Galois}, we can even ensure 
-that
-$\sum \left(\frac{a_p}{2\sqrt p} - x_p\right)$ converges conditionally, by 
-forcing the sign of $\frac{a_p}{2\sqrt p} - x_p$ to alternate.  
+that the partial sums 
+$\sum_{p\leqslant N} \left(\frac{a_p}{2\sqrt p} - x_p\right)$ are bounded. 
+How? When choosing $a_p$, all that Theorem \ref{thm:master-Galois} requires is 
+for $a_p$ to be sufficiently close to $x_p$. Since 
+$x_p \in \left[-\frac 1 2,\frac 1 2\right]$, if the partial sum up to (but not 
+including $p$) is $<0$, choose $a_p$ so that $\frac{a_p}{2\sqrt p}$ is to the 
+right of $x_p$ (hence $\frac{a_p}{2\sqrt p} - x_p$ is positive). If the 
+partial sum is $>0$, choose $a_p$ so that $\frac{a_p}{2\sqrt p}$ is to the left 
+of $x_p$ (hence $\frac{a_p}{2\sqrt p}-x_p$ is negative). Since the sum can 
+change by at most $\frac{1}{2\sqrt p}$ at each step, each partial sum has 
+absolute value at most $\frac{1}{2\sqrt 2}$. 
+ 
 Write $A_N = \frac{\log N}{\sqrt N}\sum_{p\leqslant N} \frac{a_p}{2\sqrt p}$ 
 and $B_N = \frac{\log N}{\sqrt N} \sum_{p\leqslant N} x_p$, both sums tacitly 
 taken over $\rho$-unramified primes. Then 
 \[
 	\left| A_N - B_N\right| \leqslant \frac{\log N}{\sqrt N} \left| \sum_{p\leqslant N} \left(\frac{a_p}{2\sqrt p} - x_p\right)\right| ,
 \]
-which converges to zero because 
-$\sum_{p\leqslant N} \left(\frac{a_p}{2\sqrt p} - x_p\right)$ converges to a 
-finite quantity by the alternating series test, and 
+which converges to zero because the partial sums 
+$\sum_{p\leqslant N} \left(\frac{a_p}{2\sqrt p} - x_p\right)$ are bounded, and 
 $\frac{\log N}{\sqrt N} \to 0$. The proof isn't quite 
 complete, because we only know that 
 $\lim_{N\to \infty} \frac{\log N}{\sqrt N}\sum_{p\leqslant N} x_p = L$ when 
