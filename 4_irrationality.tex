@@ -431,7 +431,11 @@ as $\vm$ ranges over $\bZ^d\smallsetminus \vzero$.
 Since $\vx$ generates a dense subgroup of $\bT^d$, 
 $\langle \vm,\vx\rangle\in \bR\smallsetminus \bZ$. Thus Lemma 
 \ref{lem:bound-exp-sum} tells us that 
-$\left| \sum_{n\leqslant N} e^{2\pi i \langle \vm, n \vx\rangle}\right| \ll \dd(\langle \vm, \vx\rangle,\bZ)^{-1}$, 
+\[
+	\left| \sum_{n\leqslant N} e^{2\pi i \langle \vm, n \vx\rangle}\right| 
+		= \left| \sum_{n\leqslant N} e^{2\pi i n \langle \vm, \vx\rangle}\right|
+		\ll \dd(\langle \vm, \vx\rangle,\bZ)^{-1},
+\] 
 and from Lemma \ref{lem:bound-distance}, we know that 
 $\dd(\langle \vm,\vx\rangle, \bZ)^{-1} \ll |\vm|_\infty^{\omega_{d-1}(x)+\epsilon}$. 
 The result follows. 
