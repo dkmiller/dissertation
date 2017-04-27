@@ -18,20 +18,20 @@ $\zeta$-function has non-vanishing meromorphic continuation to $\Re = 1$.
 
 \begin{theorem}
 The function $\zeta(s)$ admits a non-vanishing meromorphic continuation to 
-$\Re = 1$ with at most a simple pole at $s=1$, if and only if 
+$\Re = 1$ with a simple pole at $s=1$, if and only if 
 $\lim_{x\to \infty} \frac{\pi(x)}{\Li(x)} = 1$. 
 \end{theorem}
 
 Since $\zeta(s)$ does have the desired properties, the prime number 
 theorem is true. It is natural to try to bound the difference 
-$\pi(x) - \Li(x)$. Numerical experiements dating back to Gauss suggest that 
-$|\pi(x) - \Li(x)| \ll x^{-\frac 1 2+\epsilon}$. By this we mean that the 
+$\pi(x) - \Li(x)$. Numerical experiments dating back to Gauss suggest that 
+$|\pi(x) - \Li(x)| \ll x^{\frac 1 2+\epsilon}$. By this we mean that the 
 estimate holds for any $\epsilon>0$, though the implied constant may depend on 
 $\epsilon$. In fact, we have the following result. 
 
 \begin{theorem}[{\cite[Th., p.~90]{edwards-1974}}]
 The Riemann hypothesis is true if and only if 
-$|\pi(x) - \Li(x)| \ll x^{-\frac 1 2+\epsilon}$. 
+$|\pi(x) - \Li(x)| \ll x^{\frac 1 2+\epsilon}$. 
 \end{theorem}
 
 Neither side of this equivalence is known for certain to be true! 
@@ -40,18 +40,20 @@ There is an analogue of the above discussion for Artin $L$-functions.
 Let $K/\bQ$ be a nontrivial finite  Galois extension with group 
 $G=\Gal(K/\bQ)$. For any 
 rational prime $p$ at which $K$ is unramified, let $\frob_p$ be the conjugacy 
-class of the Frobenius at $p$ in $G$. For any irreducible representation 
+class of the Frobenius at $p$ in $G$. For any complex irreducible representation 
 $\rho$ of $G$, there is a corresponding $L$-function defined as 
 \[
 	L(\rho,s) = \prod_p \det\left(1-\rho(\frob_p) p^{-s}\right)^{-1} ,
 \]
 where here, and for the remainder of this thesis, we tacitly omit from the 
 product those primes at which $\rho$ is ramified. If $\rho$ is the trivial 
-representation, then $L(1,s) = \zeta(s)$. Given a cutoff $x$, there is a 
+representation, then $L(1,s) = \zeta(s)$. For each $p$, let $\delta_{\frob_p}$ 
+be the Dirac delta measure concentrated at $\frob_p$ on $G^\natural$, the set 
+of conjugacy classes of $G$. Given a cutoff $x$, there is a 
 natural empirical measure 
-$P_x = \frac{1}{\pi(x)} \sum_{p\leqslant x} \delta_{\frob_p}$ on $G^\natural$, 
-the set of conjugacy classes in $G$. Let $\mu$ be the normalized Haar measure 
-on $G^\natural$, and let 
+$P_x = \frac{1}{\pi(x)} \sum_{p\leqslant x} \delta_{\frob_p}$ on $G^\natural$.
+Let $\mu$ be the normalized Haar measure 
+on $G^\natural$ (induced from the uniform measure on $G$), and let 
 $\D(P_x) = \max_{S\subset G^\natural} \left| P_x(S) - \mu(S)\right|$. 
 Then $P_x$ converges weakly to the Haar measure on $G^\natural$ if and 
 only if $\D(P_x) \to 0$. Recall that weak convergence of $P_x$ to $\mu$ means 
@@ -102,9 +104,10 @@ thesis, what we call the $L$-function of an elliptic curve (motive, etc.) is
 the normalized (i.e.~analytic instead of algebraic) $L$-function. 
 Let $E_{/\bQ}$ be a non-CM elliptic curve. For any prime $l$, the $l$-adic Tate 
 module of $E$ induces a continuous representation 
-$\rho_l \colon G_\bQ \to \GL_2(\bZ_l)$. It is known that the quantities 
-$a_p = \tr \rho_l(\frob_p)$ lie in $\bZ$ and satisfy the Hasse bound 
-$|a_p| \leqslant 2\sqrt p$. For each unramified prime $p$, the 
+$\rho_l \colon G_\bQ \to \GL_2(\bZ_l)$. It is known that for $p$ not dividing 
+$l$ or the conductor of $E$, the quantities 
+$a_p = \tr \rho_l(\frob_p)$ lie in $\bZ$, are independent of $l$, and satisfy 
+the Hasse bound $|a_p| \leqslant 2\sqrt p$. For each unramified prime $p$, the 
 corresponding Satake parameter for $E$ is 
 $\theta_p = \cos^{-1}\left(\frac{a_p}{2\sqrt p}\right) \in [0,\pi]$. 
 These parameters are packaged into an $L$-function as follows:
@@ -174,13 +177,19 @@ generalized Riemann hypothesis.'' For a precise statement and proof, see Section
 \ref{sec:Satake-CM}.
 
 It is natural to assume that the converse to the implication 
-``Akiyama--Tanigawa conjecture implies Riemann hypothesis'' holds. Zywina 
-first suggested to the author that it might not. In this thesis, we construct a 
-range of counterexamples to the implication ``Akiyama--Tanigawa conjecture implies 
-generalized Riemann hypothesis'' for the case of CM abelian varieties. 
-Moreover, we generalize the results of \cite{pande-2011} to show that there can 
-be no purely Galois-theoretic proof of the Sato--Tate conjecture, for there are 
-Galois representations with arbitrary Sato--Tate distributions! We also show 
+``Akiyama--Tanigawa conjecture implies Riemann hypothesis'' holds. 
+In this thesis, we construct a range of counterexamples to the implication 
+``generalized Riemann hypothesis implies fast discrepancy decay '' for sequences 
+in compact real tori. This suggests that for CM abelian varieties, proving the 
+converse to ``Akiyama--Tanigawa implies generalized Riemann hypothesis'' is not 
+as straightforward as in the case of Artin $L$-functions. 
+
+Moreover, we generalize the results of \cite{pande-2011} to show that there are 
+(infinitely ramified) Galois representations whose Satake parameters exist and 
+are equidistributed with respect to essentially arbitrary specified measures. 
+Moreover, the rate of decay of discrepancy can be prescribed, and for ``odd'' 
+measures, all the odd symmetric-power $L$-functions can be made to satisfy the 
+Riemann hypothesis. We also show 
 that some of the results of \cite{sarnak-2007} about sums of the form 
 $\sum_{p\leqslant x} \frac{a_p}{\sqrt p}$ cannot be generalized to 
 general---in particular, infinitely ramified---Galois representations. 

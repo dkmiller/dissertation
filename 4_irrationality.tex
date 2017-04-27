@@ -10,7 +10,8 @@
 
 We follow the notation of \cite{laurent-2009}. Fix a dimension 
 $d\geqslant 1$, and let $\vx=(x_1,\dots,x_d)\in \bR^d$ be such that the $x_i$ 
-are linearly independent over $\bQ$. If $d = 1$, the \emph{irrationality 
+are irrational and linearly independent over $\bQ$. If $d = 1$, the 
+\emph{irrationality 
 exponent} of $x\in \bR$ is the supremum of the set of $w\in \bR^+$ such that 
 there infinitely many rational numbers $\frac p q$ with 
 $\left| x - \frac p q\right| \leqslant q^{-w}$. If $x$ is rational, then it has 
@@ -159,14 +160,12 @@ the implied constant depending on $\vx$ and $\epsilon$.
 \section{Irrationality exponents and discrepancy}
 
 Let $\vx=(x_1,\dots,x_d)\in \bR^d$. The sequence 
-$(\vx\mod \bZ^d,2\vx\mod\bZ^d,\dots)$ will be equidistributed in a subtorus of 
-$\bT^d$ whose rank is equal to the dimension of the $\bQ$-vector space 
-spanned by $\{x_1,\dots,x_d\}$. We are interested in the case where this 
-sequence is equidistributed in the whole torus $\bT^d$, so assume 
-$x_1,\dots,x_d$ are linearly independent over $\bQ$ (this condition also 
-makes sense for elements of $\bT^d$). For $\vx\in \bT^d$, we wish 
-to control the discrepancy of the sequence $(\vx,2\vx,3\vx,\dots)$ with respect 
-to the Haar measure of $\bT^d$. 
+$(\vx\mod \bZ^d,2\vx\mod\bZ^d,\dots)$ will be equidistributed in a subgroup of 
+$\bT^d$. We are interested in the case where this sequence is equidistributed 
+in the whole torus $\bT^d$, so assume $x_1,\dots,x_d$ are irrational and 
+linearly independent over $\bQ$ (this condition also makes sense for elements 
+of $\bT^d$). For $\vx\in \bT^d$, we wish to control the discrepancy of the 
+sequence $(\vx,2\vx,3\vx,\dots)$ with respect to the Haar measure of $\bT^d$. 
 
 \begin{theorem}[Erd\"os--Tur\'an--Koksma. {\cite[Th.~1.21]{drmota-tichy-1997}}]\label{thm:ETK}
 Let $\bvx$ be a sequence in $\bT^d$ and $h$ an arbitrary integer. Then 
@@ -364,7 +363,8 @@ $L$-function $L(r\circ \rho_l,s)$ to have non-vanishing analytic continuation
 to $\Re =1$ for each $r\in \X^\ast(\R_{F/\bQ}\Gm)$ which has nontrivial 
 restriction to $\ST(A)$. By the Wiener--Ikehara Tauberian theorem, this is 
 equivalent to an estimate 
-$\left| \sum_{\N(fp)\leqslant x} r(\theta_\fp)\right| = o(\pi_K(x))$. 
+$\left| \sum_{\N(\fp)\leqslant x} r(\theta_\fp)\right| = o(\pi_K(x))$, where 
+$\pi_K(x)$ is the number of primes $\fp$ of $K$ with $\N(\fp)\leqslant x$. 
 
 \begin{theorem}[Shimura--Taniyama, Weil, Hecke]
 The elements $\theta_\fp\in \ST(A)$ are equidistributed with respect to the 
@@ -398,7 +398,7 @@ $\left. r\right|_{\ST(A)}$ nontrivial.
 \begin{proof}
 The Akiyama--Tanigawa estimate implies, via the Koksma--Hlawka inequality, an 
 estimate 
-$\left| \sum_{\N(\fp)\leqslant N} r(\theta_\fp)\right| \ll N^{-\frac 1 2+\epsilon}$. 
+$\left| \sum_{\N(\fp)\leqslant N} r(\theta_\fp)\right| \ll N^{\frac 1 2+\epsilon}$. 
 By Theorem \ref{thm:AT->RH:gp}, the function $L(r\circ \rho_l,s)$ satisfies 
 the Riemann hypothesis. 
 \end{proof}
@@ -415,9 +415,11 @@ are, for $\vm\in \bZ^d$:
 	\widehat f(\vm) = \int_{\bT^d} e^{2\pi i \langle \vm,\vx\rangle} \, \dd \vx ,
 \]
 where $\langle \vm,\vx\rangle = m_1 x_1 + \cdots + m_d x_d$ is the usual inner 
-product. Typically, if $f$ is a function on $\bT^d$, sums of the form 
-$\sum_{n\leqslant N} f(n \vx)$ will be $o(N)$. When $f$ is a character of the 
-torus, there is a much stronger bound. 
+product. If $f$ is a continuous function on $\bT^d$ with $\widehat f(\vzero) = 0$ 
+and $\bvx = (\vx_1,\vx_2,\dots)$ is equidistributed in $\bT^d$, then sums of 
+the form $\sum_{n\leqslant N} f(n \vx)$ will be $o(N)$. When $f$ is a character 
+of the torus, and $\bvx$ is the sequence of translates of an element 
+generating a dense subgroup, there is a much stronger bound. 
 
 \begin{theorem}
 Fix $\vx\in \bT^d$ which generates a dense subgroup, with $\omega_{d-1}(\vx)$ 
@@ -495,10 +497,13 @@ Theorem \ref{thm:AT->RH:gp} tells us this estimate implies the Riemann
 hypothesis. 
 \end{proof}
 
-This shows that even if each $L(r_\ast \rho_l,s)$ satisfies the Riemann 
-hypothesis, we may not conclude that the Akiyama--Tanigawa 
-conjecture holds for $A$. Note also that Theorem \ref{thm:AT->RH:gp} does 
-\emph{not} tell us that $L_f(\bvx,s)$ has analytic continuation to $\Re > 0$, or 
-that there are no zeros in $\Re > 0$. For, the term 
-$\sum_\fp \sum_{r\geqslant 2} \frac{f(\vx_\fp)^r}{r \N(\fp)^{r s}}$ will not 
-converge past $\Re > \frac 1 2$.
+This shows that for a sequence $\btheta = (\theta_\fp)$ in $\bT^d$, even if 
+each $L(r(\btheta),s)$ satisfies the Riemann hypothesis, we may not conclude 
+that the discrepancy of $\btheta$ decays like $N^{-\alpha}$ for any fixed 
+$\alpha$. So for CM abelian varieties, the Akiyama--Tanigawa conjecture does 
+not follow in a straightforward manner from the generalized Riemann hypothesis 
+together with basic facts about Dirichlet series. Note also that Theorem 
+\ref{thm:AT->RH:gp} does \emph{not} tell us that $L_f(\bvx,s)$ has analytic 
+continuation to $\Re > 0$, or that there are no zeros in $\Re > 0$. For, the 
+term $\sum_\fp \sum_{r\geqslant 2} \frac{f(\vx_\fp)^r}{r \N(\fp)^{r s}}$ will 
+not converge past $\Re > \frac 1 2$.
